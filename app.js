@@ -36,6 +36,7 @@ if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d
 $('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
 document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('fav-count').textContent=S.fav.size;$('fav-count').hidden=!S.fav.size}
 function getCutoffData(){return N.uni==='USP'?window.USP_NOTAS:N.uni==='UNICAMP'?window.UNICAMP_NOTAS:N.uni==='UNESP'?window.UNESP_NOTAS:null}
+const orderedYears=d=>[...d.anos].sort((a,b)=>Number(b)-Number(a));
 function getCutoffRows(){
  const d=getCutoffData();if(!d)return [];
  let a=d.carreiras.filter(r=>normal(r.curso).includes(normal(N.query)));
@@ -69,7 +70,7 @@ function renderCutoffs(){
  const rows=getCutoffRows(),tbody=$('cutoff-tbody');tbody.replaceChildren();
  for(const r of rows){const tr=document.createElement('tr');const name=node('th','course-col');name.scope='row';name.append(node('span','course-label',r.curso));if(!unicamp){const code=r.codigo2026||r.codigo2025||r.codigoHistorico;if(code)name.append(node('small','course-code',unesp?`Curso VUNESP · ${code} · SU em 2025/26`:`Carreira FUVEST · ${code}`));}
  name.title=r.observacao||'';tr.append(name);
- for(const y of d.anos){const value=r.notas[y];const td=node('td',(y===2026?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=unicamp?(y===2020?90:72):90;td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
+ for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===2026?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=unicamp?(y===2020?90:72):90;td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
  $('cutoff-count').textContent=`${rows.length} ${rows.length===1?(unicamp||unesp?'curso':'carreira'):(unicamp||unesp?'cursos':'carreiras')} exibidos`; $('cutoff-empty').hidden=rows.length!==0;
 }
 function initCutoffs(){
@@ -79,7 +80,7 @@ function initCutoffs(){
  $('cutoff-full').addEventListener('change',e=>{N.onlyFull=e.target.checked;renderCutoffs()});
  $('cutoff-export').addEventListener('click',()=>{
   const d=getCutoffData();if(!d)return;
-  const header=['Curso',...d.anos.map(String)];const rows=[header,...getCutoffRows().map(r=>[r.curso,...d.anos.map(y=>r.notas[y]??'')])];
+  const years=orderedYears(d);const header=['Curso',...years.map(String)];const rows=[header,...getCutoffRows().map(r=>[r.curso,...years.map(y=>r.notas[y]??'')])];
   const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`notas-de-corte-${N.uni.toLowerCase()}-2020-2026.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  });
