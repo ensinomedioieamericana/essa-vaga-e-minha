@@ -23,6 +23,7 @@
         <button type="button" data-route="inicio" class="active"><span aria-hidden="true">⌂</span> Início</button>
         <button type="button" data-route="provas"><span aria-hidden="true">▤</span> Banco de provas</button>
         <button type="button" data-route="agenda"><span aria-hidden="true">▦</span> Vestibulares 2027</button>
+        <button type="button" data-route="calendario"><span aria-hidden="true">▣</span> Calendário</button>
         <button type="button" data-route="notas"><span aria-hidden="true">▥</span> Notas de corte</button>
         <button type="button" data-route="biblioteca"><span aria-hidden="true">▧</span> Biblioteca</button>
         <button type="button" data-route="recursos"><span aria-hidden="true">✧</span> Bernoulli e serviços</button>
@@ -37,6 +38,64 @@
         <section class="finder"><label for="search" class="sr-only">Buscar materiais e vestibulares</label><span class="search-symbol" aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Pesquise uma universidade, prova ou material..." autocomplete="off"><button type="button" id="clear-search" class="clear-search" aria-label="Limpar busca" hidden>✕</button></section>
         <section class="view-head"><div><p class="section-kicker" id="view-kicker">COMECE POR AQUI</p><h2 id="view-title">Tudo para sua aprovação</h2><p id="view-description" class="muted">Escolha uma área e acesse os materiais que você precisa.</p></div><div class="total-pill" id="total-pill">17 recursos</div></section>
         <div id="quick-actions" class="quick-actions" aria-label="Acessos rápidos"></div>
+
+        <section id="calendar-app" class="calendar-app" hidden aria-label="Calendário de vestibulares 2027">
+          <div class="calendar-intro">
+            <div><span class="calendar-eyebrow">GUIA DE DATAS • INGRESSO 2027</span><h3>Programe-se para os vestibulares</h3><p>Inscrições, provas, resultados e chamadas reunidos em um só lugar, sem precisar abrir uma imagem.</p></div>
+            <span class="calendar-year">2027</span>
+          </div>
+          <div class="calendar-toolbar">
+            <span class="calendar-filter-label">Escolha uma prova</span>
+            <div class="calendar-filters" role="group" aria-label="Filtrar calendário por exame">
+              <button type="button" class="selected" data-calendar-filter="todos" aria-pressed="true">Todos</button>
+              <button type="button" data-calendar-filter="unicamp" aria-pressed="false">UNICAMP</button>
+              <button type="button" data-calendar-filter="unesp" aria-pressed="false">UNESP</button>
+              <button type="button" data-calendar-filter="enem" aria-pressed="false">ENEM</button>
+              <button type="button" data-calendar-filter="usp" aria-pressed="false">USP</button>
+            </div>
+          </div>
+          <div class="calendar-list-head"><strong>Datas importantes</strong><span id="calendar-count" aria-live="polite">4 calendários</span></div>
+          <div class="calendar-grid">
+            <article class="calendar-card calendar-unicamp" data-calendar-institution="unicamp">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL DE CAMPINAS</span><h4>UNICAMP</h4></div><span class="calendar-card-mark">U</span></div>
+              <dl class="calendar-details">
+                <div><dt>Inscrições</dt><dd>03 a 31 de agosto de 2026</dd></div>
+                <div><dt>1ª fase</dt><dd><strong>18 de outubro de 2026</strong></dd></div>
+                <div><dt>2ª fase</dt><dd>29 e 30 de novembro de 2026</dd></div>
+              </dl>
+              <div class="calendar-card-notes"><strong>Outras datas</strong><p>Provas de habilidades específicas: <b>02 a 04/12/2026</b></p><p>1ª chamada: <b>25/01/2027</b></p></div>
+            </article>
+            <article class="calendar-card calendar-unesp" data-calendar-institution="unesp">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL PAULISTA</span><h4>UNESP</h4></div><span class="calendar-card-mark">U</span></div>
+              <dl class="calendar-details">
+                <div><dt>Inscrições</dt><dd>04 de setembro a 08 de outubro de 2026</dd></div>
+                <div><dt>1ª fase</dt><dd><strong>22 de novembro de 2026</strong></dd></div>
+                <div><dt>2ª fase</dt><dd>13 e 14 de dezembro de 2026</dd></div>
+              </dl>
+              <div class="calendar-card-notes"><strong>Outras datas</strong><p>Resultado final: <b>29/01/2027</b></p></div>
+            </article>
+            <article class="calendar-card calendar-enem" data-calendar-institution="enem">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">EXAME NACIONAL DO ENSINO MÉDIO</span><h4>ENEM</h4></div><span class="calendar-card-mark">E</span></div>
+              <dl class="calendar-details">
+                <div><dt>Inscrições</dt><dd>25 de maio a 06 de junho de 2026</dd></div>
+                <div><dt>Prova 1 (P1)</dt><dd><strong>08 de novembro de 2026</strong></dd></div>
+                <div><dt>Prova 2 (P2)</dt><dd><strong>15 de novembro de 2026</strong></dd></div>
+              </dl>
+              <div class="calendar-card-notes"><strong>Conteúdo das provas</strong><p>P1: Linguagens, Ciências Humanas e Redação</p><p>P2: Ciências da Natureza e Matemática</p></div>
+            </article>
+            <article class="calendar-card calendar-usp" data-calendar-institution="usp">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE DE SÃO PAULO • FUVEST</span><h4>USP</h4></div><span class="calendar-card-mark">U</span></div>
+              <dl class="calendar-details">
+                <div><dt>Inscrições</dt><dd>17 de agosto a 09 de outubro de 2026</dd></div>
+                <div><dt>1ª fase</dt><dd><strong>1º de novembro de 2026</strong></dd></div>
+                <div><dt>2ª fase</dt><dd>06 e 07 de dezembro de 2026</dd></div>
+              </dl>
+              <div class="calendar-card-notes"><strong>Outras informações</strong><p>1ª fase: <b>80 questões</b> (mudança no formato)</p><p>1ª chamada: <b>26/01/2027</b></p></div>
+            </article>
+          </div>
+          <div class="calendar-disclaimer"><span aria-hidden="true">ⓘ</span><p>Calendário transcrito da tabela fornecida pelo Instituto. Os prazos e regras podem ser alterados pelas organizadoras; confirme sempre os editais e comunicados oficiais.</p></div>
+          <a class="calendar-image-link" href="https://drive.google.com/file/d/1hp5CCnDnD3v-wHovKTk5b_9U4am-EeAB/view?usp=sharing" target="_blank" rel="noopener noreferrer">↗ Consultar a imagem original do calendário</a>
+        </section>
         <section id="cutoff-app" class="cutoff-app" hidden aria-label="Notas de corte por universidade">
           <div class="cutoff-uni-tabs" role="tablist" aria-label="Escolha a universidade"><button type="button" role="tab" data-uni="USP" aria-selected="true" class="selected">USP</button><button type="button" role="tab" data-uni="UNESP" aria-selected="false">UNESP</button><button type="button" role="tab" data-uni="UNICAMP" aria-selected="false">UNICAMP</button></div>
           <div id="cutoff-records">
@@ -59,8 +118,8 @@
       </main>
     </div>
   </div>
-  <nav class="bottom-nav" aria-label="Navegação móvel"><button type="button" data-route="inicio" class="active"><span>⌂</span>Início</button><button type="button" data-route="provas"><span>▤</span>Provas</button><button type="button" data-route="agenda"><span>▦</span>Datas</button><button type="button" data-route="notas"><span>▥</span>Notas</button><button type="button" data-route="favoritos"><span>♡</span>Salvos</button><button type="button" id="more-open"><span>☰</span>Mais</button></nav>
-  <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="biblioteca">▧ Biblioteca de materiais</button><button type="button" data-jump="recursos">✧ Bernoulli e serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
+  <nav class="bottom-nav" aria-label="Navegação móvel"><button type="button" data-route="inicio" class="active"><span>⌂</span>Início</button><button type="button" data-route="provas"><span>▤</span>Provas</button><button type="button" data-route="calendario"><span>▦</span>Calendário</button><button type="button" data-route="notas"><span>▥</span>Notas</button><button type="button" data-route="favoritos"><span>♡</span>Salvos</button><button type="button" id="more-open"><span>☰</span>Mais</button></nav>
+  <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="agenda">▦ Vestibulares 2027 (imagem)</button><button type="button" data-jump="biblioteca">▧ Biblioteca de materiais</button><button type="button" data-jump="recursos">✧ Bernoulli e serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
   <dialog id="install-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">ACESSO RÁPIDO</p><h2>Instale no celular</h2></div><button type="button" class="close-btn" data-close="install-dialog" aria-label="Fechar">✕</button></div><div class="modal-body"><p>Depois de publicar este aplicativo em um endereço HTTPS, você pode adicioná-lo à tela inicial:</p><p><strong>Android (Chrome):</strong> abra o menu ⋮ e selecione “Instalar app” ou “Adicionar à tela inicial”.</p><p><strong>iPhone (Safari):</strong> toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p><p class="muted small">Os links externos, como Google Drive e SISU, exigem internet e podem pedir acesso.</p><button type="button" id="native-install" class="primary-btn" hidden>Instalar agora</button></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="./data.js"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js"></script><script src="./unesp-notas.js"></script><script src="./app.js"></script>

@@ -16,3 +16,48 @@
 /* Logo colorido sobre fundo claro, preservando contraste azul/vermelho */
 .sidebar-project-logo{background:#fff;border-radius:14px;padding:10px;box-shadow:0 3px 12px #1013523b}
 @media(max-width:760px){.topbar{border-bottom:3px solid #ee2434}}
+
+/* Calendário de vestibulares 2027 – conteúdo nativo, responsivo e filtrável */
+.calendar-app{margin:2px 0 30px;color:#2b2f62}
+.calendar-intro{display:flex;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(117deg,#292d85,#4147a6);border-radius:18px;padding:28px 31px;color:#fff;overflow:hidden}
+.calendar-eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:850;color:#f1bfcb}
+.calendar-intro h3{font-size:25px;letter-spacing:-.65px;margin:8px 0 9px;line-height:1.2}
+.calendar-intro p{font-size:12px;line-height:1.55;color:#e2e4fc;max-width:590px;margin:0}
+.calendar-year{font-size:66px;line-height:1;letter-spacing:-5px;font-weight:900;color:#ffffff32;flex:none}
+.calendar-toolbar{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin:21px 0 15px}
+.calendar-filter-label{font-size:11px;letter-spacing:.3px;font-weight:800;color:#656a91}
+.calendar-filters{display:flex;gap:7px;flex-wrap:wrap}
+.calendar-filters button{border:1px solid #dfe1f0;border-radius:28px;padding:9px 14px;background:#fff;color:#454a86;font-size:11px;font-weight:800}
+.calendar-filters button:hover{border-color:#6b70b2}
+.calendar-filters button.selected{background:#313695;color:#fff;border-color:#313695}
+.calendar-list-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 13px}
+.calendar-list-head strong{font-size:15px}
+.calendar-list-head span{font-size:11px;color:#767b9c}
+.calendar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;align-items:stretch}
+.calendar-card{--cal-color:#3439a0;background:#fff;border:1px solid #dfe2f0;border-top:4px solid var(--cal-color);border-radius:15px;overflow:hidden;box-shadow:0 7px 27px rgba(40,44,112,.05);display:flex;flex-direction:column;min-width:0}
+.calendar-card.calendar-unesp{--cal-color:#d62d43}
+.calendar-card.calendar-enem{--cal-color:#316da3}
+.calendar-card.calendar-usp{--cal-color:#6e4a92}
+.calendar-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 20px 15px}
+.calendar-card-kind{font-size:9px;letter-spacing:1px;font-weight:850;color:#8186a4}
+.calendar-card h4{font-size:24px;line-height:1.25;color:#2c317f;margin:5px 0 0;letter-spacing:-.6px}
+.calendar-card-mark{width:43px;height:43px;border-radius:12px;background:#f0f1fc;color:var(--cal-color);font-size:23px;font-weight:900;display:grid;place-items:center}
+.calendar-unesp .calendar-card-mark{background:#fff0f3}
+.calendar-enem .calendar-card-mark{background:#ecf5fc}
+.calendar-usp .calendar-card-mark{background:#f3effa}
+.calendar-details{margin:0 20px 18px;border-top:1px solid #e8e9f3}
+.calendar-details>div{display:grid;grid-template-columns:105px minmax(0,1fr);gap:12px;align-items:start;border-bottom:1px solid #eeeff6;padding:13px 0}
+.calendar-details dt{font-size:11px;color:#747a9b;font-weight:800}
+.calendar-details dd{margin:0;font-size:13px;color:#33375f;line-height:1.45}
+.calendar-details dd strong{color:#30358c;font-weight:850}
+.calendar-card-notes{margin:auto 20px 20px;background:#f7f7fe;border-radius:11px;padding:14px 15px}
+.calendar-card-notes>strong{display:block;font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:#555c9c;margin-bottom:7px}
+.calendar-card-notes p{color:#5a6081;line-height:1.45;font-size:11px;margin:5px 0}
+.calendar-card-notes b{color:#3c4180}
+.calendar-disclaimer{display:flex;gap:11px;align-items:flex-start;background:#fff;border-left:4px solid #d52538;border-radius:0 11px 11px 0;padding:15px 17px;margin:22px 0 12px}
+.calendar-disclaimer>span{font-size:20px;color:#cc263b;line-height:1}
+.calendar-disclaimer p{margin:0;font-size:11px;color:#626a89;line-height:1.6}
+.calendar-image-link{display:inline-block;font-size:11px;color:#303697;text-decoration:underline;text-underline-offset:3px;margin:5px 0 10px;font-weight:700}
+@media(max-width:1050px){.calendar-grid{grid-template-columns:1fr}.calendar-details>div{grid-template-columns:128px minmax(0,1fr)}}
+@media(max-width:760px){.calendar-intro{padding:22px 19px;border-radius:14px}.calendar-intro h3{font-size:21px}.calendar-intro p{font-size:11px}.calendar-year{font-size:45px;letter-spacing:-3px}.calendar-toolbar{display:block}.calendar-filter-label{display:block;margin-bottom:10px}.calendar-card-head{padding:18px 16px 13px}.calendar-details{margin:0 16px 16px}.calendar-card-notes{margin:0 16px 17px}.calendar-details>div{grid-template-columns:96px minmax(0,1fr);gap:9px}.calendar-details dd{font-size:12px}.calendar-filters button{padding:9px 12px}}
+@media(max-width:390px){.calendar-year{display:none}}

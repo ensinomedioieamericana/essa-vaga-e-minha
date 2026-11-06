@@ -1,12 +1,13 @@
 (() => {
 'use strict';
 const original=window.APP_LINKS;
-const ROUTES=['inicio','provas','agenda','notas','biblioteca','recursos','favoritos'];
+const ROUTES=['inicio','provas','agenda','calendario','notas','biblioteca','recursos','favoritos'];
 const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
 const views={
  inicio:['COMECE POR AQUI','Tudo para sua aprovação','Escolha uma área e acesse os materiais que você precisa.','Todos os materiais'],
  provas:['TREINE COM PROVAS REAIS','Banco de provas','Acervos e resoluções para praticar.','Provas e resoluções'],
  agenda:['PLANEJE SUA PREPARAÇÃO','Vestibulares 2027','Consulte as datas do projeto. Confirme sempre os prazos nos editais oficiais.','Datas e orientações'],
+ calendario:['ORGANIZE SEU ANO','Calendário de vestibulares 2027','Consulte diretamente no aplicativo as datas de inscrição, provas e resultados.','Calendário por exame'],
  notas:['PESQUISA HISTÓRICA','Notas de corte','Compare o desempenho exigido nos vestibulares, ano a ano.','Notas por universidade'],
  biblioteca:['AMPLIE SEU REPERTÓRIO','Biblioteca de estudos','Literatura, olimpíadas e recursos complementares.','Materiais da biblioteca'],
  recursos:['APOIO AO ESTUDANTE','Bernoulli e serviços','Gabaritos, tutoriais e serviços úteis.','Recursos de apoio'],
@@ -29,10 +30,10 @@ function favorite(id){if(S.fav.has(id))S.fav.delete(id);else S.fav.add(id);set('
 function card(item){const [_,symbol,color]=cats[item.category];const box=node('article','resource-card');const top=node('div','resource-top');const ico=node('div','card-icon '+color,symbol);ico.setAttribute('aria-hidden','true');const b=node('button','card-save'+(S.fav.has(item.id)?' saved':''),S.fav.has(item.id)?'♥':'♡');b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));top.append(ico,b);
  const foot=node('div','resource-bottom');const a=node('a','','Abrir material');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Abrir '+item.title+' em uma nova aba');a.append(node('span','','↗'));foot.append(a);
  box.append(top,node('div','card-tag',item.tag),node('h3','',item.title),node('p','',item.description),foot);return box}
-function quick(){const q=$('quick-actions');q.replaceChildren();for(const [route,title,sub,icon,color] of [['provas','Provas anteriores','Acesse os acervos','▤','q-blue'],['agenda','Vestibulares 2027','Consulte as datas','▦','q-orange'],['notas','Notas de corte','USP • UNESP • UNICAMP','▥','q-mint'],['biblioteca','Biblioteca','Leituras e mais','▧','q-lilac']]){const b=node('button','quick-card');b.type='button';b.dataset.jump=route;let i=node('span','quick-icon '+color,icon);i.setAttribute('aria-hidden','true');let d=node('div');d.append(node('strong','',title),node('small','',sub));b.append(i,d);q.append(b)}}
+function quick(){const q=$('quick-actions');q.replaceChildren();for(const [route,title,sub,icon,color] of [['provas','Provas anteriores','Acesse os acervos','▤','q-blue'],['calendario','Calendário 2027','Datas de inscrições e provas','▦','q-orange'],['notas','Notas de corte','USP • UNESP • UNICAMP','▥','q-mint'],['biblioteca','Biblioteca','Leituras e mais','▧','q-lilac']]){const b=node('button','quick-card');b.type='button';b.dataset.jump=route;let i=node('span','quick-icon '+color,icon);i.setAttribute('aria-hidden','true');let d=node('div');d.append(node('strong','',title),node('small','',sub));b.append(i,d);q.append(b)}}
 function filters(){const q=$('category-filter');q.replaceChildren();for(const [key,title] of [['todos','Todos'],['provas','Provas'],['agenda','Datas'],['notas','Notas'],['biblioteca','Biblioteca'],['recursos','Bernoulli'],['servicos','Serviços']]){const b=node('button',S.filter===key?'active':'',title);b.type='button';b.addEventListener('click',()=>{S.filter=key;render()});q.append(b)}}
-function render(){let cutoff=S.route==='notas';let search=!cutoff&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('results-section').hidden=cutoff;$('search').closest('.finder').hidden=cutoff;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){quick();filters()}
-if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}const a=shown();if(!cutoff)$('total-pill').textContent=count(a.length);$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
+function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){quick();filters()}
+if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}const a=shown();if(calendar)$('total-pill').textContent=$('calendar-count').textContent;else if(!cutoff)$('total-pill').textContent=count(a.length);$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
 $('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
 document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('fav-count').textContent=S.fav.size;$('fav-count').hidden=!S.fav.size}
 function getCutoffData(){return N.uni==='USP'?window.USP_NOTAS:N.uni==='UNICAMP'?window.UNICAMP_NOTAS:N.uni==='UNESP'?window.UNESP_NOTAS:null}
@@ -86,7 +87,21 @@ function initCutoffs(){
  });
 }
 const open=id=>{if(!$(id).open)$(id).showModal()};const close=id=>{if($(id).open)$(id).close()};
-function init(){S.route=(()=>{const r=location.hash.replace(/^#\/?/,'');return ROUTES.includes(r)?r:'inicio'})();render();initCutoffs();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){if(route.dataset.jump)close('more-dialog');go(route.dataset.route||route.dataset.jump)}const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
+
+function initCalendar(){
+ const buttons=[...document.querySelectorAll('[data-calendar-filter]')];
+ const cards=[...document.querySelectorAll('[data-calendar-institution]')];
+ buttons.forEach(b=>b.addEventListener('click',()=>{
+  const value=b.dataset.calendarFilter;
+  buttons.forEach(x=>{const active=x===b;x.classList.toggle('selected',active);x.setAttribute('aria-pressed',active?'true':'false')});
+  let visible=0;
+  cards.forEach(card=>{const show=value==='todos'||card.dataset.calendarInstitution===value;card.hidden=!show;if(show)visible++});
+  const label=visible===1?'1 calendário':visible+' calendários';
+  $('calendar-count').textContent=label;
+  if(S.route==='calendario')$('total-pill').textContent=label;
+ }));
+}
+function init(){S.route=(()=>{const r=location.hash.replace(/^#\/?/,'');return ROUTES.includes(r)?r:'inicio'})();render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){if(route.dataset.jump)close('more-dialog');go(route.dataset.route||route.dataset.jump)}const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
 $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search').hidden=!S.search;render()});$('clear-search').addEventListener('click',()=>{$('search').value='';S.search='';$('clear-search').hidden=true;render();$('search').focus()});$('reset-search').addEventListener('click',()=>{S.search='';S.filter='todos';$('search').value='';$('clear-search').hidden=true;render()});
 $('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const r=location.hash.replace(/^#\/?/,'');if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});
