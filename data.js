@@ -1,7 +1,6 @@
 /* Fontes: https://linktr.ee/ensinomedioieamericana (consultado em 06/11/2026).
    Os links do Google Drive permanecem externos; este aplicativo não hospeda as provas. */
 window.APP_LINKS = [
-  {id:'vestibulares-2027',title:'Vestibulares 2027',description:'Imagem com as datas dos vestibulares organizada pelo projeto.',category:'agenda',tag:'2027',url:'https://drive.google.com/file/d/1hp5CCnDnD3v-wHovKTk5b_9U4am-EeAB/view?usp=sharing',featured:true},
   {id:'olimpiadas-2026',title:'Olimpíadas 2026',description:'Materiais e informações sobre olimpíadas acadêmicas.',category:'biblioteca',tag:'2026',url:'https://drive.google.com/drive/folders/1EVfMO-c7f2c85PpyAjiCV5PaPNNtxm2_?usp=sharing'},
   {id:'gabaritos-bernoulli',title:'Gabaritos dos simulados extras',description:'Gabaritos dos simulados extras Bernoulli de 2026.',category:'recursos',tag:'Bernoulli',url:'https://drive.google.com/drive/folders/1w5fY34Z_J7dLJDTG2CrY8WjYkSTKArkO?usp=sharing'},
   {id:'tutorial-mb4',title:'Tutorial Meu Bernoulli (MB4)',description:'Vídeo com orientações para acesso à plataforma.',category:'recursos',tag:'Vídeo',url:'https://drive.google.com/file/d/1Ah2XIbM4_G2HE_mlbXnry1aBTE4DzDo2/view?usp=sharing'},
