@@ -1,0 +1,21 @@
+/* Fontes: https://linktr.ee/ensinomedioieamericana (consultado em 06/11/2026).
+   Os links do Google Drive permanecem externos; este aplicativo não hospeda as provas. */
+window.APP_LINKS = [
+  {id:'vestibulares-2027',title:'Vestibulares 2027',description:'Imagem com as datas dos vestibulares organizada pelo projeto.',category:'agenda',tag:'2027',url:'https://drive.google.com/file/d/1hp5CCnDnD3v-wHovKTk5b_9U4am-EeAB/view?usp=sharing',featured:true},
+  {id:'olimpiadas-2026',title:'Olimpíadas 2026',description:'Materiais e informações sobre olimpíadas acadêmicas.',category:'biblioteca',tag:'2026',url:'https://drive.google.com/drive/folders/1EVfMO-c7f2c85PpyAjiCV5PaPNNtxm2_?usp=sharing'},
+  {id:'gabaritos-bernoulli',title:'Gabaritos dos simulados extras',description:'Gabaritos dos simulados extras Bernoulli de 2026.',category:'recursos',tag:'Bernoulli',url:'https://drive.google.com/drive/folders/1w5fY34Z_J7dLJDTG2CrY8WjYkSTKArkO?usp=sharing'},
+  {id:'tutorial-mb4',title:'Tutorial Meu Bernoulli (MB4)',description:'Vídeo com orientações para acesso à plataforma.',category:'recursos',tag:'Vídeo',url:'https://drive.google.com/file/d/1Ah2XIbM4_G2HE_mlbXnry1aBTE4DzDo2/view?usp=sharing'},
+  {id:'armarios-2026',title:'Aluguel de armários 2026',description:'Página do serviço de armários do Ensino Médio.',category:'servicos',tag:'Serviço',url:'https://facilita.umaescolacompleta.com.br/armarios/armarios-2026-ensino-medio?IdProd=113&hash=935670765&iniSession=1&loja=1258313'},
+  {id:'fuvest',title:'FUVEST / USP',description:'Acervo de provas e materiais — atualizado no Linktree em 2026.',category:'provas',tag:'Atualizado 2026',url:'https://drive.google.com/drive/folders/1jcQfLniykYVK8xyw48zGEwQjrs6oVwUB?usp=drive_link',featured:true},
+  {id:'enem',title:'ENEM',description:'Acervo de provas e materiais — atualizado no Linktree em 2025.',category:'provas',tag:'Atualizado 2025',url:'https://drive.google.com/drive/folders/1NkHLz7gqrD7yKdDXnUFhj1DDbv0MjjwY?usp=drive_link',featured:true},
+  {id:'unesp',title:'UNESP',description:'Acervo de provas e materiais — atualizado no Linktree em 2026.',category:'provas',tag:'Atualizado 2026',url:'https://drive.google.com/drive/folders/1sV8P9aasQ6DmGAKN73EO1d95sNAp2uN5?usp=drive_link'},
+  {id:'unicamp',title:'UNICAMP',description:'Acervo de provas e materiais — atualizado no Linktree em 2026.',category:'provas',tag:'Atualizado 2026',url:'https://drive.google.com/drive/folders/1-h3lO3yPLZz2qAo5pg6KEQ2CMriVLe1L?usp=drive_link'},
+  {id:'bernoulli-resolve',title:'Bernoulli Resolve',description:'Questões e resoluções de vestibulares do Brasil.',category:'provas',tag:'Resoluções',url:'https://www.bernoulli.com.br/resolve/'},
+  {id:'estatisticas',title:'Estatísticas ENEM e vestibulares',description:'Materiais estatísticos do Bernoulli — referência 2025.',category:'notas',tag:'2025',url:'https://drive.google.com/drive/folders/1UXjR8V-j70KDQOHvORMZlgTQeZTSB79r?usp=drive_link'},
+  {id:'canguru',title:'Canguru de Matemática',description:'Acesso às provas anteriores da competição.',category:'biblioteca',tag:'Olimpíada',url:'https://www.cangurudematematicabrasil.com.br/provas-anteriores-preenchido'},
+  {id:'obras-literarias',title:'Obras literárias em domínio público',description:'Biblioteca de obras literárias para os vestibulares.',category:'biblioteca',tag:'Leitura',url:'https://drive.google.com/drive/folders/1Ao5OmeOFUA3s0ZA2JSMGX5rKr3FZNcCz?usp=sharing'},
+  {id:'famerp',title:'FAMERP',description:'Pasta de materiais para o vestibular FAMERP.',category:'provas',tag:'Vestibular',url:'https://drive.google.com/drive/folders/10gKjeUegGhbPtURR-b2vwWd9hWuPJl-U?usp=drive_link'},
+  {id:'famema',title:'FAMEMA',description:'Pasta de materiais para o vestibular FAMEMA.',category:'provas',tag:'Vestibular',url:'https://drive.google.com/drive/folders/1miiokUjjh8lPVvDf-wNxhGdFwczCFlOI?usp=drive_link'},
+  {id:'meusisu',title:'MeuSISU',description:'Ferramenta externa de consulta e simulação relacionada ao SISU.',category:'notas',tag:'Ferramenta',url:'https://meusisu.com/'},
+  {id:'notas-sisu',title:'Notas SISU — painel',description:'Painel externo em Power BI com dados sobre notas SISU.',category:'notas',tag:'Power BI',url:'https://app.powerbi.com/view?r=eyJrIjoiMWJiNjliMTMtNDAzOS00OGI0LWI4ZmMtZGNlMTQ3ODM2YzE2IiwidCI6Ijc4NmU0MDgzLTdiMjMtNDRlOC04Y2FjLTQ4NGI5ZDRkOTVhMSJ9'}
+];

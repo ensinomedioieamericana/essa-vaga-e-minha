@@ -1,0 +1,3846 @@
+{
+  "universidade": "UNESP",
+  "modalidade": "SU – Sistema Universal (2025 e 2026)",
+  "historico_modalidade": "2020–2024: compilação enviada pelo Instituto sem identificação explícita da modalidade.",
+  "tipo": "Número mínimo de acertos na primeira fase para convocação para a segunda fase",
+  "anos": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "denominador": {
+    "2020": 90,
+    "2021": 90,
+    "2022": 90,
+    "2023": 90,
+    "2024": 90,
+    "2025": 90,
+    "2026": 90
+  },
+  "fontes": {
+    "2020_2024": "Compilação do Instituto (PDF fornecido, sem identificação da modalidade)",
+    "2025": "Documento UNESP 2025 (PDF fornecido; coluna SU)",
+    "2026": "https://documento.vunesp.com.br/documento/stream/NzQ4OTk4Ng%3D%3D",
+    "2026_secundaria": "https://www.curso-objetivo.br/vestibular/assets/download/notas-corte/unesp-nota-de-corte-2026.pdf"
+  },
+  "auditoria": {
+    "registros": 200,
+    "series_completas": 167,
+    "cobertura_por_ano": {
+      "2020": 186,
+      "2021": 185,
+      "2022": 187,
+      "2023": 187,
+      "2024": 183,
+      "2025": 183,
+      "2026": 183
+    },
+    "nota": "Alterações nos nomes/turnos não foram combinadas automaticamente; SU de 2025/2026 confirmada."
+  },
+  "carreiras": [
+    {
+      "curso": "Administração - Bacharelado - integral — Tupã",
+      "nome": "Administração - Bacharelado - integral",
+      "cidade": "Tupã",
+      "codigo2025": "001",
+      "codigo2026": "001",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 22,
+        "2024": 23,
+        "2025": 19,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Administração - Bacharelado - noturno — Jaboticabal",
+      "nome": "Administração - Bacharelado - noturno",
+      "cidade": "Jaboticabal",
+      "codigo2025": "002",
+      "codigo2026": "002",
+      "notas": {
+        "2020": 33,
+        "2021": 20,
+        "2022": 19,
+        "2023": 19,
+        "2024": 22,
+        "2025": 20,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Administração - Bacharelado - noturno — Tupã",
+      "nome": "Administração - Bacharelado - noturno",
+      "cidade": "Tupã",
+      "codigo2025": "003",
+      "codigo2026": "003",
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 18,
+        "2023": 19,
+        "2024": 18,
+        "2025": 18,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Administração Pública - Bacharelado - integral — Araraquara",
+      "nome": "Administração Pública - Bacharelado - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "004",
+      "codigo2026": "004",
+      "notas": {
+        "2020": 21,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 22,
+        "2025": 22,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Administração Pública - Bacharelado - noturno — Araraquara",
+      "nome": "Administração Pública - Bacharelado - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "005",
+      "codigo2026": "005",
+      "notas": {
+        "2020": 19,
+        "2021": 21,
+        "2022": 18,
+        "2023": 18,
+        "2024": 25,
+        "2025": 21,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Arquitetura e Urbanismo - integral — Bauru",
+      "nome": "Arquitetura e Urbanismo - integral",
+      "cidade": "Bauru",
+      "codigo2025": "006",
+      "codigo2026": "006",
+      "notas": {
+        "2020": 48,
+        "2021": 46,
+        "2022": 46,
+        "2023": 46,
+        "2024": 52,
+        "2025": 50,
+        "2026": 44
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Arquitetura e Urbanismo - integral — Presidente Prudente",
+      "nome": "Arquitetura e Urbanismo - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "007",
+      "codigo2026": "007",
+      "notas": {
+        "2020": 37,
+        "2021": 38,
+        "2022": 32,
+        "2023": 18,
+        "2024": 20,
+        "2025": 19,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Arquivologia - matutino — Marília",
+      "nome": "Arquivologia - matutino",
+      "cidade": "Marília",
+      "codigo2025": "008",
+      "codigo2026": "008",
+      "notas": {
+        "2020": 20,
+        "2021": 18,
+        "2022": 27,
+        "2023": 18,
+        "2024": 21,
+        "2025": 39,
+        "2026": 28
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Arte-Teatro - Licenciatura - noturno — São Paulo",
+      "nome": "Arte-Teatro - Licenciatura - noturno",
+      "cidade": "São Paulo",
+      "codigo2025": "009",
+      "codigo2026": "012",
+      "notas": {
+        "2020": 23,
+        "2021": 22,
+        "2022": 20,
+        "2023": 19,
+        "2024": 30,
+        "2025": 24,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Artes Cênicas - Bacharelado - Habilitação em Interpretação Teatral - integral — São Paulo",
+      "nome": "Artes Cênicas - Bacharelado - Habilitação em Interpretação Teatral - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "010",
+      "codigo2026": "009",
+      "notas": {
+        "2020": 39,
+        "2021": 31,
+        "2022": 29,
+        "2023": 19,
+        "2024": 19,
+        "2025": 21,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Artes Visuais - Bacharelado e Licenciatura - integral — São Paulo",
+      "nome": "Artes Visuais - Bacharelado e Licenciatura - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "011",
+      "codigo2026": "010",
+      "notas": {
+        "2020": 50,
+        "2021": 50,
+        "2022": 49,
+        "2023": 49,
+        "2024": 58,
+        "2025": 48,
+        "2026": 50
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Artes Visuais - Bacharelado e Licenciatura - vespertino/noturno — Bauru",
+      "nome": "Artes Visuais - Bacharelado e Licenciatura - vespertino/noturno",
+      "cidade": "Bauru",
+      "codigo2025": "012",
+      "codigo2026": "011",
+      "notas": {
+        "2020": 31,
+        "2021": 19,
+        "2022": 19,
+        "2023": 18,
+        "2024": 20,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Biblioteconomia - matutino — Marília",
+      "nome": "Biblioteconomia - matutino",
+      "cidade": "Marília",
+      "codigo2025": "013",
+      "codigo2026": "013",
+      "notas": {
+        "2020": 23,
+        "2021": 18,
+        "2022": 27,
+        "2023": 27,
+        "2024": 21,
+        "2025": 29,
+        "2026": 27
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciência da Computação - Bacharelado - integral — Bauru",
+      "nome": "Ciência da Computação - Bacharelado - integral",
+      "cidade": "Bauru",
+      "codigo2025": "014",
+      "codigo2026": "014",
+      "notas": {
+        "2020": 47,
+        "2021": 44,
+        "2022": 48,
+        "2023": 54,
+        "2024": 62,
+        "2025": 59,
+        "2026": 53
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciência da Computação - Bacharelado - integral — São José do Rio Preto",
+      "nome": "Ciência da Computação - Bacharelado - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "015",
+      "codigo2026": "015",
+      "notas": {
+        "2020": 37,
+        "2021": 45,
+        "2022": 48,
+        "2023": 53,
+        "2024": 62,
+        "2025": 60,
+        "2026": 53
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciência da Computação - Bacharelado - vespertino/noturno — Presidente Prudente",
+      "nome": "Ciência da Computação - Bacharelado - vespertino/noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "016",
+      "codigo2026": "016",
+      "notas": {
+        "2020": 33,
+        "2021": 21,
+        "2022": 21,
+        "2023": 48,
+        "2024": 56,
+        "2025": 54,
+        "2026": 49
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - integral — Assis",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - integral",
+      "cidade": "Assis",
+      "codigo2025": "020",
+      "codigo2026": "019",
+      "notas": {
+        "2020": 21,
+        "2021": 21,
+        "2022": 23,
+        "2023": 18,
+        "2024": 20,
+        "2025": 18,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - integral — Bauru",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - integral",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 30,
+        "2021": 22,
+        "2022": 20,
+        "2023": 18,
+        "2024": 18,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - integral — Botucatu",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - integral",
+      "cidade": "Botucatu",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 31,
+        "2021": 18,
+        "2022": 19,
+        "2023": 18,
+        "2024": 50,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - integral — Rio Claro",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "021",
+      "codigo2026": "021",
+      "notas": {
+        "2020": 36,
+        "2021": 18,
+        "2022": 19,
+        "2023": 20,
+        "2024": 27,
+        "2025": 19,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - integral — São José do Rio Preto",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "022",
+      "codigo2026": "022",
+      "notas": {
+        "2020": 33,
+        "2021": 21,
+        "2022": 19,
+        "2023": 18,
+        "2024": 22,
+        "2025": 19,
+        "2026": 36
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - noturno — Jaboticabal",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - noturno",
+      "cidade": "Jaboticabal",
+      "codigo2025": "023",
+      "codigo2026": "023",
+      "notas": {
+        "2020": 18,
+        "2021": 22,
+        "2022": 18,
+        "2023": 19,
+        "2024": 20,
+        "2025": 18,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado e Licenciatura - noturno — Rio Claro",
+      "nome": "Ciências Biológicas - Bacharelado e Licenciatura - noturno",
+      "cidade": "Rio Claro",
+      "codigo2025": "024",
+      "codigo2026": "024",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 23,
+        "2023": 24,
+        "2024": 22,
+        "2025": 24,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado em Biologia Marinha ou Gerenciamento Costeiro - integral — Litoral Paulista",
+      "nome": "Ciências Biológicas - Bacharelado em Biologia Marinha ou Gerenciamento Costeiro - integral",
+      "cidade": "Litoral Paulista",
+      "codigo2025": "025",
+      "codigo2026": "025",
+      "notas": {
+        "2020": 21,
+        "2021": 19,
+        "2022": 18,
+        "2023": 18,
+        "2024": 47,
+        "2025": 20,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado - Integral — Bauru",
+      "nome": "Ciências Biológicas - Bacharelado - Integral",
+      "cidade": "Bauru",
+      "codigo2025": "019",
+      "codigo2026": "018",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 21,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado - integral — Botucatu",
+      "nome": "Ciências Biológicas - Bacharelado - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "017",
+      "codigo2026": "020",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 19,
+        "2026": 45
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Bacharelado - Vespertino/Noturno e Licenciatura - noturno — Ilha Solteira",
+      "nome": "Ciências Biológicas - Bacharelado - Vespertino/Noturno e Licenciatura - noturno",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "018",
+      "codigo2026": "017",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 19,
+        "2024": 18,
+        "2025": 21,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Licenciatura - noturno — Bauru",
+      "nome": "Ciências Biológicas - Licenciatura - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "026",
+      "codigo2026": "026",
+      "notas": {
+        "2020": 19,
+        "2021": 26,
+        "2022": 18,
+        "2023": 18,
+        "2024": 26,
+        "2025": 19,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 1
+    },
+    {
+      "curso": "Ciências Biológicas - Licenciatura - noturno — Botucatu",
+      "nome": "Ciências Biológicas - Licenciatura - noturno",
+      "cidade": "Botucatu",
+      "codigo2025": "027",
+      "codigo2026": "027",
+      "notas": {
+        "2020": 18,
+        "2021": 22,
+        "2022": 19,
+        "2023": 18,
+        "2024": 23,
+        "2025": 21,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Biológicas - Licenciatura - noturno — Litoral Paulista",
+      "nome": "Ciências Biológicas - Licenciatura - noturno",
+      "cidade": "Litoral Paulista",
+      "codigo2025": "028",
+      "codigo2026": "028",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 26,
+        "2023": 20,
+        "2024": 20,
+        "2025": 24,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Biomédicas - integral — Botucatu",
+      "nome": "Ciências Biomédicas - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "029",
+      "codigo2026": "029",
+      "notas": {
+        "2020": 43,
+        "2021": 51,
+        "2022": 56,
+        "2023": 52,
+        "2024": 58,
+        "2025": 55,
+        "2026": 49
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências da Computação - Bacharelado - integral — Rio Claro",
+      "nome": "Ciências da Computação - Bacharelado - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "030",
+      "codigo2026": "030",
+      "notas": {
+        "2020": 38,
+        "2021": 20,
+        "2022": 41,
+        "2023": 59,
+        "2024": 61,
+        "2025": 64,
+        "2026": 54
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências da Computação - Bacharelado - noturno — Rio Claro",
+      "nome": "Ciências da Computação - Bacharelado - noturno",
+      "cidade": "Rio Claro",
+      "codigo2025": "031",
+      "codigo2026": "031",
+      "notas": {
+        "2020": 31,
+        "2021": 19,
+        "2022": 20,
+        "2023": 50,
+        "2024": 63,
+        "2025": 54,
+        "2026": 53
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Econômicas - Bacharelado - integral — Araraquara",
+      "nome": "Ciências Econômicas - Bacharelado - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "032",
+      "codigo2026": "032",
+      "notas": {
+        "2020": 40,
+        "2021": 18,
+        "2022": 18,
+        "2023": 44,
+        "2024": 48,
+        "2025": 52,
+        "2026": 49
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Econômicas - Bacharelado - noturno — Araraquara",
+      "nome": "Ciências Econômicas - Bacharelado - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "033",
+      "codigo2026": "033",
+      "notas": {
+        "2020": 40,
+        "2021": 20,
+        "2022": 20,
+        "2023": 18,
+        "2024": 53,
+        "2025": 22,
+        "2026": 49
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Sociais - Bacharelado e Licenciatura - integral — Araraquara",
+      "nome": "Ciências Sociais - Bacharelado e Licenciatura - integral",
+      "cidade": "Araraquara",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 23,
+        "2021": 19,
+        "2022": 24,
+        "2023": 19,
+        "2024": 27,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Ciências Sociais - Bacharelado e Licenciatura - matutino — Araraquara",
+      "nome": "Ciências Sociais - Bacharelado e Licenciatura - matutino",
+      "cidade": "Araraquara",
+      "codigo2025": "034",
+      "codigo2026": "034",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 24,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Sociais - Bacharelado e Licenciatura - matutino — Marília",
+      "nome": "Ciências Sociais - Bacharelado e Licenciatura - matutino",
+      "cidade": "Marília",
+      "codigo2025": "035",
+      "codigo2026": "035",
+      "notas": {
+        "2020": 22,
+        "2021": 25,
+        "2022": 22,
+        "2023": 21,
+        "2024": 31,
+        "2025": 24,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Sociais - Bacharelado e Licenciatura - noturno — Araraquara",
+      "nome": "Ciências Sociais - Bacharelado e Licenciatura - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "036",
+      "codigo2026": "036",
+      "notas": {
+        "2020": 26,
+        "2021": 20,
+        "2022": 26,
+        "2023": 24,
+        "2024": 23,
+        "2025": 22,
+        "2026": 27
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ciências Sociais - Bacharelado e Licenciatura - noturno — Marília",
+      "nome": "Ciências Sociais - Bacharelado e Licenciatura - noturno",
+      "cidade": "Marília",
+      "codigo2025": "037",
+      "codigo2026": "037",
+      "notas": {
+        "2020": 22,
+        "2021": 30,
+        "2022": 23,
+        "2023": 18,
+        "2024": 28,
+        "2025": 25,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Comunicação: Rádio, Televisão e Internet - integral — Bauru",
+      "nome": "Comunicação: Rádio, Televisão e Internet - integral",
+      "cidade": "Bauru",
+      "codigo2025": "038",
+      "codigo2026": "038",
+      "notas": {
+        "2020": 44,
+        "2021": 43,
+        "2022": 45,
+        "2023": 48,
+        "2024": 53,
+        "2025": 27,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Design (Design Gráfico) - integral — Bauru",
+      "nome": "Design (Design Gráfico) - integral",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 37,
+        "2021": 34,
+        "2022": 35,
+        "2023": 21,
+        "2024": 18,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Design (Design Gráfico ou Design de Produto) - noturno — Bauru",
+      "nome": "Design (Design Gráfico ou Design de Produto) - noturno",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 45,
+        "2021": 19,
+        "2022": 20,
+        "2023": 40,
+        "2024": 18,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Design - integral — Bauru",
+      "nome": "Design - integral",
+      "cidade": "Bauru",
+      "codigo2025": "039",
+      "codigo2026": "039",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Design - noturno — Bauru",
+      "nome": "Design - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "040",
+      "codigo2026": "040",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 21,
+        "2026": 24
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Direito - matutino — Franca",
+      "nome": "Direito - matutino",
+      "cidade": "Franca",
+      "codigo2025": "041",
+      "codigo2026": "041",
+      "notas": {
+        "2020": 54,
+        "2021": 53,
+        "2022": 52,
+        "2023": 53,
+        "2024": 59,
+        "2025": 60,
+        "2026": 56
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Direito - noturno — Franca",
+      "nome": "Direito - noturno",
+      "cidade": "Franca",
+      "codigo2025": "042",
+      "codigo2026": "042",
+      "notas": {
+        "2020": 49,
+        "2021": 46,
+        "2022": 46,
+        "2023": 47,
+        "2024": 55,
+        "2025": 57,
+        "2026": 51
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Ecologia - integral — Rio Claro",
+      "nome": "Ecologia - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "043",
+      "codigo2026": "043",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 28,
+        "2023": 24,
+        "2024": 26,
+        "2025": 23,
+        "2026": 24
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Bacharelado e Licenciatura - integral — Presidente Prudente",
+      "nome": "Educação Física - Bacharelado e Licenciatura - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "046",
+      "codigo2026": "046",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 20,
+        "2023": 19,
+        "2024": 20,
+        "2025": 21,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Bacharelado e Licenciatura - integral — Rio Claro",
+      "nome": "Educação Física - Bacharelado e Licenciatura - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "047",
+      "codigo2026": "047",
+      "notas": {
+        "2020": 26,
+        "2021": 19,
+        "2022": 18,
+        "2023": 19,
+        "2024": 20,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Bacharelado e Licenciatura - vespertino/noturno — Presidente Prudente",
+      "nome": "Educação Física - Bacharelado e Licenciatura - vespertino/noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "048",
+      "codigo2026": "048",
+      "notas": {
+        "2020": 23,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 18,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Bacharelado - integral — Bauru",
+      "nome": "Educação Física - Bacharelado - integral",
+      "cidade": "Bauru",
+      "codigo2025": "044",
+      "codigo2026": "044",
+      "notas": {
+        "2020": 20,
+        "2021": 21,
+        "2022": 18,
+        "2023": 18,
+        "2024": 18,
+        "2025": 23,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Bacharelado - noturno — Bauru",
+      "nome": "Educação Física - Bacharelado - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "045",
+      "codigo2026": "045",
+      "notas": {
+        "2020": 21,
+        "2021": 19,
+        "2022": 18,
+        "2023": 18,
+        "2024": 41,
+        "2025": 20,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Licenciatura - integral — Bauru",
+      "nome": "Educação Física - Licenciatura - integral",
+      "cidade": "Bauru",
+      "codigo2025": "049",
+      "codigo2026": "049",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 23,
+        "2023": 19,
+        "2024": 25,
+        "2025": 23,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Educação Física - Licenciatura - noturno — Bauru",
+      "nome": "Educação Física - Licenciatura - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "050",
+      "codigo2026": "050",
+      "notas": {
+        "2020": 20,
+        "2021": 18,
+        "2022": 20,
+        "2023": 19,
+        "2024": 21,
+        "2025": 18,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Enfermagem - integral — Botucatu",
+      "nome": "Enfermagem - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "051",
+      "codigo2026": "051",
+      "notas": {
+        "2020": 41,
+        "2021": 28,
+        "2022": 30,
+        "2023": 18,
+        "2024": 21,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Engenharia Aeronáutica - integral — São João da Boa Vista",
+      "nome": "Engenharia Aeronáutica - integral",
+      "cidade": "São João da Boa Vista",
+      "codigo2025": "052",
+      "codigo2026": "052",
+      "notas": {
+        "2020": 19,
+        "2021": 21,
+        "2022": 21,
+        "2023": 54,
+        "2024": 61,
+        "2025": 65,
+        "2026": 61
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 2
+    },
+    {
+      "curso": "Engenharia Agronômica - integral — Botucatu",
+      "nome": "Engenharia Agronômica - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "053",
+      "codigo2026": "053",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 19,
+        "2023": 33,
+        "2024": 43,
+        "2025": 41,
+        "2026": 35
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Agronômica - integral (com ingresso no meio do ano) — Ilha Solteira",
+      "nome": "Engenharia Agronômica - integral (com ingresso no meio do ano)",
+      "cidade": "Ilha Solteira",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 20,
+        "2023": 18,
+        "2024": null,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia Agronômica - integral — Dracena",
+      "nome": "Engenharia Agronômica - integral",
+      "cidade": "Dracena",
+      "codigo2025": "054",
+      "codigo2026": "054",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 19,
+        "2023": 19,
+        "2024": 18,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Agronômica - integral — Ilha Solteira",
+      "nome": "Engenharia Agronômica - integral",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "057",
+      "codigo2026": "057",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 19,
+        "2023": 18,
+        "2024": 18,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Agronômica - integral — Jaboticabal",
+      "nome": "Engenharia Agronômica - integral",
+      "cidade": "Jaboticabal",
+      "codigo2025": "055",
+      "codigo2026": "055",
+      "notas": {
+        "2020": 24,
+        "2021": 18,
+        "2022": 18,
+        "2023": 33,
+        "2024": 41,
+        "2025": 39,
+        "2026": 35
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Agronômica - integral — Registro",
+      "nome": "Engenharia Agronômica - integral",
+      "cidade": "Registro",
+      "codigo2025": "056",
+      "codigo2026": "056",
+      "notas": {
+        "2020": 18,
+        "2021": 21,
+        "2022": 18,
+        "2023": 19,
+        "2024": 18,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Ambiental - integral — Presidente Prudente",
+      "nome": "Engenharia Ambiental - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "058",
+      "codigo2026": "058",
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 21,
+        "2023": 31,
+        "2024": 23,
+        "2025": 20,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Ambiental - integral — Rio Claro",
+      "nome": "Engenharia Ambiental - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "061",
+      "codigo2026": "061",
+      "notas": {
+        "2020": 20,
+        "2021": 19,
+        "2022": 18,
+        "2023": 18,
+        "2024": 27,
+        "2025": 25,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Ambiental - integral — São José dos Campos",
+      "nome": "Engenharia Ambiental - integral",
+      "cidade": "São José dos Campos",
+      "codigo2025": "059",
+      "codigo2026": "059",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 23,
+        "2023": 22,
+        "2024": 25,
+        "2025": 20,
+        "2026": 26
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Ambiental - integral — Sorocaba",
+      "nome": "Engenharia Ambiental - integral",
+      "cidade": "Sorocaba",
+      "codigo2025": "060",
+      "codigo2026": "060",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 21,
+        "2023": 23,
+        "2024": 20,
+        "2025": 25,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Biotecnológica - integral — Assis",
+      "nome": "Engenharia Biotecnológica - integral",
+      "cidade": "Assis",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 21,
+        "2023": 21,
+        "2024": null,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia Cartográfica e de Agrimensura - integral — Presidente Prudente",
+      "nome": "Engenharia Cartográfica e de Agrimensura - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "062",
+      "codigo2026": "062",
+      "notas": {
+        "2020": 19,
+        "2021": 22,
+        "2022": 21,
+        "2023": 24,
+        "2024": 18,
+        "2025": 28,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Civil - integral — Bauru",
+      "nome": "Engenharia Civil - integral",
+      "cidade": "Bauru",
+      "codigo2025": "063",
+      "codigo2026": "063",
+      "notas": {
+        "2020": 32,
+        "2021": 19,
+        "2022": 18,
+        "2023": 19,
+        "2024": 19,
+        "2025": 22,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Civil - integral (com ingresso no meio de ano) — Ilha Solteira",
+      "nome": "Engenharia Civil - integral (com ingresso no meio de ano)",
+      "cidade": "Ilha Solteira",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 18,
+        "2021": 21,
+        "2022": 23,
+        "2023": 19,
+        "2024": null,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia Civil - integral — Guaratinguetá",
+      "nome": "Engenharia Civil - integral",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "064",
+      "codigo2026": "064",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 20,
+        "2024": 28,
+        "2025": 27,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 1,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Civil - integral — Ilha Solteira",
+      "nome": "Engenharia Civil - integral",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "065",
+      "codigo2026": "065",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 22,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Alimentos - integral — São José do Rio Preto",
+      "nome": "Engenharia de Alimentos - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "066",
+      "codigo2026": "066",
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 19,
+        "2023": 18,
+        "2024": 22,
+        "2025": 20,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Bioprocessos e Biotecnologia - integral — Araraquara",
+      "nome": "Engenharia de Bioprocessos e Biotecnologia - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "068",
+      "codigo2026": "068",
+      "notas": {
+        "2020": 18,
+        "2021": 20,
+        "2022": 24,
+        "2023": 23,
+        "2024": 26,
+        "2025": 20,
+        "2026": 25
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Bioprocessos e Biotecnologia - integral — Assis",
+      "nome": "Engenharia de Bioprocessos e Biotecnologia - integral",
+      "cidade": "Assis",
+      "codigo2025": "069",
+      "codigo2026": "069",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": 26,
+        "2025": 26,
+        "2026": 30
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Bioprocessos e Biotecnologia - integral — Botucatu",
+      "nome": "Engenharia de Bioprocessos e Biotecnologia - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "067",
+      "codigo2026": "067",
+      "notas": {
+        "2020": 20,
+        "2021": 25,
+        "2022": 21,
+        "2023": 23,
+        "2024": 28,
+        "2025": 23,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Biossistemas - integral — Tupã",
+      "nome": "Engenharia de Biossistemas - integral",
+      "cidade": "Tupã",
+      "codigo2025": "070",
+      "codigo2026": "070",
+      "notas": {
+        "2020": 18,
+        "2021": 21,
+        "2022": 19,
+        "2023": 21,
+        "2024": 20,
+        "2025": 20,
+        "2026": 24
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Controle e Automação - integral — Sorocaba",
+      "nome": "Engenharia de Controle e Automação - integral",
+      "cidade": "Sorocaba",
+      "codigo2025": "071",
+      "codigo2026": "071",
+      "notas": {
+        "2020": 45,
+        "2021": 18,
+        "2022": 18,
+        "2023": 19,
+        "2024": 22,
+        "2025": 20,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Energia - integral — Rosana",
+      "nome": "Engenharia de Energia - integral",
+      "cidade": "Rosana",
+      "codigo2025": "072",
+      "codigo2026": "072",
+      "notas": {
+        "2020": 18,
+        "2021": 25,
+        "2022": 20,
+        "2023": 23,
+        "2024": 24,
+        "2025": 18,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Materiais - integral — Guaratinguetá",
+      "nome": "Engenharia de Materiais - integral",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "073",
+      "codigo2026": "073",
+      "notas": {
+        "2020": 24,
+        "2021": 21,
+        "2022": 23,
+        "2023": 23,
+        "2024": 25,
+        "2025": 26,
+        "2026": 25
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Pesca - integral — Registro",
+      "nome": "Engenharia de Pesca - integral",
+      "cidade": "Registro",
+      "codigo2025": "074",
+      "codigo2026": "074",
+      "notas": {
+        "2020": 18,
+        "2021": 21,
+        "2022": 31,
+        "2023": 21,
+        "2024": 28,
+        "2025": 24,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Produção - integral — Guaratinguetá",
+      "nome": "Engenharia de Produção - integral",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "075",
+      "codigo2026": "075",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 24,
+        "2023": 20,
+        "2024": 20,
+        "2025": 21,
+        "2026": 49
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Produção - noturno — Bauru",
+      "nome": "Engenharia de Produção - noturno",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 18,
+        "2021": 44,
+        "2022": 38,
+        "2023": 18,
+        "2024": 21,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia de Produção - noturno — Itapeva",
+      "nome": "Engenharia de Produção - noturno",
+      "cidade": "Itapeva",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 21,
+        "2023": 20,
+        "2024": 24,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia de Produção - vespertino/noturno — Bauru",
+      "nome": "Engenharia de Produção - vespertino/noturno",
+      "cidade": "Bauru",
+      "codigo2025": "076",
+      "codigo2026": "076",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 19,
+        "2026": 45
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia de Produção - vespertino/noturno — Itapeva",
+      "nome": "Engenharia de Produção - vespertino/noturno",
+      "cidade": "Itapeva",
+      "codigo2025": "077",
+      "codigo2026": "077",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 22,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Elétrica - integral — Bauru",
+      "nome": "Engenharia Elétrica - integral",
+      "cidade": "Bauru",
+      "codigo2025": "078",
+      "codigo2026": "078",
+      "notas": {
+        "2020": 26,
+        "2021": 18,
+        "2022": 19,
+        "2023": 23,
+        "2024": 23,
+        "2025": 20,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Elétrica - integral (com ingresso no meio de ano) — Ilha Solteira",
+      "nome": "Engenharia Elétrica - integral (com ingresso no meio de ano)",
+      "cidade": "Ilha Solteira",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 21,
+        "2021": 23,
+        "2022": 32,
+        "2023": 20,
+        "2024": null,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia Elétrica - integral — Guaratinguetá",
+      "nome": "Engenharia Elétrica - integral",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "079",
+      "codigo2026": "079",
+      "notas": {
+        "2020": 20,
+        "2021": 21,
+        "2022": 18,
+        "2023": 19,
+        "2024": 27,
+        "2025": 18,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 3
+    },
+    {
+      "curso": "Engenharia Elétrica - integral — Ilha Solteira",
+      "nome": "Engenharia Elétrica - integral",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "080",
+      "codigo2026": "080",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 21,
+        "2023": 25,
+        "2024": 19,
+        "2025": 19,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Eletrônica e de Telecomunicações - integral — São João da Boa Vista",
+      "nome": "Engenharia Eletrônica e de Telecomunicações - integral",
+      "cidade": "São João da Boa Vista",
+      "codigo2025": "081",
+      "codigo2026": "081",
+      "notas": {
+        "2020": 23,
+        "2021": 22,
+        "2022": 24,
+        "2023": 23,
+        "2024": 26,
+        "2025": 20,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Florestal - integral — Botucatu",
+      "nome": "Engenharia Florestal - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "082",
+      "codigo2026": "082",
+      "notas": {
+        "2020": 28,
+        "2021": 22,
+        "2022": 19,
+        "2023": 21,
+        "2024": 22,
+        "2025": 19,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Industrial-Madeira - integral — Itapeva",
+      "nome": "Engenharia Industrial-Madeira - integral",
+      "cidade": "Itapeva",
+      "codigo2025": "083",
+      "codigo2026": "083",
+      "notas": {
+        "2020": 22,
+        "2021": 22,
+        "2022": 25,
+        "2023": 18,
+        "2024": 19,
+        "2025": 26,
+        "2026": 25
+      },
+      "observacao": "Denominação levemente alterada no período; equivalência de local e turno mantida.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Mecânica - integral — Bauru",
+      "nome": "Engenharia Mecânica - integral",
+      "cidade": "Bauru",
+      "codigo2025": "084",
+      "codigo2026": "084",
+      "notas": {
+        "2020": 20,
+        "2021": 19,
+        "2022": 18,
+        "2023": 20,
+        "2024": 21,
+        "2025": 18,
+        "2026": 46
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Mecânica - integral (com ingresso no meio do ano) — Ilha Solteira",
+      "nome": "Engenharia Mecânica - integral (com ingresso no meio do ano)",
+      "cidade": "Ilha Solteira",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 22,
+        "2021": 24,
+        "2022": 18,
+        "2023": 18,
+        "2024": null,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Engenharia Mecânica - integral — Guaratinguetá",
+      "nome": "Engenharia Mecânica - integral",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "085",
+      "codigo2026": "085",
+      "notas": {
+        "2020": 21,
+        "2021": 19,
+        "2022": 22,
+        "2023": 22,
+        "2024": 22,
+        "2025": 23,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Mecânica - integral — Ilha Solteira",
+      "nome": "Engenharia Mecânica - integral",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "086",
+      "codigo2026": "086",
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 18,
+        "2023": 20,
+        "2024": 19,
+        "2025": 21,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Mecânica - noturno — Guaratinguetá",
+      "nome": "Engenharia Mecânica - noturno",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "087",
+      "codigo2026": "087",
+      "notas": {
+        "2020": 19,
+        "2021": 22,
+        "2022": 25,
+        "2023": 20,
+        "2024": 25,
+        "2025": 19,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Engenharia Química - integral — Araraquara",
+      "nome": "Engenharia Química - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "088",
+      "codigo2026": "088",
+      "notas": {
+        "2020": 42,
+        "2021": 18,
+        "2022": 18,
+        "2023": 19,
+        "2024": 22,
+        "2025": 19,
+        "2026": 46
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Estatística - integral — Presidente Prudente",
+      "nome": "Estatística - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "089",
+      "codigo2026": "089",
+      "notas": {
+        "2020": 26,
+        "2021": 24,
+        "2022": 25,
+        "2023": 19,
+        "2024": 26,
+        "2025": 30,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Farmácia - integral — Araraquara",
+      "nome": "Farmácia - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "090",
+      "codigo2026": "090",
+      "notas": {
+        "2020": 39,
+        "2021": 19,
+        "2022": 19,
+        "2023": 39,
+        "2024": 49,
+        "2025": 49,
+        "2026": 48
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Farmácia - noturno — Araraquara",
+      "nome": "Farmácia - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "091",
+      "codigo2026": "091",
+      "notas": {
+        "2020": 27,
+        "2021": 18,
+        "2022": 18,
+        "2023": 47,
+        "2024": 19,
+        "2025": 46,
+        "2026": 48
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Filosofia - Bacharelado e Licenciatura - noturno — Marília",
+      "nome": "Filosofia - Bacharelado e Licenciatura - noturno",
+      "cidade": "Marília",
+      "codigo2025": "092",
+      "codigo2026": "092",
+      "notas": {
+        "2020": 21,
+        "2021": 23,
+        "2022": 23,
+        "2023": 24,
+        "2024": 22,
+        "2025": 36,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Bacharelado e Licenciatura - integral — Rio Claro",
+      "nome": "Física - Bacharelado e Licenciatura - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "093",
+      "codigo2026": "093",
+      "notas": {
+        "2020": 32,
+        "2021": 18,
+        "2022": 24,
+        "2023": 19,
+        "2024": 27,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Bacharelado e Licenciatura - noturno — Guaratinguetá",
+      "nome": "Física - Bacharelado e Licenciatura - noturno",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "094",
+      "codigo2026": "094",
+      "notas": {
+        "2020": 23,
+        "2021": 26,
+        "2022": 19,
+        "2023": 32,
+        "2024": 26,
+        "2025": 28,
+        "2026": 29
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Bacharelado em Física Biológica e Licenciatura em Física - integral — São José do Rio Preto",
+      "nome": "Física - Bacharelado em Física Biológica e Licenciatura em Física - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "095",
+      "codigo2026": "095",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 24,
+        "2023": 29,
+        "2024": 26,
+        "2025": 24,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Bacharelado em Física de Materiais, Bacharelado em Física Computacional - vespertino/noturno e Licenciatura em Física - noturno — Bauru",
+      "nome": "Física - Bacharelado em Física de Materiais, Bacharelado em Física Computacional - vespertino/noturno e Licenciatura em Física - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "096",
+      "codigo2026": "096",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 27,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Bacharelado em Física de Materiais - vespertino/noturno e Licenciatura em Física - noturno — Bauru",
+      "nome": "Física - Bacharelado em Física de Materiais - vespertino/noturno e Licenciatura em Física - noturno",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 20,
+        "2021": 20,
+        "2022": 21,
+        "2023": 20,
+        "2024": 29,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Física - Licenciatura - noturno — Ilha Solteira",
+      "nome": "Física - Licenciatura - noturno",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "098",
+      "codigo2026": "098",
+      "notas": {
+        "2020": 24,
+        "2021": 28,
+        "2022": 29,
+        "2023": 35,
+        "2024": 24,
+        "2025": 31,
+        "2026": 25
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física - Licenciatura - noturno — Presidente Prudente",
+      "nome": "Física - Licenciatura - noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "097",
+      "codigo2026": "097",
+      "notas": {
+        "2020": 22,
+        "2021": 24,
+        "2022": 25,
+        "2023": 27,
+        "2024": 18,
+        "2025": 23,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Física Médica - integral — Botucatu",
+      "nome": "Física Médica - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "099",
+      "codigo2026": "099",
+      "notas": {
+        "2020": 18,
+        "2021": 25,
+        "2022": 22,
+        "2023": 20,
+        "2024": 22,
+        "2025": 30,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Fisioterapia - integral — Marília",
+      "nome": "Fisioterapia - integral",
+      "cidade": "Marília",
+      "codigo2025": "101",
+      "codigo2026": "101",
+      "notas": {
+        "2020": 38,
+        "2021": 19,
+        "2022": 29,
+        "2023": 37,
+        "2024": 42,
+        "2025": 44,
+        "2026": 44
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Fisioterapia - integral — Presidente Prudente",
+      "nome": "Fisioterapia - integral",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "100",
+      "codigo2026": "100",
+      "notas": {
+        "2020": 31,
+        "2021": 29,
+        "2022": 24,
+        "2023": 18,
+        "2024": 19,
+        "2025": 18,
+        "2026": 34
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Fonoaudiologia - integral — Marília",
+      "nome": "Fonoaudiologia - integral",
+      "cidade": "Marília",
+      "codigo2025": "102",
+      "codigo2026": "102",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 22,
+        "2025": 18,
+        "2026": 40
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Geografia - Bacharelado e Licenciatura - integral — Rio Claro",
+      "nome": "Geografia - Bacharelado e Licenciatura - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "103",
+      "codigo2026": "103",
+      "notas": {
+        "2020": 35,
+        "2021": 19,
+        "2022": 24,
+        "2023": 24,
+        "2024": 19,
+        "2025": 26,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 4
+    },
+    {
+      "curso": "Geografia - Bacharelado e Licenciatura - matutino — Ourinhos",
+      "nome": "Geografia - Bacharelado e Licenciatura - matutino",
+      "cidade": "Ourinhos",
+      "codigo2025": "105",
+      "codigo2026": "105",
+      "notas": {
+        "2020": 19,
+        "2021": null,
+        "2022": 29,
+        "2023": 30,
+        "2024": 24,
+        "2025": 32,
+        "2026": 26
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Geografia - Bacharelado e Licenciatura - matutino — Presidente Prudente",
+      "nome": "Geografia - Bacharelado e Licenciatura - matutino",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "104",
+      "codigo2026": "104",
+      "notas": {
+        "2020": 19,
+        "2021": 22,
+        "2022": 27,
+        "2023": 18,
+        "2024": 29,
+        "2025": 23,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Geografia - Bacharelado e Licenciatura - noturno — Ourinhos",
+      "nome": "Geografia - Bacharelado e Licenciatura - noturno",
+      "cidade": "Ourinhos",
+      "codigo2025": "107",
+      "codigo2026": "107",
+      "notas": {
+        "2020": 19,
+        "2021": null,
+        "2022": 22,
+        "2023": 24,
+        "2024": 22,
+        "2025": 29,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Geografia - Bacharelado e Licenciatura - noturno — Presidente Prudente",
+      "nome": "Geografia - Bacharelado e Licenciatura - noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "106",
+      "codigo2026": "106",
+      "notas": {
+        "2020": 21,
+        "2021": 21,
+        "2022": 21,
+        "2023": 23,
+        "2024": 27,
+        "2025": 22,
+        "2026": 26
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Geografia - Licenciatura - noturno — Rio Claro",
+      "nome": "Geografia - Licenciatura - noturno",
+      "cidade": "Rio Claro",
+      "codigo2025": "108",
+      "codigo2026": "108",
+      "notas": {
+        "2020": 19,
+        "2021": 30,
+        "2022": 21,
+        "2023": 20,
+        "2024": 28,
+        "2025": 27,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Geologia - integral — Rio Claro",
+      "nome": "Geologia - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "109",
+      "codigo2026": "109",
+      "notas": {
+        "2020": 21,
+        "2021": 22,
+        "2022": 19,
+        "2023": 20,
+        "2024": 22,
+        "2025": 22,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "História - Bacharelado e Licenciatura - matutino — Franca",
+      "nome": "História - Bacharelado e Licenciatura - matutino",
+      "cidade": "Franca",
+      "codigo2025": "110",
+      "codigo2026": "110",
+      "notas": {
+        "2020": 18,
+        "2021": 20,
+        "2022": 23,
+        "2023": 20,
+        "2024": 21,
+        "2025": 29,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "História - Bacharelado e Licenciatura - noturno — Franca",
+      "nome": "História - Bacharelado e Licenciatura - noturno",
+      "cidade": "Franca",
+      "codigo2025": "111",
+      "codigo2026": "111",
+      "notas": {
+        "2020": 18,
+        "2021": 20,
+        "2022": 19,
+        "2023": 24,
+        "2024": 20,
+        "2025": 23,
+        "2026": 27
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "História - Licenciatura - matutino — Assis",
+      "nome": "História - Licenciatura - matutino",
+      "cidade": "Assis",
+      "codigo2025": "112",
+      "codigo2026": "113",
+      "notas": {
+        "2020": 22,
+        "2021": 25,
+        "2022": 24,
+        "2023": 22,
+        "2024": 21,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "História - Licenciatura - noturno — Assis",
+      "nome": "História - Licenciatura - noturno",
+      "cidade": "Assis",
+      "codigo2025": "113",
+      "codigo2026": "112",
+      "notas": {
+        "2020": 21,
+        "2021": 25,
+        "2022": 27,
+        "2023": 18,
+        "2024": 20,
+        "2025": 22,
+        "2026": 26
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Jornalismo - integral — Bauru",
+      "nome": "Jornalismo - integral",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 30,
+        "2021": 41,
+        "2022": 42,
+        "2023": 44,
+        "2024": 50,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Jornalismo - matutino — Bauru",
+      "nome": "Jornalismo - matutino",
+      "cidade": "Bauru",
+      "codigo2025": "114",
+      "codigo2026": "114",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 18,
+        "2026": 40
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Jornalismo - noturno — Bauru",
+      "nome": "Jornalismo - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "115",
+      "codigo2026": "115",
+      "notas": {
+        "2020": 35,
+        "2021": 19,
+        "2022": 21,
+        "2023": 45,
+        "2024": 25,
+        "2025": 51,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Bacharelado e Licenciatura - integral — Araraquara",
+      "nome": "Letras - Bacharelado e Licenciatura - integral",
+      "cidade": "Araraquara",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 20,
+        "2021": 23,
+        "2022": 20,
+        "2023": 20,
+        "2024": 21,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Letras - Bacharelado e Licenciatura - matutino — Araraquara",
+      "nome": "Letras - Bacharelado e Licenciatura - matutino",
+      "cidade": "Araraquara",
+      "codigo2025": "116",
+      "codigo2026": "116",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 23,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Bacharelado e Licenciatura - noturno — Araraquara",
+      "nome": "Letras - Bacharelado e Licenciatura - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "117",
+      "codigo2026": "117",
+      "notas": {
+        "2020": 39,
+        "2021": 20,
+        "2022": 22,
+        "2023": 20,
+        "2024": 20,
+        "2025": 21,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Licenciatura - integral — São José do Rio Preto",
+      "nome": "Letras - Licenciatura - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "118",
+      "codigo2026": "118",
+      "notas": {
+        "2020": 21,
+        "2021": 21,
+        "2022": 19,
+        "2023": 22,
+        "2024": 31,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Licenciatura - matutino — Assis",
+      "nome": "Letras - Licenciatura - matutino",
+      "cidade": "Assis",
+      "codigo2025": "119",
+      "codigo2026": "119",
+      "notas": {
+        "2020": 19,
+        "2021": 20,
+        "2022": 25,
+        "2023": 19,
+        "2024": 23,
+        "2025": 30,
+        "2026": 28
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Licenciatura - noturno — Assis",
+      "nome": "Letras - Licenciatura - noturno",
+      "cidade": "Assis",
+      "codigo2025": "120",
+      "codigo2026": "120",
+      "notas": {
+        "2020": 18,
+        "2021": 21,
+        "2022": 27,
+        "2023": 18,
+        "2024": 21,
+        "2025": 26,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras - Licenciatura - noturno — São José do Rio Preto",
+      "nome": "Letras - Licenciatura - noturno",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "121",
+      "codigo2026": "121",
+      "notas": {
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 19,
+        "2024": 25,
+        "2025": 21,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 2,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Letras-Tradução - Bacharelado - integral — São José do Rio Preto",
+      "nome": "Letras-Tradução - Bacharelado - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "122",
+      "codigo2026": "122",
+      "notas": {
+        "2020": 21,
+        "2021": 21,
+        "2022": 21,
+        "2023": 28,
+        "2024": 19,
+        "2025": 32,
+        "2026": 31
+      },
+      "observacao": "Denominação levemente alterada no período; equivalência de local e turno mantida.",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Licenciatura em Música - integral — São Paulo",
+      "nome": "Licenciatura em Música - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "123",
+      "codigo2026": "123",
+      "notas": {
+        "2020": 18,
+        "2021": 23,
+        "2022": 22,
+        "2023": 29,
+        "2024": 23,
+        "2025": 22,
+        "2026": 24
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Bacharelado e Licenciatura - integral — Rio Claro",
+      "nome": "Matemática - Bacharelado e Licenciatura - integral",
+      "cidade": "Rio Claro",
+      "codigo2025": "125",
+      "codigo2026": "125",
+      "notas": {
+        "2020": 21,
+        "2021": 20,
+        "2022": 21,
+        "2023": 23,
+        "2024": 37,
+        "2025": 20,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Bacharelado e Licenciatura - integral — São José do Rio Preto",
+      "nome": "Matemática - Bacharelado e Licenciatura - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "124",
+      "codigo2026": "124",
+      "notas": {
+        "2020": 18,
+        "2021": 22,
+        "2022": 27,
+        "2023": 20,
+        "2024": 27,
+        "2025": 21,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Licenciatura - matutino — Presidente Prudente",
+      "nome": "Matemática - Licenciatura - matutino",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "126",
+      "codigo2026": "126",
+      "notas": {
+        "2020": 19,
+        "2021": 26,
+        "2022": 32,
+        "2023": 21,
+        "2024": 27,
+        "2025": 26,
+        "2026": 25
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Licenciatura - noturno — Bauru",
+      "nome": "Matemática - Licenciatura - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "127",
+      "codigo2026": "127",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 22,
+        "2023": 20,
+        "2024": 22,
+        "2025": 24,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Matemática - Licenciatura - noturno — Guaratinguetá",
+      "nome": "Matemática - Licenciatura - noturno",
+      "cidade": "Guaratinguetá",
+      "codigo2025": "129",
+      "codigo2026": "129",
+      "notas": {
+        "2020": 18,
+        "2021": 28,
+        "2022": 26,
+        "2023": 26,
+        "2024": 36,
+        "2025": 22,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Licenciatura - noturno — Ilha Solteira",
+      "nome": "Matemática - Licenciatura - noturno",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "130",
+      "codigo2026": "130",
+      "notas": {
+        "2020": 19,
+        "2021": 30,
+        "2022": 28,
+        "2023": 21,
+        "2024": 26,
+        "2025": 42,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Licenciatura - noturno — Presidente Prudente",
+      "nome": "Matemática - Licenciatura - noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "128",
+      "codigo2026": "128",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 25,
+        "2023": 26,
+        "2024": 26,
+        "2025": 26,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 5
+    },
+    {
+      "curso": "Matemática - Licenciatura - noturno — São José do Rio Preto",
+      "nome": "Matemática - Licenciatura - noturno",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "131",
+      "codigo2026": "131",
+      "notas": {
+        "2020": 19,
+        "2021": 21,
+        "2022": 27,
+        "2023": 25,
+        "2024": 26,
+        "2025": 42,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Medicina - integral — Botucatu",
+      "nome": "Medicina - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "132",
+      "codigo2026": "132",
+      "notas": {
+        "2020": 72,
+        "2021": 75,
+        "2022": 78,
+        "2023": 77,
+        "2024": 80,
+        "2025": 81,
+        "2026": 78
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Medicina Veterinária - integral — Araçatuba",
+      "nome": "Medicina Veterinária - integral",
+      "cidade": "Araçatuba",
+      "codigo2025": "134",
+      "codigo2026": "134",
+      "notas": {
+        "2020": 41,
+        "2021": 41,
+        "2022": 41,
+        "2023": 40,
+        "2024": 47,
+        "2025": 44,
+        "2026": 36
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Medicina Veterinária - integral — Botucatu",
+      "nome": "Medicina Veterinária - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "135",
+      "codigo2026": "135",
+      "notas": {
+        "2020": 49,
+        "2021": 49,
+        "2022": 48,
+        "2023": 48,
+        "2024": 54,
+        "2025": 52,
+        "2026": 48
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Medicina Veterinária - integral — Jaboticabal",
+      "nome": "Medicina Veterinária - integral",
+      "cidade": "Jaboticabal",
+      "codigo2025": "133",
+      "codigo2026": "133",
+      "notas": {
+        "2020": 39,
+        "2021": 48,
+        "2022": 46,
+        "2023": 45,
+        "2024": 51,
+        "2025": 51,
+        "2026": 42
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Meteorologia - Bacharelado - integral — Bauru",
+      "nome": "Meteorologia - Bacharelado - integral",
+      "cidade": "Bauru",
+      "codigo2025": "136",
+      "codigo2026": "136",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 19,
+        "2023": 24,
+        "2024": 18,
+        "2025": 21,
+        "2026": 24
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Canto - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Canto - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "137",
+      "codigo2026": "137",
+      "notas": {
+        "2020": 18,
+        "2021": 20,
+        "2022": 25,
+        "2023": 18,
+        "2024": 22,
+        "2025": 26,
+        "2026": 27
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Composição - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Composição - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "138",
+      "codigo2026": "138",
+      "notas": {
+        "2020": 43,
+        "2021": 27,
+        "2022": 19,
+        "2023": 22,
+        "2024": 37,
+        "2025": 32,
+        "2026": 34
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Instrumento: Cordas (Contrabaixo Acústico, Viola, Violino, Violoncelo) - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Instrumento: Cordas (Contrabaixo Acústico, Viola, Violino, Violoncelo) - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "139",
+      "codigo2026": "139",
+      "notas": {
+        "2020": 21,
+        "2021": 28,
+        "2022": 31,
+        "2023": 21,
+        "2024": 25,
+        "2025": 24,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Instrumento: Percussão - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Instrumento: Percussão - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "140",
+      "codigo2026": "140",
+      "notas": {
+        "2020": 27,
+        "2021": 39,
+        "2022": 23,
+        "2023": 35,
+        "2024": 23,
+        "2025": 28,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Instrumento: Sopros (Clarineta, Flauta, Instrumento Antigo - Flauta Doce, Oboé) - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Instrumento: Sopros (Clarineta, Flauta, Instrumento Antigo - Flauta Doce, Oboé) - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "141",
+      "codigo2026": "141",
+      "notas": {
+        "2020": 23,
+        "2021": 28,
+        "2022": 20,
+        "2023": 19,
+        "2024": 33,
+        "2025": 25,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Instrumento: Teclados - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Instrumento: Teclados - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "142",
+      "codigo2026": "142",
+      "notas": {
+        "2020": 19,
+        "2021": 20,
+        "2022": 21,
+        "2023": 22,
+        "2024": 21,
+        "2025": 30,
+        "2026": 26
+      },
+      "observacao": "Denominação levemente alterada no período; equivalência de local e turno mantida.",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Instrumento: Violão - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Instrumento: Violão - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "143",
+      "codigo2026": "143",
+      "notas": {
+        "2020": 19,
+        "2021": 27,
+        "2022": 26,
+        "2023": 21,
+        "2024": 25,
+        "2025": 20,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Música - Bacharelado - Habilitação em Regência - integral — São Paulo",
+      "nome": "Música - Bacharelado - Habilitação em Regência - integral",
+      "cidade": "São Paulo",
+      "codigo2025": "144",
+      "codigo2026": "144",
+      "notas": {
+        "2020": 19,
+        "2021": 35,
+        "2022": 26,
+        "2023": 28,
+        "2024": 38,
+        "2025": 29,
+        "2026": 32
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Nutrição - vespertino/noturno — Botucatu",
+      "nome": "Nutrição - vespertino/noturno",
+      "cidade": "Botucatu",
+      "codigo2025": "145",
+      "codigo2026": "145",
+      "notas": {
+        "2020": 33,
+        "2021": 33,
+        "2022": 35,
+        "2023": 37,
+        "2024": 44,
+        "2025": 45,
+        "2026": 39
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Odontologia - integral — Araçatuba",
+      "nome": "Odontologia - integral",
+      "cidade": "Araçatuba",
+      "codigo2025": "146",
+      "codigo2026": "146",
+      "notas": {
+        "2020": 28,
+        "2021": 36,
+        "2022": 21,
+        "2023": 18,
+        "2024": 18,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Odontologia - integral — Araraquara",
+      "nome": "Odontologia - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "147",
+      "codigo2026": "147",
+      "notas": {
+        "2020": 40,
+        "2021": 40,
+        "2022": 40,
+        "2023": 38,
+        "2024": 43,
+        "2025": 39,
+        "2026": 37
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Odontologia - integral — São José dos Campos",
+      "nome": "Odontologia - integral",
+      "cidade": "São José dos Campos",
+      "codigo2025": "148",
+      "codigo2026": "148",
+      "notas": {
+        "2020": 34,
+        "2021": 43,
+        "2022": 40,
+        "2023": 18,
+        "2024": 47,
+        "2025": 22,
+        "2026": 39
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Odontologia - vespertino/noturno — Araçatuba",
+      "nome": "Odontologia - vespertino/noturno",
+      "cidade": "Araçatuba",
+      "codigo2025": "149",
+      "codigo2026": "149",
+      "notas": {
+        "2020": 21,
+        "2021": 29,
+        "2022": 22,
+        "2023": 18,
+        "2024": 21,
+        "2025": 19,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Odontologia - vespertino/noturno — São José dos Campos",
+      "nome": "Odontologia - vespertino/noturno",
+      "cidade": "São José dos Campos",
+      "codigo2025": "150",
+      "codigo2026": "150",
+      "notas": {
+        "2020": 42,
+        "2021": 19,
+        "2022": 37,
+        "2023": 41,
+        "2024": 20,
+        "2025": 52,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - integral — Araraquara",
+      "nome": "Pedagogia - Licenciatura - integral",
+      "cidade": "Araraquara",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 19,
+        "2023": 18,
+        "2024": 24,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - matutino — Marília",
+      "nome": "Pedagogia - Licenciatura - matutino",
+      "cidade": "Marília",
+      "codigo2025": "151",
+      "codigo2026": "151",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 20,
+        "2023": 18,
+        "2024": 19,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — Araraquara",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "153",
+      "codigo2026": "153",
+      "notas": {
+        "2020": 21,
+        "2021": 21,
+        "2022": 22,
+        "2023": 20,
+        "2024": 19,
+        "2025": 19,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — Bauru",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "152",
+      "codigo2026": "152",
+      "notas": {
+        "2020": 18,
+        "2021": 19,
+        "2022": 19,
+        "2023": 20,
+        "2024": 19,
+        "2025": 19,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 6
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — Marília",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "Marília",
+      "codigo2025": "155",
+      "codigo2026": "155",
+      "notas": {
+        "2020": 18,
+        "2021": 20,
+        "2022": 18,
+        "2023": 19,
+        "2024": 25,
+        "2025": 24,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — Presidente Prudente",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "154",
+      "codigo2026": "154",
+      "notas": {
+        "2020": 21,
+        "2021": 20,
+        "2022": 18,
+        "2023": 20,
+        "2024": 18,
+        "2025": 18,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — Rio Claro",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "Rio Claro",
+      "codigo2025": "156",
+      "codigo2026": "156",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 22,
+        "2023": 18,
+        "2024": 19,
+        "2025": 22,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - noturno — São José do Rio Preto",
+      "nome": "Pedagogia - Licenciatura - noturno",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "157",
+      "codigo2026": "157",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 19,
+        "2025": 19,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - vespertino — Araraquara",
+      "nome": "Pedagogia - Licenciatura - vespertino",
+      "cidade": "Araraquara",
+      "codigo2025": "158",
+      "codigo2026": "158",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 20,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Pedagogia - Licenciatura - vespertino — Presidente Prudente",
+      "nome": "Pedagogia - Licenciatura - vespertino",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "159",
+      "codigo2026": "159",
+      "notas": {
+        "2020": 19,
+        "2021": 22,
+        "2022": 22,
+        "2023": 18,
+        "2024": 20,
+        "2025": 20,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Psicologia - integral — Assis",
+      "nome": "Psicologia - integral",
+      "cidade": "Assis",
+      "codigo2025": "161",
+      "codigo2026": "161",
+      "notas": {
+        "2020": 43,
+        "2021": 46,
+        "2022": 47,
+        "2023": 47,
+        "2024": 56,
+        "2025": 54,
+        "2026": 46
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Psicologia - integral — Bauru",
+      "nome": "Psicologia - integral",
+      "cidade": "Bauru",
+      "codigo2025": "160",
+      "codigo2026": "160",
+      "notas": {
+        "2020": 54,
+        "2021": 55,
+        "2022": 56,
+        "2023": 57,
+        "2024": 62,
+        "2025": 62,
+        "2026": 58
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Psicologia - noturno — Bauru",
+      "nome": "Psicologia - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "162",
+      "codigo2026": "162",
+      "notas": {
+        "2020": 49,
+        "2021": 51,
+        "2022": 48,
+        "2023": 54,
+        "2024": 59,
+        "2025": 58,
+        "2026": 54
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Psicologia - vespertino/noturno — Assis",
+      "nome": "Psicologia - vespertino/noturno",
+      "cidade": "Assis",
+      "codigo2025": "163",
+      "codigo2026": "163",
+      "notas": {
+        "2020": 43,
+        "2021": 37,
+        "2022": 41,
+        "2023": 47,
+        "2024": 49,
+        "2025": 52,
+        "2026": 45
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Bacharelado em Química Ambiental e Licenciatura em Química - integral — São José do Rio Preto",
+      "nome": "Química - Bacharelado em Química Ambiental e Licenciatura em Química - integral",
+      "cidade": "São José do Rio Preto",
+      "codigo2025": "164",
+      "codigo2026": "164",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 21,
+        "2023": 21,
+        "2024": 23,
+        "2025": 22,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Bacharelado em Química Ambiental Tecnológica e Licenciatura em Química - noturno — Bauru",
+      "nome": "Química - Bacharelado em Química Ambiental Tecnológica e Licenciatura em Química - noturno",
+      "cidade": "Bauru",
+      "codigo2025": null,
+      "codigo2026": null,
+      "notas": {
+        "2020": 30,
+        "2021": 22,
+        "2022": 20,
+        "2023": 21,
+        "2024": 22,
+        "2025": null,
+        "2026": null
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": null
+    },
+    {
+      "curso": "Química - Bacharelado em Química e em Química Tecnológica - integral — Araraquara",
+      "nome": "Química - Bacharelado em Química e em Química Tecnológica - integral",
+      "cidade": "Araraquara",
+      "codigo2025": "165",
+      "codigo2026": "165",
+      "notas": {
+        "2020": 22,
+        "2021": 20,
+        "2022": 19,
+        "2023": 21,
+        "2024": 24,
+        "2025": 20,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Bacharelado em Química Tecnológica - vespertino-noturno — Bauru",
+      "nome": "Química - Bacharelado em Química Tecnológica - vespertino-noturno",
+      "cidade": "Bauru",
+      "codigo2025": "166",
+      "codigo2026": "166",
+      "notas": {
+        "2020": null,
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 20,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": null,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Licenciatura - noturno — Araraquara",
+      "nome": "Química - Licenciatura - noturno",
+      "cidade": "Araraquara",
+      "codigo2025": "169",
+      "codigo2026": "169",
+      "notas": {
+        "2020": 20,
+        "2021": 23,
+        "2022": 21,
+        "2023": 26,
+        "2024": 21,
+        "2025": 24,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Licenciatura - noturno — Bauru",
+      "nome": "Química - Licenciatura - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "167",
+      "codigo2026": "167",
+      "notas": {
+        "2020": null,
+        "2021": 28,
+        "2022": 18,
+        "2023": 19,
+        "2024": 28,
+        "2025": 27,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Química - Licenciatura - noturno — Presidente Prudente",
+      "nome": "Química - Licenciatura - noturno",
+      "cidade": "Presidente Prudente",
+      "codigo2025": "168",
+      "codigo2026": "168",
+      "notas": {
+        "2020": 19,
+        "2021": 23,
+        "2022": 33,
+        "2023": 20,
+        "2024": 21,
+        "2025": 21,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Relações Internacionais - noturno — Franca",
+      "nome": "Relações Internacionais - noturno",
+      "cidade": "Franca",
+      "codigo2025": "170",
+      "codigo2026": "170",
+      "notas": {
+        "2020": 43,
+        "2021": 21,
+        "2022": 40,
+        "2023": 49,
+        "2024": 53,
+        "2025": 52,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Relações Internacionais - noturno — Marília",
+      "nome": "Relações Internacionais - noturno",
+      "cidade": "Marília",
+      "codigo2025": "171",
+      "codigo2026": "171",
+      "notas": {
+        "2020": 41,
+        "2021": 40,
+        "2022": 37,
+        "2023": 44,
+        "2024": 52,
+        "2025": 24,
+        "2026": 19
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Relações Internacionais - vespertino — Franca",
+      "nome": "Relações Internacionais - vespertino",
+      "cidade": "Franca",
+      "codigo2025": "172",
+      "codigo2026": "172",
+      "notas": {
+        "2020": 44,
+        "2021": 47,
+        "2022": 45,
+        "2023": 48,
+        "2024": 54,
+        "2025": 50,
+        "2026": 22
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Relações Públicas - noturno — Bauru",
+      "nome": "Relações Públicas - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "173",
+      "codigo2026": "173",
+      "notas": {
+        "2020": 31,
+        "2021": 18,
+        "2022": 22,
+        "2023": 19,
+        "2024": 22,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Serviço Social - matutino — Franca",
+      "nome": "Serviço Social - matutino",
+      "cidade": "Franca",
+      "codigo2025": "174",
+      "codigo2026": "174",
+      "notas": {
+        "2020": 19,
+        "2021": 21,
+        "2022": 23,
+        "2023": 18,
+        "2024": 25,
+        "2025": 29,
+        "2026": 20
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Serviço Social - noturno — Franca",
+      "nome": "Serviço Social - noturno",
+      "cidade": "Franca",
+      "codigo2025": "175",
+      "codigo2026": "175",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 18,
+        "2023": 20,
+        "2024": 28,
+        "2025": 18,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Sistemas de Informação - Bacharelado - noturno — Bauru",
+      "nome": "Sistemas de Informação - Bacharelado - noturno",
+      "cidade": "Bauru",
+      "codigo2025": "176",
+      "codigo2026": "176",
+      "notas": {
+        "2020": 37,
+        "2021": 19,
+        "2022": 19,
+        "2023": 50,
+        "2024": 57,
+        "2025": 56,
+        "2026": 45
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Terapia Ocupacional - integral — Marília",
+      "nome": "Terapia Ocupacional - integral",
+      "cidade": "Marília",
+      "codigo2025": "177",
+      "codigo2026": "177",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 20,
+        "2023": 18,
+        "2024": 18,
+        "2025": 18,
+        "2026": 41
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Treineiro",
+      "nome": "Treineiro",
+      "cidade": "",
+      "codigo2025": "183",
+      "codigo2026": "183",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 18,
+        "2025": 18,
+        "2026": 18
+      },
+      "observacao": "Registro histórico: a denominação ou turno não tem equivalência documental segura com 2025/2026.",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Turismo - integral — Rosana",
+      "nome": "Turismo - integral",
+      "cidade": "Rosana",
+      "codigo2025": "178",
+      "codigo2026": "178",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 22,
+        "2023": 24,
+        "2024": 25,
+        "2025": 19,
+        "2026": 26
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 7
+    },
+    {
+      "curso": "Zootecnia - integral — Botucatu",
+      "nome": "Zootecnia - integral",
+      "cidade": "Botucatu",
+      "codigo2025": "182",
+      "codigo2026": "182",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 20,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 8
+    },
+    {
+      "curso": "Zootecnia - integral — Dracena",
+      "nome": "Zootecnia - integral",
+      "cidade": "Dracena",
+      "codigo2025": "179",
+      "codigo2026": "179",
+      "notas": {
+        "2020": 19,
+        "2021": 18,
+        "2022": 20,
+        "2023": 20,
+        "2024": 21,
+        "2025": 23,
+        "2026": 23
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 8
+    },
+    {
+      "curso": "Zootecnia - integral — Ilha Solteira",
+      "nome": "Zootecnia - integral",
+      "cidade": "Ilha Solteira",
+      "codigo2025": "181",
+      "codigo2026": "181",
+      "notas": {
+        "2020": 19,
+        "2021": 19,
+        "2022": 19,
+        "2023": 19,
+        "2024": 18,
+        "2025": 20,
+        "2026": 21
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 8
+    },
+    {
+      "curso": "Zootecnia - integral — Jaboticabal",
+      "nome": "Zootecnia - integral",
+      "cidade": "Jaboticabal",
+      "codigo2025": "180",
+      "codigo2026": "180",
+      "notas": {
+        "2020": 18,
+        "2021": 18,
+        "2022": 18,
+        "2023": 18,
+        "2024": 19,
+        "2025": 19,
+        "2026": 18
+      },
+      "observacao": "",
+      "fonteHistoricaPagina": 3,
+      "fonte2025Pagina": 8
+    }
+  ]
+}
