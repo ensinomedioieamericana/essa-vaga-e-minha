@@ -11,7 +11,7 @@
   <link rel="icon" href="./icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css?v=8">
+  <link rel="stylesheet" href="./styles.css?v=10">
   <title>Essa Vaga É Minha! — Instituto Educacional</title>
 </head>
 <body>
@@ -48,15 +48,15 @@
             <div class="calendar-filters" role="group" aria-label="Filtrar calendário por exame">
               <button type="button" class="selected" data-calendar-filter="todos" aria-pressed="true">Todos</button>
               <button type="button" data-calendar-filter="unicamp" aria-pressed="false">UNICAMP</button>
-              <button type="button" data-calendar-filter="unesp" aria-pressed="false">UNESP</button>
-              <button type="button" data-calendar-filter="enem" aria-pressed="false">ENEM</button>
               <button type="button" data-calendar-filter="usp" aria-pressed="false">USP</button>
+              <button type="button" data-calendar-filter="enem" aria-pressed="false">ENEM</button>
+              <button type="button" data-calendar-filter="unesp" aria-pressed="false">UNESP</button>
             </div>
           </div>
-          <div class="calendar-list-head"><strong>Datas importantes</strong><span id="calendar-count" aria-live="polite">4 calendários</span></div>
+          <div class="calendar-list-head"><strong>Em ordem da 1ª prova</strong><span id="calendar-count" aria-live="polite">4 calendários</span></div>
           <div class="calendar-grid">
             <article class="calendar-card calendar-unicamp" data-calendar-institution="unicamp">
-              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL DE CAMPINAS</span><h4>UNICAMP</h4></div><span class="calendar-card-mark">U</span></div>
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL DE CAMPINAS</span><h4>UNICAMP</h4></div><span class="calendar-card-mark"><img class="calendar-card-logo" src="./assets/logo-unicamp.svg" alt="Logotipo da UNICAMP" loading="lazy" decoding="async"></span></div>
               <dl class="calendar-details">
                 <div><dt>Inscrições</dt><dd>03 a 31 de agosto de 2026</dd></div>
                 <div><dt>1ª fase</dt><dd><strong>18 de outubro de 2026</strong></dd></div>
@@ -64,17 +64,17 @@
               </dl>
               <div class="calendar-card-notes"><strong>Outras datas</strong><p>Provas de habilidades específicas: <b>02 a 04/12/2026</b></p><p>1ª chamada: <b>25/01/2027</b></p></div>
             </article>
-            <article class="calendar-card calendar-unesp" data-calendar-institution="unesp">
-              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL PAULISTA</span><h4>UNESP</h4></div><span class="calendar-card-mark">U</span></div>
+            <article class="calendar-card calendar-usp" data-calendar-institution="usp">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE DE SÃO PAULO • FUVEST</span><h4>USP</h4></div><span class="calendar-card-mark"><img class="calendar-card-logo" src="./assets/logo-usp.svg" alt="Logotipo da USP" loading="lazy" decoding="async"></span></div>
               <dl class="calendar-details">
-                <div><dt>Inscrições</dt><dd>04 de setembro a 08 de outubro de 2026</dd></div>
-                <div><dt>1ª fase</dt><dd><strong>22 de novembro de 2026</strong></dd></div>
-                <div><dt>2ª fase</dt><dd>13 e 14 de dezembro de 2026</dd></div>
+                <div><dt>Inscrições</dt><dd>17 de agosto a 09 de outubro de 2026</dd></div>
+                <div><dt>1ª fase</dt><dd><strong>1º de novembro de 2026</strong></dd></div>
+                <div><dt>2ª fase</dt><dd>06 e 07 de dezembro de 2026</dd></div>
               </dl>
-              <div class="calendar-card-notes"><strong>Outras datas</strong><p>Resultado final: <b>29/01/2027</b></p></div>
+              <div class="calendar-card-notes"><strong>Outras informações</strong><p>1ª fase: <b>80 questões</b> (mudança no formato)</p><p>1ª chamada: <b>26/01/2027</b></p></div>
             </article>
             <article class="calendar-card calendar-enem" data-calendar-institution="enem">
-              <div class="calendar-card-head"><div><span class="calendar-card-kind">EXAME NACIONAL DO ENSINO MÉDIO</span><h4>ENEM</h4></div><span class="calendar-card-mark">E</span></div>
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">EXAME NACIONAL DO ENSINO MÉDIO</span><h4>ENEM</h4></div><span class="calendar-card-mark"><img class="calendar-card-logo" src="./assets/logo-enem.svg" alt="Logotipo do ENEM" loading="lazy" decoding="async"></span></div>
               <dl class="calendar-details">
                 <div><dt>Inscrições</dt><dd>25 de maio a 06 de junho de 2026</dd></div>
                 <div><dt>Prova 1 (P1)</dt><dd><strong>08 de novembro de 2026</strong></dd></div>
@@ -82,14 +82,14 @@
               </dl>
               <div class="calendar-card-notes"><strong>Conteúdo das provas</strong><p>P1: Linguagens, Ciências Humanas e Redação</p><p>P2: Ciências da Natureza e Matemática</p></div>
             </article>
-            <article class="calendar-card calendar-usp" data-calendar-institution="usp">
-              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE DE SÃO PAULO • FUVEST</span><h4>USP</h4></div><span class="calendar-card-mark">U</span></div>
+            <article class="calendar-card calendar-unesp" data-calendar-institution="unesp">
+              <div class="calendar-card-head"><div><span class="calendar-card-kind">UNIVERSIDADE ESTADUAL PAULISTA</span><h4>UNESP</h4></div><span class="calendar-card-mark"><img class="calendar-card-logo" src="./assets/logo-unesp.svg" alt="Logotipo da UNESP" loading="lazy" decoding="async"></span></div>
               <dl class="calendar-details">
-                <div><dt>Inscrições</dt><dd>17 de agosto a 09 de outubro de 2026</dd></div>
-                <div><dt>1ª fase</dt><dd><strong>1º de novembro de 2026</strong></dd></div>
-                <div><dt>2ª fase</dt><dd>06 e 07 de dezembro de 2026</dd></div>
+                <div><dt>Inscrições</dt><dd>04 de setembro a 08 de outubro de 2026</dd></div>
+                <div><dt>1ª fase</dt><dd><strong>22 de novembro de 2026</strong></dd></div>
+                <div><dt>2ª fase</dt><dd>13 e 14 de dezembro de 2026</dd></div>
               </dl>
-              <div class="calendar-card-notes"><strong>Outras informações</strong><p>1ª fase: <b>80 questões</b> (mudança no formato)</p><p>1ª chamada: <b>26/01/2027</b></p></div>
+              <div class="calendar-card-notes"><strong>Outras datas</strong><p>Resultado final: <b>29/01/2027</b></p></div>
             </article>
           </div>
           <div class="calendar-disclaimer"><span aria-hidden="true">ⓘ</span><p>Calendário transcrito da tabela fornecida pelo Instituto. Os prazos e regras podem ser alterados pelas organizadoras; confirme sempre os editais e comunicados oficiais.</p></div>

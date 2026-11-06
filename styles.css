@@ -61,3 +61,8 @@
 @media(max-width:1050px){.calendar-grid{grid-template-columns:1fr}.calendar-details>div{grid-template-columns:128px minmax(0,1fr)}}
 @media(max-width:760px){.calendar-intro{padding:22px 19px;border-radius:14px}.calendar-intro h3{font-size:21px}.calendar-intro p{font-size:11px}.calendar-year{font-size:45px;letter-spacing:-3px}.calendar-toolbar{display:block}.calendar-filter-label{display:block;margin-bottom:10px}.calendar-card-head{padding:18px 16px 13px}.calendar-details{margin:0 16px 16px}.calendar-card-notes{margin:0 16px 17px}.calendar-details>div{grid-template-columns:96px minmax(0,1fr);gap:9px}.calendar-details dd{font-size:12px}.calendar-filters button{padding:9px 12px}}
 @media(max-width:390px){.calendar-year{display:none}}
+
+/* Marcas oficiais nos cards do calendário */
+.calendar-card .calendar-card-mark{width:103px;height:70px;padding:8px 10px;flex:0 0 auto;background:#fff;border:1px solid #eceef6;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0}
+.calendar-card-logo{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center}
+@media(max-width:760px){.calendar-card .calendar-card-mark{width:81px;height:63px;padding:7px}}
