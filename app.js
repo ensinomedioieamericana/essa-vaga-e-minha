@@ -2,6 +2,7 @@
 'use strict';
 const original=window.APP_LINKS;
 const ROUTES=['inicio','provas','agenda','calendario','notas','biblioteca','recursos','favoritos'];
+// Navegação interna: o calendário precisa ficar disponível mesmo após atualizações do PWA.
 const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
 const views={
  inicio:['COMECE POR AQUI','Tudo para sua aprovação','Escolha uma área e acesse os materiais que você precisa.','Todos os materiais'],
