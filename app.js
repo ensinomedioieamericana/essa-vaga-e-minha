@@ -6,7 +6,7 @@ const normalizeRoute=route=>route==='agenda'?'calendario':route;
 // Navegação interna: o calendário precisa ficar disponível mesmo após atualizações do PWA.
 const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
 const views={
- inicio:['COMECE POR AQUI','Tudo para sua aprovação','Escolha uma área e acesse os materiais que você precisa.','Todos os materiais'],
+ inicio:['COMECE POR AQUI','Explore seu caminho para a aprovação','Tudo o que você precisa para estudar está a poucos toques.','Materiais para seus estudos'],
  provas:['TREINE COM PROVAS REAIS','Banco de provas','Acervos e resoluções para praticar.','Provas e resoluções'],
  calendario:['ORGANIZE SEU ANO','Calendário de vestibulares 2027','Consulte diretamente no aplicativo as datas de inscrição, provas e resultados.','Calendário por exame'],
  notas:['PESQUISA HISTÓRICA','Notas de corte','Compare o desempenho exigido nos vestibulares, ano a ano.','Notas por universidade'],
@@ -31,9 +31,57 @@ function favorite(id){if(S.fav.has(id))S.fav.delete(id);else S.fav.add(id);set('
 function card(item){const [_,symbol,color]=cats[item.category];const box=node('article','resource-card');const top=node('div','resource-top');const ico=node('div','card-icon '+color,symbol);ico.setAttribute('aria-hidden','true');const b=node('button','card-save'+(S.fav.has(item.id)?' saved':''),S.fav.has(item.id)?'♥':'♡');b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));top.append(ico,b);
  const foot=node('div','resource-bottom');const a=node('a','','Abrir material');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Abrir '+item.title+' em uma nova aba');a.append(node('span','','↗'));foot.append(a);
  box.append(top,node('div','card-tag',item.tag),node('h3','',item.title),node('p','',item.description),foot);return box}
-function quick(){const q=$('quick-actions');q.replaceChildren();for(const [route,title,sub,icon,color] of [['provas','Provas anteriores','Acesse os acervos','▤','q-blue'],['calendario','Calendário 2027','Datas de inscrições e provas','▦','q-orange'],['notas','Notas de corte','USP • UNESP • UNICAMP','▥','q-mint'],['biblioteca','Biblioteca','Leituras e mais','▧','q-lilac']]){const b=node('button','quick-card');b.type='button';b.dataset.jump=route;let i=node('span','quick-icon '+color,icon);i.setAttribute('aria-hidden','true');let d=node('div');d.append(node('strong','',title),node('small','',sub));b.append(i,d);q.append(b)}}
+function quick(){
+ const q=$('quick-actions');q.replaceChildren();
+ const icons={
+  calendario:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/>',
+  notas:'<path d="M4 20V10M10 20V5M16 20v-9M22 20V3"/><path d="M2 21h21"/>',
+  provas:'<path d="M8 3h8l4 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h3z"/><path d="M8 12h8M8 16h8M16 3v5h5"/>',
+  biblioteca:'<path d="M12 6c-2.5-2-5.5-2-9-1v15c3.5-1 6.5-1 9 1 2.5-2 5.5-2 9-1V5c-3.5-1-6.5-1-9 1z"/><path d="M12 6v15"/>'
+ };
+ const opts=[
+  ['calendario','Calendário 2027','Datas e etapas da seleção'],
+  ['notas','Notas de corte','Compare os últimos anos'],
+  ['provas','Banco de provas','Pratique com provas reais'],
+  ['biblioteca','Biblioteca','Materiais para estudar']
+ ];
+ for(const [route,title,description] of opts){
+  const button=node('button','quick-card quick-'+route);button.type='button';button.dataset.jump=route;
+  const icon=node('span','quick-icon');icon.setAttribute('aria-hidden','true');
+  icon.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">'+icons[route]+'</svg>';
+  const words=node('span','quick-words');words.append(node('strong','',title),node('small','',description));
+  const arrow=node('span','quick-arrow','↗');arrow.setAttribute('aria-hidden','true');
+  button.append(icon,words,arrow);q.append(button);
+ }
+}
 function filters(){const q=$('category-filter');q.replaceChildren();for(const [key,title] of [['todos','Todos'],['provas','Provas'],['notas','Notas'],['biblioteca','Biblioteca'],['recursos','Bernoulli'],['servicos','Serviços']]){const b=node('button',S.filter===key?'active':'',title);b.type='button';b.addEventListener('click',()=>{S.filter=key;render()});q.append(b)}}
-function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){quick();filters()}
+const HOME_EVENTS=[
+ {date:'2026-11-15',day:'15',month:'NOV',name:'ENEM',detail:'Segundo dia de prova',uni:'enem'},
+ {date:'2026-11-22',day:'22',month:'NOV',name:'UNESP',detail:'Primeira fase',uni:'unesp'},
+ {date:'2026-11-29',day:'29',month:'NOV',name:'UNICAMP',detail:'Segunda fase • início',uni:'unicamp'},
+ {date:'2026-12-02',day:'02',month:'DEZ',name:'UNICAMP',detail:'Habilidades específicas • início',uni:'unicamp'},
+ {date:'2026-12-06',day:'06',month:'DEZ',name:'USP',detail:'Segunda fase • início',uni:'usp'},
+ {date:'2026-12-13',day:'13',month:'DEZ',name:'UNESP',detail:'Segunda fase • início',uni:'unesp'},
+ {date:'2027-01-25',day:'25',month:'JAN',name:'UNICAMP',detail:'Primeira chamada',uni:'unicamp'},
+ {date:'2027-01-26',day:'26',month:'JAN',name:'USP',detail:'Primeira chamada',uni:'usp'},
+ {date:'2027-01-29',day:'29',month:'JAN',name:'UNESP',detail:'Resultado final',uni:'unesp'}
+];
+function renderHomeDates(){
+ const list=$('home-date-list');if(!list)return;
+ list.replaceChildren();
+ const today=new Date();today.setHours(0,0,0,0);
+ const next=HOME_EVENTS.filter(e=>new Date(e.date+'T12:00:00')>=today).slice(0,3);
+ if(!next.length){list.append(node('p','premium-no-dates','As datas deste calendário já passaram. Consulte o calendário completo para novas informações.'));return}
+ for(const event of next){
+  const row=node('button','premium-date-row');row.type='button';row.dataset.jump='calendario';row.dataset.calendarFocus=event.uni;
+  const date=node('span','premium-date-box');date.append(node('strong','',event.day),node('small','',event.month));
+  const info=node('span','premium-date-copy');info.append(node('strong','',event.name),node('small','',event.detail));
+  const arr=node('span','premium-date-arrow','›');arr.setAttribute('aria-hidden','true');
+  row.append(date,info,arr);list.append(row);
+ }
+}
+
+function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('home-showcase').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){quick();filters();renderHomeDates()}
 if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}const a=shown();if(calendar)$('total-pill').textContent=$('calendar-count').textContent;else if(!cutoff)$('total-pill').textContent=count(a.length);$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
 $('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
 document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('fav-count').textContent=S.fav.size;$('fav-count').hidden=!S.fav.size}
@@ -102,7 +150,7 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){if(route.dataset.jump)close('more-dialog');go(route.dataset.route||route.dataset.jump)}const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
+function init(){S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){if(route.dataset.jump)close('more-dialog');go(route.dataset.route||route.dataset.jump);if(route.dataset.calendarFocus){const chosen=document.querySelector('[data-calendar-filter="'+route.dataset.calendarFocus+'"]');if(chosen)chosen.click()}}const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
 $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search').hidden=!S.search;render()});$('clear-search').addEventListener('click',()=>{$('search').value='';S.search='';$('clear-search').hidden=true;render();$('search').focus()});$('reset-search').addEventListener('click',()=>{S.search='';S.filter='todos';$('search').value='';$('clear-search').hidden=true;render()});
 $('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const raw=location.hash.replace(/^#\/?/,'');const r=normalizeRoute(raw);if(raw!==r)history.replaceState(null,'',location.pathname+location.search+'#/'+r);if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});

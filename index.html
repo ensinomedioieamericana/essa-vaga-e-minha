@@ -11,13 +11,14 @@
   <link rel="icon" href="./icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css?v=10">
+  <link rel="stylesheet" href="./styles.css?v=12">
+  <link rel="stylesheet" href="./premium.css?v=12">
   <title>Essa Vaga É Minha! — Instituto Educacional</title>
 </head>
 <body>
   <div class="app-layout">
     <aside class="sidebar" aria-label="Menu principal">
-      <div class="brand"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!" class="sidebar-project-logo"><small>ENSINO MÉDIO • IEA</small></div>
+      <div class="brand"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!" class="sidebar-project-logo"><small>ENSINO MÉDIO • IEA</small><div class="brand-institute"><img src="./assets/iea-horizontal.png?v=12" alt="Instituto Educacional de Americana"></div></div>
       <p class="side-label">EXPLORAR</p>
       <nav class="desktop-nav" id="desktop-nav" aria-label="Seções">
         <button type="button" data-route="inicio" class="active"><span aria-hidden="true">⌂</span> Início</button>
@@ -31,12 +32,80 @@
       <div class="sidebar-bottom"><div class="side-note"><span>✦</span><strong>Seu futuro começa com uma escolha.</strong><p>Estude, pratique e conquiste a sua vaga.</p></div></div>
     </aside>
     <div class="main-shell">
-      <header class="topbar"><div class="mobile-brand"><img src="./assets/iea-vertical.png" class="mobile-iea" alt="Símbolo do Instituto Educacional de Americana"><strong>Essa Vaga É Minha!</strong></div><div class="topbar-left"><img src="./assets/iea-horizontal.png" class="header-iea" alt="Instituto Educacional de Americana"><span class="topline">Projeto de orientação para vestibulares</span></div><div class="topbar-right"><button type="button" class="outline-btn" id="install-open">＋ Instalar app</button><button type="button" id="top-fav" class="icon-btn" aria-label="Ver favoritos">♡<span id="fav-count" class="fav-counter" hidden>0</span></button></div></header>
+      <header class="topbar"><div class="mobile-brand"><img src="./assets/iea-vertical.png" class="mobile-iea" alt="Símbolo do Instituto Educacional de Americana"><strong>Essa Vaga É Minha!</strong></div><div class="topbar-left"><img src="./assets/iea-horizontal.png?v=12" class="header-iea" alt="Instituto Educacional de Americana"><span class="topline">Projeto de orientação para vestibulares</span></div><div class="topbar-right"><button type="button" class="outline-btn" id="install-open">＋ Instalar app</button><button type="button" id="top-fav" class="icon-btn" aria-label="Ver favoritos">♡<span id="fav-count" class="fav-counter" hidden>0</span></button></div></header>
       <main id="main-content" tabindex="-1">
-        <section id="hero" class="hero"><div class="hero-copy"><div class="hero-kicker"><span class="live-dot"></span> SUA JORNADA ATÉ A UNIVERSIDADE</div><h1>O próximo capítulo<br>começa <em>aqui.</em></h1><p>Provas anteriores, datas importantes e materiais de estudo em um único lugar. O primeiro passo é seu.</p><button type="button" data-jump="provas" class="hero-button">Explorar provas <span aria-hidden="true">↗</span></button></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="hero-star">✳</div><div class="hero-art-copy">2027<span>É O SEU ANO</span></div><div class="small-star">✦</div></div></section>
+        <section id="hero" class="hero premium-hero">
+  <div class="premium-ambient ambient-one" aria-hidden="true"></div>
+  <div class="premium-ambient ambient-two" aria-hidden="true"></div>
+  <div class="hero-copy premium-hero-copy">
+    <span class="hero-kicker"><span class="live-dot"></span> IEA • SUA JORNADA COMEÇA AQUI</span>
+    <div class="premium-hero-greeting">Olá, vestibulando! <span aria-hidden="true">✦</span></div>
+    <h1>O futuro é seu.<br><em>A vaga também.</em></h1>
+    <p>Seu espaço para organizar os estudos, acompanhar as datas e se preparar para as melhores universidades.</p>
+    <div class="premium-hero-buttons">
+      <button type="button" data-jump="calendario" class="hero-button">Ver calendário <span aria-hidden="true">↗</span></button>
+      <button type="button" data-jump="notas" class="premium-ghost-button">Notas de corte <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+  <div class="premium-hero-art" aria-hidden="true">
+    <div class="hero-halo halo-outer"></div><div class="hero-halo halo-inner"></div>
+    <div class="hero-brand-glass"><img src="./assets/essa-vaga-logo.png" alt=""></div>
+    <div class="hero-year-chip"><span>SEU ANO</span><strong>2027</strong></div>
+    <div class="hero-star hero-spark-one">✦</div><div class="hero-star hero-spark-two">✧</div>
+  </div>
+</section>
         <section class="finder"><label for="search" class="sr-only">Buscar materiais e vestibulares</label><span class="search-symbol" aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Pesquise uma universidade, prova ou material..." autocomplete="off"><button type="button" id="clear-search" class="clear-search" aria-label="Limpar busca" hidden>✕</button></section>
         <section class="view-head"><div><p class="section-kicker" id="view-kicker">COMECE POR AQUI</p><h2 id="view-title">Tudo para sua aprovação</h2><p id="view-description" class="muted">Escolha uma área e acesse os materiais que você precisa.</p></div><div class="total-pill" id="total-pill">17 recursos</div></section>
         <div id="quick-actions" class="quick-actions" aria-label="Acessos rápidos"></div>
+
+<section id="home-showcase" class="home-showcase" hidden aria-label="Universidades e datas em destaque">
+  <div class="home-showcase-heading">
+    <div><p class="premium-section-eyebrow">ESCOLHA SEU DESTINO</p><h2>Universidades e exames</h2><p>Conheça os principais processos seletivos e explore o calendário.</p></div>
+    <button type="button" data-jump="calendario" class="premium-inline-action">Ver calendário <span aria-hidden="true">↗</span></button>
+  </div>
+  <div class="home-university-grid">
+    <button type="button" class="university-card university-usp" data-jump="calendario" data-calendar-focus="usp" aria-label="Ver datas da USP no calendário">
+      <span class="uni-top-line"><span class="uni-type">FUVEST</span><span class="uni-forward" aria-hidden="true">↗</span></span>
+      <img src="./assets/logo-usp.svg" alt="Logo da USP" class="uni-logo">
+      <span class="uni-name">Universidade de São Paulo</span>
+      <span class="uni-bottom"><strong>USP</strong><span>Calendário 2027</span></span>
+    </button>
+    <button type="button" class="university-card university-unicamp" data-jump="calendario" data-calendar-focus="unicamp" aria-label="Ver datas da UNICAMP no calendário">
+      <span class="uni-top-line"><span class="uni-type">COMVEST</span><span class="uni-forward" aria-hidden="true">↗</span></span>
+      <img src="./assets/logo-unicamp.svg" alt="Logo da UNICAMP" class="uni-logo">
+      <span class="uni-name">Universidade Estadual de Campinas</span>
+      <span class="uni-bottom"><strong>UNICAMP</strong><span>Calendário 2027</span></span>
+    </button>
+    <button type="button" class="university-card university-unesp" data-jump="calendario" data-calendar-focus="unesp" aria-label="Ver datas da UNESP no calendário">
+      <span class="uni-top-line"><span class="uni-type">VUNESP</span><span class="uni-forward" aria-hidden="true">↗</span></span>
+      <img src="./assets/logo-unesp.svg" alt="Logo da UNESP" class="uni-logo">
+      <span class="uni-name">Universidade Estadual Paulista</span>
+      <span class="uni-bottom"><strong>UNESP</strong><span>Calendário 2027</span></span>
+    </button>
+    <button type="button" class="university-card university-enem" data-jump="calendario" data-calendar-focus="enem" aria-label="Ver datas do ENEM no calendário">
+      <span class="uni-top-line"><span class="uni-type">EXAME NACIONAL</span><span class="uni-forward" aria-hidden="true">↗</span></span>
+      <img src="./assets/logo-enem.svg" alt="Logo do ENEM" class="uni-logo">
+      <span class="uni-name">Exame Nacional do Ensino Médio</span>
+      <span class="uni-bottom"><strong>ENEM</strong><span>Calendário 2027</span></span>
+    </button>
+  </div>
+  <div class="premium-study-row">
+    <div class="premium-dates-panel">
+      <div class="premium-panel-head"><div><span class="premium-section-eyebrow">FIQUE DE OLHO</span><h3>Próximas datas</h3></div><span class="premium-head-icon" aria-hidden="true">▦</span></div>
+      <div id="home-date-list" class="premium-date-list" aria-live="polite"></div>
+      <button type="button" data-jump="calendario" class="premium-panel-link">Abrir calendário completo <span aria-hidden="true">→</span></button>
+    </div>
+    <div class="premium-motivation-panel">
+      <div class="motivation-orbit" aria-hidden="true"></div>
+      <span class="motivation-symbol" aria-hidden="true">✦</span>
+      <p class="premium-section-eyebrow">UM PASSO DE CADA VEZ</p>
+      <h3>O próximo capítulo da sua história começa aqui.</h3>
+      <p>Pratique com provas anteriores e transforme cada exercício em preparação.</p>
+      <button type="button" data-jump="provas">Explorar banco de provas <span aria-hidden="true">↗</span></button>
+    </div>
+  </div>
+</section>
+
 
         <section id="calendar-app" class="calendar-app" hidden aria-label="Calendário de vestibulares 2027">
           <div class="calendar-intro">
@@ -120,6 +189,6 @@
   <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="biblioteca">▧ Biblioteca de materiais</button><button type="button" data-jump="recursos">✧ Bernoulli e serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
   <dialog id="install-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">ACESSO RÁPIDO</p><h2>Instale no celular</h2></div><button type="button" class="close-btn" data-close="install-dialog" aria-label="Fechar">✕</button></div><div class="modal-body"><p>Depois de publicar este aplicativo em um endereço HTTPS, você pode adicioná-lo à tela inicial:</p><p><strong>Android (Chrome):</strong> abra o menu ⋮ e selecione “Instalar app” ou “Adicionar à tela inicial”.</p><p><strong>iPhone (Safari):</strong> toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p><p class="muted small">Os links externos, como Google Drive e SISU, exigem internet e podem pedir acesso.</p><button type="button" id="native-install" class="primary-btn" hidden>Instalar agora</button></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="./data.js?v=9"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js"></script><script src="./unesp-notas.js"></script><script src="./app.js?v=9"></script>
+  <script src="./data.js?v=9"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js"></script><script src="./unesp-notas.js"></script><script src="./app.js?v=12"></script>
 </body>
 </html>
