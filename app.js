@@ -34,7 +34,8 @@ const PROVA_LOGOS={
  unesp:{name:'UNESP',src:'./assets/logo-unesp.svg'},
  unicamp:{name:'UNICAMP',src:'./assets/logo-unicamp.svg'},
  famerp:{name:'FAMERP',src:'https://storage.googleapis.com/locus-bucket-prd/instituicao-ensino/faculdade-de-medicina-de-sao-jose-do-rio-preto.png'},
- famema:{name:'FAMEMA',src:'https://jucoracini.github.io/E-book-antibioticoterapia/assets/capa/famema.png'}
+ famema:{name:'FAMEMA',src:'https://jucoracini.github.io/E-book-antibioticoterapia/assets/capa/famema.png'},
+ 'bernoulli-resolve':{name:'Bernoulli Educação',src:'./assets/logo-bernoulli.webp'}
 };
 function card(item){
  const [_,symbol,color]=cats[item.category],brand=item.category==='provas'?PROVA_LOGOS[item.id]:null;

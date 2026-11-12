@@ -243,3 +243,7 @@ main{max-width:1460px}
 .prova-famerp .institution-logo{background:#f8fcf8;border-color:#dbecdf}
 .prova-famema .institution-logo{background:#f6fbfc;border-color:#dcebf0}
 @media(max-width:760px){.prova-institution-card .institution-logo{height:67px;width:min(76%,155px);padding:8px 11px}.prova-institution-card .resource-top{min-height:71px}}
+
+/* Identidade Bernoulli Educação no card Bernoulli Resolve */
+.prova-bernoulli-resolve .institution-logo{width:min(79%,195px);background:#fff}
+.prova-bernoulli-resolve .institution-logo-image{object-fit:contain}
