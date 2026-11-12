@@ -91,13 +91,14 @@ function getCutoffRows(){
  const d=getCutoffData();if(!d)return [];
  let a=d.carreiras.filter(r=>normal(r.curso).includes(normal(N.query)));
  if(N.onlyFull)a=a.filter(r=>d.anos.every(y=>r.notas[y]!==null&&r.notas[y]!==undefined));
- if(N.sort==='2026-desc'||N.sort==='2026-asc')a.sort((a,b)=>{const av=a.notas['2026'],bv=b.notas['2026'];if(av==null&&bv==null)return a.curso.localeCompare(b.curso,'pt-BR');if(av==null)return 1;if(bv==null)return -1;return (N.sort==='2026-desc'?bv-av:av-bv)||a.curso.localeCompare(b.curso,'pt-BR')});
+ const scoreSort=N.sort.match(/^(\d{4})-(asc|desc)$/);
+ if(scoreSort)a.sort((a,b)=>{const year=scoreSort[1],direction=scoreSort[2];const av=a.notas[year],bv=b.notas[year];if(av==null&&bv==null)return a.curso.localeCompare(b.curso,'pt-BR');if(av==null)return 1;if(bv==null)return -1;return (direction==='desc'?bv-av:av-bv)||a.curso.localeCompare(b.curso,'pt-BR')});
  else a.sort((a,b)=>a.curso.localeCompare(b.curso,'pt-BR'));
  return a;
 }
 const USP_INFO='<strong>Atenção à comparação entre anos.</strong> A FUVEST alterou códigos e agrupamentos de carreiras. Quando não houve equivalência direta e segura entre uma carreira antiga e outra recente, mantivemos os registros separados, sem completar artificialmente as células vazias. Algumas carreiras reúnem vários cursos ou campi. Estes valores representam o corte da 1ª fase para convocação à 2ª fase, não a classificação final.';
 const UNESP_INFO='<strong>Sistema Universal (SU):</strong> em 2025 e 2026 utilizamos somente a coluna SU, sem as notas de SRVEBP e SRVEBP+PPI. A tabela de 2020 a 2024 é uma <strong>compilação fornecida pelo Instituto que não identifica explicitamente a modalidade</strong>, portanto a equivalência com o SU ainda exige confirmação. Diferentes campi e turnos são apresentados separadamente. Alterações na denominação ou no turno sem correspondência segura não foram forçadas em uma única série. São os acertos mínimos da 1ª fase para convocação à 2ª fase, não notas finais de aprovação.';
-const UNICAMP_INFO='<strong>Compare com atenção:</strong> em 2020 a primeira fase da UNICAMP tinha <strong>90 questões</strong>; de 2021 a 2026, <strong>72 questões</strong>. Por isso, as notas brutas de 2020 não são diretamente comparáveis às demais. Para 2025 e 2026 foi considerada apenas a coluna <strong>Não Cotistas / PAAIS 0 (sem bônus)</strong>. A tabela histórica enviada para 2020–2024 <strong>não identifica expressamente a modalidade</strong>; confirme-a antes de utilizar esses anos como comparação de ampla concorrência. São acertos para convocação à segunda fase, não notas finais para ingresso.';
+const UNICAMP_INFO='<strong>Compare com atenção:</strong> em 2020 a primeira fase da UNICAMP tinha <strong>90 questões</strong>; de 2021 a 2027, <strong>72 questões</strong>. Por isso, as notas brutas de 2020 não são diretamente comparáveis às demais. Para 2025, 2026 e 2027 foi considerada apenas a coluna <strong>Não Cotistas / PAAIS 0 (sem bônus)</strong>. A tabela histórica enviada para 2020–2024 <strong>não identifica expressamente a modalidade</strong>; confirme-a antes de utilizar esses anos como comparação de ampla concorrência. São acertos para convocação à segunda fase, não notas finais para ingresso.';
 function renderCutoffs(){
  document.querySelectorAll('[data-uni]').forEach(b=>{const active=b.dataset.uni===N.uni;b.classList.toggle('selected',active);b.setAttribute('aria-selected',active?'true':'false')});
  const d=getCutoffData(),unicamp=N.uni==='UNICAMP',unesp=N.uni==='UNESP';
@@ -105,13 +106,27 @@ function renderCutoffs(){
  if(!d){$('cutoff-other-title').textContent=N.uni;return}
  $('cutoff-kicker').textContent=unicamp?'COMVEST • DADOS HISTÓRICOS':unesp?'UNESP / VUNESP • DADOS HISTÓRICOS':'FUVEST • DADOS HISTÓRICOS';
  $('cutoff-heading').textContent='Notas de corte — '+N.uni;
- $('cutoff-description').innerHTML=unicamp?'Acertos da <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Não Cotistas / PAAIS 0 (2025–2026)</strong> • 2020–2026':unesp?'Acertos mínimos para convocação à <strong>2ª fase</strong> • <strong>Sistema Universal (SU) verificado em 2025 e 2026</strong> • Histórico 2020–2024 com modalidade não identificada na compilação':'Nota mínima na <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Ampla Concorrência</strong> • 2020–2026';
+ const latestYear=Math.max(...d.anos);
+ const updateBadge=$('cutoff-update');updateBadge.hidden=!unicamp;
+ if(unicamp)updateBadge.textContent='Atualização 2027';
+ const sortSelect=$('cutoff-sort');
+ for(const direction of ['desc','asc']){
+  const option=sortSelect.querySelector('option[value$="-'+direction+'"]');
+  if(option){option.value=latestYear+'-'+direction;option.textContent=(direction==='desc'?'Maior':'Menor')+' nota em '+latestYear}
+ }
+ const heading=document.querySelector('.cutoff-table thead tr');
+ heading.querySelectorAll('th:not(.course-col)').forEach(th=>th.remove());
+ for(const year of orderedYears(d)){
+  const th=document.createElement('th');th.scope='col';th.textContent=String(year);
+  if(year===latestYear)th.classList.add('latest-year');heading.append(th);
+ }
+ $('cutoff-description').innerHTML=unicamp?'Acertos da <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Não Cotistas / PAAIS 0 (2025–2027)</strong> • 2020–2027':unesp?'Acertos mínimos para convocação à <strong>2ª fase</strong> • <strong>Sistema Universal (SU) verificado em 2025 e 2026</strong> • Histórico 2020–2024 com modalidade não identificada na compilação':'Nota mínima na <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Ampla Concorrência</strong> • 2020–2026';
  $('cutoff-mark').innerHTML=unicamp?'NC <small>PAAIS 0</small>':unesp?'SU <small>2025–26</small>':'AC <small>somente</small>';
  $('cutoff-course-header').textContent=unicamp?'Curso / turno':unesp?'Curso / cidade / turno':'Carreira / curso';
  $('cutoff-search').placeholder=unesp?'Ex.: Medicina, Franca, Psicologia, Bauru...':unicamp?'Ex.: Medicina, História, Engenharia...':'Ex.: Medicina, Direito, Arquitetura...';
- $('cutoff-full-label').textContent=unicamp||unesp?'Apenas cursos com os sete anos':'Apenas carreiras com os sete anos';
+ $('cutoff-full-label').textContent=unicamp||unesp?(unicamp?'Apenas cursos com os oito anos':'Apenas cursos com os sete anos'):'Apenas carreiras com os sete anos';
  $('cutoff-legend-missing').textContent=unicamp||unesp?'— : curso ou valor sem correspondência segura no ano':'— : sem informação equivalente nesta carreira / ano';
- $('cutoff-legend-units').textContent=unicamp?'Acertos: 2020 (0–90); 2021–2026 (0–72) • Não são notas finais de ingresso.':unesp?'Acertos na primeira fase (90 questões) • Não são notas finais de ingresso.':'Notas em pontos (0–90) • Não são notas finais de ingresso.';
+ $('cutoff-legend-units').textContent=unicamp?'Acertos: 2020 (0–90); 2021–2027 (0–72) • Não são notas finais de ingresso.':unesp?'Acertos na primeira fase (90 questões) • Não são notas finais de ingresso.':'Notas em pontos (0–90) • Não são notas finais de ingresso.';
  $('cutoff-info').innerHTML=unicamp?UNICAMP_INFO:unesp?UNESP_INFO:USP_INFO;
  $('cutoff-sources-usp').hidden=unicamp||unesp;
  $('cutoff-sources-unicamp').hidden=!unicamp;
@@ -120,7 +135,7 @@ function renderCutoffs(){
  const rows=getCutoffRows(),tbody=$('cutoff-tbody');tbody.replaceChildren();
  for(const r of rows){const tr=document.createElement('tr');const name=node('th','course-col');name.scope='row';name.append(node('span','course-label',r.curso));if(!unicamp){const code=r.codigo2026||r.codigo2025||r.codigoHistorico;if(code)name.append(node('small','course-code',unesp?`Curso VUNESP · ${code} · SU em 2025/26`:`Carreira FUVEST · ${code}`));}
  name.title=r.observacao||'';tr.append(name);
- for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===2026?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=unicamp?(y===2020?90:72):90;td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
+ for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===latestYear?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=unicamp?(y===2020?90:72):90;td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
  $('cutoff-count').textContent=`${rows.length} ${rows.length===1?(unicamp||unesp?'curso':'carreira'):(unicamp||unesp?'cursos':'carreiras')} exibidos`; $('cutoff-empty').hidden=rows.length!==0;
 }
 function initCutoffs(){
@@ -132,7 +147,7 @@ function initCutoffs(){
   const d=getCutoffData();if(!d)return;
   const years=orderedYears(d);const header=['Curso',...years.map(String)];const rows=[header,...getCutoffRows().map(r=>[r.curso,...years.map(y=>r.notas[y]??'')])];
   const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
-  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`notas-de-corte-${N.uni.toLowerCase()}-2020-2026.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`notas-de-corte-${N.uni.toLowerCase()}-${Math.min(...d.anos)}-${Math.max(...d.anos)}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  });
 }
 const open=id=>{if(!$(id).open)$(id).showModal()};const close=id=>{if($(id).open)$(id).close()};
