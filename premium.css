@@ -228,3 +228,18 @@ main{max-width:1460px}
 }
 @media(max-width:370px){.novidade-icon{display:none}.novidade-card{padding:16px}}
 @media(prefers-reduced-motion:reduce){.novidade-card{transition:none!important}}
+
+/* Banco de Provas — logotipos das instituições sem comprometer a leitura dos cards */
+.resource-card.prova-institution-card{position:relative;overflow:hidden}
+.prova-institution-card .resource-top{align-items:flex-start;min-height:82px}
+.prova-institution-card .institution-logo{width:min(76%,170px);height:76px;border:1px solid #e7e9f5;border-radius:15px;background:rgba(255,255,255,.97);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px 13px;box-shadow:0 5px 16px rgba(31,43,115,.05)}
+.prova-institution-card .institution-logo-image{width:100%;height:100%;display:block;object-fit:contain;object-position:center}
+.prova-institution-card .institution-logo-fallback{display:none;color:#283485;font-size:clamp(14px,1.6vw,22px);font-weight:900;letter-spacing:.3px}
+.prova-institution-card .institution-logo.logo-fallback-active .institution-logo-fallback{display:block}
+.prova-institution-card .card-save{flex:none;margin-left:auto;position:relative;z-index:1}
+.prova-institution-card .resource-top .institution-logo{flex:none}
+.prova-institution-card .card-tag{color:#5b629b}
+.prova-institution-card .resource-bottom a{color:#333aa4}
+.prova-famerp .institution-logo{background:#f8fcf8;border-color:#dbecdf}
+.prova-famema .institution-logo{background:#f6fbfc;border-color:#dcebf0}
+@media(max-width:760px){.prova-institution-card .institution-logo{height:67px;width:min(76%,155px);padding:8px 11px}.prova-institution-card .resource-top{min-height:71px}}

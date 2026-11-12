@@ -28,9 +28,38 @@ function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');cle
 function go(route){route=normalizeRoute(route);if(!ROUTES.includes(route))return;S.route=route;S.filter='todos';S.search='';$('search').value='';$('clear-search').hidden=true;if(location.hash!=='#/'+route)location.hash='/'+route;render();window.scrollTo({top:0,behavior:'smooth'})}
 function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route==='favoritos')return a.filter(x=>S.fav.has(x.id));if(S.route==='recursos')return a.filter(x=>['recursos','servicos'].includes(x.category));if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
 function favorite(id){if(S.fav.has(id))S.fav.delete(id);else S.fav.add(id);set('evm-favorites-v1',JSON.stringify([...S.fav]));toast(S.fav.has(id)?'Adicionado aos favoritos.':'Removido dos favoritos.');render()}
-function card(item){const [_,symbol,color]=cats[item.category];const box=node('article','resource-card');const top=node('div','resource-top');const ico=node('div','card-icon '+color,symbol);ico.setAttribute('aria-hidden','true');const b=node('button','card-save'+(S.fav.has(item.id)?' saved':''),S.fav.has(item.id)?'♥':'♡');b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));top.append(ico,b);
- const foot=node('div','resource-bottom');const a=node('a','','Abrir material');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Abrir '+item.title+' em uma nova aba');a.append(node('span','','↗'));foot.append(a);
- box.append(top,node('div','card-tag',item.tag),node('h3','',item.title),node('p','',item.description),foot);return box}
+const PROVA_LOGOS={
+ fuvest:{name:'USP',src:'./assets/logo-usp.svg?v=11'},
+ enem:{name:'ENEM',src:'./assets/logo-enem.svg'},
+ unesp:{name:'UNESP',src:'./assets/logo-unesp.svg'},
+ unicamp:{name:'UNICAMP',src:'./assets/logo-unicamp.svg'},
+ famerp:{name:'FAMERP',src:'https://storage.googleapis.com/locus-bucket-prd/instituicao-ensino/faculdade-de-medicina-de-sao-jose-do-rio-preto.png'},
+ famema:{name:'FAMEMA',src:'https://jucoracini.github.io/E-book-antibioticoterapia/assets/capa/famema.png'}
+};
+function card(item){
+ const [_,symbol,color]=cats[item.category],brand=item.category==='provas'?PROVA_LOGOS[item.id]:null;
+ const box=node('article','resource-card'+(brand?' prova-institution-card prova-'+item.id:''));
+ const top=node('div','resource-top');
+ if(brand){
+  const logo=node('div','institution-logo');
+  logo.append(node('span','institution-logo-fallback',brand.name));
+  const img=node('img','institution-logo-image');
+  img.src=brand.src;img.alt='Logotipo de '+brand.name;img.loading='lazy';img.decoding='async';
+  img.addEventListener('error',()=>{img.remove();logo.classList.add('logo-fallback-active')});
+  logo.append(img);top.append(logo);
+ }else{
+  const ico=node('div','card-icon '+color,symbol);ico.setAttribute('aria-hidden','true');top.append(ico);
+ }
+ const b=node('button','card-save'+(S.fav.has(item.id)?' saved':''),S.fav.has(item.id)?'♥':'♡');
+ b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';
+ b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));
+ top.append(b);
+ const foot=node('div','resource-bottom');const a=node('a','','Abrir material');
+ a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';
+ a.setAttribute('aria-label','Abrir '+item.title+' em uma nova aba');a.append(node('span','','↗'));foot.append(a);
+ box.append(top,node('div','card-tag',item.tag),node('h3','',item.title),node('p','',item.description),foot);
+ return box;
+}
 function quick(){
  const q=$('quick-actions');q.replaceChildren();
  const icons={
