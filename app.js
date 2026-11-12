@@ -81,7 +81,31 @@ function renderHomeDates(){
  }
 }
 
-function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('home-showcase').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){quick();filters();renderHomeDates()}
+
+function renderNovidades(){
+ const section=$('novidades-section'),list=$('novidades-list');
+ if(!section||!list)return;
+ const notices=Array.isArray(window.EVM_NOVIDADES)?window.EVM_NOVIDADES.filter(x=>x&&x.title&&ROUTES.includes(x.route)).slice(0,4):[];
+ list.replaceChildren();
+ if(!notices.length){section.hidden=true;return}
+ section.hidden=false;
+ for(const notice of notices){
+  const b=node('button','novidade-card'+(notice.featured?' novidade-featured':''));b.type='button';b.dataset.jump=notice.route;
+  if(notice.university)b.dataset.cutoffFocus=notice.university;
+  b.setAttribute('aria-label',notice.label+' '+notice.title+'. '+notice.action);
+  const icon=node('span','novidade-icon');icon.setAttribute('aria-hidden','true');
+  icon.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l2 5h3l-2-5 8-3V7l-8 3H5a2 2 0 0 0-2 1z"/><path d="M18 6v8M21 9v3"/></svg>';
+  const body=node('span','novidade-content');
+  const meta=node('span','novidade-meta');
+  meta.append(node('span','novidade-label',notice.label||'NOVIDADE'),node('time','novidade-date',notice.date||''));
+  const headline=node('strong','novidade-title',notice.title);
+  const desc=node('span','novidade-description',notice.description||'');
+  const cta=node('span','novidade-cta',notice.action||'Saiba mais');
+  const arrow=node('span','novidade-arrow','↗');arrow.setAttribute('aria-hidden','true');cta.append(arrow);
+  body.append(meta,headline,desc,cta);b.append(icon,body);list.append(b);
+ }
+}
+function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('novidades-section').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('home-showcase').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){renderNovidades();quick();filters();renderHomeDates()}
 if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}const a=shown();if(calendar)$('total-pill').textContent=$('calendar-count').textContent;else if(!cutoff)$('total-pill').textContent=count(a.length);$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
 $('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
 document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('fav-count').textContent=S.fav.size;$('fav-count').hidden=!S.fav.size}
@@ -165,7 +189,16 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){if(route.dataset.jump)close('more-dialog');go(route.dataset.route||route.dataset.jump);if(route.dataset.calendarFocus){const chosen=document.querySelector('[data-calendar-filter="'+route.dataset.calendarFocus+'"]');if(chosen)chosen.click()}}const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
+function init(){S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
+  if(route.dataset.jump)close('more-dialog');
+  const focus=route.dataset.cutoffFocus;
+  if(focus&&['USP','UNESP','UNICAMP'].includes(focus)){
+   N.uni=focus;N.query='';N.sort='az';N.onlyFull=false;
+   $('cutoff-search').value='';$('cutoff-sort').value='az';$('cutoff-full').checked=false;
+  }
+  go(route.dataset.route||route.dataset.jump);
+  if(route.dataset.calendarFocus){const chosen=document.querySelector('[data-calendar-filter="'+route.dataset.calendarFocus+'"]');if(chosen)chosen.click()}
+ }const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
 $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search').hidden=!S.search;render()});$('clear-search').addEventListener('click',()=>{$('search').value='';S.search='';$('clear-search').hidden=true;render();$('search').focus()});$('reset-search').addEventListener('click',()=>{S.search='';S.filter='todos';$('search').value='';$('clear-search').hidden=true;render()});
 $('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const raw=location.hash.replace(/^#\/?/,'');const r=normalizeRoute(raw);if(raw!==r)history.replaceState(null,'',location.pathname+location.search+'#/'+r);if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});

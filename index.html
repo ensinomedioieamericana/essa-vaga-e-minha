@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css?v=13">
-  <link rel="stylesheet" href="./premium.css?v=12">
+  <link rel="stylesheet" href="./premium.css?v=14">
   <title>Essa Vaga É Minha! — Instituto Educacional</title>
 </head>
 <body>
@@ -54,6 +54,14 @@
     <div class="hero-star hero-spark-one">✦</div><div class="hero-star hero-spark-two">✧</div>
   </div>
 </section>
+
+        <section id="novidades-section" class="novidades-section" hidden aria-label="Novidades do Essa Vaga É Minha!">
+          <div class="novidades-heading">
+            <div><span class="novidades-eyebrow"><span class="novidades-indicator" aria-hidden="true"></span> ACONTECEU AGORA</span><h2>Novidades</h2></div>
+            <p>Fique por dentro das últimas atualizações para sua preparação.</p>
+          </div>
+          <div id="novidades-list" class="novidades-list"></div>
+        </section>
         <section class="finder"><label for="search" class="sr-only">Buscar materiais e vestibulares</label><span class="search-symbol" aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Pesquise uma universidade, prova ou material..." autocomplete="off"><button type="button" id="clear-search" class="clear-search" aria-label="Limpar busca" hidden>✕</button></section>
         <section class="view-head"><div><p class="section-kicker" id="view-kicker">COMECE POR AQUI</p><h2 id="view-title">Tudo para sua aprovação</h2><p id="view-description" class="muted">Escolha uma área e acesse os materiais que você precisa.</p></div><div class="total-pill" id="total-pill">17 recursos</div></section>
         <div id="quick-actions" class="quick-actions" aria-label="Acessos rápidos"></div>
@@ -189,6 +197,6 @@
   <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="biblioteca">▧ Biblioteca de materiais</button><button type="button" data-jump="recursos">✧ Bernoulli e serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
   <dialog id="install-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">ACESSO RÁPIDO</p><h2>Instale no celular</h2></div><button type="button" class="close-btn" data-close="install-dialog" aria-label="Fechar">✕</button></div><div class="modal-body"><p>Depois de publicar este aplicativo em um endereço HTTPS, você pode adicioná-lo à tela inicial:</p><p><strong>Android (Chrome):</strong> abra o menu ⋮ e selecione “Instalar app” ou “Adicionar à tela inicial”.</p><p><strong>iPhone (Safari):</strong> toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p><p class="muted small">Os links externos, como Google Drive e SISU, exigem internet e podem pedir acesso.</p><button type="button" id="native-install" class="primary-btn" hidden>Instalar agora</button></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="./data.js?v=9"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./app.js?v=13"></script>
+  <script src="./data.js?v=9"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./novidades.js?v=14"></script><script src="./app.js?v=14"></script>
 </body>
 </html>

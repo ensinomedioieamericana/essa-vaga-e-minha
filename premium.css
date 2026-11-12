@@ -190,3 +190,41 @@ main{max-width:1460px}
  .uni-name{min-height:39px}
 }
 @media(prefers-reduced-motion:reduce){.quick-card,.university-card,.premium-date-row{transition:none!important}}
+
+/* Bloco Novidades: avisos editáveis em novidades.js */
+.novidades-section{margin:5px 0 25px}
+.novidades-section[hidden]{display:none!important}
+.novidades-heading{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:10px 20px;margin:0 0 13px}
+.novidades-heading h2{margin:5px 0 0;font-size:23px;letter-spacing:-.65px;color:#252b78}
+.novidades-eyebrow{font-size:10px;letter-spacing:1.65px;font-weight:900;color:#e02b4a;display:inline-flex;align-items:center;gap:7px}
+.novidades-indicator{width:7px;height:7px;background:#e32b49;border-radius:50%;box-shadow:0 0 0 4px #ed46602c}
+.novidades-heading p{margin:0 0 3px;color:#747c9d;font-size:11px}
+.novidades-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:13px}
+.novidade-card{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:21px;text-align:left;width:100%;min-height:147px;padding:22px 25px;border:1px solid #ffffffa8;border-radius:22px;color:#fff;background:radial-gradient(circle at 95% 10%,#ec5a88aa,transparent 38%),linear-gradient(112deg,#26328d 4%,#4147b1 77%,#a63c89 110%);box-shadow:0 17px 34px #2833942b;transition:transform .2s,box-shadow .2s}
+.novidade-card:before{content:"";z-index:-1;position:absolute;right:-80px;bottom:-145px;width:330px;height:260px;border:1px solid #ffffff38;border-radius:50%;box-shadow:0 0 0 35px #ffffff09,0 0 0 85px #ffffff06;pointer-events:none}
+.novidade-card:hover{transform:translateY(-3px);box-shadow:0 20px 38px #2833943b}
+.novidade-icon{display:grid;flex:none;place-items:center;width:77px;height:77px;border-radius:20px;background:linear-gradient(145deg,#ffffff48,#ffffff15);box-shadow:inset 0 1px #ffffff7a,0 8px 22px #16216440;border:1px solid #ffffff85;backdrop-filter:blur(13px);color:#fff}
+.novidade-icon svg{width:37px;height:37px}
+.novidade-content{display:flex;flex-direction:column;align-items:start;min-width:0;flex:1;gap:7px;position:relative;z-index:1}
+.novidade-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.novidade-label{font-size:10px;font-weight:950;letter-spacing:1.2px;color:#b52242;background:#fff;border-radius:99px;padding:6px 10px}
+.novidade-date{color:#e8e6ff;font-size:10px;font-weight:750;letter-spacing:.55px}
+.novidade-title{font-size:clamp(17px,2.05vw,24px);line-height:1.17;letter-spacing:-.45px;font-weight:950}
+.novidade-description{font-size:11px;line-height:1.5;color:#edf0ff;max-width:630px}
+.novidade-cta{display:inline-flex;align-items:center;gap:9px;margin-top:5px;font-size:12px;font-weight:900;color:#fff;text-decoration:underline;text-underline-offset:4px}
+.novidade-arrow{font-size:19px;line-height:1}
+.novidade-card:focus-visible{outline:3px solid #ffb3c7;outline-offset:4px}
+@media(min-width:850px){.novidade-featured{grid-column:1/-1}}
+@media(max-width:760px){
+ .novidades-section{margin:1px 0 23px}
+ .novidades-heading h2{font-size:20px}
+ .novidade-card{min-height:169px;border-radius:19px;padding:17px 16px;gap:13px}
+ .novidade-icon{width:51px;height:51px;border-radius:15px;align-self:center}
+ .novidade-icon svg{height:25px;width:25px}
+ .novidade-title{font-size:18px}
+ .novidade-description{font-size:11px}
+ .novidade-label{font-size:9px;padding:5px 9px}
+ .novidades-heading p{font-size:10px}
+}
+@media(max-width:370px){.novidade-icon{display:none}.novidade-card{padding:16px}}
+@media(prefers-reduced-motion:reduce){.novidade-card{transition:none!important}}
