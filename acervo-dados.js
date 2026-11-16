@@ -363,7 +363,188 @@ window.EVM_ACERVO = {
       "subtitle": "Exame Nacional do Ensino Médio",
       "logo": "./assets/logo-enem.svg",
       "legacy": "https://drive.google.com/drive/folders/1NkHLz7gqrD7yKdDXnUFhj1DDbv0MjjwY?usp=drive_link",
-      "years": {}
+      "years": {
+        "2019": [
+          {
+            "title": "ENEM 2019 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2019/dia-1/enem-2019-dia-1-prova.pdf",
+            "size": 13616351,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2019 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2019/dia-1/enem-2019-dia-1-gabarito.pdf",
+            "size": 165462,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2019 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2019/dia-2/enem-2019-dia-2-prova.pdf",
+            "size": 11019908,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2019 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2019/dia-2/enem-2019-dia-2-gabarito.pdf",
+            "size": 167336,
+            "pending": true
+          }
+        ],
+        "2020": [
+          {
+            "title": "ENEM 2020 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2020/dia-1/enem-2020-dia-1-prova.pdf",
+            "size": 5554330,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2020 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2020/dia-1/enem-2020-dia-1-gabarito.pdf",
+            "size": 129591,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2020 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2020/dia-2/enem-2020-dia-2-prova.pdf",
+            "size": 6510246,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2020 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2020/dia-2/enem-2020-dia-2-gabarito.pdf",
+            "size": 130708,
+            "pending": true
+          }
+        ],
+        "2021": [
+          {
+            "title": "ENEM 2021 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2021/dia-1/enem-2021-dia-1-prova.pdf",
+            "size": 2254970,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2021 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2021/dia-1/enem-2021-dia-1-gabarito.pdf",
+            "size": 224151,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2021 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2021/dia-2/enem-2021-dia-2-prova.pdf",
+            "size": 1320710,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2021 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2021/dia-2/enem-2021-dia-2-gabarito.pdf",
+            "size": 225008,
+            "pending": true
+          }
+        ],
+        "2022": [
+          {
+            "title": "ENEM 2022 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2022/dia-1/enem-2022-dia-1-prova.pdf",
+            "size": 7714964,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2022 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2022/dia-1/enem-2022-dia-1-gabarito.pdf",
+            "size": 211180,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2022 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2022/dia-2/enem-2022-dia-2-prova.pdf",
+            "size": 7058477,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2022 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2022/dia-2/enem-2022-dia-2-gabarito.pdf",
+            "size": 211394,
+            "pending": true
+          }
+        ],
+        "2023": [
+          {
+            "title": "ENEM 2023 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2023/dia-1/enem-2023-dia-1-prova.pdf",
+            "size": 4269374,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2023 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2023/dia-1/enem-2023-dia-1-gabarito.pdf",
+            "size": 592479,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2023 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2023/dia-2/enem-2023-dia-2-prova.pdf",
+            "size": 3228403,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2023 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2023/dia-2/enem-2023-dia-2-gabarito.pdf",
+            "size": 593520,
+            "pending": true
+          }
+        ],
+        "2024": [
+          {
+            "title": "ENEM 2024 · 1º dia · Prova · Caderno azul",
+            "type": "prova",
+            "file": "acervo/enem/2024/dia-1/enem-2024-dia-1-prova.pdf",
+            "size": 4775958,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2024 · 1º dia · Gabarito · Caderno azul",
+            "type": "gabarito",
+            "file": "acervo/enem/2024/dia-1/enem-2024-dia-1-gabarito.pdf",
+            "size": 118234,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2024 · 2º dia · Prova · Caderno amarelo",
+            "type": "prova",
+            "file": "acervo/enem/2024/dia-2/enem-2024-dia-2-prova.pdf",
+            "size": 4970445,
+            "pending": true
+          },
+          {
+            "title": "ENEM 2024 · 2º dia · Gabarito · Caderno amarelo",
+            "type": "gabarito",
+            "file": "acervo/enem/2024/dia-2/enem-2024-dia-2-gabarito.pdf",
+            "size": 121742,
+            "pending": true
+          }
+        ]
+      }
     },
     {
       "id": "unesp",
