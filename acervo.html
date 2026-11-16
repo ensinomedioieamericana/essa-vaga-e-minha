@@ -9,7 +9,7 @@
  <title>Banco de Provas • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
  <link rel="manifest" href="./manifest.webmanifest">
- <link rel="stylesheet" href="./acervo.css?v=1">
+ <link rel="stylesheet" href="./acervo.css?v=2">
 </head>
 <body>
  <header class="site-header">
@@ -60,9 +60,10 @@
      <div><span>VISUALIZADOR DE DOCUMENTOS</span><h2 id="pdf-dialog-title">Visualizar PDF</h2></div>
      <div class="viewer-actions"><a id="pdf-download" href="#" download>↓ Baixar</a><a id="pdf-external" href="#" target="_blank" rel="noopener">Abrir em nova aba ↗</a><button id="pdf-close" type="button" aria-label="Fechar documento">✕</button></div>
    </div>
+   <div id="pdf-loading" class="pdf-loading" role="status" aria-live="polite" hidden></div>
    <iframe id="pdf-frame" title="Visualizador de arquivo PDF" loading="lazy"></iframe>
  </dialog>
- <script src="./acervo-dados.js?v=1"></script>
- <script src="./acervo.js?v=1"></script>
+ <script src="./acervo-dados.js?v=2"></script>
+ <script src="./acervo.js?v=2"></script>
 </body>
 </html>
