@@ -140,7 +140,7 @@ function detectType(name){
  if(n.includes('resposta')||n.includes('resolucao')||n.includes('comentario')||n.includes('correcao'))return 'resolucao';
  return 'prova';
 }
-function statusStep(t){message(t);$('pdf-auth-error').textContent=t}
+function statusStep(t){message(t);$('pdf-auth-progress').textContent=t}
 function ghError(response,details){
  if(response.status===401||response.status===403)return new Error('Token recusado ou sem permissão Contents: Read and write. '+(details?.message||''));
  if(response.status===404)return new Error('Repositório ou arquivo não encontrado no GitHub.');
@@ -293,7 +293,7 @@ function requestAuth(kind){
    if(customTitle&&items.length!==1)throw Error('Use um título personalizado somente para envios de um PDF.');
    action={kind:'files',institution:i.id,year:y,folder,items,type:$('pdf-type').value,title:customTitle};
   }
-  $('pdf-auth-error').textContent='';$('pdf-github-token').value='';
+  $('pdf-auth-error').textContent='';$('pdf-auth-progress').textContent='';$('pdf-github-token').value='';
   $('pdf-auth-dialog').showModal();$('pdf-github-token').focus();
  }catch(err){message(err.message,true)}
 }
