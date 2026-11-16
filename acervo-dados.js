@@ -8,7 +8,22 @@ window.EVM_ACERVO = {
       "subtitle": "Universidade de São Paulo",
       "logo": "./assets/logo-usp.svg?v=11",
       "legacy": "https://drive.google.com/drive/folders/1jcQfLniykYVK8xyw48zGEwQjrs6oVwUB?usp=drive_link",
-      "years": {}
+      "years": {
+        "2027": [
+          {
+            "title": "FUVEST 2027 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2027/1a-fase/fuvest-2027-1a-fase-prova.pdf",
+            "size": 2882604
+          },
+          {
+            "title": "FUVEST 2027 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2027/1a-fase/fuvest-2027-1a-fase-gabarito.pdf",
+            "size": 255764
+          }
+        ]
+      }
     },
     {
       "id": "enem",
