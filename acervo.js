@@ -8,6 +8,7 @@ const q=new URLSearchParams(location.search);
 const validId=id=>institutions.find(x=>x.id===id);
 let current=validId(q.get('prova'))||institutions[0];
 let currentYear=null;
+let currentPhase=null;
 let currentFiles=[];
 const create=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n};
 const norm=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -25,6 +26,7 @@ function updateQuery(){
  const params=new URLSearchParams(location.search);
  params.set('prova',current.id);
  if(currentYear)params.set('ano',currentYear);else params.delete('ano');
+ if(currentPhase)params.set('fase',currentPhase);else params.delete('fase');
  history.replaceState(null,'',location.pathname+'?'+params.toString()+location.hash);
 }
 function yearsOf(inst){
@@ -34,6 +36,7 @@ function selectInstitution(id,requestedYear){
  const match=validId(id);if(!match)return;
  current=match;const years=yearsOf(current);
  currentYear=years.includes(String(requestedYear))?String(requestedYear):years[0]||null;
+ currentPhase=null;
  $('file-search').value='';
  render();updateQuery();
 }
@@ -67,10 +70,35 @@ function renderYears(){
  for(const y of years){
   const btn=create('button','year-tab'+(currentYear===y?' selected':''),y);
   btn.type='button';btn.setAttribute('aria-pressed',String(currentYear===y));
-  btn.addEventListener('click',()=>{currentYear=y;$('file-search').value='';renderYears();renderFiles();updateQuery()});
+  btn.addEventListener('click',()=>{currentYear=y;currentPhase=null;$('file-search').value='';renderYears();renderPhases();renderFiles();updateQuery()});
   wrap.append(btn);
  }
 }
+
+const PHASE_LABELS={'1a-fase':'1ª fase','2a-fase':'2ª fase','especificas':'Habilidades específicas'};
+function phaseOf(doc){
+ const match=/\/(1a-fase|2a-fase|especificas)\//.exec(doc.file||'');
+ return match?match[1]:null;
+}
+function stagesOf(inst,year){
+ const docs=(inst&&inst.years&&inst.years[year])||[];
+ return ['1a-fase','2a-fase','especificas'].filter(stage=>docs.some(doc=>validPdf(inst,year,doc)&&phaseOf(doc)===stage));
+}
+function renderPhases(){
+ const wrap=$('phase-tabs');wrap.replaceChildren();
+ const stages=currentYear?stagesOf(current,currentYear):[];
+ $('phase-section').hidden=!stages.length;
+ if(!stages.length){currentPhase=null;return}
+ $('phase-subtitle').textContent=current.name+' · '+currentYear+' · escolha a fase para ver provas, gabaritos e resoluções.';
+ for(const stage of stages){
+  const count=current.years[currentYear].filter(doc=>validPdf(current,currentYear,doc)&&phaseOf(doc)===stage).length;
+  const btn=create('button','phase-tab'+(currentPhase===stage?' selected':''),PHASE_LABELS[stage]+' · '+count+(count===1?' documento':' documentos'));
+  btn.type='button';btn.setAttribute('aria-pressed',String(currentPhase===stage));
+  btn.addEventListener('click',()=>{currentPhase=stage;$('file-search').value='';renderPhases();renderFiles();updateQuery()});
+  wrap.append(btn);
+ }
+}
+
 function empty(title,description,legacy){
  $('empty-state').hidden=false;
  $('empty-title').textContent=title;
@@ -82,13 +110,18 @@ function empty(title,description,legacy){
 function renderFiles(){
  const list=$('files-list');list.replaceChildren();
  $('empty-state').hidden=true;
- $('files-title').textContent=currentYear?'Arquivos de '+currentYear:'Arquivos disponíveis';
+ const stages=currentYear?stagesOf(current,currentYear):[];
+ $('files-title').textContent=currentYear?'Arquivos de '+currentYear+(currentPhase?' · '+PHASE_LABELS[currentPhase]:''):'Arquivos disponíveis';
  const term=norm($('file-search').value.trim());
  const docs=(currentYear?current.years[currentYear]:[])||[];
- currentFiles=docs.filter(d=>validPdf(current,currentYear,d));
+ currentFiles=docs.filter(d=>validPdf(current,currentYear,d)&&(!stages.length||phaseOf(d)===currentPhase));
  const matching=currentFiles.filter(doc=>norm((doc.title||'')+' '+typeName(doc.type)).includes(term));
- $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento PDF':' documentos PDF'):'Aguardando os PDFs originais para organizar as provas por ano.';
- $('file-search').disabled=!currentYear;
+ $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados'):'Aguardando os PDFs originais para organizar as provas por ano.';
+ $('file-search').disabled=!currentYear||(stages.length&&!currentPhase);
+ if(stages.length&&!currentPhase){
+  empty('Escolha a fase da prova','Selecione 1ª fase, 2ª fase ou habilidades específicas (quando disponíveis) para visualizar os arquivos deste ano.',null);
+  return;
+ }
  if(!currentFiles.length){
   empty('Estamos preparando o acervo da '+current.name,'Os PDFs originais ainda precisam ser copiados para a hospedagem do Instituto. Até a conclusão dessa transferência, você pode consultar a pasta já utilizada pelos alunos.',current.legacy);
   return;
@@ -106,16 +139,28 @@ function renderFiles(){
   const small=create('span','pdf-meta',current.name+' · '+currentYear+(Number(doc.size)>0?' · '+formatSize(doc.size):''));
   info.append(small);
   const actions=create('div','pdf-actions');
-  const view=create('button','pdf-action primary','Visualizar');view.type='button';
-  view.addEventListener('click',()=>openPDF(doc,href));
-  let dl;
-  if(Array.isArray(doc.parts)){
-   dl=create('button','pdf-action secondary','↓ Baixar');
-   dl.type='button';dl.addEventListener('click',()=>downloadPDF(doc,href,dl));
-  }else{
-   dl=create('a','pdf-action secondary','↓ Baixar');dl.href=href;dl.download=doc.file.split('/').pop();
-  }
-  actions.append(view,dl);card.append(ico,info,actions);list.append(card);
+  const fillActions=()=>{
+   const view=create('button','pdf-action primary','Visualizar');view.type='button';
+   view.addEventListener('click',()=>openPDF(doc,href));
+   let dl;
+   if(Array.isArray(doc.parts)){
+    dl=create('button','pdf-action secondary','↓ Baixar');
+    dl.type='button';dl.addEventListener('click',()=>downloadPDF(doc,href,dl));
+   }else{
+    dl=create('a','pdf-action secondary','↓ Baixar');dl.href=href;dl.download=doc.file.split('/').pop();
+   }
+   actions.append(view,dl);
+  };
+  if(doc.pending===true){
+   card.classList.add('pdf-pending');
+   actions.append(create('span','pdf-pending-label','Aguardando publicação do PDF no servidor'));
+   fetch(href,{method:'HEAD',cache:'no-store'}).then(response=>{
+    const kind=response.headers.get('content-type')||'';
+    if(!response.ok||!/pdf|octet-stream/i.test(kind)||!card.isConnected)return;
+    card.classList.remove('pdf-pending');actions.replaceChildren();fillActions();
+   }).catch(()=>{});
+  }else fillActions();
+  card.append(ico,info,actions);list.append(card);
  }
 }
 function formatSize(n){
@@ -183,9 +228,10 @@ $('file-search').addEventListener('input',renderFiles);
 function render(){
  $('breadcrumb-name').textContent=current.name;
  $('acervo-subtitle').textContent='Explore o acervo de '+current.name+'. Selecione o ano para acessar provas, gabaritos e materiais PDF dentro do site.';
- renderInstitutions();renderYears();renderFiles();
+ renderInstitutions();renderYears();renderPhases();renderFiles();
 }
 const initialYears=yearsOf(current);
 currentYear=initialYears.includes(q.get('ano'))?q.get('ano'):initialYears[0]||null;
+currentPhase=stagesOf(current,currentYear).includes(q.get('fase'))?q.get('fase'):null;
 render();updateQuery();
 })();
