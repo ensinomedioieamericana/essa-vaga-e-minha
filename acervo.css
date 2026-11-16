@@ -40,3 +40,11 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-s
 .pdf-card.pdf-pending{background:#fafbff;box-shadow:none}
 .pdf-pending-label{color:#636e95;font-size:12px;font-weight:800;line-height:1.45}
 @media(max-width:640px){.phase-tab{flex:1 1 135px;text-align:center;padding:12px 9px}.pdf-pending-label{display:block;width:100%;text-align:center}}
+
+/* Pastas personalizadas dentro de cada ano */
+.folder-head{margin-top:26px}
+.folder-tabs{display:flex;flex-wrap:wrap;gap:9px}
+.folder-tab{border:1px solid #dce0f2;background:#fff;color:#394397;border-radius:12px;min-height:45px;padding:11px 17px;font-size:12px;font-weight:850;box-shadow:0 5px 18px #303b8c0b}
+.folder-tab:hover{background:#eef1ff}
+.folder-back{border:1px solid #d8deef;background:#f2f4fc;color:#354197;border-radius:9px;min-height:39px;padding:9px 13px;font-size:12px;font-weight:850}
+@media(max-width:640px){.folder-tab{flex:1 1 140px}.folder-back{width:100%}}
