@@ -1,5 +1,5 @@
 // Cache 18: evita misturar HTML novo com JavaScript antigo após publicar atualizações.
-const CACHE='evm-app-publico-v18';
+const CACHE='evm-app-publico-v19';
 const FILES=['./','./index.html','./styles.css','./premium.css','./data.js','./acervo.html','./acervo.css','./acervo.js','./acervo-dados.js','./novidades.js','./gestao-dados.js','./app.js','./usp-notas.js','./unicamp-notas.js','./unesp-notas.js','./assets/essa-vaga-logo.png','./assets/iea-vertical.png','./assets/iea-horizontal.png','./assets/logo-unicamp.svg','./assets/logo-usp.svg?v=11','./assets/logo-enem.svg','./assets/logo-unesp.svg','./assets/logo-bernoulli.webp','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
