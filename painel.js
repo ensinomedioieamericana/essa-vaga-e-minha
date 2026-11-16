@@ -37,7 +37,8 @@ function selectedTab(name){
  document.querySelectorAll('.tab').forEach(b=>{
   const active=b.dataset.tab===name;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));
  });
- for(const nameKey of ['calendario','notas','novidades'])$('tab-'+nameKey).hidden=nameKey!==name;
+ for(const nameKey of ['calendario','notas','novidades','acervo'])$('tab-'+nameKey).hidden=nameKey!==name;
+ $('publish').hidden=name==='acervo';
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>selectedTab(b.dataset.tab)));
 
