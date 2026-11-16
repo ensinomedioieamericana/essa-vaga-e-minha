@@ -9,6 +9,50 @@ window.EVM_ACERVO = {
       "logo": "./assets/logo-usp.svg?v=11",
       "legacy": "https://drive.google.com/drive/folders/1jcQfLniykYVK8xyw48zGEwQjrs6oVwUB?usp=drive_link",
       "years": {
+        "2026": [
+          {
+            "title": "FUVEST 2026 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-gabarito.pdf",
+            "size": 218795
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Biologia",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-biologia.pdf",
+            "size": 901356
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Fisica",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-fisica.pdf",
+            "size": 1303041
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Geografia",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-geografia.pdf",
+            "size": 1763881
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Historia",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-historia.pdf",
+            "size": 780701
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Matematica",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-matematica.pdf",
+            "size": 1071784
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Quimica",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-quimica.pdf",
+            "size": 1005219
+          }
+        ],
         "2027": [
           {
             "title": "FUVEST 2027 · 1ª fase · Prova",
