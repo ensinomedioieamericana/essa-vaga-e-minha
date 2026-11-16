@@ -30,3 +30,13 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-s
 
 .pdf-loading{height:calc(100% - 68px);display:grid;place-items:center;padding:24px;text-align:center;background:#f3f4fc;color:#454b91;font-weight:800;font-size:14px}
 .pdf-actions button:disabled{opacity:.55;cursor:wait}
+
+/* Navegação adicional: instituição → ano → fase → documento. */
+.phase-head{margin-top:31px}
+.phase-tabs{display:flex;flex-wrap:wrap;gap:10px}
+.phase-tab{border:1px solid #d9dff2;background:#fff;color:#354090;border-radius:12px;padding:13px 18px;font-size:13px;font-weight:850;min-height:46px;cursor:pointer}
+.phase-tab:hover{background:#eef0ff}
+.phase-tab.selected{color:#fff;border-color:#333c9a;background:linear-gradient(110deg,#272d88,#5157b4);box-shadow:0 6px 16px #2e398e2b}
+.pdf-card.pdf-pending{background:#fafbff;box-shadow:none}
+.pdf-pending-label{color:#636e95;font-size:12px;font-weight:800;line-height:1.45}
+@media(max-width:640px){.phase-tab{flex:1 1 135px;text-align:center;padding:12px 9px}.pdf-pending-label{display:block;width:100%;text-align:center}}
