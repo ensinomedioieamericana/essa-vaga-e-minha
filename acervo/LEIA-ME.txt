@@ -1,0 +1,18 @@
+BANCO DE PROVAS — ARQUIVOS PDF
+
+Organize os arquivos por instituição e ano.
+Exemplos de estrutura (não representam documentos já migrados):
+
+acervo/fuvest/2026/prova-1a-fase.pdf
+acervo/fuvest/2026/gabarito.pdf
+acervo/enem/2025/prova-amarela.pdf
+acervo/unesp/2026/prova.pdf
+acervo/unicamp/2026/prova.pdf
+acervo/famerp/2025/prova.pdf
+acervo/famema/2025/prova.pdf
+
+Depois de copiar os PDFs, execute python scripts/gerar_acervo.py
+para gerar o arquivo acervo-dados.js. Todos os links usam caminhos
+relativos, compatíveis com a hospedagem do Instituto.
+
+Veja também: docs/MIGRACAO_BANCO_DE_PROVAS.md

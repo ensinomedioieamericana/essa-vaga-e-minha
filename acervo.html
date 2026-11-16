@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#303493">
+ <meta name="description" content="Banco de Provas do Essa Vaga É Minha!: escolha o vestibular, selecione o ano e acesse os PDFs diretamente no site.">
+ <meta name="robots" content="index,follow">
+ <title>Banco de Provas • Essa Vaga É Minha!</title>
+ <link rel="icon" href="./icon-192.png" type="image/png">
+ <link rel="manifest" href="./manifest.webmanifest">
+ <link rel="stylesheet" href="./acervo.css?v=1">
+</head>
+<body>
+ <header class="site-header">
+  <a class="home-brand" href="./#/provas" aria-label="Voltar ao Banco de Provas">
+    <img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!" loading="eager">
+  </a>
+  <div class="brand-label"><span>INSTITUTO EDUCACIONAL DE AMERICANA</span><strong>Banco de Provas</strong></div>
+  <a class="header-back" href="./#/provas"><span aria-hidden="true">←</span> Voltar ao aplicativo</a>
+ </header>
+ <main class="page">
+  <nav class="breadcrumb" aria-label="Caminho de navegação">
+   <a href="./">Início</a><span aria-hidden="true">/</span>
+   <a href="./#/provas">Banco de Provas</a><span aria-hidden="true">/</span>
+   <span id="breadcrumb-name">Vestibulares</span>
+  </nav>
+  <section class="hero" aria-labelledby="acervo-title">
+   <div class="hero-glow" aria-hidden="true"></div>
+   <div class="hero-copy">
+    <span class="eyebrow"><span class="dot"></span> ACERVO DE PROVAS ANTERIORES</span>
+    <h1 id="acervo-title">Escolha o vestibular.<br><em>Encontre a prova.</em></h1>
+    <p id="acervo-subtitle">Selecione uma instituição e o ano para consultar provas, gabaritos e outros arquivos PDF disponíveis no acervo do Instituto.</p>
+    <div class="hero-tags"><span>▤ Provas anteriores</span><span>▣ Gabaritos e materiais</span><span>↗ PDF no próprio site</span></div>
+   </div>
+   <div class="hero-illustration" aria-hidden="true"><span class="sheet sheet-one"></span><span class="sheet sheet-two"></span><span class="sheet sheet-three">PDF</span></div>
+  </section>
+  <section class="content" aria-label="Navegação no acervo">
+   <div class="section-head"><div><span class="section-eyebrow">01 / ESCOLHA A PROVA</span><h2>Vestibulares</h2><p>Qual instituição você deseja consultar?</p></div><span id="institution-count" class="count"></span></div>
+   <div id="institution-tabs" class="institution-tabs" role="group" aria-label="Selecionar vestibular"></div>
+   <div class="section-head year-head"><div><span class="section-eyebrow">02 / ESCOLHA O ANO</span><h2 id="year-title">Provas por ano</h2><p id="year-subtitle">Selecione o ano da prova para ver os documentos disponíveis.</p></div><span id="year-count" class="count"></span></div>
+   <div id="year-tabs" class="year-tabs" role="group" aria-label="Selecionar ano"></div>
+   <div class="section-head file-head"><div><span class="section-eyebrow">03 / ACESSE OS MATERIAIS</span><h2 id="files-title">Arquivos disponíveis</h2><p id="files-subtitle">Provas e materiais disponíveis no servidor do Instituto.</p></div>
+      <label class="search-field"><span aria-hidden="true">⌕</span><input id="file-search" type="search" placeholder="Buscar prova ou gabarito..." aria-label="Pesquisar documento"></label>
+   </div>
+   <div id="files-list" class="file-list" aria-live="polite"></div>
+   <div id="empty-state" class="empty-state" hidden>
+      <div class="empty-icon" aria-hidden="true">▤</div><h3 id="empty-title">Estamos organizando este acervo</h3>
+      <p id="empty-description">Os PDFs ainda não foram transferidos para o servidor. Enquanto isso, o material anterior continua disponível na pasta do Instituto.</p>
+      <a id="legacy-link" class="legacy-button" href="#" target="_blank" rel="noopener noreferrer">Consultar pasta provisória no Google Drive <span aria-hidden="true">↗</span></a>
+   </div>
+  </section>
+  <section class="info-strip">
+   <span class="info-icon" aria-hidden="true">ⓘ</span><div><strong>Material de estudo.</strong><p>Confira o vestibular e o ano antes de resolver a prova. Os documentos são organizados conforme os arquivos disponibilizados pelo Instituto e pelas instituições responsáveis.</p></div>
+  </section>
+  <footer><a href="./">Essa Vaga É Minha! · IEA</a><span>Seu futuro começa com uma escolha. ✦</span></footer>
+ </main>
+ <dialog id="pdf-dialog" class="pdf-dialog" aria-labelledby="pdf-dialog-title">
+   <div class="viewer-head">
+     <div><span>VISUALIZADOR DE DOCUMENTOS</span><h2 id="pdf-dialog-title">Visualizar PDF</h2></div>
+     <div class="viewer-actions"><a id="pdf-download" href="#" download>↓ Baixar</a><a id="pdf-external" href="#" target="_blank" rel="noopener">Abrir em nova aba ↗</a><button id="pdf-close" type="button" aria-label="Fechar documento">✕</button></div>
+   </div>
+   <iframe id="pdf-frame" title="Visualizador de arquivo PDF" loading="lazy"></iframe>
+ </dialog>
+ <script src="./acervo-dados.js?v=1"></script>
+ <script src="./acervo.js?v=1"></script>
+</body>
+</html>

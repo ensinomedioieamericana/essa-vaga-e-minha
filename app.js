@@ -55,9 +55,10 @@ function card(item){
  b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';
  b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));
  top.append(b);
- const foot=node('div','resource-bottom');const a=node('a','','Abrir material');
- a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';
- a.setAttribute('aria-label','Abrir '+item.title+' em uma nova aba');a.append(node('span','','↗'));foot.append(a);
+ const internalExam=item.category==='provas'&&['fuvest','enem','unesp','unicamp','famerp','famema'].includes(item.id);
+ const foot=node('div','resource-bottom');const a=node('a','',internalExam?'Escolher ano':'Abrir material');
+ a.href=item.url;a.target=internalExam?'_self':'_blank';a.rel='noopener noreferrer';
+ a.setAttribute('aria-label',internalExam?'Escolher ano e consultar provas de '+item.title:'Abrir '+item.title+' em uma nova aba');a.append(node('span','',internalExam?'→':'↗'));foot.append(a);
  box.append(top,node('div','card-tag',item.tag),node('h3','',item.title),node('p','',item.description),foot);
  return box;
 }
