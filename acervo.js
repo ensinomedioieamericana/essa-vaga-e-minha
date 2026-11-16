@@ -115,7 +115,7 @@ function selectedPath(){
  return (currentPhase==='raiz'?'':currentPhase)+(currentFolder?'/'+currentFolder:'');
 }
 function nestedFolders(){
- if(!currentYear||!currentPhase)return [];
+ if(!currentYear||!currentPhase||currentPhase==='raiz')return [];
  const root=selectedPath();
  const prefix=root?root+'/':'';
  const children=new Set();
