@@ -5,7 +5,7 @@
 const $=id=>document.getElementById(id);
 const clone=x=>JSON.parse(JSON.stringify(x));
 const DRAFT_KEY='evm-gestao-rascunho-v1';
-const base=clone(window.EVM_GESTAO||{});
+let base=clone(window.EVM_GESTAO||{});
 const sourceNotes={USP:window.USP_NOTAS,UNESP:window.UNESP_NOTAS,UNICAMP:window.UNICAMP_NOTAS};
 const institutions=['unicamp','usp','enem','unesp'];
 const names={unicamp:'UNICAMP',usp:'USP',enem:'ENEM',unesp:'UNESP'};
@@ -299,9 +299,88 @@ function validate(){
  }
  return '';
 }
+function publishedFile(){
+ return '/* Dados públicos editados no Painel do Desenvolvedor. Nunca incluir senhas, RAs ou dados pessoais. */\nwindow.EVM_GESTAO = '+JSON.stringify(state,null,2)+';\n';
+}
+function encodeContent(source){
+ const bytes=new TextEncoder().encode(source);
+ let binary='';
+ for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
+ return btoa(binary);
+}
+function decodeContent(content){
+ const binary=atob(content.replace(/\s/g,''));
+ const bytes=Uint8Array.from(binary,ch=>ch.charCodeAt(0));
+ return new TextDecoder().decode(bytes);
+}
+function parsePublishedData(content){
+ const match=content.match(/window\.EVM_GESTAO\s*=\s*(\{[\s\S]*\})\s*;\s*$/);
+ if(!match)throw new Error('O arquivo remoto não está no formato esperado.');
+ const parsed=JSON.parse(match[1]);
+ if(parsed?.version!==1)throw new Error('A versão remota dos dados não é compatível.');
+ return parsed;
+}
+const directDialog=$('publish-dialog'),tokenInput=$('github-token');
+function closeAuth(){tokenInput.value='';$('auth-error').textContent='';directDialog.close()}
+$('publish-direct').addEventListener('click',()=>{
+ const error=validate();
+ if(error){status('Não foi possível publicar: '+error,true);return}
+ if(JSON.stringify(state)===JSON.stringify(base)){status('Não há alterações novas para publicar.');return}
+ $('auth-error').textContent='';
+ tokenInput.value='';
+ directDialog.showModal();
+ tokenInput.focus();
+});
+$('auth-cancel').addEventListener('click',closeAuth);
+directDialog.addEventListener('close',()=>{tokenInput.value='';$('auth-error').textContent=''});
+$('publish-form').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const token=tokenInput.value.trim();
+ const btn=$('auth-submit');
+ if(!token||token.length<15){$('auth-error').textContent='Informe um token de acesso válido, não sua senha.';return}
+ btn.disabled=true;btn.textContent='Publicando...';
+ $('auth-error').textContent='';
+ const endpoint='https://api.github.com/repos/ensinomedioieamericana/essa-vaga-e-minha/contents/gestao-dados.js';
+ const headers={'Accept':'application/vnd.github+json','Authorization':'Bearer '+token};
+ try{
+  const res=await fetch(endpoint+'?ref=main',{headers,cache:'no-store'});
+  if(!res.ok){
+   if(res.status===401||res.status===403)throw new Error('A autorização foi recusada. Confira as permissões do token.');
+   if(res.status===404)throw new Error('Arquivo ou repositório indisponível para este token. Confira o repositório selecionado.');
+   throw new Error('Não foi possível consultar o GitHub (erro '+res.status+').');
+  }
+  const remote=await res.json();
+  if(!remote.sha||!remote.content)throw new Error('O GitHub não retornou os dados necessários para a publicação.');
+  const latest=parsePublishedData(decodeContent(remote.content));
+  if(JSON.stringify(latest)!==JSON.stringify(base))throw new Error('O conteúdo foi atualizado no GitHub depois que você abriu o painel. Copie seu rascunho, recarregue a página e revise antes de publicar, para não sobrescrever outra atualização.');
+  const put=await fetch(endpoint,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify({
+   message:'Atualiza Calendário, Notas de Corte e Novidades pelo Painel do Desenvolvedor',
+   content:encodeContent(publishedFile()),sha:remote.sha,branch:'main'
+  })});
+  if(!put.ok){
+   if(put.status===401||put.status===403)throw new Error('O token não tem permissão de escrita neste repositório. Verifique Contents: Read and write.');
+   if(put.status===409||put.status===422)throw new Error('Houve um conflito ou rejeição da atualização. Recarregue o painel antes de tentar novamente.');
+   throw new Error('O GitHub não aceitou a publicação (erro '+put.status+').');
+  }
+  const response=await put.json();
+  if(!response.commit?.sha)throw new Error('O GitHub não confirmou o commit. Confira o histórico do repositório.');
+  base=clone(state);
+  try{localStorage.removeItem(DRAFT_KEY)}catch{}
+  $('save-status').textContent='Alterações enviadas ao GitHub';$('save-status').classList.remove('dirty');
+  closeAuth();
+  status('Alterações salvas no GitHub! O aplicativo será atualizado quando a publicação do GitHub Pages terminar.');
+ }catch(err){
+  $('auth-error').textContent=err.message||'Falha ao publicar. Nenhuma confirmação recebida do GitHub.';
+  status('Publicação não confirmada. Seu rascunho continua salvo neste navegador.',true);
+ }finally{
+  // Não persistimos o token em memória para outras publicações.
+  tokenInput.value='';
+  btn.disabled=false;btn.textContent='Confirmar e publicar';
+ }
+});
 $('download').addEventListener('click',()=>{
  const err=validate();if(err){status('Não foi possível gerar o arquivo: '+err,true);return}
- const file='/* Dados públicos editados no Painel do Desenvolvedor. Nunca incluir senhas, RAs ou dados pessoais. */\nwindow.EVM_GESTAO = '+JSON.stringify(state,null,2)+';\n';
+ const file=publishedFile();
  const url=URL.createObjectURL(new Blob([file],{type:'text/javascript;charset=utf-8'}));
  const a=el('a');a.href=url;a.download='gestao-dados.js';document.body.append(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(url),3000);

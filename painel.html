@@ -5,9 +5,10 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta name="robots" content="noindex,nofollow,noarchive">
  <meta name="theme-color" content="#262a82">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=1">
+ <link rel="stylesheet" href="./painel.css?v=2">
 </head>
 <body>
  <header class="topbar">
@@ -16,7 +17,7 @@
    <a class="site-link" href="./" target="_blank" rel="noopener">Abrir aplicativo <span aria-hidden="true">↗</span></a>
  </header>
  <main class="main">
-  <div class="security-note" role="note"><span aria-hidden="true">🔒</span><div><strong>Como funciona a publicação?</strong><p>Este é um editor visual. Você pode preparar atualizações aqui, mas elas só aparecem para os alunos depois que o arquivo gerado for enviado ao GitHub por uma conta com permissão. <strong>Esta página ainda não tem login próprio:</strong> o acesso ao endereço não concede permissão para publicar. Nunca insira RAs, senhas ou dados pessoais.</p></div></div>
+  <div class="security-note" role="note"><span aria-hidden="true">🔒</span><div><strong>Como funciona a publicação?</strong><p>Este editor permite preparar e publicar atualizações diretamente no GitHub, usando uma autorização da conta que tem permissão no repositório. <strong>Esta página ainda não tem login próprio:</strong> abrir o endereço não dá acesso à publicação. Não insira RAs, senhas de alunos ou dados pessoais no conteúdo do aplicativo.</p></div></div>
   <div class="toolbar">
     <div class="tablist" role="tablist" aria-label="Área de edição">
       <button type="button" class="tab active" data-tab="calendario" role="tab" aria-selected="true">▦ <span>Calendário</span></button>
@@ -72,18 +73,31 @@
 
   <section id="publish" class="publish-panel" aria-label="Publicar alterações">
     <div class="publish-icon" aria-hidden="true">↥</div>
-    <div><span class="eyebrow">PUBLICAÇÃO</span><h2>Preparou suas atualizações?</h2><p>Baixe um único arquivo com as mudanças. Depois, entre no GitHub com sua conta autorizada, substitua o arquivo <code>gestao-dados.js</code> na raiz do repositório e confirme a alteração. O GitHub Pages publicará a nova versão.</p>
-      <ol class="guide"><li>Baixe o arquivo atualizado abaixo.</li><li>Clique em <strong>Abrir GitHub</strong>, escolha <strong>Add file → Upload files</strong> e envie o arquivo baixado.</li><li>Confirme o <strong>commit</strong> no ramo <strong>main</strong> e confira o aplicativo.</li></ol>
-      <p class="field-help">No futuro, quando houver autenticação institucional e uma API segura, poderemos conectar este painel para publicar diretamente, sem a etapa de envio do arquivo.</p>
+    <div><span class="eyebrow">PUBLICAÇÃO</span><h2>Pronto para colocar no ar?</h2><p>Clique em <strong>Salvar e publicar</strong> para enviar as mudanças diretamente ao repositório do Instituto. Não será preciso baixar nem enviar arquivos manualmente.</p>
+      <ol class="guide"><li>Preencha ou atualize as informações acima.</li><li>Clique em <strong>Salvar e publicar</strong> e autorize usando um token restrito da sua conta GitHub.</li><li>Após a confirmação do GitHub, a publicação no aplicativo ocorre pelo processo normal do GitHub Pages.</li></ol>
+      <p class="field-help">O token é usado somente durante a publicação e não é gravado no aplicativo, no GitHub, nem no armazenamento do navegador. Você precisará informá-lo a cada publicação. Se preferir, a exportação manual continua disponível.</p>
       <p id="publish-result" role="status" aria-live="polite"></p>
     </div>
-    <div class="publish-actions"><button type="button" class="primary-btn" id="download">Baixar arquivo de atualização</button><a class="secondary-btn" href="https://github.com/ensinomedioieamericana/essa-vaga-e-minha/upload/main" target="_blank" rel="noopener">Abrir GitHub ↗</a><button type="button" class="text-btn" id="discard">Descartar rascunho local</button></div>
+    <div class="publish-actions"><button type="button" class="primary-btn" id="publish-direct">✓ Salvar e publicar</button><button type="button" class="secondary-btn" id="download">Baixar arquivo (alternativa)</button><a class="text-btn" href="https://github.com/ensinomedioieamericana/essa-vaga-e-minha/actions" target="_blank" rel="noopener">Acompanhar publicação ↗</a><button type="button" class="text-btn" id="discard">Descartar rascunho local</button></div>
   </section>
+  <dialog id="publish-dialog" class="publish-dialog" aria-labelledby="auth-title">
+    <form method="dialog" id="publish-form" class="auth-form">
+      <div class="auth-icon" aria-hidden="true">🔐</div>
+      <h2 id="auth-title">Autorizar publicação</h2>
+      <p>Para salvar diretamente no GitHub, use um <strong>token de acesso de granularidade fina (fine-grained)</strong> da conta que administra o projeto.</p>
+      <p>Crie um token com acesso <strong>somente ao repositório essa-vaga-e-minha</strong> e permissão <strong>Contents: Read and write</strong>. Não use a senha da sua conta GitHub nem a senha que mencionou anteriormente.</p>
+      <a class="auth-help" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Criar token restrito no GitHub ↗</a>
+      <label class="field"><span>Token de acesso do GitHub</span><input id="github-token" type="password" autocomplete="off" spellcheck="false" autocapitalize="off" placeholder="Cole aqui seu token — não é sua senha" required minlength="15"></label>
+      <p class="auth-warning">Este token não será armazenado nem colocado no código do site. Por segurança, recomendamos usar um token de curta duração e revogá-lo quando não for mais necessário.</p>
+      <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
+      <div class="auth-actions"><button type="button" class="secondary-btn" id="auth-cancel">Cancelar</button><button type="submit" class="primary-btn" id="auth-submit">Confirmar e publicar</button></div>
+    </form>
+  </dialog>
   <footer class="footer">Essa Vaga É Minha! · Instituto Educacional de Americana · Painel de edição · <a href="./">Voltar ao aplicativo</a></footer>
  </main>
  <script src="./usp-notas.js"></script>
  <script src="./unicamp-notas.js?v=13"></script>
  <script src="./unesp-notas.js"></script>
  <script src="./gestao-dados.js?v=17"></script>
- <script src="./painel.js?v=1"></script>
+ <script src="./painel.js?v=2"></script>
 </body></html>
