@@ -48,3 +48,23 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-s
 .folder-tab:hover{background:#eef1ff}
 .folder-back{border:1px solid #d8deef;background:#f2f4fc;color:#354197;border-radius:9px;min-height:39px;padding:9px 13px;font-size:12px;font-weight:850}
 @media(max-width:640px){.folder-tab{flex:1 1 140px}.folder-back{width:100%}}
+
+
+/* Navegação principal também na página independente do Banco de Provas */
+.acervo-bottom-nav{display:none}
+.acervo-more-dialog{width:min(420px,calc(100vw - 28px));padding:0;border:0;border-radius:18px;box-shadow:0 22px 85px #131b56a6;background:#fff;color:var(--ink)}
+.acervo-more-dialog::backdrop{background:#0f184f99}
+.acervo-more-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px 15px;border-bottom:1px solid var(--line)}
+.acervo-more-head h2{margin:0;font-size:19px}
+.acervo-more-head button{background:#f2f4fd;border:0;border-radius:9px;padding:8px 12px;color:var(--blue);font-size:16px}
+.acervo-more-links{display:grid;gap:6px;padding:17px}
+.acervo-more-links a{display:block;padding:14px 15px;border-radius:10px;background:#f5f6fd;font-weight:800;font-size:13px;color:var(--blue)}
+.acervo-more-links a:hover{background:#eceeff}
+@media(max-width:760px){
+ body{padding-bottom:calc(78px + env(safe-area-inset-bottom, 0px))}
+ .acervo-bottom-nav{display:flex;position:fixed;z-index:80;bottom:0;left:0;right:0;justify-content:space-around;align-items:stretch;background:#fff;border-top:1px solid var(--line);box-shadow:0 -5px 25px #18344b12;padding:8px 3px max(8px,env(safe-area-inset-bottom, 0px))}
+ .acervo-bottom-nav a,.acervo-bottom-nav button{flex:1;min-width:0;min-height:45px;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#7e92a2;font-size:9px;font-weight:750;padding:3px 0;text-align:center;line-height:1.2}
+ .acervo-bottom-nav span{font-size:23px;font-weight:400;line-height:1.25}
+ .acervo-bottom-nav .active{color:#303493}
+ .acervo-bottom-nav a:focus-visible,.acervo-bottom-nav button:focus-visible{outline:2px solid #5266c2;outline-offset:-2px;border-radius:6px}
+}
