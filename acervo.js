@@ -297,6 +297,10 @@ $('pdf-dialog').addEventListener('close',()=>{pdfRequest++;$('pdf-frame').remove
 $('pdf-dialog').addEventListener('click',event=>{
  if(event.target===$('pdf-dialog'))closePDF();
 });
+const moreDialog=$('acervo-more-dialog');
+$('acervo-more-open').addEventListener('click',()=>moreDialog.showModal());
+$('acervo-more-close').addEventListener('click',()=>moreDialog.close());
+moreDialog.addEventListener('click',event=>{if(event.target===moreDialog)moreDialog.close()});
 $('file-search').addEventListener('input',renderFiles);
 function render(){
  $('breadcrumb-name').textContent=current.name;
