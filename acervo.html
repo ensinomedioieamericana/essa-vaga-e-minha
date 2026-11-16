@@ -9,7 +9,7 @@
  <title>Banco de Provas • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
  <link rel="manifest" href="./manifest.webmanifest">
- <link rel="stylesheet" href="./acervo.css?v=4">
+ <link rel="stylesheet" href="./acervo.css?v=5">
 </head>
 <body>
  <header class="site-header">
@@ -64,6 +64,22 @@
   </section>
   <footer><a href="./">Essa Vaga É Minha! · IEA</a><span>Seu futuro começa com uma escolha. ✦</span></footer>
  </main>
+  <nav class="acervo-bottom-nav" aria-label="Navegação principal">
+   <a href="./#/inicio"><span aria-hidden="true">⌂</span>Início</a>
+   <a href="./#/provas" class="active" aria-current="page"><span aria-hidden="true">▤</span>Provas</a>
+   <a href="./#/calendario"><span aria-hidden="true">▦</span>Calendário</a>
+   <a href="./#/notas"><span aria-hidden="true">▥</span>Notas</a>
+   <a href="./#/favoritos"><span aria-hidden="true">♡</span>Salvos</a>
+   <button type="button" id="acervo-more-open" aria-haspopup="dialog" aria-controls="acervo-more-dialog"><span aria-hidden="true">☰</span>Mais</button>
+  </nav>
+  <dialog id="acervo-more-dialog" class="acervo-more-dialog" aria-labelledby="acervo-more-title">
+   <div class="acervo-more-head"><h2 id="acervo-more-title">Mais opções</h2><button id="acervo-more-close" type="button" aria-label="Fechar opções">✕</button></div>
+   <div class="acervo-more-links">
+    <a href="./#/biblioteca">▧ Biblioteca de materiais</a>
+    <a href="./#/recursos">✧ Bernoulli e serviços</a>
+    <a href="./#/favoritos">♡ Favoritos</a>
+   </div>
+  </dialog>
  <dialog id="pdf-dialog" class="pdf-dialog" aria-labelledby="pdf-dialog-title">
    <div class="viewer-head">
      <div><span>VISUALIZADOR DE DOCUMENTOS</span><h2 id="pdf-dialog-title">Visualizar PDF</h2></div>
@@ -73,6 +89,6 @@
    <iframe id="pdf-frame" title="Visualizador de arquivo PDF" loading="lazy"></iframe>
  </dialog>
  <script src="./acervo-dados.js?v=7"></script>
- <script src="./acervo.js?v=7"></script>
+ <script src="./acervo.js?v=8"></script>
 </body>
 </html>
