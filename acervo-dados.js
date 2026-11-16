@@ -17,6 +17,30 @@ window.EVM_ACERVO = {
             "size": 218795
           },
           {
+            "title": "FUVEST 2026 · 1ª fase · Prova (V1)",
+            "file": "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-prova.pdf",
+            "type": "prova",
+            "size": 8019288,
+            "parts": [
+              "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-prova.pdf.part01",
+              "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-prova.pdf.part02",
+              "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-prova.pdf.part03",
+              "acervo/fuvest/2026/1a-fase/fuvest-2026-1a-fase-prova.pdf.part04"
+            ]
+          },
+          {
+            "title": "FUVEST 2026 · 2ª fase · Prova · Dia 2",
+            "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-dia2-prova.pdf",
+            "type": "prova",
+            "size": 7038275,
+            "parts": [
+              "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-dia2-prova.pdf.part01",
+              "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-dia2-prova.pdf.part02",
+              "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-dia2-prova.pdf.part03",
+              "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-dia2-prova.pdf.part04"
+            ]
+          },
+          {
             "title": "FUVEST 2026 · 2ª fase · Respostas esperadas · Biologia",
             "type": "resolucao",
             "file": "acervo/fuvest/2026/2a-fase/fuvest-2026-2a-fase-respostas-biologia.pdf",
