@@ -36,7 +36,7 @@ function selectInstitution(id,requestedYear){
  const match=validId(id);if(!match)return;
  current=match;const years=yearsOf(current);
  currentYear=years.includes(String(requestedYear))?String(requestedYear):years[0]||null;
- currentPhase=null;
+ currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;
  $('file-search').value='';
  render();updateQuery();
 }
@@ -70,7 +70,7 @@ function renderYears(){
  for(const y of years){
   const btn=create('button','year-tab'+(currentYear===y?' selected':''),y);
   btn.type='button';btn.setAttribute('aria-pressed',String(currentYear===y));
-  btn.addEventListener('click',()=>{currentYear=y;currentPhase=null;$('file-search').value='';renderYears();renderPhases();renderFiles();updateQuery()});
+  btn.addEventListener('click',()=>{currentYear=y;currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;$('file-search').value='';renderYears();renderPhases();renderFiles();updateQuery()});
   wrap.append(btn);
  }
 }
@@ -120,7 +120,7 @@ function renderFiles(){
  const docs=(currentYear?current.years[currentYear]:[])||[];
  currentFiles=docs.filter(d=>validPdf(current,currentYear,d)&&(!stages.length||phaseOf(d)===currentPhase));
  const matching=currentFiles.filter(doc=>norm((doc.title||'')+' '+typeName(doc.type)).includes(term));
- $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados'):'Aguardando os PDFs originais para organizar as provas por ano.';
+ $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados')+(current.id==='enem'?' · Cadernos por dia, disponíveis após publicação dos PDFs no servidor.':''):'Aguardando os PDFs originais para organizar as provas por ano.';
  $('file-search').disabled=!currentYear||(stages.length&&!currentPhase);
  if(stages.length&&!currentPhase){
   empty(current.id==='enem'?'Escolha o dia da prova':'Escolha a fase da prova',current.id==='enem'?'Selecione 1º dia ou 2º dia para visualizar a prova e seu gabarito.':'Selecione 1ª fase, 2ª fase ou habilidades específicas (quando disponíveis) para visualizar os arquivos deste ano.',null);
@@ -236,6 +236,7 @@ function render(){
 }
 const initialYears=yearsOf(current);
 currentYear=initialYears.includes(q.get('ano'))?q.get('ano'):initialYears[0]||null;
-currentPhase=stagesOf(current,currentYear).includes(q.get('fase'))?q.get('fase'):null;
+const allowedInitialStages=stagesOf(current,currentYear);
+currentPhase=allowedInitialStages.includes(q.get('fase'))?q.get('fase'):(current.id==='enem'?(allowedInitialStages[0]||null):null);
 render();updateQuery();
 })();
