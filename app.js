@@ -100,11 +100,12 @@ function renderHomeDates(){
  const list=$('home-date-list');if(!list)return;
  list.replaceChildren();
  const today=new Date();today.setHours(0,0,0,0);
- const next=HOME_EVENTS.filter(e=>new Date(e.date+'T12:00:00')>=today).slice(0,3);
+ const source=Array.isArray(window.EVM_GESTAO?.events)?window.EVM_GESTAO.events:HOME_EVENTS;
+ const next=source.filter(e=>e.date&&new Date(e.date+'T12:00:00')>=today).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
  if(!next.length){list.append(node('p','premium-no-dates','As datas deste calendário já passaram. Consulte o calendário completo para novas informações.'));return}
  for(const event of next){
   const row=node('button','premium-date-row');row.type='button';row.dataset.jump='calendario';row.dataset.calendarFocus=event.uni;
-  const date=node('span','premium-date-box');date.append(node('strong','',event.day),node('small','',event.month));
+  const date=node('span','premium-date-box');date.append(node('strong','',event.date.slice(8,10)),node('small','',new Date(event.date+'T12:00:00').toLocaleDateString('pt-BR',{month:'short'}).replace('.','').toUpperCase()));
   const info=node('span','premium-date-copy');info.append(node('strong','',event.name),node('small','',event.detail));
   const arr=node('span','premium-date-arrow','›');arr.setAttribute('aria-hidden','true');
   row.append(date,info,arr);list.append(row);
@@ -135,6 +136,53 @@ function renderNovidades(){
   body.append(meta,headline,desc,cta);b.append(icon,body);list.append(b);
  }
 }
+
+/* Conteúdo administrado via painel.html; as regras de acesso continuam no GitHub. */
+function applyGestao(){
+ const g=window.EVM_GESTAO;
+ if(!g||g.version!==1)return;
+ if(Array.isArray(g.notices))window.EVM_NOVIDADES=g.notices;
+ if(g.notes&&typeof g.notes==='object'){
+  if(g.notes.USP)window.USP_NOTAS=g.notes.USP;
+  if(g.notes.UNESP)window.UNESP_NOTAS=g.notes.UNESP;
+  if(g.notes.UNICAMP)window.UNICAMP_NOTAS=g.notes.UNICAMP;
+ }
+ if(!Array.isArray(g.calendar))return;
+ const grid=document.querySelector('.calendar-grid');
+ if(!grid)return;
+ grid.replaceChildren();
+ for(const entry of [...g.calendar].sort((a,b)=>String(a.sortDate||'9999').localeCompare(String(b.sortDate||'9999')))){
+  if(!['unicamp','usp','enem','unesp'].includes(entry.id))continue;
+  const card=node('article','calendar-card calendar-'+entry.id);
+  card.dataset.calendarInstitution=entry.id;
+  const head=node('div','calendar-card-head'),identity=node('div');
+  identity.append(node('span','calendar-card-kind',entry.kind||''),node('h4','',entry.name||entry.id.toUpperCase()));
+  const mark=node('span','calendar-card-mark'),logo=node('img','calendar-card-logo');
+  logo.src=entry.logo||'';logo.alt='Logotipo da '+(entry.name||entry.id);logo.loading='lazy';logo.decoding='async';
+  mark.append(logo);head.append(identity,mark);
+  const dl=node('dl','calendar-details');
+  for(const line of entry.details||[]){
+   const row=node('div'),dt=node('dt','',line.label||''),dd=node('dd');
+   if(line.principal)dd.append(node('strong','',line.text||''));else dd.textContent=line.text||'';
+   row.append(dt,dd);dl.append(row);
+  }
+  const notes=node('div','calendar-card-notes');
+  notes.append(node('strong','',entry.noteTitle||'Outras informações'));
+  for(const note of entry.notes||[]){
+   const p=node('p'),textValue=String(note||'');
+   const colon=textValue.indexOf(':');
+   if(colon>=0&&colon<55){
+    p.append(document.createTextNode(textValue.slice(0,colon+1)+' '));
+    p.append(node('b','',textValue.slice(colon+1).trim()));
+   }else p.textContent=textValue;
+   notes.append(p);
+  }
+  card.append(head,dl,notes);grid.append(card);
+ }
+ const countLabel=grid.children.length+' calendários';
+ const countEl=$('calendar-count');if(countEl)countEl.textContent=countLabel;
+}
+
 function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario';let search=!cutoff&&!calendar&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('novidades-section').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('home-showcase').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('results-section').hidden=cutoff||calendar;$('search').closest('.finder').hidden=cutoff||calendar;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;if(S.route==='inicio'&&!search){renderNovidades();quick();filters();renderHomeDates()}
 if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}const a=shown();if(calendar)$('total-pill').textContent=$('calendar-count').textContent;else if(!cutoff)$('total-pill').textContent=count(a.length);$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
 $('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
@@ -162,7 +210,10 @@ function renderCutoffs(){
  $('cutoff-heading').textContent='Notas de corte — '+N.uni;
  const latestYear=Math.max(...d.anos);
  const updateBadge=$('cutoff-update');updateBadge.hidden=!unicamp;
- if(unicamp)updateBadge.textContent='Atualização 2027';
+ if(unicamp)updateBadge.textContent='Atualização '+latestYear;
+ const yearsDisplay=Math.min(...d.anos)+'–'+latestYear;
+ const description=$('cutoff-description');
+ description.innerHTML=description.innerHTML.replace(/2020–20\d\d/g,yearsDisplay);
  const sortSelect=$('cutoff-sort');
  for(const direction of ['desc','asc']){
   const option=sortSelect.querySelector('option[value$="-'+direction+'"]');
@@ -178,9 +229,10 @@ function renderCutoffs(){
  $('cutoff-mark').innerHTML=unicamp?'NC <small>PAAIS 0</small>':unesp?'SU <small>2025–26</small>':'AC <small>somente</small>';
  $('cutoff-course-header').textContent=unicamp?'Curso / turno':unesp?'Curso / cidade / turno':'Carreira / curso';
  $('cutoff-search').placeholder=unesp?'Ex.: Medicina, Franca, Psicologia, Bauru...':unicamp?'Ex.: Medicina, História, Engenharia...':'Ex.: Medicina, Direito, Arquitetura...';
- $('cutoff-full-label').textContent=unicamp||unesp?(unicamp?'Apenas cursos com os oito anos':'Apenas cursos com os sete anos'):'Apenas carreiras com os sete anos';
+ $('cutoff-full-label').textContent=(unicamp||unesp?'Apenas cursos':'Apenas carreiras')+' com todos os '+d.anos.length+' anos';
  $('cutoff-legend-missing').textContent=unicamp||unesp?'— : curso ou valor sem correspondência segura no ano':'— : sem informação equivalente nesta carreira / ano';
  $('cutoff-legend-units').textContent=unicamp?'Acertos: 2020 (0–90); 2021–2027 (0–72) • Não são notas finais de ingresso.':unesp?'Acertos na primeira fase (90 questões) • Não são notas finais de ingresso.':'Notas em pontos (0–90) • Não são notas finais de ingresso.';
+ if(latestYear>2027)$('cutoff-legend-units').textContent='Acertos da 1ª fase: o total de questões pode variar conforme o ano. Confira o valor correspondente a cada célula • Não são notas finais de ingresso.';
  $('cutoff-info').innerHTML=unicamp?UNICAMP_INFO:unesp?UNESP_INFO:USP_INFO;
  $('cutoff-sources-usp').hidden=unicamp||unesp;
  $('cutoff-sources-unicamp').hidden=!unicamp;
@@ -189,7 +241,7 @@ function renderCutoffs(){
  const rows=getCutoffRows(),tbody=$('cutoff-tbody');tbody.replaceChildren();
  for(const r of rows){const tr=document.createElement('tr');const name=node('th','course-col');name.scope='row';name.append(node('span','course-label',r.curso));if(!unicamp){const code=r.codigo2026||r.codigo2025||r.codigoHistorico;if(code)name.append(node('small','course-code',unesp?`Curso VUNESP · ${code} · SU em 2025/26`:`Carreira FUVEST · ${code}`));}
  name.title=r.observacao||'';tr.append(name);
- for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===latestYear?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=unicamp?(y===2020?90:72):90;td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
+ for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===latestYear?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=d.denominador?.[y]??(unicamp?(y===2020?90:72):90);td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
  $('cutoff-count').textContent=`${rows.length} ${rows.length===1?(unicamp||unesp?'curso':'carreira'):(unicamp||unesp?'cursos':'carreiras')} exibidos`; $('cutoff-empty').hidden=rows.length!==0;
 }
 function initCutoffs(){
@@ -219,7 +271,7 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
+function init(){applyGestao();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
   if(route.dataset.jump)close('more-dialog');
   const focus=route.dataset.cutoffFocus;
   if(focus&&['USP','UNESP','UNICAMP'].includes(focus)){

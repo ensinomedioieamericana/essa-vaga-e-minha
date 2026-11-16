@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="robots" content="noindex,nofollow,noarchive">
+ <meta name="theme-color" content="#262a82">
+ <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
+ <link rel="icon" href="./icon-192.png" type="image/png">
+ <link rel="stylesheet" href="./painel.css?v=1">
+</head>
+<body>
+ <header class="topbar">
+   <a href="./" class="brand" aria-label="Voltar ao aplicativo"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!"></a>
+   <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, notas de corte e novidades</p></div>
+   <a class="site-link" href="./" target="_blank" rel="noopener">Abrir aplicativo <span aria-hidden="true">↗</span></a>
+ </header>
+ <main class="main">
+  <div class="security-note" role="note"><span aria-hidden="true">🔒</span><div><strong>Como funciona a publicação?</strong><p>Este é um editor visual. Você pode preparar atualizações aqui, mas elas só aparecem para os alunos depois que o arquivo gerado for enviado ao GitHub por uma conta com permissão. <strong>Esta página ainda não tem login próprio:</strong> o acesso ao endereço não concede permissão para publicar. Nunca insira RAs, senhas ou dados pessoais.</p></div></div>
+  <div class="toolbar">
+    <div class="tablist" role="tablist" aria-label="Área de edição">
+      <button type="button" class="tab active" data-tab="calendario" role="tab" aria-selected="true">▦ <span>Calendário</span></button>
+      <button type="button" class="tab" data-tab="notas" role="tab" aria-selected="false">▥ <span>Notas de corte</span></button>
+      <button type="button" class="tab" data-tab="novidades" role="tab" aria-selected="false">✦ <span>Novidades</span></button>
+    </div>
+    <span id="save-status" class="save-status" role="status" aria-live="polite">Conteúdo publicado carregado</span>
+  </div>
+
+  <section id="tab-calendario" class="workspace" aria-label="Editar calendário">
+   <div class="section-heading"><div><span class="eyebrow">PLANEJAMENTO</span><h2>Calendário de vestibulares</h2><p>Atualize os textos, datas e informações exibidos nos quatro calendários.</p></div></div>
+   <div class="panel">
+    <div class="panel-head"><h3>Dados do calendário</h3><select id="calendar-uni" aria-label="Instituição do calendário"></select></div>
+    <div class="form-grid"><label class="field"><span>Data da primeira prova <small>(define a ordem dos cards)</small></span><input type="date" id="cal-sort"></label><label class="field"><span>Título das informações adicionais</span><input id="cal-note-title" maxlength="90"></label></div>
+    <p class="field-help">Edite os itens abaixo como aparecem no aplicativo. O destaque em negrito identifica a data principal da prova.</p>
+    <div id="calendar-details" class="calendar-details-editor"></div>
+    <label class="field" style="margin-top:17px"><span>Outras informações <small>(uma por linha)</small></span><textarea id="cal-notes" rows="4" placeholder="Ex.: Primeira chamada: 25/01/2027"></textarea></label>
+   </div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>Próximas datas da página inicial</h3><p>Essas datas alimentam o quadro de eventos da tela inicial.</p></div><button type="button" class="secondary-btn" id="add-event">+ Adicionar data</button></div>
+    <div id="event-list" class="item-list"></div>
+   </div>
+  </section>
+
+  <section id="tab-notas" class="workspace" aria-label="Editar notas de corte" hidden>
+   <div class="section-heading"><div><span class="eyebrow">HISTÓRICO DOS VESTIBULARES</span><h2>Notas de corte</h2><p>Escolha a universidade e o ano para alterar acertos por curso ou importar uma lista.</p></div></div>
+   <div class="panel">
+    <div class="panel-head"><h3>Universidade e edição</h3><span class="mini-pill">Sem alterar anos anteriores</span></div>
+    <div class="form-grid three">
+      <label class="field"><span>Universidade</span><select id="notes-uni"><option>UNICAMP</option><option>USP</option><option>UNESP</option></select></label>
+      <label class="field"><span>Ano da edição</span><select id="notes-year"></select></label>
+      <label class="field"><span>Total de questões na 1ª fase</span><input type="number" min="1" max="200" id="notes-max" aria-label="Número de questões do ano"></label>
+    </div>
+    <div class="inline-add"><label class="field"><span>Adicionar um novo ano</span><input id="notes-add-year" type="number" min="2020" max="2100" placeholder="Ex.: 2028"></label><button id="notes-add-year-btn" class="secondary-btn" type="button">+ Adicionar ano</button></div>
+    <label class="field" style="margin-top:16px"><span>Fonte ou referência do ano <small>(link ou descrição)</small></span><input id="notes-source" placeholder="Ex.: Documento oficial, URL da COMVEST..."></label>
+   </div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>Valores por curso</h3><p>Deixe em branco se não houver nota confirmada.</p></div><span id="notes-count" class="mini-pill"></span></div>
+    <div class="form-grid"><label class="field"><span>Buscar curso</span><input type="search" id="notes-search" placeholder="Ex.: Medicina, Direito, Engenharia..."></label><label class="field"><span>Adicionar novo curso</span><div class="inline-input"><input id="notes-add-course" placeholder="Nome do curso e turno"><button id="notes-add-course-btn" type="button" class="secondary-btn">Adicionar</button></div></label></div>
+    <div class="notes-table-wrap"><table class="notes-table"><thead><tr><th scope="col">Curso / carreira</th><th scope="col" id="note-year-heading">Acertos</th></tr></thead><tbody id="notes-tbody"></tbody></table></div>
+   </div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>Importar notas por CSV</h3><p>Cole duas colunas, uma por linha: <strong>Curso;Acertos</strong>. Também aceita arquivo .csv.</p></div></div>
+    <div class="form-grid"><label class="field"><span>Lista de cursos e notas</span><textarea id="notes-csv" rows="6" placeholder="Curso;Nota&#10;Medicina (I);62&#10;Enfermagem (I);42"></textarea></label><div><label class="field"><span>Ou selecione um CSV</span><input id="notes-file" type="file" accept=".csv,text/csv,text/plain"></label><label class="check-field"><input id="notes-create-missing" type="checkbox"> Criar cursos que ainda não existam no histórico</label><p class="field-help">Importe somente dados oficiais e confira a modalidade de concorrência. Cursos não encontrados serão informados antes da importação.</p><button type="button" class="primary-btn" id="notes-import">Aplicar dados da lista</button></div></div>
+    <p id="import-result" class="status-result" role="status" aria-live="polite"></p>
+   </div>
+  </section>
+
+  <section id="tab-novidades" class="workspace" aria-label="Editar novidades" hidden>
+    <div class="section-heading"><div><span class="eyebrow">COMUNICADOS</span><h2>Novidades da página inicial</h2><p>Edite os avisos, seus botões e para onde direcionam. Até quatro avisos aparecem na tela inicial.</p></div><button type="button" class="secondary-btn" id="news-add">+ Nova novidade</button></div>
+    <div id="news-list" class="news-list"></div>
+  </section>
+
+  <section id="publish" class="publish-panel" aria-label="Publicar alterações">
+    <div class="publish-icon" aria-hidden="true">↥</div>
+    <div><span class="eyebrow">PUBLICAÇÃO</span><h2>Preparou suas atualizações?</h2><p>Baixe um único arquivo com as mudanças. Depois, entre no GitHub com sua conta autorizada, substitua o arquivo <code>gestao-dados.js</code> na raiz do repositório e confirme a alteração. O GitHub Pages publicará a nova versão.</p>
+      <ol class="guide"><li>Baixe o arquivo atualizado abaixo.</li><li>Clique em <strong>Abrir GitHub</strong>, escolha <strong>Add file → Upload files</strong> e envie o arquivo baixado.</li><li>Confirme o <strong>commit</strong> no ramo <strong>main</strong> e confira o aplicativo.</li></ol>
+      <p class="field-help">No futuro, quando houver autenticação institucional e uma API segura, poderemos conectar este painel para publicar diretamente, sem a etapa de envio do arquivo.</p>
+      <p id="publish-result" role="status" aria-live="polite"></p>
+    </div>
+    <div class="publish-actions"><button type="button" class="primary-btn" id="download">Baixar arquivo de atualização</button><a class="secondary-btn" href="https://github.com/ensinomedioieamericana/essa-vaga-e-minha/upload/main" target="_blank" rel="noopener">Abrir GitHub ↗</a><button type="button" class="text-btn" id="discard">Descartar rascunho local</button></div>
+  </section>
+  <footer class="footer">Essa Vaga É Minha! · Instituto Educacional de Americana · Painel de edição · <a href="./">Voltar ao aplicativo</a></footer>
+ </main>
+ <script src="./usp-notas.js"></script>
+ <script src="./unicamp-notas.js?v=13"></script>
+ <script src="./unesp-notas.js"></script>
+ <script src="./gestao-dados.js?v=17"></script>
+ <script src="./painel.js?v=1"></script>
+</body></html>
