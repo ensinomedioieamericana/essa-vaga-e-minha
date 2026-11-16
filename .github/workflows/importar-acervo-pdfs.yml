@@ -1,0 +1,40 @@
+name: Importar PDFs das provas anteriores
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-acervo-pdfs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-acervo-pdfs
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Verificar e importar PDFs para acervo
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Instalar importador
+        run: python -m pip install --disable-pip-version-check 'gdown==5.2.0'
+
+      - name: Baixar e conferir os PDFs das pastas públicas
+        run: python scripts/importar_pdfs_drive.py
+
+      - name: Gravar arquivos no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add acervo/fuvest acervo/unesp acervo/unicamp acervo/enem acervo-dados.js
+          git diff --cached --quiet && { echo "Nenhum PDF novo"; exit 1; }
+          git commit -m "Banco de Provas: publicar PDFs originais importados e verificados"
+          git push origin HEAD:main
