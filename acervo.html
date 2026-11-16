@@ -9,7 +9,7 @@
  <title>Banco de Provas • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
  <link rel="manifest" href="./manifest.webmanifest">
- <link rel="stylesheet" href="./acervo.css?v=3">
+ <link rel="stylesheet" href="./acervo.css?v=4">
 </head>
 <body>
  <header class="site-header">
@@ -44,6 +44,11 @@
      <div class="section-head phase-head"><div><span id="phase-step-eyebrow" class="section-eyebrow">03 / ESCOLHA A FASE</span><h2 id="phase-title">Qual fase deseja estudar?</h2><p id="phase-subtitle">Selecione a 1ª ou a 2ª fase para localizar os PDFs.</p></div></div>
      <div id="phase-tabs" class="phase-tabs" role="group" aria-label="Selecionar fase"></div>
    </div>
+
+   <div id="folder-section" hidden>
+     <div class="section-head folder-head"><div><span class="section-eyebrow">PASTAS DO ANO</span><h2 id="folder-title">Subpastas disponíveis</h2><p id="folder-subtitle">Escolha uma pasta para encontrar os arquivos.</p></div><button id="folder-back" type="button" class="folder-back" hidden>← Voltar</button></div>
+     <div id="folder-tabs" class="folder-tabs" role="group" aria-label="Navegar pelas subpastas"></div>
+   </div>
    <div class="section-head file-head"><div><span class="section-eyebrow">04 / ACESSE OS MATERIAIS</span><h2 id="files-title">Arquivos disponíveis</h2><p id="files-subtitle">Provas e materiais disponíveis no servidor do Instituto.</p></div>
       <label class="search-field"><span aria-hidden="true">⌕</span><input id="file-search" type="search" placeholder="Buscar prova ou gabarito..." aria-label="Pesquisar documento"></label>
    </div>
@@ -67,7 +72,7 @@
    <div id="pdf-loading" class="pdf-loading" role="status" aria-live="polite" hidden></div>
    <iframe id="pdf-frame" title="Visualizador de arquivo PDF" loading="lazy"></iframe>
  </dialog>
- <script src="./acervo-dados.js?v=5"></script>
- <script src="./acervo.js?v=5"></script>
+ <script src="./acervo-dados.js?v=7"></script>
+ <script src="./acervo.js?v=7"></script>
 </body>
 </html>
