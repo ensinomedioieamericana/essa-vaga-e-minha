@@ -122,7 +122,8 @@ def main() -> int:
                 x["title"].casefold(),
             ))
         years = dict(sorted(years.items(), reverse=True))
-        records.append({**inst, "years": years})
+        records.append({**{key: value for key, value in old_institutions.get(slug, {}).items() if key not in {"years", "folders"}}, **inst, "years": years,
+                        "folders": old_institutions.get(slug, {}).get("folders", {})})
         total_files += sum(map(len, years.values()))
         print(f"{inst['name']:<16} {sum(map(len, years.values())):>4} PDF(s)  |  {len(years)} ano(s)")
     output = {
