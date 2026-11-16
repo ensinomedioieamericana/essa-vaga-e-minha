@@ -9,6 +9,7 @@ const validId=id=>institutions.find(x=>x.id===id);
 let current=validId(q.get('prova'))||institutions[0];
 let currentYear=null;
 let currentPhase=null;
+let currentFolder='';
 let currentFiles=[];
 const create=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n};
 const norm=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -27,16 +28,19 @@ function updateQuery(){
  params.set('prova',current.id);
  if(currentYear)params.set('ano',currentYear);else params.delete('ano');
  if(currentPhase)params.set('fase',currentPhase);else params.delete('fase');
+ if(currentFolder)params.set('pasta',currentFolder);else params.delete('pasta');
  history.replaceState(null,'',location.pathname+'?'+params.toString()+location.hash);
 }
 function yearsOf(inst){
- return Object.entries(inst.years||{}).filter(([year,docs])=>/^(?:19|20)\d\d$/.test(year)&&Array.isArray(docs)&&docs.some(d=>validPdf(inst,year,d))).sort((a,b)=>Number(b[0])-Number(a[0])).map(([year])=>year);
+ const ys=new Set([...Object.keys(inst.years||{}),...Object.keys(inst.folders||{})]);
+ return [...ys].filter(year=>/^(?:19|20)\d\d$/.test(year)&&((inst.years?.[year]||[]).some(d=>validPdf(inst,year,d))||(inst.folders?.[year]||[]).length>0)).sort((a,b)=>Number(b)-Number(a));
 }
 function selectInstitution(id,requestedYear){
  const match=validId(id);if(!match)return;
  current=match;const years=yearsOf(current);
  currentYear=years.includes(String(requestedYear))?String(requestedYear):years[0]||null;
  currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;
+ currentFolder='';
  $('file-search').value='';
  render();updateQuery();
 }
@@ -70,38 +74,102 @@ function renderYears(){
  for(const y of years){
   const btn=create('button','year-tab'+(currentYear===y?' selected':''),y);
   btn.type='button';btn.setAttribute('aria-pressed',String(currentYear===y));
-  btn.addEventListener('click',()=>{currentYear=y;currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;$('file-search').value='';renderYears();renderPhases();renderFiles();updateQuery()});
+  btn.addEventListener('click',()=>{currentYear=y;currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;currentFolder='';$('file-search').value='';renderYears();renderPhases();renderFolders();renderFiles();updateQuery()});
   wrap.append(btn);
  }
 }
 
-const PHASE_LABELS={'1a-fase':'1ª fase','2a-fase':'2ª fase','especificas':'Habilidades específicas','dia-1':'1º dia','dia-2':'2º dia'};
+const PHASE_LABELS={'1a-fase':'1ª fase','2a-fase':'2ª fase','especificas':'Habilidades específicas','dia-1':'1º dia','dia-2':'2º dia','raiz':'Documentos gerais'};
+const folderLabel=folder=>PHASE_LABELS[folder]||String(folder).replace(/-/g,' ');
+const fileFolder=doc=>String(doc.file||'').split('/').slice(3,-1).join('/');
 function phaseOf(doc){
- const match=/\/(1a-fase|2a-fase|especificas|dia-1|dia-2)\//.exec(doc.file||'');
- return match?match[1]:null;
+ const parts=String(doc.file||'').split('/');
+ return parts.length>4?parts[3]:'raiz';
+}
+function folderPaths(inst,year){
+ const found=new Set();
+ const add=p=>{
+  if(typeof p!=='string'||!p||p.split('/').some(x=>!/^[a-z0-9-]+$/.test(x)))return;
+  const parts=p.split('/');
+  for(let n=1;n<=parts.length;n++)found.add(parts.slice(0,n).join('/'));
+ };
+ for(const p of inst?.folders?.[year]||[])add(p);
+ for(const d of inst?.years?.[year]||[])if(validPdf(inst,year,d))add(fileFolder(d));
+ return [...found];
 }
 function stagesOf(inst,year){
- const docs=(inst&&inst.years&&inst.years[year])||[];
- const stages=inst.id==='enem'?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
- return stages.filter(stage=>docs.some(doc=>validPdf(inst,year,doc)&&phaseOf(doc)===stage));
+ const docs=(inst?.years?.[year]||[]).filter(d=>validPdf(inst,year,d));
+ const all=new Set(docs.map(phaseOf));
+ for(const p of folderPaths(inst,year))all.add(p.split('/')[0]);
+ const standard=inst?.id==='enem'?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
+ return [...all].sort((a,b)=>{
+  const ai=standard.indexOf(a),bi=standard.indexOf(b);
+  if(ai>=0||bi>=0)return (ai<0?99:ai)-(bi<0?99:bi);
+  if(a==='raiz')return -1;
+  if(b==='raiz')return 1;
+  return a.localeCompare(b,'pt-BR');
+ });
+}
+function selectedPath(){
+ if(!currentPhase)return null;
+ return (currentPhase==='raiz'?'':currentPhase)+(currentFolder?'/'+currentFolder:'');
+}
+function nestedFolders(){
+ if(!currentYear||!currentPhase)return [];
+ const root=selectedPath();
+ const prefix=root?root+'/':'';
+ const children=new Set();
+ for(const path of folderPaths(current,currentYear)){
+  if(path.startsWith(prefix)&&path.length>prefix.length){
+   const child=path.slice(prefix.length).split('/')[0];
+   if(child)children.add(child);
+  }
+ }
+ return [...children].sort((a,b)=>a.localeCompare(b,'pt-BR',{numeric:true}));
 }
 function renderPhases(){
  const wrap=$('phase-tabs');wrap.replaceChildren();
  const stages=currentYear?stagesOf(current,currentYear):[];
  $('phase-section').hidden=!stages.length;
- if(!stages.length){currentPhase=null;return}
+ if(!stages.length){currentPhase=null;currentFolder='';return}
+ if(currentPhase&&!stages.includes(currentPhase)){currentPhase=null;currentFolder=''}
  const enem=current.id==='enem';
- $('phase-step-eyebrow').textContent=enem?'03 / ESCOLHA O DIA':'03 / ESCOLHA A FASE';
- $('phase-title').textContent=enem?'Qual dia deseja estudar?':'Qual fase deseja estudar?';
- $('phase-subtitle').textContent=enem?'ENEM · '+currentYear+' · escolha o dia para consultar provas e gabaritos.':current.name+' · '+currentYear+' · escolha a fase para ver provas, gabaritos e resoluções.';
+ $('phase-step-eyebrow').textContent=enem?'03 / ESCOLHA O DIA':'03 / ESCOLHA A PASTA';
+ $('phase-title').textContent=enem?'Qual dia deseja estudar?':'Qual fase ou pasta deseja estudar?';
+ $('phase-subtitle').textContent=enem?'ENEM · '+currentYear+' · escolha o dia para consultar provas e gabaritos.':current.name+' · '+currentYear+' · selecione uma fase ou pasta para localizar os documentos.';
  for(const stage of stages){
-  const count=current.years[currentYear].filter(doc=>validPdf(current,currentYear,doc)&&phaseOf(doc)===stage).length;
-  const btn=create('button','phase-tab'+(currentPhase===stage?' selected':''),PHASE_LABELS[stage]+' · '+count+(count===1?' documento':' documentos'));
+  const count=(current.years?.[currentYear]||[]).filter(doc=>validPdf(current,currentYear,doc)&&phaseOf(doc)===stage).length;
+  const label=folderLabel(stage)+(count?' · '+count+(count===1?' documento':' documentos'):' · pasta');
+  const btn=create('button','phase-tab'+(currentPhase===stage?' selected':''),label);
   btn.type='button';btn.setAttribute('aria-pressed',String(currentPhase===stage));
-  btn.addEventListener('click',()=>{currentPhase=stage;$('file-search').value='';renderPhases();renderFiles();updateQuery()});
+  btn.addEventListener('click',()=>{currentPhase=stage;currentFolder='';$('file-search').value='';renderPhases();renderFolders();renderFiles();updateQuery()});
   wrap.append(btn);
  }
 }
+function renderFolders(){
+ const section=$('folder-section'),container=$('folder-tabs'),children=nestedFolders();
+ container.replaceChildren();
+ section.hidden=(!currentFolder&&!children.length)||!currentPhase;
+ if(section.hidden)return;
+ $('folder-title').textContent=currentFolder?'Dentro de '+folderLabel(currentFolder.split('/').pop()):'Subpastas disponíveis';
+ $('folder-subtitle').textContent='Abra uma pasta para ver os PDFs organizados nela.';
+ const back=$('folder-back');back.hidden=!currentFolder;
+ if(!back.hidden)back.textContent='← Voltar para '+(currentFolder.includes('/')?folderLabel(currentFolder.split('/').slice(-2,-1)[0]):folderLabel(currentPhase));
+ for(const name of children){
+  const btn=create('button','folder-tab','▤ '+folderLabel(name));
+  btn.type='button';
+  btn.addEventListener('click',()=>{
+   currentFolder=(currentFolder?currentFolder+'/':'')+name;
+   $('file-search').value='';renderFolders();renderFiles();updateQuery();
+  });
+  container.append(btn);
+ }
+}
+$('folder-back').addEventListener('click',()=>{
+ if(!currentFolder)return;
+ currentFolder=currentFolder.split('/').slice(0,-1).join('/');
+ $('file-search').value='';renderFolders();renderFiles();updateQuery();
+});
 
 function empty(title,description,legacy){
  $('empty-state').hidden=false;
@@ -115,19 +183,20 @@ function renderFiles(){
  const list=$('files-list');list.replaceChildren();
  $('empty-state').hidden=true;
  const stages=currentYear?stagesOf(current,currentYear):[];
- $('files-title').textContent=currentYear?'Arquivos de '+currentYear+(currentPhase?' · '+PHASE_LABELS[currentPhase]:''):'Arquivos disponíveis';
+ $('files-title').textContent=currentYear?'Arquivos de '+currentYear+(currentPhase?' · '+folderLabel(currentPhase):'')+(currentFolder?' / '+currentFolder.split('/').map(folderLabel).join(' / '):''):'Arquivos disponíveis';
  const term=norm($('file-search').value.trim());
  const docs=(currentYear?current.years[currentYear]:[])||[];
- currentFiles=docs.filter(d=>validPdf(current,currentYear,d)&&(!stages.length||phaseOf(d)===currentPhase));
+ currentFiles=docs.filter(d=>validPdf(current,currentYear,d)&&(!stages.length||fileFolder(d)===selectedPath()));
  const matching=currentFiles.filter(doc=>norm((doc.title||'')+' '+typeName(doc.type)).includes(term));
  $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados')+(current.id==='enem'?' · Cadernos por dia, disponíveis após publicação dos PDFs no servidor.':''):'Aguardando os PDFs originais para organizar as provas por ano.';
  $('file-search').disabled=!currentYear||(stages.length&&!currentPhase);
  if(stages.length&&!currentPhase){
-  empty(current.id==='enem'?'Escolha o dia da prova':'Escolha a fase da prova',current.id==='enem'?'Selecione 1º dia ou 2º dia para visualizar a prova e seu gabarito.':'Selecione 1ª fase, 2ª fase ou habilidades específicas (quando disponíveis) para visualizar os arquivos deste ano.',null);
+  empty(current.id==='enem'?'Escolha o dia da prova':'Escolha uma fase ou pasta',current.id==='enem'?'Selecione 1º dia ou 2º dia para visualizar os arquivos.':'Selecione uma das pastas acima para visualizar os arquivos deste ano.',null);
   return;
  }
  if(!currentFiles.length){
-  empty('Estamos preparando o acervo da '+current.name,'Os PDFs originais ainda precisam ser copiados para a hospedagem do Instituto. Até a conclusão dessa transferência, você pode consultar a pasta já utilizada pelos alunos.',current.legacy);
+  if(nestedFolders().length)empty('Escolha uma subpasta','Selecione uma das pastas acima para acessar os documentos disponíveis.',null);
+  else empty('Nenhum PDF nesta pasta','Esta pasta ainda não possui PDFs publicados no servidor do Instituto.',current.legacy);
   return;
  }
  if(!matching.length){
@@ -232,11 +301,13 @@ $('file-search').addEventListener('input',renderFiles);
 function render(){
  $('breadcrumb-name').textContent=current.name;
  $('acervo-subtitle').textContent=current.id==='enem'?'Explore o acervo do ENEM. Selecione o ano e escolha o 1º ou o 2º dia para consultar provas e gabaritos.':'Explore o acervo de '+current.name+'. Selecione o ano e a fase para acessar provas, gabaritos e materiais PDF dentro do site.';
- renderInstitutions();renderYears();renderPhases();renderFiles();
+ renderInstitutions();renderYears();renderPhases();renderFolders();renderFiles();
 }
 const initialYears=yearsOf(current);
 currentYear=initialYears.includes(q.get('ano'))?q.get('ano'):initialYears[0]||null;
 const allowedInitialStages=stagesOf(current,currentYear);
 currentPhase=allowedInitialStages.includes(q.get('fase'))?q.get('fase'):(current.id==='enem'?(allowedInitialStages[0]||null):null);
+const requestedFolder=q.get('pasta')||'';
+currentFolder=currentPhase&&/^[a-z0-9-]+(?:\/[a-z0-9-]+)*$/.test(requestedFolder)&&folderPaths(current,currentYear).includes((currentPhase==='raiz'?'':currentPhase+'/')+requestedFolder)?requestedFolder:'';
 render();updateQuery();
 })();
