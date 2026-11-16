@@ -46,19 +46,24 @@ def crc32_file(path):
 
 def main():
     data = read_catalog()
-    pending = sorted(
-        (doc for inst in data["institutions"] for docs in inst["years"].values()
-         for doc in docs if doc.get("pending") is True),
+    ranges = {
+        "fuvest": range(2020, 2026), "unesp": range(2020, 2026),
+        "unicamp": range(2020, 2026), "enem": range(2019, 2025),
+    }
+    target_docs = sorted(
+        (doc for inst in data["institutions"] if inst["id"] in ranges
+         for year, docs in inst["years"].items() if int(year) in ranges[inst["id"]]
+         for doc in docs),
         key=lambda doc: doc["file"],
     )
     checksums = CRC32_HEX.split()
-    if len(pending) != 149 or len(checksums) != len(pending):
-        raise RuntimeError(f"Esperados 149 PDFs pendentes/CRCs; encontrados {len(pending)}/{len(checksums)}")
+    if len(target_docs) != 149 or len(checksums) != len(target_docs):
+        raise RuntimeError(f"Esperados 149 PDFs no catálogo/CRCs; encontrados {len(target_docs)}/{len(checksums)}")
     origins = json.loads(ORIGINS.read_text(encoding="utf-8"))["institutions"]
     selected = {i["id"]: i for i in origins if i["id"] in {"fuvest","unesp","unicamp","enem"}}
     # Evita aceitar outro arquivo por coincidência de nome ou tipo.
-    expected = {(int(doc["size"]), int(hexcrc, 16)): doc for doc, hexcrc in zip(pending, checksums)}
-    if len(expected) != len(pending):
+    expected = {(int(doc["size"]), int(hexcrc, 16)): doc for doc, hexcrc in zip(target_docs, checksums)}
+    if len(expected) != len(target_docs):
         raise RuntimeError("Assinaturas repetidas; revise o inventário")
     matched = set()
     with tempfile.TemporaryDirectory(prefix="evm-import-") as temp:
@@ -70,31 +75,61 @@ def main():
                 continue
             destination = Path(temp) / slug
             destination.mkdir(parents=True, exist_ok=True)
+            # Primeiro obtém a lista de arquivos sem baixar nada. Depois faz
+            # cada download independentemente; falha em 1 PDF não bloqueia os demais.
             try:
-                print(f"Baixando pasta Drive: {slug}", flush=True)
-                gdown.download_folder(
+                print(f"Listando pasta Drive: {slug}", flush=True)
+                listing = gdown.download_folder(
                     id=m.group(1), output=str(destination),
-                    quiet=False, remaining_ok=True, use_cookies=False
-                )
+                    quiet=True, remaining_ok=True, use_cookies=False,
+                    skip_download=True
+                ) or []
             except Exception as exc:
-                print(f"Falha no download público de {slug}: {exc}", flush=True)
+                print(f"Não foi possível listar a pasta {slug}: {exc}", flush=True)
+                listing = []
             found_this = 0
-            for raw in destination.rglob("*"):
-                if not raw.is_file():
+            for remote in listing:
+                # Evita baixar provas adicionais fora dos anos recebidos.
+                names = set(re.findall(r"(?<!\\d)(?:19|20)\\d{2}(?!\\d)", remote.path))
+                if names and not any(int(y) in ranges[slug] for y in names):
                     continue
+                raw = destination / (remote.id + ".download")
+                try:
+                    result = gdown.download(
+                        id=remote.id, output=str(raw), quiet=True,
+                        use_cookies=False
+                    )
+                    if not result or not raw.is_file():
+                        raise RuntimeError("Drive não retornou o arquivo")
+                except Exception as exc:
+                    # Alternativa para links públicos que falham no endpoint uc.
+                    try:
+                        import requests
+                        link = "https://drive.usercontent.google.com/download"
+                        with requests.get(link, params={
+                            "id": remote.id, "export": "download", "confirm": "t"
+                        }, stream=True, timeout=(10, 35)) as resp:
+                            resp.raise_for_status()
+                            with raw.open("wb") as stream:
+                                for chunk in resp.iter_content(1024 * 1024):
+                                    if chunk:
+                                        stream.write(chunk)
+                                    if stream.tell() > 32_000_000:
+                                        raise RuntimeError("Arquivo maior que o esperado")
+                    except Exception:
+                        print(f"Não foi possível baixar: {remote.path} ({str(exc)[:70]})", flush=True)
+                        raw.unlink(missing_ok=True)
+                        continue
                 key = (raw.stat().st_size, crc32_file(raw))
                 doc = expected.get(key)
-                if doc is None or not doc["file"].startswith(f"acervo/{slug}/"):
-                    continue
-                target = ROOT / doc["file"]
-                if target.is_file():
-                    if target.stat().st_size == key[0] and crc32_file(target) == key[1]:
-                        matched.add(doc["file"])
-                    continue
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(raw, target)
-                matched.add(doc["file"])
-                found_this += 1
+                if doc is not None and doc["file"].startswith(f"acervo/{slug}/"):
+                    target = ROOT / doc["file"]
+                    if not target.is_file():
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(raw, target)
+                        found_this += 1
+                    matched.add(doc["file"])
+                raw.unlink(missing_ok=True)
             print(f"{slug}: {found_this} arquivos importados neste ciclo", flush=True)
     # Mantém pending nos arquivos que não foram transferidos.
     imported = 0
