@@ -35,6 +35,31 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A acervo/ acervo-dados.js
-          git diff --cached --quiet && { echo "Nenhum PDF novo"; exit 1; }
+          if git diff --cached --quiet; then
+            echo "Nenhum PDF novo encontrado; sem alterações para publicar."
+            exit 0
+          fi
           git commit -m "Banco de Provas: publicar PDFs originais importados e verificados"
-          git push origin HEAD:main
+          # A importação pode levar vários minutos. Não sobrescrever as edições
+          # realizadas pelo painel do administrador enquanto os PDFs baixavam.
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            # Na rebase, "ours" representa a branch pública recente. Mantê-la
+            # evita apagar documentos/pastas inseridos pelo painel nesse intervalo.
+            git rebase -X ours origin/main
+            # Atualiza o catálogo com os arquivos reais APÓS incorporar a branch,
+            # preservando metadados de pastas personalizadas e demais documentos.
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "Sincronizar catálogo do Banco de Provas com PDFs disponíveis"
+            fi
+            if git push origin HEAD:main; then
+              echo "PDFs e catálogo atualizados em main."
+              exit 0
+            fi
+            echo "O GitHub recebeu outra edição simultânea; repetindo rebase ($attempt/5)."
+            sleep $((attempt * 3))
+          done
+          echo "Falha após múltiplas tentativas; confira o histórico da branch."
+          exit 1
