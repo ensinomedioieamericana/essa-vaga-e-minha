@@ -8,12 +8,12 @@
  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=2">
+ <link rel="stylesheet" href="./painel.css?v=3">
 </head>
 <body>
  <header class="topbar">
    <a href="./" class="brand" aria-label="Voltar ao aplicativo"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!"></a>
-   <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, notas de corte e novidades</p></div>
+   <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, notas de corte, novidades e Banco de Provas</p></div>
    <a class="site-link" href="./" target="_blank" rel="noopener">Abrir aplicativo <span aria-hidden="true">↗</span></a>
  </header>
  <main class="main">
@@ -23,6 +23,7 @@
       <button type="button" class="tab active" data-tab="calendario" role="tab" aria-selected="true">▦ <span>Calendário</span></button>
       <button type="button" class="tab" data-tab="notas" role="tab" aria-selected="false">▥ <span>Notas de corte</span></button>
       <button type="button" class="tab" data-tab="novidades" role="tab" aria-selected="false">✦ <span>Novidades</span></button>
+      <button type="button" class="tab" data-tab="acervo" role="tab" aria-selected="false">▤ <span>Banco de Provas</span></button>
     </div>
     <span id="save-status" class="save-status" role="status" aria-live="polite">Conteúdo publicado carregado</span>
   </div>
@@ -71,6 +72,54 @@
     <div id="news-list" class="news-list"></div>
   </section>
 
+
+  <section id="tab-acervo" class="workspace" aria-label="Gerenciar Banco de Provas" hidden>
+   <div class="section-heading"><div><span class="eyebrow">GERENCIAMENTO DE DOCUMENTOS</span><h2>Banco de Provas</h2><p>Organize as pastas e publique PDFs diretamente no GitHub do Instituto.</p></div><a class="secondary-btn" href="./acervo.html" target="_blank" rel="noopener">Ver Banco de Provas ↗</a></div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>1. Escolha o destino</h3><p>Selecione a instituição, o ano e a pasta onde os documentos ficarão.</p></div><button type="button" id="pdf-refresh" class="secondary-btn">↻ Atualizar catálogo</button></div>
+    <div class="form-grid three">
+     <label class="field"><span>Vestibular</span><select id="pdf-institution" required></select></label>
+     <label class="field"><span>Ano da prova</span><input type="number" id="pdf-year" min="1990" max="2100" step="1" list="pdf-year-list" required placeholder="Ex.: 2027"><datalist id="pdf-year-list"></datalist></label>
+     <label class="field"><span>Pasta dentro do ano</span><select id="pdf-folder"></select></label>
+    </div>
+    <p class="field-help">É possível digitar um ano novo. Para o ENEM, use pastas como <strong>dia-1</strong> e <strong>dia-2</strong>; nos vestibulares, <strong>1a-fase</strong> e <strong>2a-fase</strong>. Também é possível criar qualquer outra pasta.</p>
+    <div class="pdf-folder-create">
+     <label class="field"><span>Nova pasta ou subpasta</span><input id="pdf-new-folder" maxlength="150" placeholder="Ex.: 2a-fase / matematica"></label>
+     <button type="button" class="secondary-btn" id="pdf-create-folder">+ Criar pasta no GitHub</button>
+    </div>
+    <p class="field-help">Para criar uma subpasta, separe os nomes com /, por exemplo: <strong>2a-fase/questoes-discursivas</strong>. A pasta aparecerá na navegação dos alunos, inclusive antes de receber PDFs.</p>
+    <div class="pdf-destination" id="pdf-destination" aria-live="polite"></div>
+   </div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>2. Enviar provas em PDF</h3><p>Selecione um ou vários arquivos, escolha o tipo e publique em um único commit.</p></div><span class="mini-pill">Arquivos públicos</span></div>
+    <div class="form-grid">
+     <label class="field"><span>Arquivos PDF <small>(até 20 MB por arquivo e 60 MB por envio)</small></span><input id="pdf-files" type="file" accept="application/pdf,.pdf" multiple></label>
+     <label class="field"><span>Tipo de documento</span><select id="pdf-type"><option value="automatico">Identificar pelo nome</option><option value="prova">Prova</option><option value="gabarito">Gabarito</option><option value="resolucao">Resolução / respostas esperadas</option><option value="outro">Material complementar</option></select></label>
+    </div>
+    <label class="field pdf-custom-title"><span>Título personalizado <small>(opcional; apenas para envio de um PDF)</small></span><input id="pdf-custom-title" maxlength="160" placeholder="Ex.: Prova de Matemática — 2º dia"></label>
+    <div class="pdf-upload-preview" id="pdf-upload-preview" role="status" aria-live="polite">Nenhum arquivo selecionado.</div>
+    <button type="button" class="primary-btn" id="pdf-publish">↥ Publicar PDFs no GitHub</button>
+    <p class="field-help">O conteúdo dos PDFs não é alterado. Não use nomes de alunos nem dados pessoais em arquivos públicos. Arquivos já existentes não serão substituídos sem revisão.</p>
+    <p class="status-result" id="pdf-status" role="status" aria-live="polite"></p>
+   </div>
+   <div class="panel">
+    <div class="panel-head"><div><h3>Documentos cadastrados</h3><p>Arquivos do vestibular e ano selecionados no catálogo.</p></div><span id="pdf-record-count" class="mini-pill"></span></div>
+    <div id="pdf-record-list" class="pdf-record-list"></div>
+   </div>
+   <div class="security-note" role="note"><span aria-hidden="true">ⓘ</span><div><strong>Onde os arquivos ficam?</strong><p>O botão <strong>Publicar</strong> envia o PDF e atualiza o catálogo do GitHub. A hospedagem própria do Instituto só receberá esses documentos quando você publicar a versão atualizada do repositório no servidor. O token é solicitado apenas no momento da publicação e não fica salvo.</p></div></div>
+  </section>
+
+  <dialog id="pdf-auth-dialog" class="publish-dialog" aria-labelledby="pdf-auth-title">
+   <form method="dialog" id="pdf-auth-form" class="auth-form">
+    <div class="auth-icon" aria-hidden="true">🔐</div>
+    <h2 id="pdf-auth-title">Autorizar publicação dos PDFs</h2>
+    <p>Use um <strong>token fine-grained do GitHub</strong> com permissão <strong>Contents: Read and write</strong> no repositório <strong>essa-vaga-e-minha</strong>.</p>
+    <label class="field"><span>Token de acesso do GitHub</span><input id="pdf-github-token" type="password" autocomplete="off" spellcheck="false" autocapitalize="off" placeholder="Cole seu token, não sua senha" minlength="15" required></label>
+    <p class="auth-warning">Os PDFs enviados ficarão acessíveis publicamente no GitHub e, após a implantação, no site do colégio. O token não é armazenado.</p>
+    <p id="pdf-auth-error" class="auth-error" role="alert"></p>
+    <div class="auth-actions"><button type="button" id="pdf-auth-cancel" class="secondary-btn">Cancelar</button><button type="submit" id="pdf-auth-submit" class="primary-btn">Confirmar publicação</button></div>
+   </form>
+  </dialog>
   <section id="publish" class="publish-panel" aria-label="Publicar alterações">
     <div class="publish-icon" aria-hidden="true">↥</div>
     <div><span class="eyebrow">PUBLICAÇÃO</span><h2>Pronto para colocar no ar?</h2><p>Clique em <strong>Salvar e publicar</strong> para enviar as mudanças diretamente ao repositório do Instituto. Não será preciso baixar nem enviar arquivos manualmente.</p>
@@ -99,5 +148,7 @@
  <script src="./unicamp-notas.js?v=13"></script>
  <script src="./unesp-notas.js"></script>
  <script src="./gestao-dados.js?v=17"></script>
- <script src="./painel.js?v=2"></script>
+ <script src="./acervo-dados.js?v=6"></script>
+ <script src="./painel.js?v=3"></script>
+ <script src="./painel-acervo.js?v=1"></script>
 </body></html>
