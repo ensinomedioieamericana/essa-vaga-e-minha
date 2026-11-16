@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. PDFs de 2020–2025: pendentes até envio ao servidor. */
+/* Catálogo local do Banco de Provas. PDFs não publicados marcados pending:true. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -371,7 +371,188 @@ window.EVM_ACERVO = {
       "subtitle": "Universidade Estadual Paulista",
       "logo": "./assets/logo-unesp.svg",
       "legacy": "https://drive.google.com/drive/folders/1sV8P9aasQ6DmGAKN73EO1d95sNAp2uN5?usp=drive_link",
-      "years": {}
+      "years": {
+        "2020": [
+          {
+            "title": "UNESP 2020 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2020/1a-fase/unesp-2020-1a-fase-prova.pdf",
+            "size": 3378912,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2020 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2020/1a-fase/unesp-2020-1a-fase-gabarito.pdf",
+            "size": 532450,
+            "pending": true
+          }
+        ],
+        "2021": [
+          {
+            "title": "UNESP 2021 · 1ª fase · Prova · Biológicas",
+            "type": "prova",
+            "file": "acervo/unesp/2021/1a-fase/unesp-2021-1a-fase-prova-biologicas.pdf",
+            "size": 3337286,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2021 · 1ª fase · Prova · Exatas e Humanidades",
+            "type": "prova",
+            "file": "acervo/unesp/2021/1a-fase/unesp-2021-1a-fase-prova-exatas-humanidades.pdf",
+            "size": 2814383,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2021 · 1ª fase · Gabarito · Biológicas",
+            "type": "gabarito",
+            "file": "acervo/unesp/2021/1a-fase/unesp-2021-1a-fase-gabarito-biologicas.pdf",
+            "size": 47859,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2021 · 1ª fase · Gabarito · Exatas e Humanidades",
+            "type": "gabarito",
+            "file": "acervo/unesp/2021/1a-fase/unesp-2021-1a-fase-gabarito-exatas-humanidades.pdf",
+            "size": 46704,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2021 · 2ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2021/2a-fase/unesp-2021-2a-fase-prova.pdf",
+            "size": 2636635,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2021 · 2ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2021/2a-fase/unesp-2021-2a-fase-gabarito.pdf",
+            "size": 45364,
+            "pending": true
+          }
+        ],
+        "2022": [
+          {
+            "title": "UNESP 2022 · 1ª fase · Prova · Biológicas",
+            "type": "prova",
+            "file": "acervo/unesp/2022/1a-fase/unesp-2022-1a-fase-prova-biologicas.pdf",
+            "size": 2778036,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2022 · 1ª fase · Prova · Exatas e Humanidades",
+            "type": "prova",
+            "file": "acervo/unesp/2022/1a-fase/unesp-2022-1a-fase-prova-exatas-humanidades.pdf",
+            "size": 2623339,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2022 · 1ª fase · Gabarito · Biológicas",
+            "type": "gabarito",
+            "file": "acervo/unesp/2022/1a-fase/unesp-2022-1a-fase-gabarito-biologicas.pdf",
+            "size": 577201,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2022 · 1ª fase · Gabarito · Exatas e Humanidades",
+            "type": "gabarito",
+            "file": "acervo/unesp/2022/1a-fase/unesp-2022-1a-fase-gabarito-exatas-humanidades.pdf",
+            "size": 577322,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2022 · 2ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2022/2a-fase/unesp-2022-2a-fase-prova.pdf",
+            "size": 2244172,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2022 · 2ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2022/2a-fase/unesp-2022-2a-fase-gabarito.pdf",
+            "size": 572516,
+            "pending": true
+          }
+        ],
+        "2023": [
+          {
+            "title": "UNESP 2023 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2023/1a-fase/unesp-2023-1a-fase-prova.pdf",
+            "size": 2800582,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2023 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2023/1a-fase/unesp-2023-1a-fase-gabarito.pdf",
+            "size": 382000,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2023 · 2ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2023/2a-fase/unesp-2023-2a-fase-prova.pdf",
+            "size": 9402509,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2023 · 2ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2023/2a-fase/unesp-2023-2a-fase-gabarito.pdf",
+            "size": 138182,
+            "pending": true
+          }
+        ],
+        "2024": [
+          {
+            "title": "UNESP 2024 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unesp/2024/1a-fase/unesp-2024-1a-fase-prova.pdf",
+            "size": 2922782,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2024 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unesp/2024/1a-fase/unesp-2024-1a-fase-gabarito.pdf",
+            "size": 325874,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2024 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/unesp/2024/2a-fase/unesp-2024-2a-fase-prova-dia-1.pdf",
+            "size": 2046867,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2024 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/unesp/2024/2a-fase/unesp-2024-2a-fase-prova-dia-2.pdf",
+            "size": 1523568,
+            "pending": true
+          }
+        ],
+        "2025": [
+          {
+            "title": "UNESP 2025 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/unesp/2025/2a-fase/unesp-2025-2a-fase-prova-dia-1.pdf",
+            "size": 1765923,
+            "pending": true
+          },
+          {
+            "title": "UNESP 2025 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/unesp/2025/2a-fase/unesp-2025-2a-fase-prova-dia-2.pdf",
+            "size": 1399891,
+            "pending": true
+          }
+        ]
+      }
     },
     {
       "id": "unicamp",
