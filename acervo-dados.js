@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. PDFs não publicados marcados pending:true. */
+/* Catálogo local do Banco de Provas. PDFs pendentes precisam ser publicados no servidor. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -560,7 +560,475 @@ window.EVM_ACERVO = {
       "subtitle": "Universidade Estadual de Campinas",
       "logo": "./assets/logo-unicamp.svg",
       "legacy": "https://drive.google.com/drive/folders/1-h3lO3yPLZz2qAo5pg6KEQ2CMriVLe1L?usp=drive_link",
-      "years": {}
+      "years": {
+        "2020": [
+          {
+            "title": "UNICAMP 2020 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unicamp/2020/1a-fase/unicamp-2020-1a-fase-1a-fase-unicamp-2020.pdf",
+            "size": 2366779,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2020/1a-fase/unicamp-2020-1a-fase-gabarito-1a-fase-unicamp-2020.pdf",
+            "size": 133382,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Prova · Ciências Biológicas",
+            "type": "prova",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-2a-fase-unicamp-2020-bio.pdf",
+            "size": 1994520,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Prova · Ciências Exatas",
+            "type": "prova",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-2a-fase-unicamp-2020-exatas.pdf",
+            "size": 2030955,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Prova · Ciências Humanas e Artes",
+            "type": "prova",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-2a-fase-unicamp-2020-hum.pdf",
+            "size": 811107,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Prova · Língua Portuguesa e Redação",
+            "type": "prova",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-2a-fase-unicamp-2020-lp-e-red.pdf",
+            "size": 404328,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Gabarito · Ciências Biológicas",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-gabarito-2a-fase-unicamp-2020-bio.pdf",
+            "size": 2109959,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Gabarito · Ciências Exatas",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-gabarito-2a-fase-unicamp-2020-exatas.pdf",
+            "size": 1396907,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Gabarito · Ciências Humanas e Artes",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-gabarito-2a-fase-unicamp-2020-hum.pdf",
+            "size": 1648628,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2020 · 2ª fase · Gabarito · Redação, Português e Literatura",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2020/2a-fase/unicamp-2020-2a-fase-gabarito-2a-fase-unicamp-2020-lp-e-red.pdf",
+            "size": 983429,
+            "pending": true
+          }
+        ],
+        "2021": [
+          {
+            "title": "UNICAMP 2021 · 1ª fase · Gabarito · Ciências Biológicas e Saúde",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2021/1a-fase/unicamp-2021-1a-fase-gabarito-prova-biologicas-e-saude.pdf",
+            "size": 84141,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 1ª fase · Gabarito · Exatas e Humanas",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2021/1a-fase/unicamp-2021-1a-fase-gabarito-prova-exatas-e-humanas.pdf",
+            "size": 82196,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 1ª fase · Prova · Ciências Biológicas e Saúde",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/1a-fase/unicamp-2021-1a-fase-prova-biologicas-e-saude.pdf",
+            "size": 1814105,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 1ª fase · Prova · Exatas e Humanas",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/1a-fase/unicamp-2021-1a-fase-prova-exatas-e-humanas.pdf",
+            "size": 2959547,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Prova · Ciências Biológicas e Saúde",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-prova-da-area-de-ciencias-biologicas-saude.pdf",
+            "size": 1990529,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Prova · Ciências Exatas e Tecnológicas",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-prova-da-area-de-ciencias-exatas-tecnologicas.pdf",
+            "size": 1913433,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Prova · Ciências Humanas e Artes",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-prova-da-area-de-ciencias-humanas-artes.pdf",
+            "size": 1293973,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Prova · Redação, Português, Literatura, Interdisciplinares e Inglês",
+            "type": "prova",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-prova-de-redacao-portugues-literatura-interdisciplinares-ingles.pdf",
+            "size": 1192489,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Respostas esperadas · Ciências Biológicas e Saúde",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-resposta-esperada-cb-s.pdf",
+            "size": 228035,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Respostas esperadas · Ciências Exatas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-resposta-esperada-ce-t.pdf",
+            "size": 502889,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Respostas esperadas · Ciências Humanas e Artes",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-resposta-esperada-ch-a.pdf",
+            "size": 231602,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Respostas esperadas · Língua Portuguesa, Literatura e Interdisciplinares",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-resposta-esperada-lit-port-inter.pdf",
+            "size": 149832,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2021 · 2ª fase · Respostas esperadas · Redação",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2021/2a-fase/unicamp-2021-2a-fase-resposta-esperada-red.pdf",
+            "size": 103389,
+            "pending": true
+          }
+        ],
+        "2022": [
+          {
+            "title": "UNICAMP 2022 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2022/1a-fase/unicamp-2022-1a-fase-gabarito-1-fase.pdf",
+            "size": 63895,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 1ª fase · Prova · Versão Q/X",
+            "type": "prova",
+            "file": "acervo/unicamp/2022/1a-fase/unicamp-2022-1a-fase-prova-q-x.pdf",
+            "size": 3553005,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Prova · Ciências Biológicas e Saúde",
+            "type": "prova",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-prova-ciencias-biologicas-saude.pdf",
+            "size": 2120827,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Prova · Ciências Exatas e Tecnológicas",
+            "type": "prova",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-prova-exatas-tecnologicas.pdf",
+            "size": 1982356,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Prova · Ciências Humanas e Artes",
+            "type": "prova",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-prova-humanas-artes.pdf",
+            "size": 1068290,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Prova · Redação, Português, Interdisciplinares e Inglês",
+            "type": "prova",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-prova-redacao-portugues-inter-ingles.pdf",
+            "size": 1442638,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Respostas esperadas · Redação",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-resposta-esperada-2022-red.pdf",
+            "size": 126616,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Respostas esperadas · Ciências Biológicas e Saúde",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-resposta-esperada-cb-s.pdf",
+            "size": 522083,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Respostas esperadas · Ciências Exatas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-resposta-esperada-ce-t.pdf",
+            "size": 506660,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Respostas esperadas · Ciências Humanas e Artes",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-resposta-esperada-ch-a.pdf",
+            "size": 256963,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2022 · 2ª fase · Respostas esperadas · Língua Portuguesa, Literatura e Interdisciplinares",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2022/2a-fase/unicamp-2022-2a-fase-resposta-esperada-lit-port-inter.pdf",
+            "size": 145188,
+            "pending": true
+          }
+        ],
+        "2023": [
+          {
+            "title": "UNICAMP 2023 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2023/1a-fase/unicamp-2023-1a-fase-gabaritos-1-fase-vestibular-2023-unicamp.pdf",
+            "size": 80772,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 1ª fase · Prova · Versões Q e Z",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/1a-fase/unicamp-2023-1a-fase-provas-unicamp-2023-q-e-z.pdf",
+            "size": 5491877,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 1ª fase · Prova · Versões R e Y",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/1a-fase/unicamp-2023-1a-fase-provas-unicamp-2023-r-e-y.pdf",
+            "size": 5492901,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 1ª fase · Prova · Versões S e X",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/1a-fase/unicamp-2023-1a-fase-provas-unicamp-2023-s-e-x.pdf",
+            "size": 5613737,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 1ª fase · Prova · Versões T e W",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/1a-fase/unicamp-2023-1a-fase-provas-unicamp-2023-t-e-w.pdf",
+            "size": 5492116,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Prova · Ciências Biológicas e Saúde",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-prova-ciencias-biologias-saude-unicamp-2023-fase-2.pdf",
+            "size": 4303234,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Prova · Ciências Exatas",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-prova-ciencias-exatas-unicamp-2023-fase-2.pdf",
+            "size": 3264159,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Prova · Ciências Humanas e Artes",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-prova-ciencias-humanas-artes-unicamp-2023-fase-2.pdf",
+            "size": 2121898,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Prova · Redação, Português e Literaturas",
+            "type": "prova",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-prova-redacao-portugues-literaturas-unicamp-2023-fase-2.pdf",
+            "size": 1552840,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Comentários da redação",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-redacao-unicamp-2023-comentario.pdf",
+            "size": 146175,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Respostas esperadas · Ciências Biológicas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-respostas-esperadas-ciencias-biologicas-unicamp-2023.pdf",
+            "size": 230781,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Respostas esperadas · Ciências Exatas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-respostas-esperadas-ciencias-exatas-unicamp-2023.pdf",
+            "size": 1672284,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Respostas esperadas · Ciências Humanas e Artes",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-respostas-esperadas-ciencias-humanas-artes-unicamp-2023.pdf",
+            "size": 182541,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2023 · 2ª fase · Respostas esperadas · Língua Portuguesa e Literatura",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2023/2a-fase/unicamp-2023-2a-fase-respostas-esperadas-portugues-literatura-unicamp-2023.pdf",
+            "size": 181892,
+            "pending": true
+          }
+        ],
+        "2024": [
+          {
+            "title": "UNICAMP 2024 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unicamp/2024/1a-fase/unicamp-2024-1a-fase-1a-fase-unicamp-2024.pdf",
+            "size": 6500549,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2024/1a-fase/unicamp-2024-1a-fase-gabarito-1a-fase-unicamp-2024.pdf",
+            "size": 40480,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Prova · Matemática, Biologia e Química",
+            "type": "prova",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-2a-fase-unicamp-2024-mat-bio-quim.pdf",
+            "size": 3255587,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Prova · Matemática, Física e Química",
+            "type": "prova",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-2a-fase-unicamp-2024-mat-fis-quim.pdf",
+            "size": 1654504,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Prova · Matemática, Sociologia, Filosofia, História e Geografia",
+            "type": "prova",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-2a-fase-unicamp-2024-mat-soc-filo-hist-geo.pdf",
+            "size": 2118953,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Prova · Redação, Língua Portuguesa e Interdisciplinares",
+            "type": "prova",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-2a-fase-unicamp-2024-red-lp-inter.pdf",
+            "size": 2487524,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Expectativa da banca · Redação",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-expectativa-banca-red.pdf",
+            "size": 276830,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Respostas esperadas · 1º dia",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-respostas-esperadas-1odia.pdf",
+            "size": 523878,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Respostas esperadas · Ciências Biológicas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-respostasesperadas-dia2-cb.pdf",
+            "size": 460878,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Respostas esperadas · Ciências Exatas",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-respostasesperadas-dia2-ce.pdf",
+            "size": 655448,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2024 · 2ª fase · Respostas esperadas · Ciências Humanas e Artes",
+            "type": "resolucao",
+            "file": "acervo/unicamp/2024/2a-fase/unicamp-2024-2a-fase-respostasesperadas-dia2-ch.pdf",
+            "size": 311091,
+            "pending": true
+          }
+        ],
+        "2025": [
+          {
+            "title": "UNICAMP 2025 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/unicamp/2025/1a-fase/unicamp-2025-1a-fase-gabarito-unicamp-2025-1a-fase.pdf",
+            "size": 52356,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2025 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/unicamp/2025/1a-fase/unicamp-2025-1a-fase-unicamp-2025-1a-fase.pdf",
+            "size": 6477811,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2025 · 2ª fase · Prova · 1º dia",
+            "type": "prova",
+            "file": "acervo/unicamp/2025/2a-fase/unicamp-2025-2a-fase-2a-fase-dia-1.pdf",
+            "size": 2907476,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2025 · 2ª fase · Prova · Ciências Biológicas",
+            "type": "prova",
+            "file": "acervo/unicamp/2025/2a-fase/unicamp-2025-2a-fase-biologicas.pdf",
+            "size": 2336822,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2025 · 2ª fase · Prova · Ciências Exatas",
+            "type": "prova",
+            "file": "acervo/unicamp/2025/2a-fase/unicamp-2025-2a-fase-exatas.pdf",
+            "size": 2771608,
+            "pending": true
+          },
+          {
+            "title": "UNICAMP 2025 · 2ª fase · Prova · Ciências Humanas e Artes",
+            "type": "prova",
+            "file": "acervo/unicamp/2025/2a-fase/unicamp-2025-2a-fase-humanas.pdf",
+            "size": 2871625,
+            "pending": true
+          }
+        ]
+      }
     },
     {
       "id": "famerp",
