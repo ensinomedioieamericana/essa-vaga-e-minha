@@ -47,6 +47,17 @@ def main() -> int:
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     if catalog.get("version") != 1:
         raise SystemExit("Versão incompatível de acervo-catalogo.json")
+    # Preserva registros catalogados enquanto os PDFs ainda não foram
+    # publicados e mantém os PDFs multipartes já existentes no GitHub.
+    previous = {"institutions": []}
+    if OUTPUT.exists():
+        match = re.search(
+            r"window\.EVM_ACERVO\s*=\s*(\{[\s\S]*\})\s*;",
+            OUTPUT.read_text(encoding="utf-8"),
+        )
+        if match:
+            previous = json.loads(match.group(1))
+    old_institutions = {item["id"]: item for item in previous.get("institutions", [])}
     records = []
     total_files = 0
     for inst in catalog["institutions"]:
@@ -54,6 +65,13 @@ def main() -> int:
         if not re.fullmatch(r"[a-z0-9-]+", slug):
             raise SystemExit(f"Identificador inválido: {slug!r}")
         folder = ACERVO / slug
+        old_years = old_institutions.get(slug, {}).get("years", {})
+        old_files = {
+            doc.get("file"): doc
+            for docs in old_years.values()
+            for doc in docs
+            if isinstance(doc, dict) and isinstance(doc.get("file"), str)
+        }
         years = {}
         if folder.exists():
             for year_dir in sorted(folder.iterdir(), reverse=True):
@@ -70,9 +88,10 @@ def main() -> int:
                         print(f"Aviso: arquivo não parece ser PDF válido: {pdf.relative_to(BASE)}", file=sys.stderr)
                         continue
                     rel = pdf.relative_to(BASE)
+                    old = old_files.get(rel.as_posix(), {})
                     files.append({
-                        "title": display_name(pdf, year_dir),
-                        "type": classify(pdf.stem),
+                        "title": old.get("title") or display_name(pdf, year_dir),
+                        "type": old.get("type") or classify(pdf.stem),
                         "file": rel.as_posix(),
                         "size": pdf.stat().st_size,
                     })
@@ -82,8 +101,29 @@ def main() -> int:
                 ))
                 if files:
                     years[year_dir.name] = files
-                    total_files += len(files)
+        # Registros de upload pendente são mantidos até que o PDF exista;
+        # arquivos divididos em .part continuam disponíveis no site.
+        for year, docs in old_years.items():
+            if not YEAR.fullmatch(year) or not isinstance(docs, list):
+                continue
+            found = {doc["file"] for doc in years.get(year, [])}
+            for doc in docs:
+                if not isinstance(doc, dict) or doc.get("file") in found:
+                    continue
+                if doc.get("pending") is True or isinstance(doc.get("parts"), list):
+                    years.setdefault(year, []).append(doc)
+                    found.add(doc["file"])
+        for year, docs in years.items():
+            docs.sort(key=lambda x: (
+                {"1a-fase": 0, "2a-fase": 1, "especificas": 2}.get(
+                    x["file"].split("/")[3] if len(x["file"].split("/")) > 3 else "", 3
+                ),
+                {"prova": 0, "gabarito": 1, "resolucao": 2, "outro": 3}.get(x.get("type"), 3),
+                x["title"].casefold(),
+            ))
+        years = dict(sorted(years.items(), reverse=True))
         records.append({**inst, "years": years})
+        total_files += sum(map(len, years.values()))
         print(f"{inst['name']:<16} {sum(map(len, years.values())):>4} PDF(s)  |  {len(years)} ano(s)")
     output = {
         "version": 1,
