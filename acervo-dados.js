@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. Gerado por scripts/gerar_acervo.py. */
+/* Catálogo local do Banco de Provas. PDFs de 2020–2025: pendentes até envio ao servidor. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -9,6 +9,270 @@ window.EVM_ACERVO = {
       "logo": "./assets/logo-usp.svg?v=11",
       "legacy": "https://drive.google.com/drive/folders/1jcQfLniykYVK8xyw48zGEwQjrs6oVwUB?usp=drive_link",
       "years": {
+        "2020": [
+          {
+            "title": "FUVEST 2020 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2020/1a-fase/fuvest-2020-1a-fase-gabarito.pdf",
+            "size": 512040,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2020 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2020/1a-fase/fuvest-2020-1a-fase-prova.pdf",
+            "size": 9251739,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2020 · 2ª fase · Gabarito · Dia 1",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2020/2a-fase/fuvest-2020-2a-fase-dia-1-gabarito.pdf",
+            "size": 1630931,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2020 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2020/2a-fase/fuvest-2020-2a-fase-dia-1-prova.pdf",
+            "size": 1166496,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2020 · 2ª fase · Gabarito · Dia 2",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2020/2a-fase/fuvest-2020-2a-fase-dia-2-gabarito.pdf",
+            "size": 1947773,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2020 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2020/2a-fase/fuvest-2020-2a-fase-dia-2-prova.pdf",
+            "size": 4372462,
+            "pending": true
+          }
+        ],
+        "2021": [
+          {
+            "title": "FUVEST 2021 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2021/1a-fase/fuvest-2021-1a-fase-gabarito.pdf",
+            "size": 520919,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2021 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2021/1a-fase/fuvest-2021-1a-fase-prova.pdf",
+            "size": 5753077,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2021 · 2ª fase · Gabarito · Dia 1",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2021/2a-fase/fuvest-2021-2a-fase-dia-1-gabarito.pdf",
+            "size": 1720107,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2021 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2021/2a-fase/fuvest-2021-2a-fase-dia-1-prova.pdf",
+            "size": 1018396,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2021 · 2ª fase · Gabarito · Dia 2",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2021/2a-fase/fuvest-2021-2a-fase-dia-2-gabarito.pdf",
+            "size": 3905536,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2021 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2021/2a-fase/fuvest-2021-2a-fase-dia-2-prova.pdf",
+            "size": 7636358,
+            "pending": true
+          }
+        ],
+        "2022": [
+          {
+            "title": "FUVEST 2022 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2022/1a-fase/fuvest-2022-1a-fase-gabarito.pdf",
+            "size": 644954,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2022 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2022/1a-fase/fuvest-2022-1a-fase-prova.pdf",
+            "size": 10620438,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2022 · 2ª fase · Gabarito · Dia 1",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2022/2a-fase/fuvest-2022-2a-fase-dia-1-gabarito.pdf",
+            "size": 911992,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2022 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2022/2a-fase/fuvest-2022-2a-fase-dia-1-prova.pdf",
+            "size": 777947,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2022 · 2ª fase · Gabarito · Dia 2",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2022/2a-fase/fuvest-2022-2a-fase-dia-2-gabarito.pdf",
+            "size": 4581098,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2022 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2022/2a-fase/fuvest-2022-2a-fase-dia-2-prova.pdf",
+            "size": 6794633,
+            "pending": true
+          }
+        ],
+        "2023": [
+          {
+            "title": "FUVEST 2023 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2023/1a-fase/fuvest-2023-1a-fase-gabarito.pdf",
+            "size": 530692,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2023 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2023/1a-fase/fuvest-2023-1a-fase-prova.pdf",
+            "size": 6469477,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2023 · 2ª fase · Gabarito · Dia 1",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2023/2a-fase/fuvest-2023-2a-fase-dia-1-gabarito.pdf",
+            "size": 2388400,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2023 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2023/2a-fase/fuvest-2023-2a-fase-dia-1-prova.pdf",
+            "size": 1590674,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2023 · 2ª fase · Gabarito · Dia 2",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2023/2a-fase/fuvest-2023-2a-fase-dia-2-gabarito.pdf",
+            "size": 8529732,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2023 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2023/2a-fase/fuvest-2023-2a-fase-dia-2-prova.pdf",
+            "size": 4475410,
+            "pending": true
+          }
+        ],
+        "2024": [
+          {
+            "title": "FUVEST 2024 · 1ª fase · Gabarito",
+            "type": "gabarito",
+            "file": "acervo/fuvest/2024/1a-fase/fuvest-2024-1a-fase-gabarito.pdf",
+            "size": 482323,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2024 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2024/1a-fase/fuvest-2024-1a-fase-prova.pdf",
+            "size": 7309719,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2024 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2024/2a-fase/fuvest-2024-2a-fase-dia-1-prova.pdf",
+            "size": 2902800,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2024 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2024/2a-fase/fuvest-2024-2a-fase-dia-2-prova.pdf",
+            "size": 8455687,
+            "pending": true
+          }
+        ],
+        "2025": [
+          {
+            "title": "FUVEST 2025 · 1ª fase · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/1a-fase/fuvest-2025-1a-fase-prova.pdf",
+            "size": 8978910,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · 2ª fase · Prova · Dia 1",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/2a-fase/fuvest-2025-2a-fase-dia-1-prova.pdf",
+            "size": 2834838,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · 2ª fase · Prova · Dia 2",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/2a-fase/fuvest-2025-2a-fase-dia-2-prova.pdf",
+            "size": 11849725,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · 2ª fase · Guia de respostas",
+            "type": "resolucao",
+            "file": "acervo/fuvest/2025/2a-fase/fuvest-2025-2a-fase-guia-respostas.pdf",
+            "size": 10752144,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · Habilidades específicas · Artes Visuais · Prova",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/especificas/fuvest-2025-especificas-prova-artes-visuais.pdf",
+            "size": 2684101,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · Habilidades específicas · Artes Cênicas · Prova escrita",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/especificas/fuvest-2025-especificas-prova-escrita-artes-cenicas.pdf",
+            "size": 617499,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · Habilidades específicas · Música · São Paulo",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/especificas/fuvest-2025-especificas-prova-musica-sp.pdf",
+            "size": 705371,
+            "pending": true
+          },
+          {
+            "title": "FUVEST 2025 · Habilidades específicas · Artes Cênicas · Prova prática",
+            "type": "prova",
+            "file": "acervo/fuvest/2025/especificas/fuvest-2025-especificas-prova-pratica-artes-cenicas.pdf",
+            "size": 553842,
+            "pending": true
+          }
+        ],
         "2026": [
           {
             "title": "FUVEST 2026 · 1ª fase · Gabarito",
