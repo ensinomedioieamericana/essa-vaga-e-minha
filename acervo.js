@@ -101,6 +101,8 @@ function stagesOf(inst,year){
  const docs=(inst?.years?.[year]||[]).filter(d=>validPdf(inst,year,d));
  const all=new Set(docs.map(phaseOf));
  for(const p of folderPaths(inst,year))all.add(p.split('/')[0]);
+ // Se todos os PDFs estão diretamente dentro do ano, mostrar a lista sem uma etapa extra de seleção.
+ if(all.size===1&&all.has('raiz'))return [];
  const standard=inst?.id==='enem'?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
  return [...all].sort((a,b)=>{
   const ai=standard.indexOf(a),bi=standard.indexOf(b);
