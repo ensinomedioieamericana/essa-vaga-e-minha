@@ -76,7 +76,7 @@ function refreshFolders(preferred){
  const i=inst(),y=$('pdf-year').value,select=$('pdf-folder'),before=preferred===undefined?(select.options.length?select.value:null):preferred;
  select.replaceChildren(option('','Diretamente no ano (sem pasta)'));
  const available=allFolders(i,y);
- const presets=['enem','famerp'].includes(i?.id)?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
+ const presets=i?.id==='einstein'?[]:['enem','famerp'].includes(i?.id)?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
  for(const p of [...new Set([...presets,...available])])select.append(option(p,folderName(p)));
  select.value=before!==null&&[...select.options].some(x=>x.value===before)?before:(available[0]||presets[0]||'');
  updateDestination();renderRecords();
