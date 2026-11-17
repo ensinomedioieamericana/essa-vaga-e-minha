@@ -16,7 +16,7 @@ window.APP_LINKS = [
   {id:'canguru',title:'Canguru de Matemática',description:'Acesso às provas anteriores da competição.',category:'biblioteca',tag:'Olimpíada',url:'https://www.cangurudematematicabrasil.com.br/provas-anteriores-preenchido'},
   {id:'obras-literarias',title:'Obras literárias em domínio público',description:'Biblioteca de obras literárias para os vestibulares.',category:'biblioteca',tag:'Leitura',url:'https://drive.google.com/drive/folders/1Ao5OmeOFUA3s0ZA2JSMGX5rKr3FZNcCz?usp=sharing'},
   {id:'famerp',title:'FAMERP',description:'Provas anteriores organizadas por ano. A migração dos PDFs para o site está em andamento.',category:'provas',tag:'Por ano',url:'./acervo.html?prova=famerp'},
-  {id:'famema',title:'FAMEMA',description:'Provas anteriores organizadas por ano. A migração dos PDFs para o site está em andamento.',category:'provas',tag:'Por ano',url:'./acervo.html?prova=famema'},
+  {id:'famema',title:'FAMEMA',description:'9 provas e gabaritos de 2021 a 2024, organizados por ano. PDFs publicados conforme a importação.',category:'provas',tag:'2021–2024',url:'./acervo.html?prova=famema'},
   {id:'meusisu',title:'MeuSISU',description:'Ferramenta externa de consulta e simulação relacionada ao SISU.',category:'notas',tag:'Ferramenta',url:'https://meusisu.com/'},
   {id:'notas-sisu',title:'Notas SISU — painel',description:'Painel externo em Power BI com dados sobre notas SISU.',category:'notas',tag:'Power BI',url:'https://app.powerbi.com/view?r=eyJrIjoiMWJiNjliMTMtNDAzOS00OGI0LWI4ZmMtZGNlMTQ3ODM2YzE2IiwidCI6Ijc4NmU0MDgzLTdiMjMtNDRlOC04Y2FjLTQ4NGI5ZDRkOTVhMSJ9'}
 ];
