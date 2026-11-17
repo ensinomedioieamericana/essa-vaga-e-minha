@@ -11,6 +11,7 @@ on:
       - "Importar PDFs ENEM 2025 UNESP UNICAMP 2026"
       - "Corrigir PDF ENEM 2025 segundo dia"
       - "Importar PDFs UNICAMP 2027 primeira fase"
+      - "Importar PDFs FAMERP 2021-2024"
     types:
       - completed
   workflow_dispatch:
