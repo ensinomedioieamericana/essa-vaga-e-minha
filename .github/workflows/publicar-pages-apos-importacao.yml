@@ -8,6 +8,7 @@ on:
     workflows:
       - "Importar PDFs das provas anteriores"
       - "Importar PDFs FAMEMA 2021-2024"
+      - "Importar PDFs ENEM 2025 UNESP UNICAMP 2026"
     types:
       - completed
   workflow_dispatch:
