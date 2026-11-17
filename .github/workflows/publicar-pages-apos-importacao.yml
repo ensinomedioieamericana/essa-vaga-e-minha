@@ -10,6 +10,7 @@ on:
       - "Importar PDFs FAMEMA 2021-2024"
       - "Importar PDFs ENEM 2025 UNESP UNICAMP 2026"
       - "Corrigir PDF ENEM 2025 segundo dia"
+      - "Importar PDFs UNICAMP 2027 primeira fase"
     types:
       - completed
   workflow_dispatch:
