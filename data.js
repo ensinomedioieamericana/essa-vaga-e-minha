@@ -17,6 +17,7 @@ window.APP_LINKS = [
   {id:'obras-literarias',title:'Obras literárias em domínio público',description:'Biblioteca de obras literárias para os vestibulares.',category:'biblioteca',tag:'Leitura',url:'https://drive.google.com/drive/folders/1Ao5OmeOFUA3s0ZA2JSMGX5rKr3FZNcCz?usp=sharing'},
   {id:'famerp',title:'FAMERP',description:'Provas e gabaritos de 2021 a 2024, organizados por dia e ano.',category:'provas',tag:'2021–2024',url:'./acervo.html?prova=famerp'},
   {id:'famema',title:'FAMEMA',description:'9 provas e gabaritos de 2021 a 2024, organizados por ano. PDFs publicados conforme a importação.',category:'provas',tag:'2021–2024',url:'./acervo.html?prova=famema'},
+  {id:'einstein',title:'Albert Einstein',description:'Provas I e II e gabaritos de 2024 a 2027, organizados por ano.',category:'provas',tag:'2024–2027',url:'./acervo.html?prova=einstein'},
   {id:'meusisu',title:'MeuSISU',description:'Ferramenta externa de consulta e simulação relacionada ao SISU.',category:'notas',tag:'Ferramenta',url:'https://meusisu.com/'},
   {id:'notas-sisu',title:'Notas SISU — painel',description:'Painel externo em Power BI com dados sobre notas SISU.',category:'notas',tag:'Power BI',url:'https://app.powerbi.com/view?r=eyJrIjoiMWJiNjliMTMtNDAzOS00OGI0LWI4ZmMtZGNlMTQ3ODM2YzE2IiwidCI6Ijc4NmU0MDgzLTdiMjMtNDRlOC04Y2FjLTQ4NGI5ZDRkOTVhMSJ9'}
 ];
