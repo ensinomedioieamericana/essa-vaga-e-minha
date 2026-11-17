@@ -42,6 +42,13 @@
       "subtitle": "Faculdade de Medicina de Marília",
       "logo": null,
       "legacy": "https://drive.google.com/drive/folders/1miiokUjjh8lPVvDf-wNxhGdFwczCFlOI?usp=drive_link"
+    },
+    {
+      "id": "einstein",
+      "name": "Albert Einstein",
+      "subtitle": "Faculdade Israelita de Ciências da Saúde Albert Einstein",
+      "logo": null,
+      "legacy": null
     }
   ]
 }
