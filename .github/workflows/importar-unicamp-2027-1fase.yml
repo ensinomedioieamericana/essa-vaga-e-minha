@@ -1,0 +1,99 @@
+name: Importar PDFs UNICAMP 2027 primeira fase
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-unicamp-2027-1fase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-unicamp-2027-primeira-fase
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Publicar prova e gabarito Q/Y 2027
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar bibliotecas para validar PDF
+        run: python -m pip install --disable-pip-version-check "requests>=2.31,<3" "PyMuPDF>=1.24,<2"
+
+      - name: Baixar da Comvest e conferir com o ZIP recebido
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, requests, pymupdf, time
+          pairs=[
+          ("acervo/unicamp/2027/1a-fase/unicamp-2027-1a-fase-prova-q-y.pdf","https://www.comvest.unicamp.br/vest2027/F1/F1_2027_Q_Y.pdf",5697504,"222249da6b4f44467d1f624d4de028c24fe3c2aa3994492b1fa11c8c6a664cf8",25,["UNICAMP","2027","Q e Y"]),
+          ("acervo/unicamp/2027/1a-fase/unicamp-2027-1a-fase-gabarito-q-y.pdf","https://www.comvest.unicamp.br/wp-content/uploads/2026/10/gabarito_2027_QY.pdf",39026,"0cbe2273c8904809eaa696820ebb61b15f45362c5c0a09518a72ccac3b17038d",1,["GABARITO","1ª FASE","Q e Y"])
+          ]
+          def verify(b,size,sha,pages,terms):
+           if not b.startswith(b"%PDF-") or len(b)!=size: raise ValueError("PDF/tamanho diferente do anexo recebido")
+           if hashlib.sha256(b).hexdigest()!=sha: raise ValueError("SHA256 diferente do anexo recebido")
+           with pymupdf.open(stream=b,filetype="pdf") as pdf:
+            if len(pdf)!=pages or not all(t in pdf[0].get_text() for t in terms): raise ValueError("Páginas ou conteúdo incompatíveis")
+          for name,url,size,sha,pages,terms in pairs:
+           dst=pathlib.Path(name)
+           if dst.is_file():
+            verify(dst.read_bytes(),size,sha,pages,terms)
+            print("Já existente:",name,flush=True)
+            continue
+           last=None
+           for attempt in range(3):
+            try:
+             print("Baixando da Comvest:",url,"tentativa",attempt+1,flush=True)
+             with requests.get(url,headers={"User-Agent":"Mozilla/5.0"},timeout=(20,90),stream=True) as resp:
+              resp.raise_for_status()
+              parts=[];n=0
+              for chunk in resp.iter_content(128*1024):
+               if not chunk:continue
+               n+=len(chunk)
+               if n>12*1024*1024: raise ValueError("PDF ultrapassa o limite de 12 MB")
+               parts.append(chunk)
+             b=b"".join(parts)
+             verify(b,size,sha,pages,terms)
+             dst.parent.mkdir(parents=True,exist_ok=True)
+             dst.write_bytes(b)
+             print("PDF verificado:",name,flush=True)
+             break
+            except (requests.RequestException,ValueError,RuntimeError) as exc:
+             last=exc;print("Erro de verificação/download:",exc,flush=True)
+             if attempt<2:time.sleep(4*(attempt+1))
+           else: raise RuntimeError(f"Não foi possível publicar {name}: {last}")
+          print("Prova e gabarito da UNICAMP 2027 conferidos por SHA256")
+          PY
+
+      - name: Atualizar catálogo e publicar documentos
+        run: |
+          python scripts/gerar_acervo.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A acervo/unicamp/2027/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Os PDFs já estão no repositório."
+            exit 0
+          fi
+          git commit -m "UNICAMP 2027: publicar prova e gabarito Q/Y 1a fase"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "UNICAMP 2027: sincronizar catalogo com PDFs importados"
+            fi
+            if git push origin HEAD:main; then
+              echo "Prova, gabarito e catálogo publicados."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
