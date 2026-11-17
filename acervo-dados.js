@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. PDFs pendentes precisam ser publicados no GitHub/servidor. */
+/* Catálogo local do Banco de Provas. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -490,29 +490,25 @@ window.EVM_ACERVO = {
             "title": "ENEM 2025 · 1º dia · Gabarito caderno 1 (azul)",
             "type": "gabarito",
             "file": "acervo/enem/2025/dia-1/enem-2025-dia-1-gabarito-caderno-1-azul.pdf",
-            "size": 132331,
-            "pending": true
+            "size": 132331
           },
           {
             "title": "ENEM 2025 · 1º dia · Prova caderno 1 (azul)",
             "type": "prova",
             "file": "acervo/enem/2025/dia-1/enem-2025-dia-1-prova-caderno-1-azul.pdf",
-            "size": 3306874,
-            "pending": true
+            "size": 3306874
           },
           {
             "title": "ENEM 2025 · 1º dia · Prova caderno 2 (amarelo)",
             "type": "prova",
             "file": "acervo/enem/2025/dia-1/enem-2025-dia-1-prova-caderno-2-amarelo.pdf",
-            "size": 2784620,
-            "pending": true
+            "size": 2784620
           },
           {
             "title": "ENEM 2025 · 2º dia · Gabarito caderno 5 (amarelo)",
             "type": "gabarito",
             "file": "acervo/enem/2025/dia-2/enem-2025-dia-2-gabarito-caderno-5-amarelo.pdf",
-            "size": 294764,
-            "pending": true
+            "size": 294764
           }
         ]
       },
@@ -686,29 +682,25 @@ window.EVM_ACERVO = {
             "title": "UNESP 2026 · 1ª fase · Prova objetiva",
             "type": "prova",
             "file": "acervo/unesp/2026/1a-fase/unesp-2026-1a-fase-prova.pdf",
-            "size": 4018639,
-            "pending": true
+            "size": 4018639
           },
           {
             "title": "UNESP 2026 · 1ª fase · Gabarito versão 1",
             "type": "gabarito",
             "file": "acervo/unesp/2026/1a-fase/unesp-2026-1a-fase-gabarito.pdf",
-            "size": 311048,
-            "pending": true
+            "size": 311048
           },
           {
             "title": "UNESP 2026 · 2ª fase · 1º dia · 24 questões discursivas",
             "type": "prova",
             "file": "acervo/unesp/2026/2a-fase/unesp-2026-2a-fase-dia-1-prova.pdf",
-            "size": 2100199,
-            "pending": true
+            "size": 2100199
           },
           {
             "title": "UNESP 2026 · 2ª fase · 2º dia · 12 questões e redação",
             "type": "prova",
             "file": "acervo/unesp/2026/2a-fase/unesp-2026-2a-fase-dia-2-prova.pdf",
-            "size": 1382183,
-            "pending": true
+            "size": 1382183
           }
         ]
       },
@@ -1128,78 +1120,67 @@ window.EVM_ACERVO = {
             "title": "UNICAMP 2026 · 1ª fase · Prova de conhecimentos gerais",
             "type": "prova",
             "file": "acervo/unicamp/2026/1a-fase/unicamp-2026-1a-fase-prova.pdf",
-            "size": 8732984,
-            "pending": true
+            "size": 8732984
           },
           {
             "title": "UNICAMP 2026 · 1ª fase · Gabarito",
             "type": "gabarito",
             "file": "acervo/unicamp/2026/1a-fase/unicamp-2026-1a-fase-gabarito.pdf",
-            "size": 60513,
-            "pending": true
+            "size": 60513
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · 2º dia · Ciências Biológicas/Saúde",
             "type": "prova",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-dia-2-biologicas-saude.pdf",
-            "size": 2378543,
-            "pending": true
+            "size": 2378543
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · 2º dia · Exatas/Tecnológicas",
             "type": "prova",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-dia-2-exatas-tecnologicas.pdf",
-            "size": 2453082,
-            "pending": true
+            "size": 2453082
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · 2º dia · Humanas/Artes",
             "type": "prova",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-dia-2-humanas-artes.pdf",
-            "size": 2931036,
-            "pending": true
+            "size": 2931036
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · 1º dia · Redação, Português e Inglês",
             "type": "prova",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-dia-1-redacao-portugues-ingles.pdf",
-            "size": 1690844,
-            "pending": true
+            "size": 1690844
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · Expectativas da banca (Redação)",
             "type": "resolucao",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-expectativas-banca-redacao.pdf",
-            "size": 183372,
-            "pending": true
+            "size": 183372
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · Respostas esperadas · 1º dia",
             "type": "resolucao",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-respostas-esperadas-dia-1.pdf",
-            "size": 248206,
-            "pending": true
+            "size": 248206
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · Respostas esperadas · Biológicas/Saúde",
             "type": "resolucao",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-respostas-esperadas-dia-2-biologicas-saude.pdf",
-            "size": 381041,
-            "pending": true
+            "size": 381041
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · Respostas esperadas · Exatas/Tecnológicas",
             "type": "resolucao",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-respostas-esperadas-dia-2-exatas-tecnologicas.pdf",
-            "size": 646311,
-            "pending": true
+            "size": 646311
           },
           {
             "title": "UNICAMP 2026 · 2ª fase · Respostas esperadas · Humanas/Artes",
             "type": "resolucao",
             "file": "acervo/unicamp/2026/2a-fase/unicamp-2026-2a-fase-respostas-esperadas-dia-2-humanas-artes.pdf",
-            "size": 348735,
-            "pending": true
+            "size": 348735
           }
         ]
       },
