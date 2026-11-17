@@ -1,0 +1,62 @@
+name: Importar PDFs Albert Einstein 2024-2027
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-einstein.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-einstein-pdfs
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Verificar e publicar os 12 PDFs de Albert Einstein
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar bibliotecas de validação
+        run: python -m pip install --disable-pip-version-check 'requests>=2.31,<3' 'PyMuPDF>=1.24,<2'
+
+      - name: Verificar código
+        run: python -m py_compile scripts/importar_einstein.py
+
+      - name: Baixar e conferir PDFs Albert Einstein com hashes do ZIP
+        run: python scripts/importar_einstein.py
+
+      - name: Publicar PDFs e catálogo no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A acervo/einstein/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Nenhum PDF novo para publicar."
+            exit 0
+          fi
+          git commit -m "Albert Einstein: importar provas e gabaritos 2024–2027"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "Albert Einstein: sincronizar catálogo de documentos publicados"
+            fi
+            if git push origin HEAD:main; then
+              echo "PDFs e catálogo do Albert Einstein publicados no GitHub."
+              exit 0
+            fi
+            echo "Repositório modificado simultaneamente: nova tentativa $attempt/5."
+            sleep $((attempt * 3))
+          done
+          echo "Falha ao publicar a importação por conflito."
+          exit 1
