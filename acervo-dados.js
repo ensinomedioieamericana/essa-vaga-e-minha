@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. PDFs pendentes aguardam publicação no GitHub. */
+/* Catálogo local do Banco de Provas. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -1218,22 +1218,19 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2021 · 1º dia · Prova de conhecimentos gerais (80 questões)",
             "type": "prova",
             "file": "acervo/famerp/2021/dia-1/famerp-2021-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 2062613,
-            "pending": true
+            "size": 2062613
           },
           {
             "title": "FAMERP 2021 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2021/dia-2/famerp-2021-dia-2-prova-especificos-redacao.pdf",
-            "size": 1543438,
-            "pending": true
+            "size": 1543438
           },
           {
             "title": "FAMERP 2021 · 1º dia · Gabarito de conhecimentos gerais (versão 1)",
             "type": "gabarito",
             "file": "acervo/famerp/2021/dia-1/famerp-2021-dia-1-gabarito.pdf",
-            "size": 551551,
-            "pending": true
+            "size": 551551
           }
         ],
         "2022": [
@@ -1241,22 +1238,19 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2022 · 1º dia · Prova de conhecimentos gerais (80 questões)",
             "type": "prova",
             "file": "acervo/famerp/2022/dia-1/famerp-2022-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 1643296,
-            "pending": true
+            "size": 1643296
           },
           {
             "title": "FAMERP 2022 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2022/dia-2/famerp-2022-dia-2-prova-especificos-redacao.pdf",
-            "size": 1597682,
-            "pending": true
+            "size": 1597682
           },
           {
             "title": "FAMERP 2022 · 1º dia · Gabarito de conhecimentos gerais (versão 1)",
             "type": "gabarito",
             "file": "acervo/famerp/2022/dia-1/famerp-2022-dia-1-gabarito.pdf",
-            "size": 551679,
-            "pending": true
+            "size": 551679
           }
         ],
         "2023": [
@@ -1264,22 +1258,19 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2023 · 1º dia · Prova de conhecimentos gerais (80 questões)",
             "type": "prova",
             "file": "acervo/famerp/2023/dia-1/famerp-2023-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 1811896,
-            "pending": true
+            "size": 1811896
           },
           {
             "title": "FAMERP 2023 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2023/dia-2/famerp-2023-dia-2-prova-especificos-redacao.pdf",
-            "size": 1651367,
-            "pending": true
+            "size": 1651367
           },
           {
             "title": "FAMERP 2023 · 1º dia · Gabarito de conhecimentos gerais (versão 1)",
             "type": "gabarito",
             "file": "acervo/famerp/2023/dia-1/famerp-2023-dia-1-gabarito.pdf",
-            "size": 787075,
-            "pending": true
+            "size": 787075
           }
         ],
         "2024": [
@@ -1287,22 +1278,19 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2024 · 1º dia · Prova de conhecimentos gerais (80 questões)",
             "type": "prova",
             "file": "acervo/famerp/2024/dia-1/famerp-2024-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 1535595,
-            "pending": true
+            "size": 1535595
           },
           {
             "title": "FAMERP 2024 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2024/dia-2/famerp-2024-dia-2-prova-especificos-redacao.pdf",
-            "size": 1578165,
-            "pending": true
+            "size": 1578165
           },
           {
             "title": "FAMERP 2024 · 1º dia · Gabarito de conhecimentos gerais (versão 1)",
             "type": "gabarito",
             "file": "acervo/famerp/2024/dia-1/famerp-2024-dia-1-gabarito.pdf",
-            "size": 110533,
-            "pending": true
+            "size": 110533
           }
         ]
       },
