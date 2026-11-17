@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. PDFs pendentes aguardam publicação no repositório ou servidor. */
+/* Catálogo local do Banco de Provas. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -1087,15 +1087,13 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2021 · Provas I (discursiva) e II (objetiva e redação)",
             "type": "prova",
             "file": "acervo/famema/2021/famema-2021-provas-i-e-ii.pdf",
-            "size": 1048991,
-            "pending": true
+            "size": 1048991
           },
           {
             "title": "FAMEMA 2021 · Gabarito da prova II · versão 1",
             "type": "gabarito",
             "file": "acervo/famema/2021/famema-2021-gabarito-prova-ii-versao-1.pdf",
-            "size": 550396,
-            "pending": true
+            "size": 550396
           }
         ],
         "2022": [
@@ -1103,15 +1101,13 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2022 · Prova tipo 1 · caderno branco",
             "type": "prova",
             "file": "acervo/famema/2022/famema-2022-prova-tipo-1.pdf",
-            "size": 1024000,
-            "pending": true
+            "size": 1024000
           },
           {
             "title": "FAMEMA 2022 · Gabarito preliminar (Medicina e Enfermagem)",
             "type": "gabarito",
             "file": "acervo/famema/2022/famema-2022-gabarito-preliminar.pdf",
-            "size": 71806,
-            "pending": true
+            "size": 71806
           }
         ],
         "2023": [
@@ -1119,22 +1115,19 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2023 · Prova I · questões discursivas",
             "type": "prova",
             "file": "acervo/famema/2023/famema-2023-prova-i-discursiva.pdf",
-            "size": 1368562,
-            "pending": true
+            "size": 1368562
           },
           {
             "title": "FAMEMA 2023 · Prova II · questões objetivas e redação",
             "type": "prova",
             "file": "acervo/famema/2023/famema-2023-prova-ii-objetiva-redacao.pdf",
-            "size": 685573,
-            "pending": true
+            "size": 685573
           },
           {
             "title": "FAMEMA 2023 · Gabarito da prova II · versão 3",
             "type": "gabarito",
             "file": "acervo/famema/2023/famema-2023-gabarito-prova-ii-versao-3.pdf",
-            "size": 791618,
-            "pending": true
+            "size": 791618
           }
         ],
         "2024": [
@@ -1142,15 +1135,13 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2024 · Provas I (discursiva) e II (objetiva e redação)",
             "type": "prova",
             "file": "acervo/famema/2024/famema-2024-provas-i-e-ii.pdf",
-            "size": 1658175,
-            "pending": true
+            "size": 1658175
           },
           {
             "title": "FAMEMA 2024 · Gabarito da prova II · versão 1",
             "type": "gabarito",
             "file": "acervo/famema/2024/famema-2024-gabarito-prova-ii-versao-1.pdf",
-            "size": 306402,
-            "pending": true
+            "size": 306402
           }
         ]
       },
