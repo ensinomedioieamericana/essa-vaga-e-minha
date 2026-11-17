@@ -1,0 +1,64 @@
+name: Corrigir PDF ENEM 2025 segundo dia
+
+on:
+  push:
+    paths:
+      - '.github/workflows/corrigir-enem2025-dia2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: corrigir-enem-2025-dia2
+  cancel-in-progress: false
+
+jobs:
+  corrigir:
+    name: Importar prova oficial do Inep e atualizar catálogo
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar ferramentas de conferência
+        run: python -m pip install --disable-pip-version-check 'PyMuPDF>=1.24,<2' 'requests>=2.31,<3'
+
+      - name: Validar importador
+        run: python -m py_compile scripts/importar_enem2025_dia2.py
+
+      - name: Importar prova correta do ENEM 2025 segundo dia
+        run: |
+          python scripts/importar_enem2025_dia2.py
+          python scripts/gerar_acervo.py
+
+      - name: Gravar PDF e catálogo em main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add acervo/enem/2025/dia-2/enem-2025-dia-2-prova-caderno-5-amarelo.pdf acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "O PDF e o catálogo já estavam atualizados."
+            exit 0
+          fi
+          git commit -m "ENEM 2025: publicar prova do 2o dia caderno 5 amarelo"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "ENEM 2025: sincronizar catálogo após importar prova"
+            fi
+            if git push origin HEAD:main; then
+              echo "Prova do ENEM 2025 e catálogo publicados."
+              exit 0
+            fi
+            echo "Branch recebeu mudanças simultâneas; repetindo tentativa ($attempt/5)."
+            sleep $((attempt * 3))
+          done
+          echo "Falha ao publicar após 5 tentativas."
+          exit 1
