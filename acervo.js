@@ -39,7 +39,7 @@ function selectInstitution(id,requestedYear){
  const match=validId(id);if(!match)return;
  current=match;const years=yearsOf(current);
  currentYear=years.includes(String(requestedYear))?String(requestedYear):years[0]||null;
- currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;
+ currentPhase=['enem','famerp'].includes(current.id)?(stagesOf(current,currentYear)[0]||null):null;
  currentFolder='';
  $('file-search').value='';
  render();updateQuery();
@@ -74,7 +74,7 @@ function renderYears(){
  for(const y of years){
   const btn=create('button','year-tab'+(currentYear===y?' selected':''),y);
   btn.type='button';btn.setAttribute('aria-pressed',String(currentYear===y));
-  btn.addEventListener('click',()=>{currentYear=y;currentPhase=current.id==='enem'?(stagesOf(current,currentYear)[0]||null):null;currentFolder='';$('file-search').value='';renderYears();renderPhases();renderFolders();renderFiles();updateQuery()});
+  btn.addEventListener('click',()=>{currentYear=y;currentPhase=['enem','famerp'].includes(current.id)?(stagesOf(current,currentYear)[0]||null):null;currentFolder='';$('file-search').value='';renderYears();renderPhases();renderFolders();renderFiles();updateQuery()});
   wrap.append(btn);
  }
 }
@@ -103,7 +103,7 @@ function stagesOf(inst,year){
  for(const p of folderPaths(inst,year))all.add(p.split('/')[0]);
  // Se todos os PDFs estão diretamente dentro do ano, mostrar a lista sem uma etapa extra de seleção.
  if(all.size===1&&all.has('raiz'))return [];
- const standard=inst?.id==='enem'?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
+ const standard=['enem','famerp'].includes(inst?.id)?['dia-1','dia-2']:['1a-fase','2a-fase','especificas'];
  return [...all].sort((a,b)=>{
   const ai=standard.indexOf(a),bi=standard.indexOf(b);
   if(ai>=0||bi>=0)return (ai<0?99:ai)-(bi<0?99:bi);
@@ -135,10 +135,10 @@ function renderPhases(){
  $('phase-section').hidden=!stages.length;
  if(!stages.length){currentPhase=null;currentFolder='';return}
  if(currentPhase&&!stages.includes(currentPhase)){currentPhase=null;currentFolder=''}
- const enem=current.id==='enem';
- $('phase-step-eyebrow').textContent=enem?'03 / ESCOLHA O DIA':'03 / ESCOLHA A PASTA';
- $('phase-title').textContent=enem?'Qual dia deseja estudar?':'Qual fase ou pasta deseja estudar?';
- $('phase-subtitle').textContent=enem?'ENEM · '+currentYear+' · escolha o dia para consultar provas e gabaritos.':current.name+' · '+currentYear+' · selecione uma fase ou pasta para localizar os documentos.';
+ const byDay=['enem','famerp'].includes(current.id);
+ $('phase-step-eyebrow').textContent=byDay?'03 / ESCOLHA O DIA':'03 / ESCOLHA A PASTA';
+ $('phase-title').textContent=byDay?'Qual dia deseja estudar?':'Qual fase ou pasta deseja estudar?';
+ $('phase-subtitle').textContent=byDay?current.name+' · '+currentYear+' · escolha o dia para consultar as provas e os gabaritos disponíveis.':current.name+' · '+currentYear+' · selecione uma fase ou pasta para localizar os documentos.';
  for(const stage of stages){
   const count=(current.years?.[currentYear]||[]).filter(doc=>validPdf(current,currentYear,doc)&&phaseOf(doc)===stage).length;
   const label=folderLabel(stage)+(count?' · '+count+(count===1?' documento':' documentos'):' · pasta');
@@ -190,10 +190,10 @@ function renderFiles(){
  const docs=(currentYear?current.years[currentYear]:[])||[];
  currentFiles=docs.filter(d=>validPdf(current,currentYear,d)&&(!stages.length||fileFolder(d)===selectedPath()));
  const matching=currentFiles.filter(doc=>norm((doc.title||'')+' '+typeName(doc.type)).includes(term));
- $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados')+(current.id==='enem'?' · Cadernos por dia, disponíveis após publicação dos PDFs no servidor.':''):'Aguardando os PDFs originais para organizar as provas por ano.';
+ $('files-subtitle').textContent=currentYear?current.name+' · '+currentYear+' · '+currentFiles.length+(currentFiles.length===1?' documento cadastrado':' documentos cadastrados')+(['enem','famerp'].includes(current.id)?' · Organizado por dia de prova.':''):'Aguardando os PDFs originais para organizar as provas por ano.';
  $('file-search').disabled=!currentYear||(stages.length&&!currentPhase);
  if(stages.length&&!currentPhase){
-  empty(current.id==='enem'?'Escolha o dia da prova':'Escolha uma fase ou pasta',current.id==='enem'?'Selecione 1º dia ou 2º dia para visualizar os arquivos.':'Selecione uma das pastas acima para visualizar os arquivos deste ano.',null);
+  empty(['enem','famerp'].includes(current.id)?'Escolha o dia da prova':'Escolha uma fase ou pasta',['enem','famerp'].includes(current.id)?'Selecione 1º dia ou 2º dia para visualizar os arquivos.':'Selecione uma das pastas acima para visualizar os arquivos deste ano.',null);
   return;
  }
  if(!currentFiles.length){
@@ -306,13 +306,13 @@ moreDialog.addEventListener('click',event=>{if(event.target===moreDialog)moreDia
 $('file-search').addEventListener('input',renderFiles);
 function render(){
  $('breadcrumb-name').textContent=current.name;
- $('acervo-subtitle').textContent=current.id==='enem'?'Explore o acervo do ENEM. Selecione o ano e escolha o 1º ou o 2º dia para consultar provas e gabaritos.':'Explore o acervo de '+current.name+'. Selecione o ano e a fase para acessar provas, gabaritos e materiais PDF dentro do site.';
+ $('acervo-subtitle').textContent=['enem','famerp'].includes(current.id)?'Explore o acervo de '+current.name+'. Selecione o ano e escolha o 1º ou o 2º dia para consultar as provas e os gabaritos.':'Explore o acervo de '+current.name+'. Selecione o ano e a fase para acessar provas, gabaritos e materiais PDF dentro do site.';
  renderInstitutions();renderYears();renderPhases();renderFolders();renderFiles();
 }
 const initialYears=yearsOf(current);
 currentYear=initialYears.includes(q.get('ano'))?q.get('ano'):initialYears[0]||null;
 const allowedInitialStages=stagesOf(current,currentYear);
-currentPhase=allowedInitialStages.includes(q.get('fase'))?q.get('fase'):(current.id==='enem'?(allowedInitialStages[0]||null):null);
+currentPhase=allowedInitialStages.includes(q.get('fase'))?q.get('fase'):(['enem','famerp'].includes(current.id)?(allowedInitialStages[0]||null):null);
 const requestedFolder=q.get('pasta')||'';
 currentFolder=currentPhase&&/^[a-z0-9-]+(?:\/[a-z0-9-]+)*$/.test(requestedFolder)&&folderPaths(current,currentYear).includes((currentPhase==='raiz'?'':currentPhase+'/')+requestedFolder)?requestedFolder:'';
 render();updateQuery();
