@@ -1380,22 +1380,19 @@ window.EVM_ACERVO = {
             "title": "Einstein 2024 · Prova I (50 questões objetivas)",
             "type": "prova",
             "file": "acervo/einstein/2024/einstein-2024-prova-i.pdf",
-            "size": 1068433,
-            "pending": true
+            "size": 1068433
           },
           {
             "title": "Einstein 2024 · Gabarito da Prova I (versão 1)",
             "type": "gabarito",
             "file": "acervo/einstein/2024/einstein-2024-gabarito-prova-i.pdf",
-            "size": 279189,
-            "pending": true
+            "size": 279189
           },
           {
             "title": "Einstein 2024 · Prova II (5 questões discursivas e redação)",
             "type": "prova",
             "file": "acervo/einstein/2024/einstein-2024-prova-ii.pdf",
-            "size": 345744,
-            "pending": true
+            "size": 345744
           }
         ],
         "2025": [
@@ -1403,22 +1400,19 @@ window.EVM_ACERVO = {
             "title": "Einstein 2025 · Prova I (50 questões objetivas)",
             "type": "prova",
             "file": "acervo/einstein/2025/einstein-2025-prova-i.pdf",
-            "size": 2010091,
-            "pending": true
+            "size": 2010091
           },
           {
             "title": "Einstein 2025 · Gabarito da Prova I (versão 1)",
             "type": "gabarito",
             "file": "acervo/einstein/2025/einstein-2025-gabarito-prova-i.pdf",
-            "size": 124984,
-            "pending": true
+            "size": 124984
           },
           {
             "title": "Einstein 2025 · Prova II (5 questões discursivas e redação)",
             "type": "prova",
             "file": "acervo/einstein/2025/einstein-2025-prova-ii.pdf",
-            "size": 1957511,
-            "pending": true
+            "size": 1957511
           }
         ],
         "2026": [
@@ -1426,22 +1420,19 @@ window.EVM_ACERVO = {
             "title": "Einstein 2026 · Prova I (50 questões objetivas)",
             "type": "prova",
             "file": "acervo/einstein/2026/einstein-2026-prova-i.pdf",
-            "size": 1943235,
-            "pending": true
+            "size": 1943235
           },
           {
             "title": "Einstein 2026 · Gabarito da Prova I (versão 1)",
             "type": "gabarito",
             "file": "acervo/einstein/2026/einstein-2026-gabarito-prova-i.pdf",
-            "size": 700375,
-            "pending": true
+            "size": 700375
           },
           {
             "title": "Einstein 2026 · Prova II (5 questões discursivas e redação)",
             "type": "prova",
             "file": "acervo/einstein/2026/einstein-2026-prova-ii.pdf",
-            "size": 2020447,
-            "pending": true
+            "size": 2020447
           }
         ],
         "2027": [
@@ -1449,22 +1440,19 @@ window.EVM_ACERVO = {
             "title": "Einstein 2027 · Prova I (50 questões objetivas)",
             "type": "prova",
             "file": "acervo/einstein/2027/einstein-2027-prova-i.pdf",
-            "size": 1154429,
-            "pending": true
+            "size": 1154429
           },
           {
             "title": "Einstein 2027 · Gabarito da Prova I (versão 1)",
             "type": "gabarito",
             "file": "acervo/einstein/2027/einstein-2027-gabarito-prova-i.pdf",
-            "size": 700316,
-            "pending": true
+            "size": 700316
           },
           {
             "title": "Einstein 2027 · Prova II (5 questões discursivas e redação)",
             "type": "prova",
             "file": "acervo/einstein/2027/einstein-2027-prova-ii.pdf",
-            "size": 740983,
-            "pending": true
+            "size": 740983
           }
         ]
       },
