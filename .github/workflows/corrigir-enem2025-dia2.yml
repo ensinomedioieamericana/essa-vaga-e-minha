@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/corrigir-enem2025-dia2.yml'
+      - 'scripts/importar_enem2025_dia2.py'
   workflow_dispatch:
 
 permissions:
