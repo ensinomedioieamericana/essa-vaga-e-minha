@@ -1,0 +1,61 @@
+name: Importar PDFs FAMERP 2021-2024
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-famerp.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-famerp-pdfs
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Conferir e publicar PDFs originais FAMERP
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar importador
+        run: python -m pip install --disable-pip-version-check 'gdown==5.2.0'
+
+      - name: Verificar script Python
+        run: python -m py_compile scripts/importar_famerp_drive.py
+
+      - name: Baixar e validar PDFs originais do vestibular FAMERP
+        run: python scripts/importar_famerp_drive.py
+
+      - name: Gravar PDFs e sincronizar catálogo no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A acervo/famerp/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Nenhum PDF novo encontrado."
+            exit 0
+          fi
+          git commit -m "FAMERP: publicar PDFs originais de 2021 a 2024"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "FAMERP: sincronizar catálogo com PDFs publicados"
+            fi
+            if git push origin HEAD:main; then
+              echo "FAMERP importada no GitHub."
+              exit 0
+            fi
+            echo "Branch alterada durante a importação. Tentativa $attempt/5."
+            sleep $((attempt * 3))
+          done
+          exit 1
