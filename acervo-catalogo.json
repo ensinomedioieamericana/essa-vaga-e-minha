@@ -47,7 +47,7 @@
       "id": "einstein",
       "name": "Albert Einstein",
       "subtitle": "Faculdade Israelita de Ciências da Saúde Albert Einstein",
-      "logo": null,
+      "logo": "./assets/logo-einstein.png?v=1",
       "legacy": null
     }
   ]
