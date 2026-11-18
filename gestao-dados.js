@@ -177,6 +177,18 @@ window.EVM_GESTAO = {
   ],
   "notices": [
     {
+      "id": "enem-2026-provas-gabaritos",
+      "label": "ACERVO ATUALIZADO",
+      "date": "18/11/2026",
+      "title": "PROVAS E GABARITOS DO ENEM 2026 JÁ DISPONÍVEIS!",
+      "description": "Os cadernos do 1º dia (azul) e do 2º dia (amarelo), com seus gabaritos, já estão disponíveis para consulta no Banco de Provas.",
+      "action": "Conferir ENEM 2026",
+      "route": "provas",
+      "url": "./acervo.html?prova=enem&ano=2026",
+      "university": "",
+      "featured": true
+    },
+    {
       "id": "unicamp-corte-2027",
       "label": "JÁ SAIU!",
       "date": "12/11/2026",
