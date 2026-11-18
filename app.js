@@ -35,6 +35,7 @@ const PROVA_LOGOS={
  unicamp:{name:'UNICAMP',src:'./assets/logo-unicamp.svg'},
  famerp:{name:'FAMERP',src:'https://storage.googleapis.com/locus-bucket-prd/instituicao-ensino/faculdade-de-medicina-de-sao-jose-do-rio-preto.png'},
  famema:{name:'FAMEMA',src:'https://jucoracini.github.io/E-book-antibioticoterapia/assets/capa/famema.png'},
+ einstein:{name:'Albert Einstein',src:'./assets/logo-einstein.png?v=1'},
  'bernoulli-resolve':{name:'Bernoulli Educação',src:'./assets/logo-bernoulli.webp'}
 };
 function card(item){
@@ -55,7 +56,7 @@ function card(item){
  b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';
  b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));
  top.append(b);
- const internalExam=item.category==='provas'&&['fuvest','enem','unesp','unicamp','famerp','famema'].includes(item.id);
+ const internalExam=item.category==='provas'&&['fuvest','enem','unesp','unicamp','famerp','famema','einstein'].includes(item.id);
  const foot=node('div','resource-bottom');const a=node('a','',internalExam?'Escolher ano':'Abrir material');
  a.href=item.url;a.target=internalExam?'_self':'_blank';a.rel='noopener noreferrer';
  a.setAttribute('aria-label',internalExam?'Escolher ano e consultar provas de '+item.title:'Abrir '+item.title+' em uma nova aba');a.append(node('span','',internalExam?'→':'↗'));foot.append(a);
