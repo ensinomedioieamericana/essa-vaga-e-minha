@@ -1,0 +1,56 @@
+name: Importar logos FAMERP e FAMEMA
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-logos-famerp-famema.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-logos-famerp-famema
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Baixar, conferir e publicar os logos no GitHub
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Instalar bibliotecas para tratar as imagens
+        run: python -m pip install --disable-pip-version-check 'Pillow>=10,<13' 'requests>=2.31,<3'
+
+      - name: Conferir script
+        run: python -m py_compile scripts/importar_logos_famerp_famema.py
+
+      - name: Importar imagens sem alterar as marcas
+        run: python scripts/importar_logos_famerp_famema.py
+
+      - name: Publicar arquivos de logo no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/logo-famerp.png assets/logo-famema.png
+          if git diff --cached --quiet; then
+            echo "Os logos já estavam publicados."
+            exit 0
+          fi
+          git commit -m "Assets: salvar logos locais FAMERP e FAMEMA"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            if git push origin HEAD:main; then
+              echo "Logos institucionais gravados na main."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Falha ao publicar após cinco tentativas."
+          exit 1
