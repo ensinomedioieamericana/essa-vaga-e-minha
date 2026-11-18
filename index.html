@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css?v=13">
-  <link rel="stylesheet" href="./premium.css?v=17">
+  <link rel="stylesheet" href="./premium.css?v=18">
   <title>Essa Vaga É Minha! — Instituto Educacional</title>
 </head>
 <body>
@@ -24,6 +24,7 @@
         <button type="button" data-route="inicio" class="active"><span aria-hidden="true">⌂</span> Início</button>
         <button type="button" data-route="provas"><span aria-hidden="true">▤</span> Banco de provas</button>
         <button type="button" data-route="calendario"><span aria-hidden="true">▣</span> Calendário</button>
+        <button type="button" data-route="olimpiadas"><span aria-hidden="true">🏅</span> Olimpíadas</button>
         <button type="button" data-route="notas"><span aria-hidden="true">▥</span> Notas de corte</button>
         <button type="button" data-route="biblioteca"><span aria-hidden="true">▧</span> Biblioteca e Serviços</button>
         <button type="button" data-route="favoritos"><span aria-hidden="true">♡</span> Favoritos</button>
@@ -114,6 +115,40 @@
 </section>
 
 
+
+        <section id="olympiad-app" class="olympiad-app" aria-labelledby="olympiad-title" hidden>
+          <div class="olympiad-intro">
+            <div>
+              <span class="olympiad-kicker">IEA • COMPETIÇÕES ACADÊMICAS</span>
+              <h3 id="olympiad-title">Olimpíadas Acadêmicas</h3>
+              <p>Acompanhe inscrições, provas e resultados das olimpíadas das quais o Instituto participa.</p>
+            </div>
+            <div class="olympiad-year" id="olympiad-year" aria-label="Ano de referência">2027</div>
+          </div>
+          <div class="olympiad-toolbar" aria-label="Filtros do calendário olímpico">
+            <label><span>Pesquisar olimpíada</span><input id="olympiad-search" type="search" autocomplete="off" placeholder="Nome ou sigla da olimpíada..."></label>
+            <label><span>Área do conhecimento</span><select id="olympiad-area"><option value="todas">Todas as áreas</option></select></label>
+            <label><span>Inscrições</span><select id="olympiad-status"><option value="todas">Todas as situações</option><option value="abertas">Inscrições abertas</option><option value="futuras">Em breve</option><option value="encerradas">Encerradas</option><option value="a-confirmar">A confirmar</option></select></label>
+            <button type="button" id="olympiad-reset" class="olympiad-reset">Limpar filtros</button>
+          </div>
+          <div class="olympiad-table-header"><strong>Calendário das olimpíadas</strong><span id="olympiad-count" aria-live="polite">11 olimpíadas</span></div>
+          <div class="olympiad-table-scroll" role="region" aria-label="Tabela de olimpíadas acadêmicas. Em telas pequenas, deslize horizontalmente." tabindex="0">
+            <table class="olympiad-table">
+              <thead><tr>
+                <th scope="col">Nome da olimpíada</th>
+                <th scope="col">Data da prova</th>
+                <th scope="col">Formato da prova</th>
+                <th scope="col">Período de inscrição</th>
+                <th scope="col">Como se inscrever</th>
+                <th scope="col">Resultado</th>
+              </tr></thead>
+              <tbody id="olympiad-tbody"></tbody>
+            </table>
+          </div>
+          <p id="olympiad-empty" class="olympiad-empty" hidden>Nenhuma olimpíada corresponde aos filtros escolhidos.</p>
+          <p class="olympiad-hint">Em celulares, deslize a tabela para os lados para consultar todas as informações.</p>
+          <p class="olympiad-disclaimer"><span aria-hidden="true">ⓘ</span> As datas, o formato e as inscrições serão atualizados pela Coordenação conforme a confirmação dos regulamentos de cada olimpíada. “A confirmar” significa que ainda não há informação validada para este calendário.</p>
+        </section>
         <section id="calendar-app" class="calendar-app" hidden aria-label="Calendário de vestibulares 2027">
           <div class="calendar-intro">
             <div><span class="calendar-eyebrow">GUIA DE DATAS • INGRESSO 2027</span><h3>Programe-se para os vestibulares</h3><p>Inscrições, provas, resultados e chamadas reunidos em um só lugar, sem precisar abrir uma imagem.</p></div>
@@ -209,9 +244,9 @@
     </div>
   </div>
   <nav class="bottom-nav" aria-label="Navegação móvel"><button type="button" data-route="inicio" class="active"><span>⌂</span>Início</button><button type="button" data-route="provas"><span>▤</span>Provas</button><button type="button" data-route="calendario"><span>▦</span>Calendário</button><button type="button" data-route="notas"><span>▥</span>Notas</button><button type="button" data-route="favoritos"><span>♡</span>Salvos</button><button type="button" id="more-open"><span>☰</span>Mais</button></nav>
-  <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="biblioteca">▧ Biblioteca e Serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
+  <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="olimpiadas">🏅 Olimpíadas Acadêmicas</button><button type="button" data-jump="biblioteca">▧ Biblioteca e Serviços</button><button type="button" data-jump="favoritos">♡ Favoritos</button></div></dialog>
   <dialog id="install-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">ACESSO RÁPIDO</p><h2>Instale no celular</h2></div><button type="button" class="close-btn" data-close="install-dialog" aria-label="Fechar">✕</button></div><div class="modal-body"><p>Depois de publicar este aplicativo em um endereço HTTPS, você pode adicioná-lo à tela inicial:</p><p><strong>Android (Chrome):</strong> abra o menu ⋮ e selecione “Instalar app” ou “Adicionar à tela inicial”.</p><p><strong>iPhone (Safari):</strong> toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p><p class="muted small">Os links externos, como Google Drive e SISU, exigem internet e podem pedir acesso.</p><button type="button" id="native-install" class="primary-btn" hidden>Instalar agora</button></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="./data.js?v=31"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./novidades.js?v=14"></script><script src="./gestao-dados.js?v=17"></script><script src="./app.js?v=31"></script>
+  <script src="./data.js?v=31"></script><script src="./usp-notas.js"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./novidades.js?v=14"></script><script src="./gestao-dados.js?v=18"></script><script src="./olimpiadas.js?v=1"></script><script src="./app.js?v=32"></script>
 </body>
 </html>
