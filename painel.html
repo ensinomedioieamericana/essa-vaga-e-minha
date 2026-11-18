@@ -8,12 +8,12 @@
  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=3">
+ <link rel="stylesheet" href="./painel.css?v=4">
 </head>
 <body>
  <header class="topbar">
    <a href="./" class="brand" aria-label="Voltar ao aplicativo"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!"></a>
-   <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, notas de corte, novidades e Banco de Provas</p></div>
+   <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, Olimpíadas, notas de corte, novidades e Banco de Provas</p></div>
    <a class="site-link" href="./" target="_blank" rel="noopener">Abrir aplicativo <span aria-hidden="true">↗</span></a>
  </header>
  <main class="main">
@@ -21,6 +21,7 @@
   <div class="toolbar">
     <div class="tablist" role="tablist" aria-label="Área de edição">
       <button type="button" class="tab active" data-tab="calendario" role="tab" aria-selected="true">▦ <span>Calendário</span></button>
+      <button type="button" class="tab" data-tab="olimpiadas" role="tab" aria-selected="false">🏅 <span>Olimpíadas</span></button>
       <button type="button" class="tab" data-tab="notas" role="tab" aria-selected="false">▥ <span>Notas de corte</span></button>
       <button type="button" class="tab" data-tab="novidades" role="tab" aria-selected="false">✦ <span>Novidades</span></button>
       <button type="button" class="tab" data-tab="acervo" role="tab" aria-selected="false">▤ <span>Banco de Provas</span></button>
@@ -41,6 +42,16 @@
     <div class="panel-head"><div><h3>Próximas datas da página inicial</h3><p>Essas datas alimentam o quadro de eventos da tela inicial.</p></div><button type="button" class="secondary-btn" id="add-event">+ Adicionar data</button></div>
     <div id="event-list" class="item-list"></div>
    </div>
+  </section>
+
+
+  <section id="tab-olimpiadas" class="workspace" aria-label="Editar calendário das olimpíadas" hidden>
+    <div class="section-heading"><div><span class="eyebrow">COMPETIÇÕES ACADÊMICAS</span><h2>Olimpíadas Acadêmicas</h2><p>Cadastre as fases, datas, inscrições, formatos e resultados das competições em que o Instituto participa.</p></div><a class="secondary-btn" href="./#/olimpiadas" target="_blank" rel="noopener">Ver calendário olímpico ↗</a></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Olimpíadas cadastradas</h3><div class="olympiad-admin-actions"><label class="field"><span>Selecione uma olimpíada</span><select id="olympiad-editor-select" aria-label="Escolher olimpíada para edição"></select></label><button type="button" class="secondary-btn" id="olympiad-editor-add">+ Nova olimpíada</button></div></div>
+      <div class="olympiad-admin-year"><label class="field"><span>Ano de referência</span><input id="olympiad-editor-year" type="number" min="2027" max="2099" step="1" value="2027"></label><p class="field-help">As datas ainda não confirmadas podem ficar em branco. O aplicativo mostrará “A confirmar” e ordenará as olimpíadas pela próxima prova cadastrada.</p></div>
+      <div id="olympiad-editor-fields" class="olympiad-admin-fields"></div>
+    </div>
   </section>
 
   <section id="tab-notas" class="workspace" aria-label="Editar notas de corte" hidden>
@@ -148,8 +159,8 @@
  <script src="./usp-notas.js"></script>
  <script src="./unicamp-notas.js?v=13"></script>
  <script src="./unesp-notas.js"></script>
- <script src="./gestao-dados.js?v=17"></script>
+ <script src="./gestao-dados.js?v=18"></script>
  <script src="./acervo-dados.js?v=15"></script>
- <script src="./painel.js?v=4"></script>
+ <script src="./painel.js?v=5"></script>
  <script src="./painel-acervo.js?v=2"></script>
 </body></html>
