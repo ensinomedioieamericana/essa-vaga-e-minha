@@ -33,8 +33,8 @@ const PROVA_LOGOS={
  enem:{name:'ENEM',src:'./assets/logo-enem.svg'},
  unesp:{name:'UNESP',src:'./assets/logo-unesp.svg'},
  unicamp:{name:'UNICAMP',src:'./assets/logo-unicamp.svg'},
- famerp:{name:'FAMERP',src:'https://storage.googleapis.com/locus-bucket-prd/instituicao-ensino/faculdade-de-medicina-de-sao-jose-do-rio-preto.png'},
- famema:{name:'FAMEMA',src:'https://jucoracini.github.io/E-book-antibioticoterapia/assets/capa/famema.png'},
+ famerp:{name:'FAMERP',src:'./assets/logo-famerp.png?v=1'},
+ famema:{name:'FAMEMA',src:'./assets/logo-famema.png?v=1'},
  einstein:{name:'Albert Einstein',src:'./assets/logo-einstein.png?v=1'},
  'bernoulli-resolve':{name:'Bernoulli Educação',src:'./assets/logo-bernoulli.webp'}
 };
@@ -287,7 +287,7 @@ $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search
 $('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const raw=location.hash.replace(/^#\/?/,'');const r=normalizeRoute(raw);if(raw!==r)history.replaceState(null,'',location.pathname+location.search+'#/'+r);if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('search').focus()}});
-if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=26').catch(()=>{});
+if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=27').catch(()=>{});
 }
 init();
 })();
