@@ -1210,7 +1210,7 @@ window.EVM_ACERVO = {
       "id": "famerp",
       "name": "FAMERP",
       "subtitle": "Faculdade de Medicina de São José do Rio Preto",
-      "logo": null,
+      "logo": "./assets/logo-famerp.png?v=1",
       "legacy": "https://drive.google.com/drive/folders/10gKjeUegGhbPtURR-b2vwWd9hWuPJl-U?usp=drive_link",
       "years": {
         "2021": [
@@ -1300,7 +1300,7 @@ window.EVM_ACERVO = {
       "id": "famema",
       "name": "FAMEMA",
       "subtitle": "Faculdade de Medicina de Marília",
-      "logo": null,
+      "logo": "./assets/logo-famema.png?v=1",
       "legacy": "https://drive.google.com/drive/folders/1miiokUjjh8lPVvDf-wNxhGdFwczCFlOI?usp=drive_link",
       "years": {
         "2021": [
