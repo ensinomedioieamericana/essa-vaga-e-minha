@@ -260,6 +260,10 @@ function renderNews(){
   for(const r of routes)routeSel.append(opt(r,({notas:'Notas de corte',calendario:'Calendário',provas:'Banco de provas',biblioteca:'Biblioteca e Serviços',olimpiadas:'Olimpíadas Acadêmicas',inicio:'Página inicial',favoritos:'Favoritos'})[r]));
   routeSel.value=n.route==='recursos'?'biblioteca':(n.route||'notas');
   routeSel.addEventListener('change',()=>{n.route=routeSel.value;markDirty()});route.append(routeSel);grid.append(route);
+  const directLink=field('Link direto (opcional; sobrepõe o destino da seção)',n.url||'',{placeholder:'./acervo.html?prova=enem&ano=2026'});
+  directLink.lab.classList.add('wide');
+  directLink.input.addEventListener('input',()=>{n.url=directLink.input.value.trim();markDirty()});
+  grid.append(directLink.lab);
   const uni=el('label','field');uni.append(el('span','','Universidade (quando destino é Notas)'));
   const uniSel=el('select');uniSel.append(opt('','Não selecionar automaticamente'));
   for(const u of ['UNICAMP','USP','UNESP'])uniSel.append(opt(u,u));
@@ -273,7 +277,7 @@ function renderNews(){
  if(!state.notices.length)list.append(el('p','field-help','Nenhum aviso cadastrado. Clique em “+ Nova novidade” para começar.'));
 }
 $('news-add').addEventListener('click',()=>{
- state.notices.unshift({id:'aviso-'+Date.now(),label:'NOVIDADE',date:'',title:'',description:'',action:'Saiba mais',route:'notas',university:'',featured:false});
+ state.notices.unshift({id:'aviso-'+Date.now(),label:'NOVIDADE',date:'',title:'',description:'',action:'Saiba mais',route:'notas',url:'',university:'',featured:false});
  markDirty();renderNews();
 });
 
@@ -408,7 +412,11 @@ function validate(){
   for(const detail of c.details||[])if(!detail.label?.trim()||!detail.text?.trim())return 'Complete todas as etapas do calendário da '+c.name+'.';
  }
  for(const e of state.events)if(!/^\d{4}-\d\d-\d\d$/.test(e.date||'')||!institutions.includes(e.uni)||!e.detail?.trim())return 'Complete as datas e descrições de todos os eventos da página inicial.';
- for(const n of state.notices)if(!n.title?.trim()||!(routes.includes(n.route)||n.route==='recursos'))return 'Complete o título e o destino dos comunicados.';
+ for(const n of state.notices){
+  if(!n.title?.trim()||!(routes.includes(n.route)||n.route==='recursos'))return 'Complete o título e o destino dos comunicados.';
+  if(n.url&&!( /^\.\/acervo\.html\?[a-z0-9_=%&-]+$/i.test(n.url)||/^https:\/\/[a-z0-9.-]+(?:[/?#][^\s]*)?$/i.test(n.url) ))
+   return 'O link direto da novidade deve começar com HTTPS ou ./acervo.html? e ser válido.';
+ }
  if(!Number.isInteger(state.olympiadYear)||state.olympiadYear<2027||state.olympiadYear>2099)return 'Informe um ano válido para o calendário de Olimpíadas.';
  if(!Array.isArray(state.olympiads)||state.olympiads.length===0)return 'Cadastre pelo menos uma olimpíada.';
  const olympiadIds=new Set();
