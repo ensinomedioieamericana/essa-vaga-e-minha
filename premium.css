@@ -247,3 +247,20 @@ main{max-width:1460px}
 /* Identidade Bernoulli Educação no card Bernoulli Resolve */
 .prova-bernoulli-resolve .institution-logo{width:min(79%,195px);background:#fff}
 .prova-bernoulli-resolve .institution-logo-image{object-fit:contain}
+
+/* Tutoriais em vídeo na Biblioteca; apenas links externos, sem hospedar vídeos. */
+.library-tutorials[hidden]{display:none!important}
+.library-tutorials{margin:3px 0 25px;padding:23px 24px 25px;border:1px solid #e1e5f6;border-radius:21px;background:linear-gradient(135deg,#ffffff,#f5f6ff);box-shadow:0 10px 29px #2834870d}
+.library-tutorials-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}
+.library-tutorials-heading .section-kicker{margin:0 0 6px}
+.library-tutorials-heading h3{margin:0;color:#292f7c;font-size:21px;letter-spacing:-.5px}
+.library-tutorials-heading p:not(.section-kicker){font-size:12px;color:#707995;margin:6px 0 0;line-height:1.5}
+.library-tutorials-count{white-space:nowrap;border-radius:16px;background:#e9eafb;color:#42469b;padding:8px 12px;font-size:11px;font-weight:800}
+.library-tutorials-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.library-tutorial-link{display:flex;align-items:center;gap:12px;min-height:64px;border-radius:14px;border:1px solid #dce0f1;padding:12px 15px;background:white;color:#2e368c;box-shadow:0 7px 21px #262d6b0a;transition:transform .15s,box-shadow .15s,border-color .15s}
+.library-tutorial-link:hover{transform:translateY(-2px);border-color:#a9afe4;box-shadow:0 13px 24px #262d6b16}
+.library-tutorial-link:focus-visible{outline:3px solid #7b84dd;outline-offset:3px}
+.library-tutorial-link strong{font-size:13px;font-weight:850;overflow-wrap:anywhere}
+.tutorial-play{display:grid;place-items:center;flex:none;background:#edf0ff;color:#3e46b0;border-radius:10px;width:37px;height:37px;font-size:15px}
+.tutorial-external{margin-left:auto;font-size:18px;font-weight:850;color:#9a9dbe}
+@media(max-width:810px){.library-tutorials-links{grid-template-columns:1fr}.library-tutorials{padding:19px 17px 21px}.library-tutorial-link{min-height:56px}}
