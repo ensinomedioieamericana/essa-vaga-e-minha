@@ -264,3 +264,55 @@ main{max-width:1460px}
 .tutorial-play{display:grid;place-items:center;flex:none;background:#edf0ff;color:#3e46b0;border-radius:10px;width:37px;height:37px;font-size:15px}
 .tutorial-external{margin-left:auto;font-size:18px;font-weight:850;color:#9a9dbe}
 @media(max-width:810px){.library-tutorials-links{grid-template-columns:1fr}.library-tutorials{padding:19px 17px 21px}.library-tutorial-link{min-height:56px}}
+
+
+/* Olimpíadas Acadêmicas 2027 — tabela de seis colunas, com filtros. */
+.olympiad-app[hidden]{display:none!important}
+.olympiad-app{margin:2px 0 32px;color:#2b2f62}
+.olympiad-intro{display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden;padding:28px 31px;border-radius:21px;color:#fff;background:radial-gradient(circle at 97% 5%,#fa557748,transparent 39%),linear-gradient(112deg,#252c85,#424baa);box-shadow:0 17px 40px #26318526}
+.olympiad-kicker{color:#f6cad7;font-size:10px;font-weight:900;letter-spacing:1.45px}
+.olympiad-intro h3{margin:9px 0 9px;font-size:clamp(23px,2.5vw,31px);letter-spacing:-.9px;line-height:1.15}
+.olympiad-intro p{font-size:12px;line-height:1.6;color:#edf0ff;max-width:640px;margin:0}
+.olympiad-year{font-size:clamp(45px,6vw,78px);line-height:1;font-weight:900;letter-spacing:-4px;color:#fff5;flex:none}
+.olympiad-toolbar{margin:23px 0 18px;display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.olympiad-toolbar label{min-width:160px;flex:1;display:flex;flex-direction:column;gap:7px;font-size:11px;color:#555e94;font-weight:850}
+.olympiad-toolbar label:first-child{flex:1.5;min-width:205px}
+.olympiad-toolbar input,.olympiad-toolbar select{border-radius:12px;background:#fff;color:#30376b;border:1px solid #dadff0;padding:12px 13px;min-height:45px;font-size:12px;width:100%;outline-offset:2px}
+.olympiad-toolbar input:focus-visible,.olympiad-toolbar select:focus-visible{outline:3px solid #8b92dc}
+.olympiad-reset{min-height:45px;padding:11px 16px;white-space:nowrap;background:#f0f1fb;border:1px solid #dfe1f1;color:#3e469b;border-radius:12px;font-size:12px;font-weight:800}
+.olympiad-reset:hover{background:#e4e6f9}
+.olympiad-table-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 12px}
+.olympiad-table-header strong{font-size:15px}
+.olympiad-table-header span{font-size:11px;font-weight:800;color:#555b8c;border-radius:18px;background:#e9ebfa;padding:8px 12px}
+.olympiad-table-scroll{border-radius:17px;border:1px solid #dfe2f0;background:white;overflow-x:auto;box-shadow:0 9px 28px #20296c0b;max-width:100%;overscroll-behavior-x:contain}
+.olympiad-table{border-collapse:collapse;width:100%;min-width:1040px;table-layout:fixed}
+.olympiad-table th{text-align:left;padding:16px 14px;background:#f1f2fd;color:#414786;letter-spacing:.15px;font-size:11px;font-weight:900;vertical-align:middle;line-height:1.4}
+.olympiad-table th:nth-child(1){width:22%}.olympiad-table th:nth-child(2){width:17%}.olympiad-table th:nth-child(3){width:15%}.olympiad-table th:nth-child(4){width:16%}.olympiad-table th:nth-child(5){width:16%}.olympiad-table th:nth-child(6){width:14%}
+.olympiad-table td{padding:16px 14px;border-top:1px solid #eff0f8;vertical-align:top;color:#313965;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.olympiad-table tbody tr:nth-child(even){background:#fafbff}
+.olympiad-table tbody tr:hover{background:#f4f5ff}
+.olympiad-name>strong{display:block;color:#262d79;font-size:12px;font-weight:870;line-height:1.42}
+.olympiad-area-tag{display:inline-block;color:#616aa0;background:#eeeffb;border-radius:10px;padding:3px 8px;font-size:10px;font-weight:750;margin-top:8px}
+.olympiad-dates,.olympiad-registration,.olympiad-result{line-height:1.45}
+.olympiad-phase{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.olympiad-phase:last-child{margin-bottom:0}
+.olympiad-phase strong{color:#373da0;font-size:10px;font-weight:850}
+.olympiad-phase>span{font-size:12px}
+.olympiad-muted{display:block;font-size:11px;color:#72799c;margin-top:5px}
+.olympiad-reg-state,.olympiad-result-state{display:inline-block;font-size:10px;font-weight:850;border-radius:10px;padding:4px 8px;background:#eff0f9;color:#555b89}
+.olympiad-reg-abertas{background:#e6f5eb;color:#237446}
+.olympiad-reg-encerradas{background:#f2f2f5;color:#777a88}
+.olympiad-reg-futuras{background:#fff3df;color:#9c631c}
+.olympiad-coordination{display:inline-block;font-weight:800;color:#333a97;background:#eef0ff;border-radius:10px;padding:8px 10px;line-height:1.45}
+.olympiad-action,.olympiad-result-link{display:inline-block;color:#333bb2;font-size:11px;font-weight:850;text-decoration:underline;text-underline-offset:3px}
+.olympiad-result-link{display:block;margin-top:8px}
+.olympiad-action:hover,.olympiad-result-link:hover{color:#d12b4d}
+.olympiad-empty{padding:18px 20px;border:1px solid #e4e5f0;border-radius:13px;background:#fff;color:#686d93}
+.olympiad-hint{font-size:11px;color:#7c82a2;margin:11px 0 0}
+.olympiad-disclaimer{display:flex;align-items:flex-start;gap:10px;margin:17px 0 0;background:#f2f3fb;border:1px solid #e2e4f3;padding:15px 17px;border-radius:12px;font-size:11px;color:#666d92;line-height:1.65}
+.olympiad-disclaimer span{font-weight:900;color:#454eae;font-size:17px}
+.quick-actions{grid-template-columns:repeat(5,minmax(0,1fr))}
+.quick-olimpiadas .quick-icon{background:#fff3df;color:#ad711d}
+@media(max-width:1250px){.quick-actions{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.olympiad-intro{padding:22px 21px}.olympiad-year{font-size:44px;letter-spacing:-2px}.olympiad-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:11px}.olympiad-toolbar label:first-child{grid-column:1 / -1;min-width:0}.olympiad-toolbar label{min-width:0}.olympiad-reset{grid-column:1 / -1}.olympiad-table{min-width:980px}.olympiad-table td{padding:14px 12px}}
+@media(max-width:420px){.olympiad-toolbar{grid-template-columns:1fr}.olympiad-toolbar label:first-child,.olympiad-reset{grid-column:auto}.olympiad-intro p{font-size:11px}}
