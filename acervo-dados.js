@@ -1,4 +1,4 @@
-/* Catálogo local do Banco de Provas. Gerado por scripts/gerar_acervo.py. */
+/* Catálogo local do Banco de Provas. Registros pendentes aguardam validação dos PDFs. */
 window.EVM_ACERVO = {
   "version": 1,
   "institutions": [
@@ -1292,6 +1292,52 @@ window.EVM_ACERVO = {
             "file": "acervo/famerp/2024/dia-1/famerp-2024-dia-1-gabarito.pdf",
             "size": 110533
           }
+        ],
+        "2025": [
+          {
+            "title": "FAMERP 2025 · 1º dia · Prova de conhecimentos gerais (80 objetivas)",
+            "type": "prova",
+            "file": "acervo/famerp/2025/dia-1/famerp-2025-dia-1-prova-conhecimentos-gerais.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMERP 2025 · 1º dia · Gabarito oficial (versão 1)",
+            "type": "gabarito",
+            "file": "acervo/famerp/2025/dia-1/famerp-2025-dia-1-gabarito.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMERP 2025 · 2º dia · Prova de conhecimentos específicos e redação",
+            "type": "prova",
+            "file": "acervo/famerp/2025/dia-2/famerp-2025-dia-2-prova-especificos-redacao.pdf",
+            "size": 0,
+            "pending": true
+          }
+        ],
+        "2026": [
+          {
+            "title": "FAMERP 2026 · 1º dia · Prova de conhecimentos gerais (80 objetivas)",
+            "type": "prova",
+            "file": "acervo/famerp/2026/dia-1/famerp-2026-dia-1-prova-conhecimentos-gerais.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMERP 2026 · 1º dia · Gabarito oficial (versão 1)",
+            "type": "gabarito",
+            "file": "acervo/famerp/2026/dia-1/famerp-2026-dia-1-gabarito.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMERP 2026 · 2º dia · Prova de conhecimentos específicos e redação",
+            "type": "prova",
+            "file": "acervo/famerp/2026/dia-2/famerp-2026-dia-2-prova-especificos-redacao.pdf",
+            "size": 0,
+            "pending": true
+          }
         ]
       },
       "folders": {}
@@ -1363,6 +1409,52 @@ window.EVM_ACERVO = {
             "type": "gabarito",
             "file": "acervo/famema/2024/famema-2024-gabarito-prova-ii-versao-1.pdf",
             "size": 306402
+          }
+        ],
+        "2025": [
+          {
+            "title": "FAMEMA 2025 · Prova I · 8 questões discursivas",
+            "type": "prova",
+            "file": "acervo/famema/2025/famema-2025-prova-i-discursiva.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMEMA 2025 · Prova II · 40 questões objetivas e redação",
+            "type": "prova",
+            "file": "acervo/famema/2025/famema-2025-prova-ii-objetiva-redacao.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMEMA 2025 · Gabarito oficial da Prova II (versão 1)",
+            "type": "gabarito",
+            "file": "acervo/famema/2025/famema-2025-gabarito-prova-ii-versao-1.pdf",
+            "size": 0,
+            "pending": true
+          }
+        ],
+        "2026": [
+          {
+            "title": "FAMEMA 2026 · Prova I · 8 questões discursivas",
+            "type": "prova",
+            "file": "acervo/famema/2026/famema-2026-prova-i-discursiva.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMEMA 2026 · Prova II · 40 questões objetivas e redação",
+            "type": "prova",
+            "file": "acervo/famema/2026/famema-2026-prova-ii-objetiva-redacao.pdf",
+            "size": 0,
+            "pending": true
+          },
+          {
+            "title": "FAMEMA 2026 · Gabarito oficial da Prova II (versão 1)",
+            "type": "gabarito",
+            "file": "acervo/famema/2026/famema-2026-gabarito-prova-ii-versao-1.pdf",
+            "size": 0,
+            "pending": true
           }
         ]
       },
