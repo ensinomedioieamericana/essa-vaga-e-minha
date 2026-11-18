@@ -98,7 +98,13 @@ def validate(raw: bytes, year: str, school: str, marker: str, pages: tuple[int, 
         if marker == "GABARITO":
             if not ("GABARITO" in text or "VERSAO 1" in text or "1 - " in text):
                 raise ValueError("Documento não parece ser gabarito objetivo")
-        elif plain(marker) not in text:
+        elif marker == "CONHECIMENTOS ESPECIFICOS":
+            # A expressão do título pode ser fragmentada pelo extrator de PDF.
+            # A prova discursiva do segundo dia contém uma proposta de redação
+            # e 20 questões; exigir estes elementos e o ano/instituição acima.
+            if not ("REDACAO" in compact and ("DISCURSIVAS" in compact or "002" in compact)):
+                raise ValueError("Prova do segundo dia sem redação/questões discursivas")
+        elif plain(marker) not in compact:
             raise ValueError(f"Marcador de prova ausente: {marker}")
         if "GABARITO" not in file and "gabarito" not in file and pdf.page_count <= 5:
             raise ValueError("Caderno de prova curto demais")
