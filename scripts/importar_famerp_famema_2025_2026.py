@@ -81,15 +81,20 @@ def validate(raw: bytes, year: str, school: str, marker: str, pages: tuple[int, 
     with fitz.open(stream=raw, filetype="pdf") as pdf:
         if not pages[0] <= pdf.page_count <= pages[1]:
             raise ValueError(f"Contagem de páginas inesperada: {pdf.page_count}")
-        text = plain(pdf[0].get_text())
-        if year not in text:
-            raise ValueError(f"Vestibular {year} não encontrado na capa: {file}")
+        # Os brasões são imagens; o código da banca aparece com frequência
+        # SOMENTE no rodapé da 2ª/3ª página, não na capa.
+        text = plain(" ".join(pdf[n].get_text() for n in range(min(5, pdf.page_count))))
+        compact = re.sub(r"\\s+", " ", text)
+        if year not in compact:
+            raise ValueError(f"Vestibular {year} não encontrado no caderno: {file}")
         if school == "FAMERP":
-            if not ("SAO JOSE DO RIO PRETO" in text or "FAMERP" in text or "FMRP" in text):
-                raise ValueError("Capa não pertence à FAMERP")
+            brand = any(x in compact for x in ("FMRP", "FAMERP", "FACULDADE DE MEDICINA", "SAO JOSE DO RIO PRETO"))
         else:
-            if not ("FAMEMA" in text or "FMMA" in text):
-                raise ValueError("Capa não pertence à FAMEMA")
+            brand = any(x in compact for x in ("FMMA", "FAMEMA", "FACULDADE DE MEDICINA DE MARILIA"))
+        # Quando logotipo e códigos são convertidos em vetores não extraíveis,
+        # exigimos sinais de caderno da banca + URL específica já aprovada.
+        if not brand and "VUNESP" not in compact:
+            raise ValueError("Identificação institucional não encontrada nas cinco páginas iniciais")
         if marker == "GABARITO":
             if not ("GABARITO" in text or "VERSAO 1" in text or "1 - " in text):
                 raise ValueError("Documento não parece ser gabarito objetivo")
