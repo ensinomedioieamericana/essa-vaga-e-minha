@@ -1,17 +1,16 @@
 (() => {
 'use strict';
 const original=window.APP_LINKS;
-const ROUTES=['inicio','provas','calendario','notas','biblioteca','recursos','favoritos'];
-const normalizeRoute=route=>route==='agenda'?'calendario':route;
+const ROUTES=['inicio','provas','calendario','notas','biblioteca','favoritos'];
+const normalizeRoute=route=>route==='agenda'?'calendario':route==='recursos'?'biblioteca':route;
 // Navegação interna: o calendário precisa ficar disponível mesmo após atualizações do PWA.
-const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
+const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca e Serviços','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
 const views={
  inicio:['COMECE POR AQUI','Explore seu caminho para a aprovação','Tudo o que você precisa para estudar está a poucos toques.','Materiais para seus estudos'],
  provas:['TREINE COM PROVAS REAIS','Banco de provas','Acervos e resoluções para praticar.','Provas e resoluções'],
  calendario:['ORGANIZE SEU ANO','Calendário de vestibulares 2027','Consulte diretamente no aplicativo as datas de inscrição, provas e resultados.','Calendário por exame'],
  notas:['PESQUISA HISTÓRICA','Notas de corte','Compare o desempenho exigido nos vestibulares, ano a ano.','Notas por universidade'],
- biblioteca:['AMPLIE SEU REPERTÓRIO','Biblioteca de estudos','Tutoriais de plataformas, literatura, olimpíadas e recursos complementares.','Materiais da biblioteca'],
- recursos:['APOIO AO ESTUDANTE','Bernoulli e serviços','Gabaritos, tutoriais e serviços úteis.','Recursos de apoio'],
+ biblioteca:['ESTUDE E ACESSE SERVIÇOS','Biblioteca e Serviços','Tutoriais, literatura, olimpíadas, gabaritos e serviços úteis do Ensino Médio.','Materiais e serviços'],
  favoritos:['SEUS MATERIAIS SALVOS','Meus favoritos','Links marcados como favoritos neste dispositivo.','Itens salvos']
 };
 const $=id=>document.getElementById(id);
@@ -26,7 +25,7 @@ const normal=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').to
 const count=n=>`${n} ${n===1?'recurso':'recursos'}`;
 function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>t.classList.remove('show'),3000)}
 function go(route){route=normalizeRoute(route);if(!ROUTES.includes(route))return;S.route=route;S.filter='todos';S.search='';$('search').value='';$('clear-search').hidden=true;if(location.hash!=='#/'+route)location.hash='/'+route;render();window.scrollTo({top:0,behavior:'smooth'})}
-function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route==='favoritos')return a.filter(x=>S.fav.has(x.id));if(S.route==='recursos')return a.filter(x=>['recursos','servicos'].includes(x.category));if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
+function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route==='favoritos')return a.filter(x=>S.fav.has(x.id));if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
 function favorite(id){if(S.fav.has(id))S.fav.delete(id);else S.fav.add(id);set('evm-favorites-v1',JSON.stringify([...S.fav]));toast(S.fav.has(id)?'Adicionado aos favoritos.':'Removido dos favoritos.');render()}
 const PROVA_LOGOS={
  fuvest:{name:'USP',src:'./assets/logo-usp.svg?v=11'},
@@ -75,7 +74,7 @@ function quick(){
   ['calendario','Calendário 2027','Datas e etapas da seleção'],
   ['notas','Notas de corte','Compare os últimos anos'],
   ['provas','Banco de provas','Pratique com provas reais'],
-  ['biblioteca','Biblioteca','Materiais para estudar']
+  ['biblioteca','Biblioteca e Serviços','Materiais e serviços úteis']
  ];
  for(const [route,title,description] of opts){
   const button=node('button','quick-card quick-'+route);button.type='button';button.dataset.jump=route;
@@ -86,7 +85,7 @@ function quick(){
   button.append(icon,words,arrow);q.append(button);
  }
 }
-function filters(){const q=$('category-filter');q.replaceChildren();for(const [key,title] of [['todos','Todos'],['provas','Provas'],['notas','Notas'],['biblioteca','Biblioteca'],['recursos','Bernoulli'],['servicos','Serviços']]){const b=node('button',S.filter===key?'active':'',title);b.type='button';b.addEventListener('click',()=>{S.filter=key;render()});q.append(b)}}
+function filters(){const q=$('category-filter');q.replaceChildren();for(const [key,title] of [['todos','Todos'],['provas','Provas'],['notas','Notas'],['biblioteca','Biblioteca e Serviços']]){const b=node('button',S.filter===key?'active':'',title);b.type='button';b.addEventListener('click',()=>{S.filter=key;render()});q.append(b)}}
 const HOME_EVENTS=[
  {date:'2026-11-15',day:'15',month:'NOV',name:'ENEM',detail:'Segundo dia de prova',uni:'enem'},
  {date:'2026-11-22',day:'22',month:'NOV',name:'UNESP',detail:'Primeira fase',uni:'unesp'},
@@ -118,12 +117,12 @@ function renderHomeDates(){
 function renderNovidades(){
  const section=$('novidades-section'),list=$('novidades-list');
  if(!section||!list)return;
- const notices=Array.isArray(window.EVM_NOVIDADES)?window.EVM_NOVIDADES.filter(x=>x&&x.title&&ROUTES.includes(x.route)).slice(0,4):[];
+ const notices=Array.isArray(window.EVM_NOVIDADES)?window.EVM_NOVIDADES.filter(x=>x&&x.title&&ROUTES.includes(normalizeRoute(x.route))).slice(0,4):[];
  list.replaceChildren();
  if(!notices.length){section.hidden=true;return}
  section.hidden=false;
  for(const notice of notices){
-  const b=node('button','novidade-card'+(notice.featured?' novidade-featured':''));b.type='button';b.dataset.jump=notice.route;
+  const b=node('button','novidade-card'+(notice.featured?' novidade-featured':''));b.type='button';b.dataset.jump=normalizeRoute(notice.route);
   if(notice.university)b.dataset.cutoffFocus=notice.university;
   b.setAttribute('aria-label',notice.label+' '+notice.title+'. '+notice.action);
   const icon=node('span','novidade-icon');icon.setAttribute('aria-hidden','true');
@@ -273,7 +272,7 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){applyGestao();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(location.hash==='#/agenda'||location.hash==='#agenda')history.replaceState(null,'',location.pathname+location.search+'#/calendario');render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
+function init(){applyGestao();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(['#/agenda','#agenda','#/recursos','#recursos'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search+'#/'+S.route);render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
   if(route.dataset.jump)close('more-dialog');
   const focus=route.dataset.cutoffFocus;
   if(focus&&['USP','UNESP','UNICAMP'].includes(focus)){
@@ -287,7 +286,7 @@ $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search
 $('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const raw=location.hash.replace(/^#\/?/,'');const r=normalizeRoute(raw);if(raw!==r)history.replaceState(null,'',location.pathname+location.search+'#/'+r);if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('search').focus()}});
-if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=30').catch(()=>{});
+if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=31').catch(()=>{});
 }
 init();
 })();
