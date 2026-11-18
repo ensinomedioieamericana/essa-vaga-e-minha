@@ -1,6 +1,5 @@
-/* Conteúdo gerenciado pelo Painel do Desenvolvedor.
-   Dados públicos: não incluir RAs, senhas nem informações pessoais.
-   Para publicar, substitua este arquivo via uma conta autorizada no GitHub. */
+/* Conteúdo público editado no Painel do Desenvolvedor.
+   Não incluir RAs, senhas nem informações pessoais. */
 window.EVM_GESTAO = {
   "version": 1,
   "calendar": [
@@ -189,5 +188,162 @@ window.EVM_GESTAO = {
       "featured": true
     }
   ],
-  "notes": {}
+  "notes": {},
+  "olympiadYear": 2027,
+  "olympiads": [
+    {
+      "id": "canguru",
+      "name": "Canguru de Matemática",
+      "area": "Matemática",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "matematica-sem-fronteiras",
+      "name": "Matemática Sem Fronteiras",
+      "area": "Matemática",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "oba",
+      "name": "OBA — Olimpíada Brasileira de Astronomia e Astronáutica",
+      "area": "Ciências da Natureza",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "obb",
+      "name": "OBB — Olimpíada Brasileira de Biologia",
+      "area": "Ciências da Natureza",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "obbs",
+      "name": "OBBS — Olimpíada Brasileira de Biologia Sintética",
+      "area": "Ciências da Natureza",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "obf",
+      "name": "OBF — Olimpíada de Física",
+      "area": "Ciências da Natureza",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "obm",
+      "name": "OBM — Olimpíada de Matemática",
+      "area": "Matemática",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "obmep",
+      "name": "OBMEP — Olimpíada de Matemática",
+      "area": "Matemática",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "olitef",
+      "name": "OLITEF — Olimpíada Financeira",
+      "area": "Educação Financeira",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "onc",
+      "name": "ONC — Olimpíada de Ciências",
+      "area": "Ciências da Natureza",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    },
+    {
+      "id": "op",
+      "name": "OP — Olimpíada de Português",
+      "area": "Linguagens",
+      "format": "A confirmar",
+      "phases": [],
+      "registrationStart": "",
+      "registrationEnd": "",
+      "registrationMode": "a-confirmar",
+      "registrationUrl": "",
+      "resultStatus": "a-confirmar",
+      "resultDate": "",
+      "resultUrl": ""
+    }
+  ]
 };
