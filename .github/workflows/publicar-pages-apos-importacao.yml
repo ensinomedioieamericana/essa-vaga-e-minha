@@ -13,6 +13,7 @@ on:
       - "Importar PDFs UNICAMP 2027 primeira fase"
       - "Importar PDFs FAMERP 2021-2024"
       - "Importar PDFs Albert Einstein 2024-2027"
+      - "Importar provas FAMERP FAMEMA 2025 e 2026"
     types:
       - completed
   workflow_dispatch:
