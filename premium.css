@@ -316,3 +316,19 @@ main{max-width:1460px}
 @media(max-width:1250px){.quick-actions{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.olympiad-intro{padding:22px 21px}.olympiad-year{font-size:44px;letter-spacing:-2px}.olympiad-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:11px}.olympiad-toolbar label:first-child{grid-column:1 / -1;min-width:0}.olympiad-toolbar label{min-width:0}.olympiad-reset{grid-column:1 / -1}.olympiad-table{min-width:980px}.olympiad-table td{padding:14px 12px}}
 @media(max-width:420px){.olympiad-toolbar{grid-template-columns:1fr}.olympiad-toolbar label:first-child,.olympiad-reset{grid-column:auto}.olympiad-intro p{font-size:11px}}
+
+
+/* Identidade institucional IEA: logo completo corrigido no cabeçalho e na lateral */
+.brand-institute{display:flex;align-items:center;justify-content:center;min-height:75px;padding:9px 10px}
+.brand-institute img{display:block;width:100%;height:auto;max-height:59px;object-fit:contain;object-position:center}
+.topbar-left{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
+.header-iea{display:block;width:242px;height:auto;max-height:67px;object-fit:contain;object-position:left center}
+@media(max-width:760px){
+ .mobile-brand{display:flex;align-items:center;gap:7px;min-width:0}
+ .mobile-iea{display:block;width:120px;height:40px;max-width:35vw;flex:none;object-fit:contain}
+ .mobile-brand strong{font-size:11px;line-height:1.2}
+}
+@media(max-width:390px){
+ .mobile-iea{width:105px;height:36px}
+ .mobile-brand strong{font-size:10px}
+}
