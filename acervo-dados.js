@@ -1224,8 +1224,7 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2026 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2026/dia-2/famerp-2026-dia-2-prova-especificos-redacao.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1655765
           },
           {
             "title": "FAMERP 2026 · 1º dia · Gabarito oficial (versão 1)",
@@ -1245,8 +1244,7 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2025 · 2º dia · Prova de conhecimentos específicos e redação",
             "type": "prova",
             "file": "acervo/famerp/2025/dia-2/famerp-2025-dia-2-prova-especificos-redacao.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1531780
           },
           {
             "title": "FAMERP 2025 · 1º dia · Gabarito oficial (versão 1)",
