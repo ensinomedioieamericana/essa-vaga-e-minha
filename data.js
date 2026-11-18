@@ -3,7 +3,6 @@
    Os links do Drive permanecem como alternativa provisoria em acervo-catalogo.json.
    Os PDFs sao listados apos a importacao para acervo/<instituicao>/<ano>/. */
 window.APP_LINKS = [
-  {id:'olimpiadas-2026',title:'Olimpíadas 2026',description:'Materiais e informações sobre olimpíadas acadêmicas.',category:'biblioteca',tag:'2026',url:'https://drive.google.com/drive/folders/1EVfMO-c7f2c85PpyAjiCV5PaPNNtxm2_?usp=sharing'},
   {id:'gabaritos-bernoulli',title:'Gabaritos dos simulados extras',description:'Gabaritos dos simulados extras Bernoulli de 2026.',category:'biblioteca',tag:'Bernoulli',url:'https://drive.google.com/drive/folders/1w5fY34Z_J7dLJDTG2CrY8WjYkSTKArkO?usp=sharing'},
   {id:'armarios-2026',title:'Aluguel de armários 2026',description:'Página do serviço de armários do Ensino Médio.',category:'biblioteca',tag:'Serviço',url:'https://facilita.umaescolacompleta.com.br/armarios/armarios-2026-ensino-medio?IdProd=113&hash=935670765&iniSession=1&loja=1258313'},
   {id:'fuvest',title:'FUVEST / USP',description:'Provas anteriores organizadas por ano. A migração dos PDFs para o site está em andamento.',category:'provas',tag:'Por ano',url:'./acervo.html?prova=fuvest',featured:true},
