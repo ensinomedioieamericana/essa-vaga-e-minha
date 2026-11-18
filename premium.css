@@ -318,17 +318,29 @@ main{max-width:1460px}
 @media(max-width:420px){.olympiad-toolbar{grid-template-columns:1fr}.olympiad-toolbar label:first-child,.olympiad-reset{grid-column:auto}.olympiad-intro p{font-size:11px}}
 
 
-/* Identidade institucional IEA: logo completo corrigido no cabeçalho e na lateral */
+/* Identidade institucional IEA: logo completo sem sobreposição */
 .brand-institute{display:flex;align-items:center;justify-content:center;min-height:75px;padding:9px 10px}
 .brand-institute img{display:block;width:100%;height:auto;max-height:59px;object-fit:contain;object-position:center}
 .topbar-left{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
 .header-iea{display:block;width:242px;height:auto;max-height:67px;object-fit:contain;object-position:left center}
+
+/* No celular, NUNCA exibir o cabeçalho de desktop ao mesmo tempo. */
 @media(max-width:760px){
- .mobile-brand{display:flex;align-items:center;gap:7px;min-width:0}
- .mobile-iea{display:block;width:120px;height:40px;max-width:35vw;flex:none;object-fit:contain}
- .mobile-brand strong{font-size:11px;line-height:1.2}
+ .topbar{height:69px;min-height:69px;max-height:69px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;overflow:hidden}
+ .topbar .topbar-left{display:none!important}
+ .topbar .header-iea{display:none!important}
+ .topbar .mobile-brand{display:flex;align-items:center;flex:1 1 auto;min-width:0;max-width:calc(100% - 96px);gap:7px;overflow:hidden}
+ .topbar .mobile-iea{position:static!important;display:block;width:min(100%,195px);min-width:0;height:49px;max-height:49px;flex:0 1 195px;object-fit:contain;object-position:left center}
+ .topbar .mobile-brand strong{display:none}
+ .topbar .topbar-right{display:flex;align-items:center;flex:none;gap:7px;margin-left:auto}
+ .topbar .topbar-right .outline-btn{width:38px;height:38px;min-width:38px;max-width:38px;min-height:38px;max-height:38px;padding:0}
+ .topbar .topbar-right .icon-btn{width:40px;height:40px;min-width:40px;max-width:40px;min-height:40px;max-height:40px}
+}
+@media(min-width:600px) and (max-width:760px){
+ .topbar .mobile-iea{width:190px;flex:0 1 190px}
+ .topbar .mobile-brand strong{display:block;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
 }
 @media(max-width:390px){
- .mobile-iea{width:105px;height:36px}
- .mobile-brand strong{font-size:10px}
+ .topbar{padding:0 10px}
+ .topbar .mobile-iea{height:45px;max-height:45px;flex-basis:175px}
 }
