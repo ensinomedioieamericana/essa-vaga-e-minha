@@ -1,0 +1,63 @@
+name: Importar ENEM 2026 PDFs oficiais
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-enem2026.yml'
+      - 'scripts/importar_enem2026.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-enem-2026
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Conferir e publicar provas e gabaritos ENEM 2026
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Instalar bibliotecas de conferência dos PDFs
+        run: python -m pip install --disable-pip-version-check 'requests>=2.31,<3' 'PyMuPDF>=1.24,<2'
+
+      - name: Verificar integridade do script Python
+        run: python -m py_compile scripts/importar_enem2026.py
+
+      - name: Baixar do Inep e validar quatro PDFs com SHA-256
+        run: python scripts/importar_enem2026.py
+
+      - name: Atualizar catálogo com os PDFs reais e publicar no GitHub
+        run: |
+          python scripts/gerar_acervo.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A acervo/enem/2026/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Todos os PDFs já estão publicados."
+            exit 0
+          fi
+          git commit -m "ENEM 2026: publicar provas e gabaritos oficiais do Inep"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "ENEM 2026: sincronizar documentos publicados com catálogo"
+            fi
+            if git push origin HEAD:main; then
+              echo "Quatro PDFs do ENEM 2026 e catálogo publicados!"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Falha após cinco tentativas."
+          exit 1
