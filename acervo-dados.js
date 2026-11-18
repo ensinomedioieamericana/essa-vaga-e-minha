@@ -1218,8 +1218,7 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2026 · 1º dia · Prova de conhecimentos gerais (80 objetivas)",
             "type": "prova",
             "file": "acervo/famerp/2026/dia-1/famerp-2026-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1676116
           },
           {
             "title": "FAMERP 2026 · 2º dia · Prova de conhecimentos específicos e redação",
@@ -1240,8 +1239,7 @@ window.EVM_ACERVO = {
             "title": "FAMERP 2025 · 1º dia · Prova de conhecimentos gerais (80 objetivas)",
             "type": "prova",
             "file": "acervo/famerp/2025/dia-1/famerp-2025-dia-1-prova-conhecimentos-gerais.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1467187
           },
           {
             "title": "FAMERP 2025 · 2º dia · Prova de conhecimentos específicos e redação",
@@ -1352,15 +1350,13 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2026 · Prova I · 8 questões discursivas",
             "type": "prova",
             "file": "acervo/famema/2026/famema-2026-prova-i-discursiva.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1459205
           },
           {
             "title": "FAMEMA 2026 · Prova II · 40 questões objetivas e redação",
             "type": "prova",
             "file": "acervo/famema/2026/famema-2026-prova-ii-objetiva-redacao.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1191172
           },
           {
             "title": "FAMEMA 2026 · Gabarito oficial da Prova II (versão 1)",
@@ -1374,15 +1370,13 @@ window.EVM_ACERVO = {
             "title": "FAMEMA 2025 · Prova I · 8 questões discursivas",
             "type": "prova",
             "file": "acervo/famema/2025/famema-2025-prova-i-discursiva.pdf",
-            "size": 0,
-            "pending": true
+            "size": 1385169
           },
           {
             "title": "FAMEMA 2025 · Prova II · 40 questões objetivas e redação",
             "type": "prova",
             "file": "acervo/famema/2025/famema-2025-prova-ii-objetiva-redacao.pdf",
-            "size": 0,
-            "pending": true
+            "size": 731134
           },
           {
             "title": "FAMEMA 2025 · Gabarito oficial da Prova II (versão 1)",
