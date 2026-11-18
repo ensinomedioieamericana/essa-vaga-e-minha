@@ -1,0 +1,63 @@
+name: Importar provas FAMERP FAMEMA 2025 e 2026
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-famerp-famema-2025-2026.yml'
+      - 'scripts/importar_famerp_famema_2025_2026.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-famerp-famema-2025-2026
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Validar provas e publicar acervo 2025-2026
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Instalar bibliotecas para conferência dos PDFs
+        run: python -m pip install --disable-pip-version-check 'requests>=2.31,<3' 'PyMuPDF>=1.24,<2'
+
+      - name: Verificar importador
+        run: python -m py_compile scripts/importar_famerp_famema_2025_2026.py
+
+      - name: Baixar e conferir os documentos de 2025 e 2026
+        run: python scripts/importar_famerp_famema_2025_2026.py
+
+      - name: Regenerar catálogo e publicar PDFs no GitHub
+        run: |
+          python scripts/gerar_acervo.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A acervo/famerp/ acervo/famema/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nova para publicar."
+            exit 0
+          fi
+          git commit -m "FAMERP e FAMEMA: publicar provas e gabaritos validados de 2025 e 2026"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "Sincronizar Banco de Provas FAMERP FAMEMA 2025-2026"
+            fi
+            if git push origin HEAD:main; then
+              echo "Importação confirmada em main."
+              exit 0
+            fi
+            echo "Repositório alterado simultaneamente; tentativa $attempt/5"
+            sleep $((attempt*3))
+          done
+          exit 1
