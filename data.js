@@ -4,9 +4,8 @@
    Os PDFs sao listados apos a importacao para acervo/<instituicao>/<ano>/. */
 window.APP_LINKS = [
   {id:'olimpiadas-2026',title:'Olimpíadas 2026',description:'Materiais e informações sobre olimpíadas acadêmicas.',category:'biblioteca',tag:'2026',url:'https://drive.google.com/drive/folders/1EVfMO-c7f2c85PpyAjiCV5PaPNNtxm2_?usp=sharing'},
-  {id:'gabaritos-bernoulli',title:'Gabaritos dos simulados extras',description:'Gabaritos dos simulados extras Bernoulli de 2026.',category:'recursos',tag:'Bernoulli',url:'https://drive.google.com/drive/folders/1w5fY34Z_J7dLJDTG2CrY8WjYkSTKArkO?usp=sharing'},
-  {id:'tutorial-mb4',title:'Tutorial Meu Bernoulli (MB4)',description:'Vídeo com orientações para acesso à plataforma.',category:'recursos',tag:'Vídeo',url:'https://drive.google.com/file/d/1Ah2XIbM4_G2HE_mlbXnry1aBTE4DzDo2/view?usp=sharing'},
-  {id:'armarios-2026',title:'Aluguel de armários 2026',description:'Página do serviço de armários do Ensino Médio.',category:'servicos',tag:'Serviço',url:'https://facilita.umaescolacompleta.com.br/armarios/armarios-2026-ensino-medio?IdProd=113&hash=935670765&iniSession=1&loja=1258313'},
+  {id:'gabaritos-bernoulli',title:'Gabaritos dos simulados extras',description:'Gabaritos dos simulados extras Bernoulli de 2026.',category:'biblioteca',tag:'Bernoulli',url:'https://drive.google.com/drive/folders/1w5fY34Z_J7dLJDTG2CrY8WjYkSTKArkO?usp=sharing'},
+  {id:'armarios-2026',title:'Aluguel de armários 2026',description:'Página do serviço de armários do Ensino Médio.',category:'biblioteca',tag:'Serviço',url:'https://facilita.umaescolacompleta.com.br/armarios/armarios-2026-ensino-medio?IdProd=113&hash=935670765&iniSession=1&loja=1258313'},
   {id:'fuvest',title:'FUVEST / USP',description:'Provas anteriores organizadas por ano. A migração dos PDFs para o site está em andamento.',category:'provas',tag:'Por ano',url:'./acervo.html?prova=fuvest',featured:true},
   {id:'enem',title:'ENEM',description:'Provas e gabaritos de 2019 a 2025, separados por 1º e 2º dia. Documentos novos são liberados após importação.',category:'provas',tag:'2019–2025',url:'./acervo.html?prova=enem',featured:true},
   {id:'unesp',title:'UNESP',description:'Provas, gabaritos e questões discursivas organizados por ano e fase até 2026.',category:'provas',tag:'2020–2026',url:'./acervo.html?prova=unesp'},
