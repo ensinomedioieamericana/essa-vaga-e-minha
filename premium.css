@@ -344,3 +344,41 @@ main{max-width:1460px}
  .topbar{padding:0 10px}
  .topbar .mobile-iea{height:45px;max-height:45px;flex-basis:175px}
 }
+
+
+/* Carrossel rotativo de Novidades: uma notícia por vez, com setas laterais */
+.novidades-carousel{position:relative;padding:0 47px;min-width:0}
+.novidades-carousel.is-single{padding:0}
+.novidades-list{display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-width:0}
+.novidade-card[hidden]{display:none!important}
+.novidades-list .novidade-card:not([hidden]){width:100%;grid-column:1/-1;animation:novidades-entrada .3s ease-out both}
+@keyframes novidades-entrada{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.novidades-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;width:38px;height:45px;padding:0;color:#33389d;background:#fff;border:1px solid #e1e4f6;box-shadow:0 5px 17px #242e831a;border-radius:13px;transition:background .15s,box-shadow .15s,color .15s}
+.novidades-nav[hidden]{display:none!important}
+.novidades-prev{left:0}.novidades-next{right:0}
+.novidades-nav span{font-size:31px;line-height:1;transform:translateY(-2px);font-weight:600}
+.novidades-nav:hover{color:#fff;background:#343a9b;box-shadow:0 8px 20px #242e8329}
+.novidades-nav:focus-visible,.novidades-dot:focus-visible{outline:3px solid #9ba5ec;outline-offset:3px}
+.novidades-footer[hidden]{display:none!important}
+.novidades-footer{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:12px}
+.novidades-dots{display:flex;justify-content:center;align-items:center;gap:7px}
+.novidades-dot{height:9px;width:9px;flex:none;border:0;background:#cbd0e7;border-radius:99px;padding:0;transition:width .2s ease,background .2s ease}
+.novidades-dot.active{background:#343a9e;width:25px}
+.novidades-counter{font-size:11px;font-weight:800;color:#70769f;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:760px){
+ .novidades-carousel{padding:0 36px}
+ .novidades-nav{height:38px;width:31px;border-radius:10px}
+ .novidades-nav span{font-size:25px}
+ .novidades-footer{margin-top:10px}
+}
+@media(max-width:420px){
+ .novidades-carousel{padding:0 31px}
+ .novidades-nav{width:27px;height:36px}
+ .novidades-list .novidade-card{min-height:195px}
+ .novidades-list .novidade-card .novidade-content{gap:6px}
+ .novidades-list .novidade-title{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ .novidades-list .novidade-card:not([hidden]){animation:none}
+ .novidades-nav,.novidades-dot{transition:none}
+}
