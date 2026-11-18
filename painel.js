@@ -9,11 +9,13 @@ let base=clone(window.EVM_GESTAO||{});
 const sourceNotes={USP:window.USP_NOTAS,UNESP:window.UNESP_NOTAS,UNICAMP:window.UNICAMP_NOTAS};
 const institutions=['unicamp','usp','enem','unesp'];
 const names={unicamp:'UNICAMP',usp:'USP',enem:'ENEM',unesp:'UNESP'};
-const routes=['notas','calendario','provas','biblioteca','inicio','favoritos'];
+const routes=['notas','calendario','olimpiadas','provas','biblioteca','inicio','favoritos'];
 const normalize=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 let state=clone(base),calendarUni='unicamp',noteUni='UNICAMP',noteYear=null,notesSearch='';
 let draftFound=false;
 try{const saved=JSON.parse(localStorage.getItem(DRAFT_KEY));if(saved&&saved.version===1){state=saved;draftFound=true}}catch{}
+if(!Array.isArray(state.olympiads))state.olympiads=clone(base.olympiads||[]);
+if(!Number.isInteger(state.olympiadYear))state.olympiadYear=base.olympiadYear||2027;
 if(!state.calendar||!Array.isArray(state.events)||!Array.isArray(state.notices)||!state.notes){
  alert('Os dados de gestão ainda não estão disponíveis. Recarregue esta página.');return;
 }
@@ -37,7 +39,7 @@ function selectedTab(name){
  document.querySelectorAll('.tab').forEach(b=>{
   const active=b.dataset.tab===name;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));
  });
- for(const nameKey of ['calendario','notas','novidades','acervo'])$('tab-'+nameKey).hidden=nameKey!==name;
+ for(const nameKey of ['calendario','olimpiadas','notas','novidades','acervo'])$('tab-'+nameKey).hidden=nameKey!==name;
  $('publish').hidden=name==='acervo';
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>selectedTab(b.dataset.tab)));
@@ -255,7 +257,7 @@ function renderNews(){
   }
   const route=el('label','field');route.append(el('span','','Destino do botão'));
   const routeSel=el('select');
-  for(const r of routes)routeSel.append(opt(r,({notas:'Notas de corte',calendario:'Calendário',provas:'Banco de provas',biblioteca:'Biblioteca e Serviços',inicio:'Página inicial',favoritos:'Favoritos'})[r]));
+  for(const r of routes)routeSel.append(opt(r,({notas:'Notas de corte',calendario:'Calendário',provas:'Banco de provas',biblioteca:'Biblioteca e Serviços',olimpiadas:'Olimpíadas Acadêmicas',inicio:'Página inicial',favoritos:'Favoritos'})[r]));
   routeSel.value=n.route==='recursos'?'biblioteca':(n.route||'notas');
   routeSel.addEventListener('change',()=>{n.route=routeSel.value;markDirty()});route.append(routeSel);grid.append(route);
   const uni=el('label','field');uni.append(el('span','','Universidade (quando destino é Notas)'));
@@ -275,6 +277,127 @@ $('news-add').addEventListener('click',()=>{
  markDirty();renderNews();
 });
 
+// OLIMPÍADAS ACADÊMICAS
+let olympiadSelected=state.olympiads[0]?.id||'';
+const olympiadSelect=$('olympiad-editor-select');
+const olympiadFields=$('olympiad-editor-fields');
+const olympiadModes=[
+ ['a-confirmar','A confirmar'],
+ ['coordenacao','Inscreva-se na Coordenação'],
+ ['link','Link de inscrição (externo)']
+];
+const olympiadResults=[
+ ['a-confirmar','A confirmar'],
+ ['aguardando','Aguardando divulgação'],
+ ['divulgado','Divulgado']
+];
+function createSelect(label,selected,items,callback){
+ const lab=el('label','field');lab.append(el('span','',label));
+ const select=el('select');
+ for(const [value,title] of items)select.append(opt(value,title));
+ select.value=selected;select.addEventListener('change',()=>callback(select.value));
+ lab.append(select);return {lab,input:select};
+}
+function olympiadInput(parent,record,key,label,attrs={}){
+ const f=field(label,record[key]||'',attrs);
+ if(attrs.wide)f.lab.classList.add('wide');
+ f.input.addEventListener('input',()=>{
+  record[key]=f.input.value;
+  if(key==='name'){const option=Array.from(olympiadSelect.options).find(x=>x.value===record.id);if(option)option.textContent=record.name||'Nova olimpíada'}
+  markDirty();
+ });
+ parent.append(f.lab);return f.input;
+}
+function renderOlympiadEditor(){
+ const list=state.olympiads||[];
+ olympiadSelect.replaceChildren();
+ for(const item of list)olympiadSelect.append(opt(item.id,item.name||'Nova olimpíada'));
+ if(!list.some(x=>x.id===olympiadSelected))olympiadSelected=list[0]?.id||'';
+ olympiadSelect.value=olympiadSelected;
+ $('olympiad-editor-year').value=String(state.olympiadYear||2027);
+ olympiadFields.replaceChildren();
+ const record=list.find(x=>x.id===olympiadSelected);
+ if(!record){olympiadFields.append(el('p','field-help','Nenhuma olimpíada cadastrada. Clique em “+ Nova olimpíada”.'));return}
+ const top=el('div','olympiad-admin-record-head');
+ top.append(el('h3','','Informações da olimpíada'));
+ const remove=el('button','secondary-btn','Excluir olimpíada');remove.type='button';
+ remove.addEventListener('click',()=>{
+  if(!confirm('Excluir '+record.name+' do calendário de Olimpíadas?'))return;
+  state.olympiads=state.olympiads.filter(x=>x.id!==record.id);
+  olympiadSelected=state.olympiads[0]?.id||'';
+  markDirty();renderOlympiadEditor()
+ });
+ top.append(remove);olympiadFields.append(top);
+ const info=el('div','form-grid olympiad-editor-grid');
+ olympiadInput(info,record,'name','Nome da olimpíada',{wide:true,placeholder:'Ex.: OBA — Olimpíada Brasileira de Astronomia'});
+ olympiadInput(info,record,'area','Área do conhecimento',{placeholder:'Matemática, Ciências da Natureza...'});
+ olympiadInput(info,record,'format','Formato da prova',{placeholder:'Presencial, on-line, híbrido, a confirmar...'});
+ olympiadFields.append(info);
+
+ const stageHead=el('div','olympiad-admin-record-head');
+ stageHead.append(el('h3','','Etapas e datas das provas'));
+ const add=el('button','secondary-btn','+ Adicionar etapa');add.type='button';
+ stageHead.append(add);olympiadFields.append(stageHead);
+ const phases=el('div','olympiad-admin-phases');olympiadFields.append(phases);
+ const drawPhases=()=>{
+  phases.replaceChildren();
+  for(const [i,phase] of (record.phases||[]).entries()){
+   const row=el('div','olympiad-admin-phase');
+   const label=field('Etapa / fase',phase.label||'',{placeholder:'1ª fase, 2ª fase ou prova única'});
+   label.input.addEventListener('input',()=>{phase.label=label.input.value;markDirty()});
+   const date=field('Data da prova',phase.date||'',{type:'date'});
+   date.input.addEventListener('input',()=>{phase.date=date.input.value;markDirty()});
+   const removePhase=el('button','secondary-btn','Remover');removePhase.type='button';
+   removePhase.addEventListener('click',()=>{record.phases.splice(i,1);markDirty();drawPhases()});
+   row.append(label.lab,date.lab,removePhase);phases.append(row);
+  }
+  if(!record.phases?.length)phases.append(el('p','field-help','Nenhuma etapa informada. O aplicativo mostrará “A confirmar”. Adicione apenas as fases que se aplicam a esta olimpíada.'));
+  add.disabled=(record.phases||[]).length>=3;
+ };
+ add.addEventListener('click',()=>{
+  if(!Array.isArray(record.phases))record.phases=[];
+  if(record.phases.length>=3)return;
+  const defaults=['1ª fase','2ª fase','3ª fase'];
+  record.phases.push({label:defaults[record.phases.length],date:''});
+  markDirty();drawPhases()
+ });
+ drawPhases();
+
+ olympiadFields.append(el('h3','olympiad-admin-subtitle','Inscrições'));
+ const enroll=el('div','form-grid olympiad-editor-grid');
+ olympiadInput(enroll,record,'registrationStart','Início das inscrições',{type:'date'});
+ olympiadInput(enroll,record,'registrationEnd','Fim das inscrições',{type:'date'});
+ const mode=createSelect('Como se inscrever',record.registrationMode||'a-confirmar',olympiadModes,value=>{
+  record.registrationMode=value;
+  urlField.lab.hidden=value!=='link';markDirty()
+ });
+ enroll.append(mode.lab);
+ const urlField=field('Link de inscrição (HTTPS)',record.registrationUrl||'',{placeholder:'https://...'});
+ urlField.input.type='url';
+ urlField.input.addEventListener('input',()=>{record.registrationUrl=urlField.input.value;markDirty()});
+ urlField.lab.hidden=record.registrationMode!=='link';enroll.append(urlField.lab);
+ olympiadFields.append(enroll);
+
+ olympiadFields.append(el('h3','olympiad-admin-subtitle','Resultados'));
+ const result=el('div','form-grid olympiad-editor-grid');
+ const status=createSelect('Situação do resultado',record.resultStatus||'a-confirmar',olympiadResults,value=>{
+  record.resultStatus=value;markDirty()
+ });
+ result.append(status.lab);
+ olympiadInput(result,record,'resultDate','Data prevista do resultado',{type:'date'});
+ const resLink=olympiadInput(result,record,'resultUrl','Link do resultado (se houver)',{placeholder:'https://...',wide:true});
+ resLink.type='url';
+ olympiadFields.append(result);
+}
+olympiadSelect.addEventListener('change',()=>{olympiadSelected=olympiadSelect.value;renderOlympiadEditor()});
+$('olympiad-editor-year').addEventListener('input',e=>{state.olympiadYear=Number(e.target.value);markDirty()});
+$('olympiad-editor-add').addEventListener('click',()=>{
+ const id='olimpiada-'+Date.now().toString(36);
+ state.olympiads.push({id,name:'Nova olimpíada',area:'Outras',format:'A confirmar',phases:[],registrationStart:'',registrationEnd:'',registrationMode:'a-confirmar',registrationUrl:'',resultStatus:'a-confirmar',resultDate:'',resultUrl:''});
+ olympiadSelected=id;markDirty();renderOlympiadEditor();
+ const first=olympiadFields.querySelector('input');if(first){first.focus();first.select()}
+});
+
 // PUBLICAÇÃO
 function validate(){
  if(state.version!==1||state.calendar.length!==4)return 'Os quatro calendários precisam estar cadastrados.';
@@ -285,7 +408,25 @@ function validate(){
   for(const detail of c.details||[])if(!detail.label?.trim()||!detail.text?.trim())return 'Complete todas as etapas do calendário da '+c.name+'.';
  }
  for(const e of state.events)if(!/^\d{4}-\d\d-\d\d$/.test(e.date||'')||!institutions.includes(e.uni)||!e.detail?.trim())return 'Complete as datas e descrições de todos os eventos da página inicial.';
- for(const n of state.notices)if(!n.title?.trim()||!routes.includes(n.route))return 'Complete o título e o destino dos comunicados.';
+ for(const n of state.notices)if(!n.title?.trim()||!(routes.includes(n.route)||n.route==='recursos'))return 'Complete o título e o destino dos comunicados.';
+ if(!Number.isInteger(state.olympiadYear)||state.olympiadYear<2027||state.olympiadYear>2099)return 'Informe um ano válido para o calendário de Olimpíadas.';
+ if(!Array.isArray(state.olympiads)||state.olympiads.length===0)return 'Cadastre pelo menos uma olimpíada.';
+ const olympiadIds=new Set();
+ const dateOK=s=>!s||/^\d{4}-\d{2}-\d{2}$/.test(s);
+ const urlOK=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!!u.hostname}catch{return false}};
+ for(const o of state.olympiads){
+  if(!o.id||olympiadIds.has(o.id))return 'Há IDs de olimpíadas repetidos.';
+  olympiadIds.add(o.id);
+  if(!o.name?.trim()||!o.area?.trim())return 'Complete nome e área de todas as olimpíadas.';
+  if(!Array.isArray(o.phases)||o.phases.length>3)return 'Uma olimpíada tem uma lista de fases inválida.';
+  if(o.phases.some(p=>!p.label?.trim()||!dateOK(p.date)))return 'Confira os nomes e as datas das fases de '+o.name+'.';
+  if(!dateOK(o.registrationStart)||!dateOK(o.registrationEnd)||!dateOK(o.resultDate))return 'Uma data informada não é válida em '+o.name+'.';
+  if(o.registrationStart&&o.registrationEnd&&o.registrationStart>o.registrationEnd)return 'O início das inscrições não pode ser posterior ao fim em '+o.name+'.';
+  if(!['a-confirmar','coordenacao','link'].includes(o.registrationMode))return 'Tipo de inscrição não reconhecido em '+o.name+'.';
+  if(o.registrationMode==='link'&&!urlOK(o.registrationUrl))return 'Informe o link HTTPS de inscrição em '+o.name+'.';
+  if(o.resultUrl&&!urlOK(o.resultUrl))return 'Informe um link HTTPS para o resultado de '+o.name+'.';
+  if(!['a-confirmar','aguardando','divulgado'].includes(o.resultStatus))return 'Situação do resultado inválida em '+o.name+'.';
+ }
  for(const [uni,data] of Object.entries(state.notes)){
   if(!sourceNotes[uni]||!Array.isArray(data.carreiras)||!Array.isArray(data.anos))return 'Dados inválidos de '+uni;
   const years=new Set(data.anos.map(Number));
@@ -355,7 +496,7 @@ $('publish-form').addEventListener('submit',async e=>{
   const latest=parsePublishedData(decodeContent(remote.content));
   if(JSON.stringify(latest)!==JSON.stringify(base))throw new Error('O conteúdo foi atualizado no GitHub depois que você abriu o painel. Copie seu rascunho, recarregue a página e revise antes de publicar, para não sobrescrever outra atualização.');
   const put=await fetch(endpoint,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify({
-   message:'Atualiza Calendário, Notas de Corte e Novidades pelo Painel do Desenvolvedor',
+   message:'Atualiza Calendário, Olimpíadas, Notas de Corte e Novidades pelo Painel do Desenvolvedor',
    content:encodeContent(publishedFile()),sha:remote.sha,branch:'main'
   })});
   if(!put.ok){
@@ -392,10 +533,10 @@ $('discard').addEventListener('click',()=>{
  try{localStorage.removeItem(DRAFT_KEY)}catch{}
  state=clone(base);calendarUni='unicamp';noteUni='UNICAMP';noteYear=null;
  calendarSelect.value=calendarUni;$('notes-uni').value=noteUni;$('notes-search').value='';
- renderCalendar();renderEvents();renderYears();renderNews();
+ renderCalendar();renderEvents();renderYears();renderNews();olympiadSelected=state.olympiads[0]?.id||'';renderOlympiadEditor();
  $('save-status').textContent='Conteúdo publicado carregado';$('save-status').classList.remove('dirty');
  status('Rascunho local descartado. Dados da versão publicada restaurados.');
 });
-renderCalendar();renderEvents();renderYears();renderNews();
+renderCalendar();renderEvents();renderYears();renderNews();renderOlympiadEditor();
 if(draftFound){$('save-status').textContent='Rascunho anterior recuperado deste navegador';$('save-status').classList.add('dirty')}
 })();
