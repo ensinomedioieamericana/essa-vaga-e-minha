@@ -84,7 +84,7 @@ def validate(raw: bytes, year: str, school: str, marker: str, pages: tuple[int, 
         # Os brasões são imagens; o código da banca aparece com frequência
         # SOMENTE no rodapé da 2ª/3ª página, não na capa.
         text = plain(" ".join(pdf[n].get_text() for n in range(min(5, pdf.page_count))))
-        compact = re.sub(r"\\s+", " ", text)
+        compact = " ".join(text.split())
         if year not in compact:
             raise ValueError(f"Vestibular {year} não encontrado no caderno: {file}")
         if school == "FAMERP":
