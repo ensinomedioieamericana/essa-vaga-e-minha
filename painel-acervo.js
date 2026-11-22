@@ -214,11 +214,19 @@ function mutateCatalog(c,items,i,y,folder,selectedType,customTitle){
  if(!target.years[y])target.years[y]=[];
  if(folder)addFolder(c,i,y,folder);
  for(const item of items){
-  const duplicates=target.years[y].some(d=>d.file===item.path);
-  if(duplicates)throw Error('Já há um PDF cadastrado com o mesmo caminho: '+item.path+'. Renomeie o arquivo.');
+  const existing=target.years[y].find(d=>d.file===item.path);
+  if(existing&&!existing.pending)throw Error('Já há um PDF publicado com o mesmo caminho: '+item.path+'. Renomeie o arquivo.');
   const type=TYPES.has(selectedType)?selectedType:detectType(item.file.name);
   const name=items.length===1&&customTitle?customTitle:item.file.name.replace(/\.pdf$/i,'').replace(/[_-]+/g,' ').trim();
-  target.years[y].push({title:target.name+' '+y+' · '+(folder?folderName(folder)+' · ':'')+name,type,file:item.path,size:item.file.size});
+  if(existing&&existing.pending){
+   // Concluir o cadastro prévio assim que o arquivo chegar ao GitHub, sem duplicar registros.
+   existing.size=item.file.size;
+   existing.type=type;
+   if(customTitle)existing.title=target.name+' '+y+' · '+(folder?folderName(folder)+' · ':'')+customTitle;
+   delete existing.pending;
+  }else{
+   target.years[y].push({title:target.name+' '+y+' · '+(folder?folderName(folder)+' · ':'')+name,type,file:item.path,size:item.file.size});
+  }
  }
  target.years=Object.fromEntries(Object.entries(target.years).sort((a,b)=>Number(b[0])-Number(a[0])));
 }
