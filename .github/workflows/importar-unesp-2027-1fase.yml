@@ -1,0 +1,122 @@
+name: Importar PDF UNESP 2027 primeira fase
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-unesp-2027-1fase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-unesp-2027-primeira-fase
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Publicar caderno de 90 questoes UNESP 2027
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar validador de PDF
+        run: python -m pip install --disable-pip-version-check "PyMuPDF>=1.24,<2"
+
+      - name: Baixar e validar copia exata do PDF recebido
+        run: |
+          python - <<'PY'
+          import hashlib
+          import pathlib
+          import time
+          import urllib.request
+          import pymupdf
+
+          dest = pathlib.Path("acervo/unesp/2027/1a-fase/unesp-2027-1a-fase-prova.pdf")
+          original_size = 2336161
+          original_sha = "de19db9d7e7a11440353427deb0ed3a7b53b9e2d69ce85a73419d18003fdeeeb"
+          sources = [
+              "https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2026/11/VNSP2514_305_20261122175515.pdf",
+              "https://cliquevestibular.com.br/wp-content/uploads/2026/11/unesp-2027-caderno-1a-fase.pdf",
+          ]
+
+          def validate(data):
+              if not data.startswith(b"%PDF-"):
+                  raise ValueError("Nao e PDF")
+              if len(data) != original_size:
+                  raise ValueError("Tamanho nao confere com o PDF enviado: " + str(len(data)))
+              if hashlib.sha256(data).hexdigest() != original_sha:
+                  raise ValueError("Hash nao confere com o PDF enviado")
+              with pymupdf.open(stream=data, filetype="pdf") as pdf:
+                  if len(pdf) != 36:
+                      raise ValueError("Quantidade incorreta de paginas")
+                  text = pdf[0].get_text()
+                  if "VESTIBULAR 2027" not in text or "PROVA DE CONHECIMENTOS GERAIS" not in text:
+                      raise ValueError("Caderno de prova incorreto")
+
+          if dest.exists():
+              validate(dest.read_bytes())
+              print("PDF ja presente e identico ao recebido.")
+          else:
+              last_error = None
+              for source in sources:
+                  for attempt in range(2):
+                      try:
+                          print("Tentando fonte:", source, "tentativa", attempt + 1, flush=True)
+                          request = urllib.request.Request(source, headers={"User-Agent": "Mozilla/5.0"})
+                          with urllib.request.urlopen(request, timeout=80) as response:
+                              data = response.read(4 * 1024 * 1024 + 1)
+                          validate(data)
+                          dest.parent.mkdir(parents=True, exist_ok=True)
+                          dest.write_bytes(data)
+                          print("PDF original conferido por SHA256:", original_sha, flush=True)
+                          break
+                      except Exception as exc:
+                          last_error = exc
+                          print("Fonte nao corresponde ao arquivo enviado:", repr(exc), flush=True)
+                          time.sleep(2)
+                  if dest.exists():
+                      break
+              if not dest.exists():
+                  raise RuntimeError("Falha ao obter copia identica do PDF recebido: " + repr(last_error))
+          PY
+
+      - name: Atualizar catalogo e publicar no repositorio
+        run: |
+          python scripts/gerar_acervo.py
+          python - <<'PY'
+          from pathlib import Path
+          p = Path("acervo-dados.js")
+          s = p.read_text(encoding="utf-8")
+          source_title = '"title": "1a fase · unesp 2027 1a fase prova"'
+          friendly_title = '"title": "UNESP 2027 · 1ª fase · Prova (Conhecimentos Gerais)"'
+          if source_title in s:
+              p.write_text(s.replace(source_title, friendly_title), encoding="utf-8")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add acervo/unesp/2027/ acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Prova e catalogo ja publicados."
+            exit 0
+          fi
+          git commit -m "UNESP 2027: publicar prova de conhecimentos gerais da 1a fase"
+          for attempt in 1 2 3 4 5; do
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            git rebase -X ours origin/main
+            python scripts/gerar_acervo.py
+            if ! git diff --quiet -- acervo-dados.js; then
+              git add acervo-dados.js
+              git commit -m "UNESP 2027: sincronizar catalogo apos rebase"
+            fi
+            if git push origin HEAD:main; then
+              echo "PDF UNESP 2027 e catalogo publicados em main."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
