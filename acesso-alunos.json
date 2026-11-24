@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "purpose": "senha-coletiva-alunos",
+  "configured": false,
+  "student_login_enabled": false,
+  "algorithm": "PBKDF2-SHA256",
+  "iterations": 210000,
+  "salt": null,
+  "hash": null,
+  "updated_at": null,
+  "updated_by": null
+}
