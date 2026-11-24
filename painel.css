@@ -109,3 +109,24 @@ html.login-pendente body{visibility:hidden}
 .topbar .site-link{margin-left:0}
 @media(max-width:900px){.topbar{flex-wrap:wrap;gap:12px}.painel-account{order:3;width:100%;justify-content:flex-end}.topbar .site-link{margin-left:auto}}
 @media(max-width:520px){.account-info strong{max-width:140px}.account-info small{font-size:8px}.painel-logout{padding:0 10px}}
+
+
+/* Administração da senha única dos estudantes: layout de teste no GitHub Pages */
+.tab-admin{border:1px solid #cfd4ef;background:#f9f9ff;color:#343997}
+.tab-admin.active{border-color:transparent;background:linear-gradient(135deg,#2c328b,#474bb3);color:#fff}
+.student-password-panel{border:1px solid #e3e5f5;background:linear-gradient(140deg,rgba(255,255,255,.98),rgba(248,249,255,.95))}
+.student-admin-tag{white-space:nowrap;color:#323b91;background:#eff0ff}
+.student-access-current{display:flex;align-items:center;gap:15px;padding:18px 20px;background:linear-gradient(110deg,#f2f3ff,#fcfbff);border:1px solid #e1e4f5;border-radius:14px;margin-bottom:24px}
+.student-access-current-icon{width:46px;height:46px;display:grid;place-items:center;background:#e3e6ff;border-radius:12px;font-size:25px;flex:none}
+.student-access-current strong{display:block;color:#2c347f;font-size:15px;line-height:1.3}
+.student-access-current p{margin-top:5px;color:#747b9d;font-size:11px}
+.student-password-grid{margin-bottom:11px}
+.student-password-toggle{min-height:38px;margin:0 0 14px}
+.student-password-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px;margin-top:17px}
+.student-password-actions span{font-size:11px;color:#8188a7;max-width:375px;line-height:1.6}
+.student-access-message{font-size:12px;margin-top:13px;line-height:1.6;min-height:0}
+.student-access-message:empty{display:none}
+.student-access-message.ok{padding:12px 14px;border-radius:11px;border:1px solid #bddfcf;background:#effaf5;color:#176447}
+.student-access-message.error{padding:12px 14px;border-radius:11px;border:1px solid #edc6cf;background:#fff2f5;color:#a02b50}
+.student-security-note{margin-top:17px}
+@media(max-width:650px){.student-password-grid{grid-template-columns:1fr}.student-password-actions{align-items:stretch;flex-direction:column}.student-password-actions .primary-btn{width:100%}.student-access-current{padding:15px;gap:12px}.student-access-current-icon{width:40px;height:40px;font-size:21px}}
