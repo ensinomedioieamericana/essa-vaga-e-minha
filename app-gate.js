@@ -43,7 +43,7 @@
     if (!force && Date.now() - lastCheck < MAX_CHECK_INTERVAL_MS) return;
     running = true;
     try {
-      const response = await fetch(FILE, {cache:'no-store'});
+      const response = await fetch(FILE + '?v=' + Date.now(), {cache:'no-store'});
       if (!response.ok) throw new Error('Falha na configuração');
       const config = await response.json();
       if (!looksValid(config)) throw new Error('Configuração inválida');
