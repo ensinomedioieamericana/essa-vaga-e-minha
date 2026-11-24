@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="login-pendente">
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,17 +7,19 @@
  <meta name="theme-color" content="#262a82">
  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
+ <script src="./painel-auth.js?v=1"></script>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=4">
+ <link rel="stylesheet" href="./painel.css?v=5">
 </head>
 <body>
  <header class="topbar">
    <a href="./" class="brand" aria-label="Voltar ao aplicativo"><img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!"></a>
    <div><span class="top-kicker">GESTÃO DE CONTEÚDO</span><h1>Painel do Desenvolvedor</h1><p>Calendário, Olimpíadas, notas de corte, novidades e Banco de Provas</p></div>
+   <div class="painel-account"><div class="account-avatar" aria-hidden="true">A</div><div class="account-info"><small>ADMINISTRADOR · TESTE</small><strong id="painel-usuario"></strong></div><button type="button" id="painel-sair" class="painel-logout">Sair</button></div>
    <a class="site-link" href="./" target="_blank" rel="noopener">Abrir aplicativo <span aria-hidden="true">↗</span></a>
  </header>
  <main class="main">
-  <div class="security-note" role="note"><span aria-hidden="true">🔒</span><div><strong>Como funciona a publicação?</strong><p>Este editor permite preparar e publicar atualizações diretamente no GitHub, usando uma autorização da conta que tem permissão no repositório. <strong>Esta página ainda não tem login próprio:</strong> abrir o endereço não dá acesso à publicação. Não insira RAs, senhas de alunos ou dados pessoais no conteúdo do aplicativo.</p></div></div>
+  <div class="security-note" role="note"><span aria-hidden="true">🔒</span><div><strong>Login demonstrativo ativado.</strong><p>O acesso visual ao painel agora utiliza dois perfis Administrador de teste, conferidos por um arquivo CSV público. <strong>Este login não é uma proteção real:</strong> o código e os dados continuam públicos, e alterações no GitHub exigem o token de uma conta autorizada. Não inclua RAs, senhas reais ou dados pessoais no aplicativo.</p></div></div>
   <div class="toolbar">
     <div class="tablist" role="tablist" aria-label="Área de edição">
       <button type="button" class="tab active" data-tab="calendario" role="tab" aria-selected="true">▦ <span>Calendário</span></button>
