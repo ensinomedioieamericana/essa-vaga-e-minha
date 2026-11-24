@@ -9,7 +9,7 @@ let base=clone(window.EVM_GESTAO||{});
 const sourceNotes={USP:window.USP_NOTAS,UNESP:window.UNESP_NOTAS,UNICAMP:window.UNICAMP_NOTAS};
 const institutions=['unicamp','usp','enem','unesp'];
 const names={unicamp:'UNICAMP',usp:'USP',enem:'ENEM',unesp:'UNESP'};
-const routes=['notas','calendario','olimpiadas','provas','biblioteca','inicio','favoritos'];
+const routes=['notas','calendario','olimpiadas','provas','biblioteca','inicio'];
 const normalize=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 let state=clone(base),calendarUni='unicamp',noteUni='UNICAMP',noteYear=null,notesSearch='';
 let draftFound=false;
@@ -257,7 +257,7 @@ function renderNews(){
   }
   const route=el('label','field');route.append(el('span','','Destino do botão'));
   const routeSel=el('select');
-  for(const r of routes)routeSel.append(opt(r,({notas:'Notas de corte',calendario:'Calendário',provas:'Banco de provas',biblioteca:'Biblioteca e Serviços',olimpiadas:'Olimpíadas Acadêmicas',inicio:'Página inicial',favoritos:'Favoritos'})[r]));
+  for(const r of routes)routeSel.append(opt(r,({notas:'Notas de corte',calendario:'Calendário',provas:'Banco de provas',biblioteca:'Biblioteca e Serviços',olimpiadas:'Olimpíadas Acadêmicas',inicio:'Página inicial'})[r]));
   routeSel.value=n.route==='recursos'?'biblioteca':(n.route||'notas');
   routeSel.addEventListener('change',()=>{n.route=routeSel.value;markDirty()});route.append(routeSel);grid.append(route);
   const directLink=field('Link direto (opcional; sobrepõe o destino da seção)',n.url||'',{placeholder:'./acervo.html?prova=enem&ano=2026'});
