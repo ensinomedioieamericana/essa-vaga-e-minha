@@ -16,6 +16,7 @@
   const params = new URLSearchParams(location.search);
   const reason = params.get('motivo');
   const tips = {
+    expirada:'Seu acesso de 30 minutos terminou. Digite a senha do Instituto para continuar.',
     alterada:'A senha de acesso foi atualizada. Utilize a nova senha informada pelo Instituto.',
     conexao:'Não foi possível verificar seu acesso. Conecte-se à internet e tente novamente.',
     indisponivel:'O acesso ainda está sendo configurado. Procure a equipe do Ensino Médio.'
