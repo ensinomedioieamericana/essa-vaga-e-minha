@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css?v=15">
-  <link rel="stylesheet" href="./premium.css?v=21">
+  <link rel="stylesheet" href="./premium.css?v=22">
   <style>html.acesso-pendente body{visibility:hidden}</style>
   <script src="./app-gate.js?v=3"></script>
   <title>Essa Vaga É Minha! — Instituto Educacional</title>
@@ -141,7 +141,9 @@
             <button type="button" id="olympiad-reset" class="olympiad-reset">Limpar filtros</button>
           </div>
           <div class="olympiad-table-header"><strong>Calendário das olimpíadas</strong><span id="olympiad-count" aria-live="polite">11 olimpíadas</span></div>
-          <div class="olympiad-table-scroll" role="region" aria-label="Tabela de olimpíadas acadêmicas. Em telas pequenas, deslize horizontalmente." tabindex="0">
+          <p class="olympiad-mobile-help">Toque no nome de uma olimpíada para consultar etapas, inscrições e resultados.</p>
+           <div id="olympiad-mobile-list" class="olympiad-mobile-list" aria-label="Olimpíadas acadêmicas em formato expansível"></div>
+           <div class="olympiad-table-scroll" role="region" aria-label="Tabela de olimpíadas acadêmicas" tabindex="0">
             <table class="olympiad-table">
               <thead><tr>
                 <th scope="col">Nome da olimpíada</th>
@@ -155,7 +157,7 @@
             </table>
           </div>
           <p id="olympiad-empty" class="olympiad-empty" hidden>Nenhuma olimpíada corresponde aos filtros escolhidos.</p>
-          <p class="olympiad-hint">Em celulares, deslize a tabela para os lados para consultar todas as informações.</p>
+          
           <p class="olympiad-disclaimer"><span aria-hidden="true">ⓘ</span> As datas, o formato e as inscrições serão atualizados pela Coordenação conforme a confirmação dos regulamentos de cada olimpíada. “A confirmar” significa que ainda não há informação validada para este calendário.</p>
         </section>
         <section id="calendar-app" class="calendar-app" hidden aria-label="Calendário de vestibulares 2027">
@@ -257,6 +259,6 @@
   <dialog id="more-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">MAIS OPÇÕES</p><h2>Explorar</h2></div><button type="button" class="close-btn" data-close="more-dialog" aria-label="Fechar">✕</button></div><div class="more-actions"><button type="button" data-jump="olimpiadas">🏅 Olimpíadas Acadêmicas</button><button type="button" data-jump="biblioteca">📚 Biblioteca e Serviços</button></div></dialog>
   <dialog id="install-dialog" class="modal"><div class="modal-head"><div><p class="section-kicker">ACESSO RÁPIDO</p><h2>Instale no celular</h2></div><button type="button" class="close-btn" data-close="install-dialog" aria-label="Fechar">✕</button></div><div class="modal-body"><p>Depois de publicar este aplicativo em um endereço HTTPS, você pode adicioná-lo à tela inicial:</p><p><strong>Android (Chrome):</strong> abra o menu ⋮ e selecione “Instalar app” ou “Adicionar à tela inicial”.</p><p><strong>iPhone (Safari):</strong> toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p><p class="muted small">Os links externos, como Google Drive e SISU, exigem internet e podem pedir acesso.</p><button type="button" id="native-install" class="primary-btn" hidden>Instalar agora</button></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="./data.js?v=38"></script><script src="./usp-notas.js?v=2027-80q"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./novidades.js?v=15"></script><script src="./gestao-dados.js?v=20"></script><script src="./olimpiadas.js?v=1"></script><script src="./app.js?v=44"></script><script src="./retorno-login.js?v=1"></script>
+  <script src="./data.js?v=38"></script><script src="./usp-notas.js?v=2027-80q"></script><script src="./unicamp-notas.js?v=13"></script><script src="./unesp-notas.js"></script><script src="./novidades.js?v=15"></script><script src="./gestao-dados.js?v=20"></script><script src="./olimpiadas.js?v=2"></script><script src="./app.js?v=44"></script><script src="./retorno-login.js?v=1"></script>
 </body>
 </html>
