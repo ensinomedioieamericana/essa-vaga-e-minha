@@ -113,10 +113,8 @@
     if (!getAdmin()) return 'Sua sessão do Painel expirou. Entre novamente.';
     if (!loadedConfig) return 'Aguarde o carregamento da configuração.';
     const value = newInput.value;
-    if (value.length < 6 || value.length > 100)
-      return 'Escolha uma senha de 6 a 100 caracteres.';
-    if (value.trim() !== value)
-      return 'Retire espaços no início ou no final da senha.';
+    if (value.length === 0)
+      return 'Informe uma nova senha coletiva.';
     if (value !== confirmInput.value)
       return 'A confirmação não corresponde à nova senha.';
     return '';
