@@ -200,6 +200,11 @@ window.EVM_GESTAO = {
     }
   ],
   "notes": {},
+  "cutoffBadges": {
+    "USP": { "enabled": true, "text": "Atualização 2027" },
+    "UNICAMP": { "enabled": true, "text": "Atualização 2027" },
+    "UNESP": { "enabled": false, "text": "Atualização 2027" }
+  },
   "olympiadYear": 2027,
   "olympiads": [
     {
