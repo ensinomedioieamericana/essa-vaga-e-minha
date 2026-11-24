@@ -302,8 +302,13 @@ function renderCutoffs(){
  $('cutoff-kicker').textContent=unicamp?'COMVEST • DADOS HISTÓRICOS':unesp?'UNESP / VUNESP • DADOS HISTÓRICOS':'FUVEST • DADOS HISTÓRICOS';
  $('cutoff-heading').textContent='Notas de corte — '+N.uni;
  const latestYear=Math.max(...d.anos);
- const updateBadge=$('cutoff-update');updateBadge.hidden=!(unicamp||(N.uni==='USP'&&latestYear>=2027));
- if(!updateBadge.hidden)updateBadge.textContent='Atualização '+latestYear;
+ const updateBadge=$('cutoff-update');
+ const badgeSettings=window.EVM_GESTAO?.cutoffBadges?.[N.uni];
+ const legacyBadgeVisible=unicamp||(N.uni==='USP'&&latestYear>=2027);
+ const showBadge=typeof badgeSettings?.enabled==='boolean'?badgeSettings.enabled:legacyBadgeVisible;
+ updateBadge.hidden=!showBadge;
+ if(showBadge)updateBadge.textContent=(typeof badgeSettings?.text==='string'&&badgeSettings.text.trim())
+  ?badgeSettings.text.trim().slice(0,60):'Atualização '+latestYear;
  const yearsDisplay=Math.min(...d.anos)+'–'+latestYear;
  const description=$('cutoff-description');
  description.innerHTML=description.innerHTML.replace(/2020–20\d\d/g,yearsDisplay);
