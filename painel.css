@@ -96,3 +96,16 @@ button[disabled]{opacity:.48;cursor:not-allowed}[hidden]{display:none!important}
 .olympiad-admin-phase{display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(130px,1fr) auto;align-items:end;gap:10px;border:1px solid #e1e5f5;background:#f8f9fe;border-radius:13px;padding:14px}
 .olympiad-admin-phase button{min-height:43px}
 @media(max-width:700px){.olympiad-admin-actions{width:100%}.olympiad-admin-actions .field{min-width:0;width:100%}.olympiad-admin-actions .secondary-btn{width:100%}.olympiad-admin-phase{grid-template-columns:1fr}.olympiad-admin-year{align-items:stretch}.olympiad-admin-year .field{width:100%}}
+
+/* Interface de sessão de teste (não substitui autenticação real do servidor). */
+html.login-pendente body{visibility:hidden}
+.painel-account{display:flex;align-items:center;gap:11px;margin-left:auto;min-width:0}
+.account-avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:linear-gradient(130deg,#303493,#575bb6);color:white;font-size:18px;font-weight:900}
+.account-info{display:flex;flex-direction:column;min-width:0}
+.account-info small{font-size:9px;color:#8d93b1;font-weight:850;letter-spacing:.65px}
+.account-info strong{font-size:12px;color:#292f7c;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.painel-logout{height:37px;padding:0 12px;border-radius:9px;border:1px solid #d9dcef;background:white;font-size:11px;color:#b52d53;font-weight:850}
+.painel-logout:hover{background:#fff1f4}
+.topbar .site-link{margin-left:0}
+@media(max-width:900px){.topbar{flex-wrap:wrap;gap:12px}.painel-account{order:3;width:100%;justify-content:flex-end}.topbar .site-link{margin-left:auto}}
+@media(max-width:520px){.account-info strong{max-width:140px}.account-info small{font-size:8px}.painel-logout{padding:0 10px}}
