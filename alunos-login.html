@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#303493">
+  <meta name="description" content="Entrada com senha coletiva no aplicativo Essa Vaga É Minha! do Instituto Educacional de Americana.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>Acessar aplicativo • Essa Vaga É Minha!</title>
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./painel-login.css?v=1">
+  <link rel="stylesheet" href="./alunos-login.css?v=1">
+  <script defer src="./alunos-login.js?v=1"></script>
+</head>
+<body>
+  <div class="login-shell">
+    <header class="login-header">
+      <a class="login-logo-link" href="./alunos-login.html" aria-label="Essa Vaga É Minha!">
+        <img src="./assets/essa-vaga-logo.png" alt="Essa Vaga É Minha!">
+      </a>
+      <span class="student-welcome">IEA · ENSINO MÉDIO</span>
+    </header>
+    <main class="login-main">
+      <section class="intro" aria-label="Bem-vindo ao aplicativo Essa Vaga É Minha">
+        <div class="intro-mark">INSTITUTO EDUCACIONAL DE AMERICANA <span>•</span> 2027</div>
+        <div class="intro-content">
+          <div class="intro-icon" aria-hidden="true">
+            <svg width="29" height="29" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6l9-3 9 3v14l-9-3-9 3V6z"/><path d="M12 3v14"/></svg>
+          </div>
+          <span class="eyebrow">SUA CENTRAL DE VESTIBULARES</span>
+          <h1>O futuro é seu.<br><span>A vaga também.</span></h1>
+          <p>Provas anteriores, calendários, notas de corte e materiais de apoio para você chegar ainda mais longe. Tudo em um só lugar, preparado pelo <strong>Instituto</strong>.</p>
+          <div class="intro-features">
+            <div><span class="feature-icon" aria-hidden="true">▤</span> Banco de Provas</div>
+            <div><span class="feature-icon" aria-hidden="true">▦</span> Calendário e notas de corte</div>
+            <div><span class="feature-icon" aria-hidden="true">✦</span> Novidades e Biblioteca</div>
+          </div>
+        </div>
+        <div class="intro-bottom">Essa Vaga É Minha! <span>·</span> Instituto Educacional de Americana</div>
+      </section>
+      <section class="login-panel" aria-labelledby="student-login-title">
+        <div class="card">
+          <div class="test-label student-mark"><span class="test-dot" aria-hidden="true"></span> ACESSO DOS ESTUDANTES</div>
+          <h2 id="student-login-title">Bem-vindo!</h2>
+          <p class="subtitle">Digite a senha coletiva de acesso fornecida pelo Instituto para consultar o aplicativo.</p>
+          <form id="student-login-form" autocomplete="off">
+            <label for="student-login-password">Senha de acesso</label>
+            <div class="field-wrapper password-wrapper">
+              <svg aria-hidden="true" class="field-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <input id="student-login-password" type="password" name="password" autocomplete="off" placeholder="Digite a senha do Instituto" required autofocus spellcheck="false" autocapitalize="off">
+              <button id="student-login-toggle" class="eye-button" type="button" aria-label="Mostrar senha" aria-pressed="false" title="Mostrar senha">
+                <svg class="eye-open" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 3 18 18M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7s-1.1 2.2-3.5 4.2M6.5 6.5C3.5 8.5 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.9-.8"/><path d="M10 10a3 3 0 0 0 4 4"/></svg>
+              </button>
+            </div>
+            <p id="student-login-error" class="login-error" role="alert" aria-live="polite" hidden></p>
+            <p id="student-login-status" class="login-status" role="status" aria-live="polite"></p>
+            <button id="student-login-submit" type="submit" class="submit-button">Acessar aplicativo <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="student-instruction"><span aria-hidden="true">ⓘ</span><p><strong>Uma senha para todos os alunos.</strong> Não é necessário criar uma conta ou informar dados pessoais. A senha poderá ser atualizada pela equipe do Instituto.</p></div>
+        </div>
+        <p class="login-footer">© 2026 Instituto Educacional de Americana <span>·</span> Essa Vaga É Minha!</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
