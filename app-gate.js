@@ -35,6 +35,17 @@
     // Capturar o endereco no momento da expiracao, nao na abertura da pagina.
     // Assim, a rota atual (#/notas, por exemplo) e os filtros na URL retornam corretamente.
     const current = window.location.pathname + window.location.search + window.location.hash;
+    if (document.readyState !== 'loading') {
+      try {
+        sessionStorage.setItem('evm-retorno-rolagem-v1', JSON.stringify({
+          path:window.location.pathname,
+          search:window.location.search,
+          hash:window.location.hash,
+          scrollY:Math.max(0,window.scrollY || 0),
+          capturedAt:Date.now()
+        }));
+      } catch (_) {}
+    }
     const target = './alunos-login.html?next=' + encodeURIComponent(current) +
       (reason ? '&motivo=' + encodeURIComponent(reason) : '');
     window.location.replace(target);
