@@ -46,12 +46,12 @@ window.EVM_GESTAO = {
         {
           "label": "1ª fase",
           "text": "1º de novembro de 2026",
-          "principal": true
+          "principal": false
         },
         {
           "label": "2ª fase",
           "text": "06 e 07 de dezembro de 2026",
-          "principal": false
+          "principal": true
         }
       ],
       "noteTitle": "Outras informações",
@@ -75,12 +75,12 @@ window.EVM_GESTAO = {
         {
           "label": "Prova 1 (P1)",
           "text": "08 de novembro de 2026",
-          "principal": true
+          "principal": false
         },
         {
           "label": "Prova 2 (P2)",
           "text": "15 de novembro de 2026",
-          "principal": true
+          "principal": false
         }
       ],
       "noteTitle": "Conteúdo das provas",
@@ -104,12 +104,12 @@ window.EVM_GESTAO = {
         {
           "label": "1ª fase",
           "text": "22 de novembro de 2026",
-          "principal": true
+          "principal": false
         },
         {
           "label": "2ª fase",
           "text": "13 e 14 de dezembro de 2026",
-          "principal": false
+          "principal": true
         }
       ],
       "noteTitle": "Outras datas",
