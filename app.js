@@ -292,8 +292,8 @@ function renderCutoffs(){
  $('cutoff-kicker').textContent=unicamp?'COMVEST • DADOS HISTÓRICOS':unesp?'UNESP / VUNESP • DADOS HISTÓRICOS':'FUVEST • DADOS HISTÓRICOS';
  $('cutoff-heading').textContent='Notas de corte — '+N.uni;
  const latestYear=Math.max(...d.anos);
- const updateBadge=$('cutoff-update');updateBadge.hidden=!unicamp;
- if(unicamp)updateBadge.textContent='Atualização '+latestYear;
+ const updateBadge=$('cutoff-update');updateBadge.hidden=!(unicamp||(N.uni==='USP'&&latestYear>=2027));
+ if(!updateBadge.hidden)updateBadge.textContent='Atualização '+latestYear;
  const yearsDisplay=Math.min(...d.anos)+'–'+latestYear;
  const description=$('cutoff-description');
  description.innerHTML=description.innerHTML.replace(/2020–20\d\d/g,yearsDisplay);
@@ -308,7 +308,7 @@ function renderCutoffs(){
   const th=document.createElement('th');th.scope='col';th.textContent=String(year);
   if(year===latestYear)th.classList.add('latest-year');heading.append(th);
  }
- $('cutoff-description').innerHTML=unicamp?'Acertos da <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Não Cotistas / PAAIS 0 (2025–2027)</strong> • 2020–2027':unesp?'Acertos mínimos para convocação à <strong>2ª fase</strong> • <strong>Sistema Universal (SU) verificado em 2025 e 2026</strong> • Histórico 2020–2024 com modalidade não identificada na compilação':'Nota mínima na <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Ampla Concorrência</strong> • 2020–2026';
+ $('cutoff-description').innerHTML=unicamp?'Acertos da <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Não Cotistas / PAAIS 0 (2025–2027)</strong> • 2020–2027':unesp?'Acertos mínimos para convocação à <strong>2ª fase</strong> • <strong>Sistema Universal (SU) verificado em 2025 e 2026</strong> • Histórico 2020–2024 com modalidade não identificada na compilação':'Nota mínima na <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Ampla Concorrência</strong> • '+yearsDisplay;
  $('cutoff-mark').innerHTML=unicamp?'NC <small>PAAIS 0</small>':unesp?'SU <small>2025–26</small>':'AC <small>somente</small>';
  $('cutoff-course-header').textContent=unicamp?'Curso / turno':unesp?'Curso / cidade / turno':'Carreira / curso';
  $('cutoff-search').placeholder=unesp?'Ex.: Medicina, Franca, Psicologia, Bauru...':unicamp?'Ex.: Medicina, História, Engenharia...':'Ex.: Medicina, Direito, Arquitetura...';
@@ -322,7 +322,7 @@ function renderCutoffs(){
  $('cutoff-sources-unesp').hidden=!unesp;
  document.querySelector('.cutoff-table-wrap').setAttribute('aria-label',`Tabela de notas de corte da ${N.uni}, com rolagem horizontal`);
  const rows=getCutoffRows(),tbody=$('cutoff-tbody');tbody.replaceChildren();
- for(const r of rows){const tr=document.createElement('tr');const name=node('th','course-col');name.scope='row';name.append(node('span','course-label',r.curso));if(!unicamp){const code=r.codigo2026||r.codigo2025||r.codigoHistorico;if(code)name.append(node('small','course-code',unesp?`Curso VUNESP · ${code} · SU em 2025/26`:`Carreira FUVEST · ${code}`));}
+ for(const r of rows){const tr=document.createElement('tr');const name=node('th','course-col');name.scope='row';name.append(node('span','course-label',r.curso));if(!unicamp){const code=r.codigo2027||r.codigo2026||r.codigo2025||r.codigoHistorico;if(code)name.append(node('small','course-code',unesp?`Curso VUNESP · ${code} · SU em 2025/26`:`Carreira FUVEST · ${code}`));}
  name.title=r.observacao||'';tr.append(name);
  for(const y of orderedYears(d)){const value=r.notas[y];const td=node('td',(y===latestYear?'latest-year ':'')+(value==null?'missing':''),value==null?'—':String(value));const max=d.denominador?.[y]??(unicamp?(y===2020?90:72):90);td.setAttribute('aria-label',`${y}: ${value==null?'sem dado':value+' acertos de '+max}`);tr.append(td)}tbody.append(tr)}
  $('cutoff-count').textContent=`${rows.length} ${rows.length===1?(unicamp||unesp?'curso':'carreira'):(unicamp||unesp?'cursos':'carreiras')} exibidos`; $('cutoff-empty').hidden=rows.length!==0;
