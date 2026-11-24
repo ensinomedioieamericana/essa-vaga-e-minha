@@ -2,7 +2,7 @@
  * Apenas administradores do login de teste enxergam esta aba.
  * A escrita no GitHub exige token com Contents: read/write.
  * O arquivo guarda PBKDF2 + salt, nunca a senha em texto aberto.
- * Acesso dos alunos NÃO está ativado; autenticação real requer servidor. */
+ * O login coletivo é um teste visual; autenticação real requer servidor. */
 (() => {
   'use strict';
 
@@ -61,14 +61,14 @@
       value.purpose === 'senha-coletiva-alunos' &&
       value.algorithm === 'PBKDF2-SHA256' &&
       value.iterations === ITERATIONS &&
-      value.student_login_enabled === false &&
+      typeof value.student_login_enabled === 'boolean' &&
       typeof value.configured === 'boolean' &&
       (value.hash == null || /^[a-f0-9]{64}$/i.test(value.hash)) &&
       (value.salt == null || /^[a-f0-9]{32}$/i.test(value.salt));
   }
   function showConfig(conf) {
     currentStatus.textContent = conf.configured ?
-      'Senha coletiva cadastrada no GitHub' :
+      'Senha coletiva cadastrada' :
       'Nenhuma senha coletiva cadastrada ainda';
     if (conf.updated_at) {
       const date = new Date(conf.updated_at);
@@ -113,8 +113,8 @@
     if (!getAdmin()) return 'Sua sessão do Painel expirou. Entre novamente.';
     if (!loadedConfig) return 'Aguarde o carregamento da configuração.';
     const value = newInput.value;
-    if (value.length < 10 || value.length > 100)
-      return 'Escolha uma senha de 10 a 100 caracteres.';
+    if (value.length < 6 || value.length > 100)
+      return 'Escolha uma senha de 6 a 100 caracteres.';
     if (value.trim() !== value)
       return 'Retire espaços no início ou no final da senha.';
     if (value !== confirmInput.value)
@@ -212,7 +212,7 @@
         version:1,
         purpose:'senha-coletiva-alunos',
         configured:true,
-        student_login_enabled:false,
+        student_login_enabled:true,
         algorithm:'PBKDF2-SHA256',
         iterations:ITERATIONS,
         salt:toHex(saltBytes),
@@ -249,7 +249,7 @@
       toggle.textContent = '👁 Mostrar senhas';
       toggle.setAttribute('aria-pressed','false');
       closeDialog();
-      message('Nova senha coletiva cadastrada no GitHub. O acesso dos alunos ainda não está bloqueado: a tela de login dos alunos será criada em outra etapa.');
+      message('Senha coletiva atualizada. Os alunos deverão informar a nova senha na próxima verificação de acesso ao aplicativo.');
     } catch (failure) {
       tokenError.textContent = failure.message || 'Não foi possível concluir a publicação.';
       message('Publicação não confirmada. Nenhuma alteração local foi aplicada.', true);
