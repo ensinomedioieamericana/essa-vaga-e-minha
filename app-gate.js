@@ -6,6 +6,8 @@
   const KEY = 'evm-acesso-coletivo-v1';
   const FILE = './acesso-alunos.json';
   const MAX_CHECK_INTERVAL_MS = 5 * 60 * 1000;
+  const SESSION_MAX_AGE_MS = 30 * 60 * 1000;
+  const LOCAL_CHECK_INTERVAL_MS = 15 * 1000;
   const next = window.location.pathname + window.location.search + window.location.hash;
   let lastCheck = 0;
   let running = false;
@@ -13,8 +15,14 @@
   function readSession() {
     try {
       const session = JSON.parse(localStorage.getItem(KEY));
-      return session && session.version === 1 ? session : null;
-    } catch (_) { return null; }
+      if (!session || session.version !== 1) return {session:null,expired:false};
+      // A validade e calculada desde o ultimo login; navegacao nao renova o prazo.
+      const age = Date.now() - session.created_at;
+      if (!Number.isFinite(session.created_at) || !Number.isFinite(age) ||
+          age < 0 || age >= SESSION_MAX_AGE_MS)
+        return {session:null,expired:true};
+      return {session,expired:false};
+    } catch (_) { return {session:null,expired:false}; }
   }
   function clearSession() {
     try { localStorage.removeItem(KEY); } catch (_) {}
@@ -40,6 +48,8 @@
   }
   async function check(force = false) {
     if (running) return;
+    const local = readSession();
+    if (local.expired) { goLogin('expirada'); return; }
     if (!force && Date.now() - lastCheck < MAX_CHECK_INTERVAL_MS) return;
     running = true;
     try {
@@ -52,9 +62,10 @@
         goLogin('indisponivel');
         return;
       }
-      const session = readSession();
-      if (!session || session.hash !== config.hash) {
-        goLogin(session ? 'alterada' : '');
+      const checked = readSession();
+      if (checked.expired) { goLogin('expirada'); return; }
+      if (!checked.session || checked.session.hash !== config.hash) {
+        goLogin(checked.session ? 'alterada' : '');
         return;
       }
       lastCheck = Date.now();
@@ -68,8 +79,11 @@
   }
   // Executado no head: body permanece oculto até a checagem terminar.
   check(true);
+  // Enquanto o aplicativo permanecer aberto, encerrar o acesso ao completar 30 min.
+  // Um navegador em segundo plano pode suspender timers; ao retornar, conferir novamente.
+  setInterval(() => check(), LOCAL_CHECK_INTERVAL_MS);
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) check();
+    if (!document.hidden) check(true);
   });
   window.addEventListener('pageshow', event => {
     if (event.persisted) check(true);
