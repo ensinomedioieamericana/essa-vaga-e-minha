@@ -1,0 +1,17 @@
+/* Ajustes da identidade para a entrada coletiva dos alunos */
+.login-main{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr)}
+.intro{background:linear-gradient(140deg,#262a81 0%,#343895 50%,#5058b9 100%)}
+.intro h1{font-size:clamp(39px,5vw,66px)}
+.intro h1 span{color:#ff9bae}
+.intro-features{gap:15px}
+.login-panel{background:radial-gradient(circle at 90% 10%,#e4e9ff,transparent 42%),#f8f9ff}
+.student-mark{background:#fff2e6;color:#9b5831}
+.student-mark .test-dot{background:#df4673}
+.login-panel .card{box-shadow:0 20px 65px rgba(31,34,121,.1)}
+.password-wrapper{margin-bottom:19px}
+.student-instruction{display:flex;gap:11px;background:#f3f5ff;border-radius:12px;padding:15px;margin-top:23px;color:#616a9d;line-height:1.6;font-size:12px}
+.student-instruction span{font-size:20px}
+.student-instruction p{margin:0}
+.student-instruction strong{color:#2e358c}
+.student-welcome{font-weight:850;color:#393f9c;letter-spacing:.35px}
+@media(max-width:880px){.login-main{grid-template-columns:1fr}}
