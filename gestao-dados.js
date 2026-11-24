@@ -17,12 +17,12 @@ window.EVM_GESTAO = {
         {
           "label": "1ª fase",
           "text": "18 de outubro de 2026",
-          "principal": true
+          "principal": false
         },
         {
           "label": "2ª fase",
           "text": "29 e 30 de novembro de 2026",
-          "principal": false
+          "principal": true
         }
       ],
       "noteTitle": "Outras datas",
@@ -119,18 +119,6 @@ window.EVM_GESTAO = {
     }
   ],
   "events": [
-    {
-      "date": "2026-11-15",
-      "name": "ENEM",
-      "detail": "Segundo dia de prova",
-      "uni": "enem"
-    },
-    {
-      "date": "2026-11-22",
-      "name": "UNESP",
-      "detail": "Primeira fase",
-      "uni": "unesp"
-    },
     {
       "date": "2026-11-29",
       "name": "UNICAMP",
