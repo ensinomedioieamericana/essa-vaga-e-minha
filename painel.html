@@ -153,11 +153,11 @@
       </div>
       <form id="student-password-form" autocomplete="off">
         <div class="form-grid student-password-grid">
-          <label class="field"><span>Nova senha coletiva dos alunos</span><input type="password" id="student-password" autocomplete="new-password" minlength="6" maxlength="100" placeholder="Crie a senha para distribuir à turma" required spellcheck="false"></label>
-          <label class="field"><span>Confirmar nova senha</span><input type="password" id="student-password-confirm" autocomplete="new-password" minlength="6" maxlength="100" placeholder="Digite a mesma senha novamente" required spellcheck="false"></label>
+          <label class="field"><span>Nova senha coletiva dos alunos</span><input type="password" id="student-password" autocomplete="new-password" placeholder="Crie a senha para distribuir à turma" required spellcheck="false"></label>
+          <label class="field"><span>Confirmar nova senha</span><input type="password" id="student-password-confirm" autocomplete="new-password" placeholder="Digite a mesma senha novamente" required spellcheck="false"></label>
         </div>
         <button type="button" id="student-password-visibility" class="secondary-btn student-password-toggle" aria-label="Mostrar senhas" aria-pressed="false">👁 Mostrar senhas</button>
-        <p class="field-help">Utilize uma senha de pelo menos 6 caracteres. Para a versão definitiva, recomendamos uma senha mais longa. A senha não será escrita em texto aberto; apenas sua verificação criptográfica será armazenada.</p>
+        <p class="field-help">Escolha a senha coletiva que será informada aos alunos. Ela não será escrita em texto aberto; apenas sua verificação criptográfica será armazenada.</p>
         <p id="student-access-message" class="student-access-message" role="status" aria-live="polite"></p>
         <div class="student-password-actions">
           <button type="submit" id="student-password-publish" class="primary-btn" disabled>🔐 Salvar Senha</button>
@@ -214,5 +214,5 @@
  <script src="./acervo-dados.js?v=17"></script>
  <script src="./painel.js?v=7"></script>
  <script src="./painel-acervo.js?v=3"></script>
- <script src="./painel-acesso.js?v=2"></script>
+ <script src="./painel-acesso.js?v=3"></script>
 </body></html>
