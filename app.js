@@ -288,6 +288,7 @@ function renderCutoffs(){
  document.querySelectorAll('[data-uni]').forEach(b=>{const active=b.dataset.uni===N.uni;b.classList.toggle('selected',active);b.setAttribute('aria-selected',active?'true':'false')});
  const d=getCutoffData(),unicamp=N.uni==='UNICAMP',unesp=N.uni==='UNESP';
  $('cutoff-records').hidden=!d;$('cutoff-other').hidden=!!d;
+ $('cutoff-exam-change').hidden=!(d&&N.uni==='USP'&&d.anos.includes(2027));
  if(!d){$('cutoff-other-title').textContent=N.uni;return}
  $('cutoff-kicker').textContent=unicamp?'COMVEST • DADOS HISTÓRICOS':unesp?'UNESP / VUNESP • DADOS HISTÓRICOS':'FUVEST • DADOS HISTÓRICOS';
  $('cutoff-heading').textContent='Notas de corte — '+N.uni;
@@ -305,7 +306,8 @@ function renderCutoffs(){
  const heading=document.querySelector('.cutoff-table thead tr');
  heading.querySelectorAll('th:not(.course-col)').forEach(th=>th.remove());
  for(const year of orderedYears(d)){
-  const th=document.createElement('th');th.scope='col';th.textContent=String(year);
+  const th=document.createElement('th');th.scope='col';th.textContent=N.uni==='USP'&&year===2027?'2027 (80q)':String(year);
+  if(N.uni==='USP'){const total=d.denominador?.[year]??90;th.title=`FUVEST ${year}: primeira fase com ${total} questões`;th.setAttribute('aria-label',`${year}, prova de ${total} questões`)}
   if(year===latestYear)th.classList.add('latest-year');heading.append(th);
  }
  $('cutoff-description').innerHTML=unicamp?'Acertos da <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Não Cotistas / PAAIS 0 (2025–2027)</strong> • 2020–2027':unesp?'Acertos mínimos para convocação à <strong>2ª fase</strong> • <strong>Sistema Universal (SU) verificado em 2025 e 2026</strong> • Histórico 2020–2024 com modalidade não identificada na compilação':'Nota mínima na <strong>1ª fase</strong> para convocação à <strong>2ª fase</strong> • <strong>Ampla Concorrência</strong> • '+yearsDisplay;
@@ -314,7 +316,7 @@ function renderCutoffs(){
  $('cutoff-search').placeholder=unesp?'Ex.: Medicina, Franca, Psicologia, Bauru...':unicamp?'Ex.: Medicina, História, Engenharia...':'Ex.: Medicina, Direito, Arquitetura...';
  $('cutoff-full-label').textContent=(unicamp||unesp?'Apenas cursos':'Apenas carreiras')+' com todos os '+d.anos.length+' anos';
  $('cutoff-legend-missing').textContent=unicamp||unesp?'— : curso ou valor sem correspondência segura no ano':'— : sem informação equivalente nesta carreira / ano';
- $('cutoff-legend-units').textContent=unicamp?'Acertos: 2020 (0–90); 2021–2027 (0–72) • Não são notas finais de ingresso.':unesp?'Acertos na primeira fase (90 questões) • Não são notas finais de ingresso.':'Notas em pontos (0–90) • Não são notas finais de ingresso.';
+ $('cutoff-legend-units').textContent=unicamp?'Acertos: 2020 (0–90); 2021–2027 (0–72) • Não são notas finais de ingresso.':unesp?'Acertos na primeira fase (90 questões) • Não são notas finais de ingresso.':'FUVEST 2020–2026: 90 questões • FUVEST 2027: 80 questões • Acertos absolutos não são diretamente comparáveis.';
  if(latestYear>2027)$('cutoff-legend-units').textContent='Acertos da 1ª fase: o total de questões pode variar conforme o ano. Confira o valor correspondente a cada célula • Não são notas finais de ingresso.';
  $('cutoff-info').innerHTML=unicamp?UNICAMP_INFO:unesp?UNESP_INFO:USP_INFO;
  $('cutoff-sources-usp').hidden=unicamp||unesp;
