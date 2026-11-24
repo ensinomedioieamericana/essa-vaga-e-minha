@@ -1,8 +1,8 @@
 (() => {
 'use strict';
 const original=window.APP_LINKS;
-const ROUTES=['inicio','provas','calendario','olimpiadas','notas','biblioteca','favoritos'];
-const normalizeRoute=route=>route==='agenda'?'calendario':route==='recursos'?'biblioteca':route;
+const ROUTES=['inicio','provas','calendario','olimpiadas','notas','biblioteca'];
+const normalizeRoute=route=>route==='agenda'?'calendario':route==='recursos'?'biblioteca':route==='favoritos'?'inicio':route;
 // Navegação interna: o calendário precisa ficar disponível mesmo após atualizações do PWA.
 const cats={provas:['Provas','▤','q-blue'],agenda:['Datas','▦','q-orange'],notas:['Notas','▥','q-mint'],biblioteca:['Biblioteca e Serviços','▧','q-lilac'],recursos:['Bernoulli','✧','q-blue'],servicos:['Serviços','⚙','q-orange']};
 const views={
@@ -11,23 +11,17 @@ const views={
  calendario:['ORGANIZE SEU ANO','Calendário de vestibulares 2027','Consulte diretamente no aplicativo as datas de inscrição, provas e resultados.','Calendário por exame'],
  olimpiadas:['VÁ ALÉM DA SALA DE AULA','Olimpíadas Acadêmicas','Inscrições, fases, formatos e resultados das competições do Instituto.','Calendário olímpico'],
  notas:['PESQUISA HISTÓRICA','Notas de corte','Compare o desempenho exigido nos vestibulares, ano a ano.','Notas por universidade'],
- biblioteca:['ESTUDE E ACESSE SERVIÇOS','Biblioteca e Serviços','Tutoriais, literatura, olimpíadas, gabaritos e serviços úteis do Ensino Médio.','Materiais e serviços'],
- favoritos:['SEUS MATERIAIS SALVOS','Meus favoritos','Links marcados como favoritos neste dispositivo.','Itens salvos']
+ biblioteca:['ESTUDE E ACESSE SERVIÇOS','Biblioteca e Serviços','Tutoriais, literatura, olimpíadas, gabaritos e serviços úteis do Ensino Médio.','Materiais e serviços']
 };
 const $=id=>document.getElementById(id);
 const node=(tag,cls,text)=>{let e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
-const get=k=>{try{return localStorage.getItem(k)}catch{return null}};
-const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch{return false}};
-function loadFav(){try{const a=JSON.parse(get('evm-favorites-v1'));return Array.isArray(a)?new Set(a):new Set()}catch{return new Set()}}
-const S={links:original.map(x=>({...x})),fav:loadFav(),route:'inicio',search:'',filter:'todos'};
+const S={links:original.map(x=>({...x})),route:'inicio',search:'',filter:'todos'};
 const N={uni:'USP',query:'',sort:'az',onlyFull:false};
-let toastTimeout,installPrompt;
+let installPrompt;
 const normal=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const count=n=>`${n} ${n===1?'recurso':'recursos'}`;
-function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>t.classList.remove('show'),3000)}
 function go(route){route=normalizeRoute(route);if(!ROUTES.includes(route))return;S.route=route;S.filter='todos';S.search='';$('search').value='';$('clear-search').hidden=true;if(location.hash!=='#/'+route)location.hash='/'+route;render();window.scrollTo({top:0,behavior:'smooth'})}
-function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route==='favoritos')return a.filter(x=>S.fav.has(x.id));if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
-function favorite(id){if(S.fav.has(id))S.fav.delete(id);else S.fav.add(id);set('evm-favorites-v1',JSON.stringify([...S.fav]));toast(S.fav.has(id)?'Adicionado aos favoritos.':'Removido dos favoritos.');render()}
+function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
 const PROVA_LOGOS={
  fuvest:{name:'USP',src:'./assets/logo-usp.svg?v=11'},
  enem:{name:'ENEM',src:'./assets/logo-enem.svg'},
@@ -52,10 +46,6 @@ function card(item){
  }else{
   const ico=node('div','card-icon '+color,symbol);ico.setAttribute('aria-hidden','true');top.append(ico);
  }
- const b=node('button','card-save'+(S.fav.has(item.id)?' saved':''),S.fav.has(item.id)?'♥':'♡');
- b.type='button';b.title=S.fav.has(item.id)?'Remover dos favoritos':'Adicionar aos favoritos';
- b.setAttribute('aria-label',b.title);b.addEventListener('click',()=>favorite(item.id));
- top.append(b);
  const internalExam=item.category==='provas'&&['fuvest','enem','unesp','unicamp','famerp','famema','einstein'].includes(item.id);
  const foot=node('div','resource-bottom');const a=node('a','',internalExam?'Escolher ano':'Abrir material');
  a.href=item.url;a.target=internalExam?'_self':'_blank';a.rel='noopener noreferrer';
@@ -268,8 +258,8 @@ function applyGestao(){
 
 function render(){let cutoff=S.route==='notas',calendar=S.route==='calendario',olympiad=S.route==='olimpiadas';let search=!cutoff&&!calendar&&!olympiad&&!!S.search.trim();let v=search?['RESULTADOS DA BUSCA','Sua pesquisa','Resultados de todas as seções.','Materiais encontrados']:views[S.route];$('hero').hidden=S.route!=='inicio'||search;$('novidades-section').hidden=S.route!=='inicio'||search;$('view-kicker').textContent=v[0];$('view-title').textContent=v[1];$('view-description').textContent=v[2];$('results-title').textContent=v[3];$('quick-actions').hidden=S.route!=='inicio'||search;$('home-showcase').hidden=S.route!=='inicio'||search;$('cutoff-app').hidden=!cutoff;$('calendar-app').hidden=!calendar;$('olympiad-app').hidden=!olympiad;$('results-section').hidden=cutoff||calendar||olympiad;$('search').closest('.finder').hidden=cutoff||calendar||olympiad;$('tips').hidden=S.route!=='inicio'||search;$('category-filter').hidden=S.route!=='inicio'||search;$('library-tutorials').hidden=S.route!=='biblioteca'||search;if(S.route==='inicio'&&!search){renderNovidades();quick();filters();renderHomeDates()}else{pararRotacaoNovidades()}
 if(cutoff){renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação';}if(olympiad)window.EVM_OLIMPIADAS_UI?.render();const a=shown();if(calendar)$('total-pill').textContent=$('calendar-count').textContent;else if(!cutoff&&!olympiad)$('total-pill').textContent=count(a.length+(S.route==='biblioteca'&&!search?3:0));$('results-counter').textContent=count(a.length);const grid=$('card-grid');grid.replaceChildren();a.forEach(i=>grid.append(card(i)));$('empty-state').hidden=a.length!==0;
-$('empty-state').querySelector('h3').textContent=S.route==='favoritos'&&!search?'Você ainda não salvou materiais':'Nenhum material encontrado';$('empty-state').querySelector('p').textContent=S.route==='favoritos'&&!search?'Use o coração para salvar seus materiais favoritos.':'Experimente outra busca ou escolha uma seção diferente.';
-document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('fav-count').textContent=S.fav.size;$('fav-count').hidden=!S.fav.size}
+$('empty-state').querySelector('h3').textContent='Nenhum material encontrado';$('empty-state').querySelector('p').textContent='Experimente outra busca ou escolha uma seção diferente.';
+document.querySelectorAll('[data-route]').forEach(b=>{const yes=b.dataset.route===S.route&&!search;b.classList.toggle('active',yes);if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')})
 function getCutoffData(){return N.uni==='USP'?window.USP_NOTAS:N.uni==='UNICAMP'?window.UNICAMP_NOTAS:N.uni==='UNESP'?window.UNESP_NOTAS:null}
 const orderedYears=d=>[...d.anos].sort((a,b)=>Number(b)-Number(a));
 function getCutoffRows(){
@@ -356,7 +346,7 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){applyGestao();iniciarControlesNovidades();window.EVM_OLIMPIADAS_UI?.init();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(['#/agenda','#agenda','#/recursos','#recursos'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search+'#/'+S.route);render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
+function init(){applyGestao();iniciarControlesNovidades();window.EVM_OLIMPIADAS_UI?.init();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(['#/agenda','#agenda','#/recursos','#recursos','#/favoritos','#favoritos'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search+'#/'+S.route);render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
   if(route.dataset.jump)close('more-dialog');
   const focus=route.dataset.cutoffFocus;
   if(focus&&['USP','UNESP','UNICAMP'].includes(focus)){
@@ -367,10 +357,10 @@ function init(){applyGestao();iniciarControlesNovidades();window.EVM_OLIMPIADAS_
   if(route.dataset.calendarFocus){const chosen=document.querySelector('[data-calendar-filter="'+route.dataset.calendarFocus+'"]');if(chosen)chosen.click()}
  }const closer=e.target.closest('[data-close]');if(closer)close(closer.dataset.close)});
 $('search').addEventListener('input',e=>{S.search=e.target.value;$('clear-search').hidden=!S.search;render()});$('clear-search').addEventListener('click',()=>{$('search').value='';S.search='';$('clear-search').hidden=true;render();$('search').focus()});$('reset-search').addEventListener('click',()=>{S.search='';S.filter='todos';$('search').value='';$('clear-search').hidden=true;render()});
-$('top-fav').addEventListener('click',()=>go('favoritos'));$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
+$('more-open').addEventListener('click',()=>open('more-dialog'));$('install-open').addEventListener('click',()=>open('install-dialog'));
 $('native-install').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('native-install').hidden=true});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('native-install').hidden=false});window.addEventListener('hashchange',()=>{const raw=location.hash.replace(/^#\/?/,'');const r=normalizeRoute(raw);if(raw!==r)history.replaceState(null,'',location.pathname+location.search+'#/'+r);if(ROUTES.includes(r)&&r!==S.route){S.route=r;S.search='';S.filter='todos';$('search').value='';render()}});
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('search').focus()}});
-if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=38').catch(()=>{});
+if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js?v=41').catch(()=>{});
 }
 init();
 })();
