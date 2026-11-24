@@ -19,6 +19,8 @@ if(!Number.isInteger(state.olympiadYear))state.olympiadYear=base.olympiadYear||2
 if(!state.calendar||!Array.isArray(state.events)||!Array.isArray(state.notices)||!state.notes){
  alert('Os dados de gestão ainda não estão disponíveis. Recarregue esta página.');return;
 }
+// Atualizacoes de rascunhos antigos: aproveitar os selos publicados.
+if(!state.cutoffBadges||typeof state.cutoffBadges!=='object')state.cutoffBadges=clone(base.cutoffBadges||{});
 function el(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x}
 function opt(value,title){const x=el('option','',title);x.value=value;return x}
 function field(label,value,attrs={}){
@@ -94,6 +96,37 @@ $('add-event').addEventListener('click',()=>{state.events.push({date:'',name:'UN
 function currentNotes(){return state.notes[noteUni]||sourceNotes[noteUni]}
 function editableNotes(){if(!state.notes[noteUni])state.notes[noteUni]=clone(sourceNotes[noteUni]);return state.notes[noteUni]}
 function selectedYear(){return Number($('notes-year').value)||noteYear}
+function defaultBadge(uni){
+ const years=sourceNotes[uni]?.anos||[];
+ const latest=years.length?Math.max(...years):2027;
+ return {enabled:uni==='UNICAMP'||(uni==='USP'&&latest>=2027),text:'Atualização '+latest};
+}
+function badgeRecord(){
+ if(!state.cutoffBadges||typeof state.cutoffBadges!=='object')state.cutoffBadges={};
+ if(!state.cutoffBadges[noteUni])state.cutoffBadges[noteUni]=clone(base.cutoffBadges?.[noteUni]||defaultBadge(noteUni));
+ return state.cutoffBadges[noteUni];
+}
+function renderBadgePreview(){
+ const record=badgeRecord();
+ $('notes-badge-preview').textContent='✦ '+(String(record.text||'').trim()||'Texto do selo');
+ $('notes-badge-preview').hidden=!record.enabled;
+ $('notes-badge-hidden-note').hidden=!!record.enabled;
+}
+function renderBadgeControls(){
+ const record=badgeRecord();
+ $('notes-badge-university').textContent=noteUni;
+ $('notes-badge-enabled').checked=!!record.enabled;
+ $('notes-badge-text').value=String(record.text||'');
+ renderBadgePreview();
+}
+$('notes-badge-enabled').addEventListener('change',()=>{
+ badgeRecord().enabled=$('notes-badge-enabled').checked;
+ markDirty();renderBadgePreview();
+});
+$('notes-badge-text').addEventListener('input',()=>{
+ badgeRecord().text=$('notes-badge-text').value;
+ markDirty();renderBadgePreview();
+});
 function denominator(d,year){
  if(d.denominador?.[year]!=null)return Number(d.denominador[year]);
  return noteUni==='UNICAMP'?(Number(year)===2020?90:72):90;
@@ -112,6 +145,7 @@ function renderNoteMeta(){
  $('notes-max').value=denominator(d,year);
  $('notes-source').value=String(d.fontes?.[year]||'');
  $('note-year-heading').textContent='Acertos '+year;
+ renderBadgeControls();
 }
 $('notes-uni').addEventListener('change',()=>{noteUni=$('notes-uni').value;notesSearch='';$('notes-search').value='';renderYears()});
 $('notes-year').addEventListener('change',()=>{noteYear=selectedYear();renderNoteMeta();renderNoteRows()});
@@ -434,6 +468,14 @@ function validate(){
   if(o.registrationMode==='link'&&!urlOK(o.registrationUrl))return 'Informe o link HTTPS de inscrição em '+o.name+'.';
   if(o.resultUrl&&!urlOK(o.resultUrl))return 'Informe um link HTTPS para o resultado de '+o.name+'.';
   if(!['a-confirmar','aguardando','divulgado'].includes(o.resultStatus))return 'Situação do resultado inválida em '+o.name+'.';
+ }
+ for(const uni of ['USP','UNESP','UNICAMP']){
+  const badge=state.cutoffBadges?.[uni];
+  if(!badge)continue;
+  if(typeof badge.enabled!=='boolean'||typeof badge.text!=='string'||badge.text.length>60)
+   return 'Confira a configuração do selo de '+uni+'.';
+  if(badge.enabled&&!badge.text.trim())
+   return 'Informe o texto do selo de '+uni+' ou desative sua exibição.';
  }
  for(const [uni,data] of Object.entries(state.notes)){
   if(!sourceNotes[uni]||!Array.isArray(data.carreiras)||!Array.isArray(data.anos))return 'Dados inválidos de '+uni;
