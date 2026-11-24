@@ -4,7 +4,7 @@ Aplicativo web progressivo do Instituto Educacional de Americana. Identidade vis
 
 ## Recursos
 
-- 17 referências do Linktree original, navegação responsiva, pesquisa e favoritos locais.
+- 17 referências do Linktree original, navegação responsiva e pesquisa, sem favoritos individuais.
 - **Notas de Corte → USP:** 2020 a 2026, Ampla Concorrência, busca, ordenação, série histórica e exportação CSV.
 - **Notas de Corte → UNICAMP:** 2020 a 2026, tabela de cursos/turnos, busca, ordenação, filtro de histórico completo e exportação CSV.
 - **Notas de Corte → UNESP:** 2020–2026, cidade e turno preservados; para 2025/2026 somente SU (Sistema Universal), busca, ordenação, filtro de histórico completo e exportação CSV.
