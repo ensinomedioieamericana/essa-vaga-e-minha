@@ -9,7 +9,7 @@
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
  <script src="./painel-auth.js?v=1"></script>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=6">
+ <link rel="stylesheet" href="./painel.css?v=7">
 </head>
 <body>
  <header class="topbar">
@@ -68,6 +68,15 @@
     </div>
     <div class="inline-add"><label class="field"><span>Adicionar um novo ano</span><input id="notes-add-year" type="number" min="2020" max="2100" placeholder="Ex.: 2028"></label><button id="notes-add-year-btn" class="secondary-btn" type="button">+ Adicionar ano</button></div>
     <label class="field" style="margin-top:16px"><span>Fonte ou referência do ano <small>(link ou descrição)</small></span><input id="notes-source" placeholder="Ex.: Documento oficial, URL da COMVEST..."></label>
+   </div>
+   <div class="panel notes-badge-panel">
+    <div class="panel-head"><div><h3>Selo de atualização das Notas de Corte</h3><p>Configure o selo vermelho exibido ao lado do título da universidade selecionada acima.</p></div><span class="mini-pill" id="notes-badge-university">UNICAMP</span></div>
+    <div class="notes-badge-controls">
+      <label class="notes-badge-check"><input type="checkbox" id="notes-badge-enabled"><span>Exibir o selo vermelho nesta universidade</span></label>
+      <label class="field notes-badge-label"><span>Texto do selo</span><input type="text" id="notes-badge-text" maxlength="60" placeholder="Ex.: Atualização 2027"></label>
+    </div>
+    <div class="notes-badge-preview-row"><span class="notes-badge-preview-caption">Pré-visualização:</span><span id="notes-badge-preview" class="notes-badge-preview">✦ Atualização 2027</span><span id="notes-badge-hidden-note" class="notes-badge-hidden-note" hidden>Selo oculto para esta universidade</span></div>
+    <p class="field-help">As configurações são independentes para USP, UNESP e UNICAMP. Para que apareçam no aplicativo, clique em <strong>Salvar e publicar</strong> ao final do Painel.</p>
    </div>
    <div class="panel">
     <div class="panel-head"><div><h3>Valores por curso</h3><p>Deixe em branco se não houver nota confirmada.</p></div><span id="notes-count" class="mini-pill"></span></div>
@@ -210,9 +219,9 @@
  <script src="./usp-notas.js"></script>
  <script src="./unicamp-notas.js?v=13"></script>
  <script src="./unesp-notas.js"></script>
- <script src="./gestao-dados.js?v=19"></script>
+ <script src="./gestao-dados.js?v=20"></script>
  <script src="./acervo-dados.js?v=17"></script>
- <script src="./painel.js?v=7"></script>
+ <script src="./painel.js?v=8"></script>
  <script src="./painel-acervo.js?v=3"></script>
  <script src="./painel-acesso.js?v=3"></script>
 </body></html>
