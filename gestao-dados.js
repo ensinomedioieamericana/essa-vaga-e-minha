@@ -1,5 +1,4 @@
-/* Conteúdo público editado no Painel do Desenvolvedor.
-   Não incluir RAs, senhas nem informações pessoais. */
+/* Dados públicos editados no Painel do Desenvolvedor. Nunca incluir senhas, RAs ou dados pessoais. */
 window.EVM_GESTAO = {
   "version": 1,
   "calendar": [
@@ -176,6 +175,18 @@ window.EVM_GESTAO = {
     }
   ],
   "notices": [
+    {
+      "id": "aviso-1795519503811",
+      "label": "JÁ SAIU",
+      "date": "23/11/2026",
+      "title": "NOTAS DE CORTE DA USP 2027",
+      "description": "As notas já estão disponíveis! Consulte os acertos para a 2ª fase na modalidade Ampla Concorrência.",
+      "action": "Clique aqui e confira",
+      "route": "notas",
+      "url": "",
+      "university": "USP",
+      "featured": false
+    },
     {
       "id": "enem-2026-provas-gabaritos",
       "label": "ACERVO ATUALIZADO",
