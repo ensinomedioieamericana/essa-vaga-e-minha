@@ -8,7 +8,6 @@
   const MAX_CHECK_INTERVAL_MS = 5 * 60 * 1000;
   const SESSION_MAX_AGE_MS = 30 * 60 * 1000;
   const LOCAL_CHECK_INTERVAL_MS = 15 * 1000;
-  const next = window.location.pathname + window.location.search + window.location.hash;
   let lastCheck = 0;
   let running = false;
 
@@ -33,7 +32,10 @@
   }
   function goLogin(reason) {
     clearSession();
-    const target = './alunos-login.html?next=' + encodeURIComponent(next) +
+    // Capturar o endereco no momento da expiracao, nao na abertura da pagina.
+    // Assim, a rota atual (#/notas, por exemplo) e os filtros na URL retornam corretamente.
+    const current = window.location.pathname + window.location.search + window.location.hash;
+    const target = './alunos-login.html?next=' + encodeURIComponent(current) +
       (reason ? '&motivo=' + encodeURIComponent(reason) : '');
     window.location.replace(target);
   }
