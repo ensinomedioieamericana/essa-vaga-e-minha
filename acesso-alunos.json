@@ -1,12 +1,12 @@
 {
   "version": 1,
   "purpose": "senha-coletiva-alunos",
-  "configured": false,
-  "student_login_enabled": false,
+  "configured": true,
+  "student_login_enabled": true,
   "algorithm": "PBKDF2-SHA256",
   "iterations": 210000,
-  "salt": null,
-  "hash": null,
-  "updated_at": null,
-  "updated_by": null
+  "salt": "ba733a5b3eb9a2e110804e4086264d81",
+  "hash": "8335d7769035454c03caa625d1ea12f6cdc76676fc6935f1cf9e68cf9bde17eb",
+  "updated_at": "2026-11-24T14:08:03.873398+00:00",
+  "updated_by": "configuracao-inicial"
 }
