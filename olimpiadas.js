@@ -36,6 +36,67 @@ function safeLink(parent,label,href,cls){
  if(!validHttps(href))return false;
  const a=put(parent,'a',cls,label+' ↗');a.href=href;a.target='_blank';a.rel='noopener noreferrer';return true;
 }
+// Cartões expansíveis para celular, com as mesmas informações da tabela.
+function mobileField(parent,label){
+ const item=put(parent,'div','olympiad-mobile-field');
+ put(item,'strong','olympiad-mobile-field-label',label);
+ return put(item,'div','olympiad-mobile-field-value');
+}
+function mobileCard(entry,today){
+ const status=registrationState(entry,today);
+ const details=el('details','olympiad-mobile-card');
+ const summary=put(details,'summary','olympiad-mobile-summary');
+ const heading=put(summary,'span','olympiad-mobile-heading');
+ put(heading,'strong','olympiad-mobile-title',entry.name);
+ put(heading,'span','olympiad-mobile-area',entry.area||'Área a confirmar');
+ const meta=put(summary,'span','olympiad-mobile-meta');
+ put(meta,'span','olympiad-reg-state olympiad-reg-'+status,labels[status]);
+ const arrow=put(meta,'span','olympiad-mobile-chevron','⌄');
+ arrow.setAttribute('aria-hidden','true');
+
+ const body=put(details,'div','olympiad-mobile-body');
+ const phases=mobileField(body,'Etapas e datas');
+ if(!Array.isArray(entry.phases)||entry.phases.length===0){
+  put(phases,'span','olympiad-muted','A confirmar');
+ }else{
+  for(const phase of entry.phases){
+   const row=put(phases,'div','olympiad-phase');
+   put(row,'strong','',phase.label||'Etapa');
+   put(row,'span','',day(phase.date)||'Data a confirmar');
+  }
+ }
+ const format=mobileField(body,'Formato');
+ put(format,'span','',entry.format?.trim()||'A confirmar');
+
+ const registrations=mobileField(body,'Período de inscrições');
+ put(registrations,'span','olympiad-reg-state olympiad-reg-'+status,labels[status]);
+ const start=day(entry.registrationStart),end=day(entry.registrationEnd);
+ put(registrations,'span','olympiad-muted',
+  start&&end?start+' a '+end:start?'A partir de '+start:end?'Até '+end:'Período a confirmar');
+
+ const enroll=mobileField(body,'Como participar');
+ if(entry.registrationMode==='coordenacao'){
+  put(enroll,'span','olympiad-coordination','Inscreva-se na Coordenação');
+ }else if(entry.registrationMode==='link'){
+  if(!safeLink(enroll,'Inscrever-se',entry.registrationUrl,'olympiad-action'))
+   put(enroll,'span','olympiad-muted','Link a confirmar');
+ }else put(enroll,'span','olympiad-muted','Procedimento a confirmar');
+
+ const result=mobileField(body,'Resultado');
+ put(result,'span','olympiad-result-state',statusNames[entry.resultStatus]||'A confirmar');
+ if(day(entry.resultDate))put(result,'span','olympiad-muted',day(entry.resultDate));
+ if(entry.resultStatus==='divulgado')
+  safeLink(result,'Ver resultado',entry.resultUrl,'olympiad-result-link');
+
+ // Uma olimpíada aberta por vez, mantendo o restante da lista compacto.
+ details.addEventListener('toggle',()=>{
+  if(!details.open)return;
+  for(const other of details.parentElement?.querySelectorAll('details[open]')||[]){
+   if(other!==details)other.open=false;
+  }
+ });
+ return details;
+}
 function render(){
  const data=records();
  const today=localToday();
@@ -47,7 +108,8 @@ function render(){
   if(filter!=='todas'&&registrationState(entry,today)!==filter)return false;
   return !search||norm([entry.name,entry.area,entry.format].join(' ')).includes(search);
  }).sort((a,b)=>ordering(a,b,today));
- const tbody=$('olympiad-tbody');tbody.replaceChildren();
+ const tbody=$('olympiad-tbody'),mobile=$('olympiad-mobile-list');
+ tbody.replaceChildren();mobile.replaceChildren();
  for(const entry of selected){
   const tr=el('tr');
   const name=put(tr,'td','olympiad-name');
@@ -86,6 +148,7 @@ function render(){
   if(day(entry.resultDate))put(result,'span','olympiad-muted',day(entry.resultDate));
   if(entry.resultStatus==='divulgado')safeLink(result,'Ver resultado',entry.resultUrl,'olympiad-result-link');
   tbody.append(tr);
+  mobile.append(mobileCard(entry,today));
  }
  $('olympiad-count').textContent=selected.length+' de '+data.length+' olimpíadas';
  $('olympiad-empty').hidden=selected.length>0;
