@@ -5,11 +5,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta name="robots" content="noindex,nofollow,noarchive">
  <meta name="theme-color" content="#262a82">
- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'self'">
  <title>Painel do Desenvolvedor • Essa Vaga É Minha!</title>
  <script src="./painel-auth.js?v=1"></script>
  <link rel="icon" href="./icon-192.png" type="image/png">
- <link rel="stylesheet" href="./painel.css?v=5">
+ <link rel="stylesheet" href="./painel.css?v=6">
 </head>
 <body>
  <header class="topbar">
@@ -27,6 +27,7 @@
       <button type="button" class="tab" data-tab="notas" role="tab" aria-selected="false">▥ <span>Notas de corte</span></button>
       <button type="button" class="tab" data-tab="novidades" role="tab" aria-selected="false">✦ <span>Novidades</span></button>
       <button type="button" class="tab" data-tab="acervo" role="tab" aria-selected="false">▤ <span>Banco de Provas</span></button>
+      <button type="button" class="tab tab-admin" data-tab="acesso" role="tab" aria-selected="false">🔐 <span>Senha de acesso</span></button>
     </div>
     <span id="save-status" class="save-status" role="status" aria-live="polite">Conteúdo publicado carregado</span>
   </div>
@@ -134,6 +135,54 @@
     <div class="auth-actions"><button type="button" id="pdf-auth-cancel" class="secondary-btn">Cancelar</button><button type="submit" id="pdf-auth-submit" class="primary-btn">Confirmar publicação</button></div>
    </form>
   </dialog>
+  <section id="tab-acesso" class="workspace" aria-label="Senha coletiva de acesso dos alunos" hidden>
+    <div class="section-heading">
+      <div><span class="eyebrow">ADMINISTRAÇÃO • SOMENTE ADMINS</span><h2>Senha de acesso dos alunos</h2><p>Defina a senha única que será compartilhada com todos os estudantes do Instituto.</p></div>
+    </div>
+    <div class="panel student-password-panel">
+      <div class="panel-head">
+        <div><h3>Gerenciamento da senha coletiva</h3><p>Disponível para os administradores Ricardo e Felipe.</p></div>
+        <span class="mini-pill student-admin-tag">🔒 Administração</span>
+      </div>
+      <div class="student-access-current">
+        <div class="student-access-current-icon" aria-hidden="true">🔑</div>
+        <div>
+          <strong id="student-access-status">Carregando situação da senha…</strong>
+          <p id="student-access-updated">Aguarde a consulta ao GitHub.</p>
+        </div>
+      </div>
+      <form id="student-password-form" autocomplete="off">
+        <div class="form-grid student-password-grid">
+          <label class="field"><span>Nova senha coletiva dos alunos</span><input type="password" id="student-password" autocomplete="new-password" minlength="10" maxlength="100" placeholder="Crie a senha para distribuir à turma" required spellcheck="false"></label>
+          <label class="field"><span>Confirmar nova senha</span><input type="password" id="student-password-confirm" autocomplete="new-password" minlength="10" maxlength="100" placeholder="Digite a mesma senha novamente" required spellcheck="false"></label>
+        </div>
+        <button type="button" id="student-password-visibility" class="secondary-btn student-password-toggle" aria-label="Mostrar senhas" aria-pressed="false">👁 Mostrar senhas</button>
+        <p class="field-help">Use uma senha com pelo menos 10 caracteres. Ela não será escrita em texto aberto no GitHub; somente a verificação criptográfica será armazenada.</p>
+        <p id="student-access-message" class="student-access-message" role="status" aria-live="polite"></p>
+        <div class="student-password-actions">
+          <button type="submit" id="student-password-publish" class="primary-btn" disabled>🔐 Salvar nova senha no GitHub</button>
+          <span>É necessário autorizar a publicação com o token de escrita do GitHub.</span>
+        </div>
+      </form>
+    </div>
+    <div class="security-note student-security-note" role="note"><span aria-hidden="true">ⓘ</span>
+      <div><strong>Etapa de preparação — ainda não bloqueia o aplicativo.</strong>
+        <p>Esta tela administra a futura senha única dos alunos. <strong>O aplicativo público continua aberto nesta fase</strong>, pois ainda não criamos o login dos estudantes. O acesso visual ao Painel usa administradores de teste, não autenticação segura em servidor; somente um token GitHub autorizado permite salvar a configuração. A segurança definitiva será implementada com o Felipe no servidor do Instituto.</p>
+      </div>
+    </div>
+  </section>
+
+  <dialog id="student-password-dialog" class="publish-dialog" aria-labelledby="student-password-dialog-title">
+    <form id="student-password-token-form" class="auth-form" method="dialog">
+      <div class="auth-icon" aria-hidden="true">🔐</div>
+      <h2 id="student-password-dialog-title">Confirmar alteração da senha dos alunos</h2>
+      <p>Para publicar a nova senha coletiva, informe o <strong>token fine-grained do GitHub</strong> com permissão <strong>Contents: Read and write</strong> no repositório do Instituto.</p>
+      <label class="field"><span>Token de publicação do GitHub</span><input type="password" id="student-password-token" autocomplete="off" spellcheck="false" placeholder="Cole o token do GitHub, não sua senha" minlength="15" required></label>
+      <p class="auth-warning">O token é usado apenas nesta publicação. A senha dos alunos não será exibida nem salva em texto aberto no repositório.</p>
+      <p class="auth-error" id="student-password-token-error" role="alert" aria-live="polite"></p>
+      <div class="auth-actions"><button type="button" class="secondary-btn" id="student-password-token-cancel">Cancelar</button><button type="submit" class="primary-btn" id="student-password-token-submit">Confirmar alteração</button></div>
+    </form>
+  </dialog>
   <section id="publish" class="publish-panel" aria-label="Publicar alterações">
     <div class="publish-icon" aria-hidden="true">↥</div>
     <div><span class="eyebrow">PUBLICAÇÃO</span><h2>Pronto para colocar no ar?</h2><p>Clique em <strong>Salvar e publicar</strong> para enviar as mudanças diretamente ao repositório do Instituto. Não será preciso baixar nem enviar arquivos manualmente.</p>
@@ -163,6 +212,7 @@
  <script src="./unesp-notas.js"></script>
  <script src="./gestao-dados.js?v=19"></script>
  <script src="./acervo-dados.js?v=17"></script>
- <script src="./painel.js?v=6"></script>
+ <script src="./painel.js?v=7"></script>
  <script src="./painel-acervo.js?v=3"></script>
+ <script src="./painel-acesso.js?v=1"></script>
 </body></html>
