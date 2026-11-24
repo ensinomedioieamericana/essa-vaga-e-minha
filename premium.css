@@ -382,3 +382,41 @@ main{max-width:1460px}
  .novidades-list .novidade-card:not([hidden]){animation:none}
  .novidades-nav,.novidades-dot{transition:none}
 }
+
+/* Cartões expansíveis para Olimpíadas Acadêmicas em telas pequenas. */
+.olympiad-mobile-list,.olympiad-mobile-help{display:none}
+@media(max-width:760px){
+ .olympiad-table-scroll{display:none}
+ .olympiad-mobile-help{display:block;margin:0 0 12px;color:#626b98;font-size:12px;line-height:1.5}
+ .olympiad-mobile-list{display:grid;gap:11px;min-width:0}
+ .olympiad-mobile-card{background:#fff;border:1px solid #e0e4f3;border-radius:15px;min-width:0;overflow:hidden;box-shadow:0 5px 17px #2730760d}
+ .olympiad-mobile-card[open]{border-color:#b9bfeb;box-shadow:0 7px 24px #303a9014}
+ .olympiad-mobile-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:9px;padding:16px 14px;cursor:pointer;min-height:74px}
+ .olympiad-mobile-summary::-webkit-details-marker{display:none}
+ .olympiad-mobile-summary:focus-visible{outline:3px solid #798be1;outline-offset:-3px;border-radius:13px}
+ .olympiad-mobile-heading{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;flex:1}
+ .olympiad-mobile-title{font-size:13px;font-weight:900;line-height:1.4;color:#272f83;overflow-wrap:anywhere}
+ .olympiad-mobile-area{color:#7a81a6;font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+ .olympiad-mobile-meta{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 1 145px;min-width:0}
+ .olympiad-mobile-meta .olympiad-reg-state{max-width:115px;text-align:center;overflow-wrap:anywhere;line-height:1.35}
+ .olympiad-mobile-chevron{font-size:22px;line-height:1;flex:none;color:#3e479e;transition:transform .18s ease}
+ .olympiad-mobile-card[open] .olympiad-mobile-chevron{transform:rotate(180deg)}
+ .olympiad-mobile-body{display:grid;grid-template-columns:1fr;gap:0;padding:0 15px 7px;border-top:1px solid #e8eaf6;background:#fcfcff}
+ .olympiad-mobile-field{padding:13px 0;min-width:0;border-bottom:1px solid #edf0f8}
+ .olympiad-mobile-field:last-child{border-bottom:0}
+ .olympiad-mobile-field-label{display:block;color:#565f94;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+ .olympiad-mobile-field-value{color:#2e376e;font-size:12px;line-height:1.55;min-width:0;overflow-wrap:anywhere}
+ .olympiad-mobile-field-value .olympiad-phase{margin-bottom:9px}
+ .olympiad-mobile-field-value .olympiad-phase:last-child{margin-bottom:0}
+ .olympiad-mobile-field-value .olympiad-phase strong{font-size:11px}
+ .olympiad-mobile-field-value .olympiad-muted{margin-top:7px}
+ .olympiad-mobile-field-value .olympiad-coordination{max-width:100%}
+ .olympiad-mobile-field-value .olympiad-action{font-size:12px}
+}
+@media(max-width:390px){
+ .olympiad-mobile-summary{padding:14px 11px}
+ .olympiad-mobile-meta{flex-basis:120px;gap:5px}
+ .olympiad-mobile-meta .olympiad-reg-state{font-size:9px;padding:4px 6px}
+ .olympiad-mobile-body{padding-left:12px;padding-right:12px}
+}
+@media(prefers-reduced-motion:reduce){.olympiad-mobile-chevron{transition:none}}
