@@ -16,11 +16,29 @@ const views={
 const $=id=>document.getElementById(id);
 const node=(tag,cls,text)=>{let e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const S={links:original.map(x=>({...x})),route:'inicio',search:'',filter:'todos'};
-const N={uni:'USP',query:'',sort:'az',onlyFull:false};
+// Filtros de consulta na URL, sem cadastro ou personalizacao individual.
+const restoredParams=new URLSearchParams(location.search);
+const restoredUni=restoredParams.get('nc_uni');
+const restoredSort=restoredParams.get('nc_sort');
+const N={
+ uni:['USP','UNESP','UNICAMP'].includes(restoredUni)?restoredUni:'USP',
+ query:(restoredParams.get('nc_busca')||'').slice(0,160),
+ sort:restoredSort==='az'||/^\d{4}-(?:asc|desc)$/.test(restoredSort||'')?restoredSort:'az',
+ onlyFull:restoredParams.get('nc_completos')==='1'
+};
+function syncCutoffLocation(){
+ if(S.route!=='notas')return;
+ const url=new URL(location.href);
+ url.searchParams.set('nc_uni',N.uni);
+ if(N.query)url.searchParams.set('nc_busca',N.query);else url.searchParams.delete('nc_busca');
+ if(N.sort!=='az')url.searchParams.set('nc_sort',N.sort);else url.searchParams.delete('nc_sort');
+ if(N.onlyFull)url.searchParams.set('nc_completos','1');else url.searchParams.delete('nc_completos');
+ history.replaceState(null,'',url.pathname+url.search+url.hash);
+}
 let installPrompt;
 const normal=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const count=n=>`${n} ${n===1?'recurso':'recursos'}`;
-function go(route){route=normalizeRoute(route);if(!ROUTES.includes(route))return;S.route=route;S.filter='todos';S.search='';$('search').value='';$('clear-search').hidden=true;if(location.hash!=='#/'+route)location.hash='/'+route;render();window.scrollTo({top:0,behavior:'smooth'})}
+function go(route){route=normalizeRoute(route);if(!ROUTES.includes(route))return;S.route=route;S.filter='todos';S.search='';$('search').value='';$('clear-search').hidden=true;if(location.hash!=='#/'+route)location.hash='/'+route;render();syncCutoffLocation();window.scrollTo({top:0,behavior:'smooth'})}
 function shown(){let a=S.links.slice();if(S.search.trim()){let q=normal(S.search.trim());return a.filter(x=>normal([x.title,x.description,x.tag,cats[x.category]?.[0]].join(' ')).includes(q))}if(S.route!=='inicio')return a.filter(x=>x.category===S.route);if(S.filter!=='todos')return a.filter(x=>x.category===S.filter);return a}
 const PROVA_LOGOS={
  fuvest:{name:'USP',src:'./assets/logo-usp.svg?v=11'},
@@ -321,10 +339,10 @@ function renderCutoffs(){
  $('cutoff-count').textContent=`${rows.length} ${rows.length===1?(unicamp||unesp?'curso':'carreira'):(unicamp||unesp?'cursos':'carreiras')} exibidos`; $('cutoff-empty').hidden=rows.length!==0;
 }
 function initCutoffs(){
- document.querySelectorAll('[data-uni]').forEach(b=>b.addEventListener('click',()=>{N.uni=b.dataset.uni;N.query='';N.sort='az';N.onlyFull=false;$('cutoff-search').value='';$('cutoff-sort').value='az';$('cutoff-full').checked=false;renderCutoffs();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação'}));
- $('cutoff-search').addEventListener('input',e=>{N.query=e.target.value;renderCutoffs()});
- $('cutoff-sort').addEventListener('change',e=>{N.sort=e.target.value;renderCutoffs()});
- $('cutoff-full').addEventListener('change',e=>{N.onlyFull=e.target.checked;renderCutoffs()});
+ document.querySelectorAll('[data-uni]').forEach(b=>b.addEventListener('click',()=>{N.uni=b.dataset.uni;N.query='';N.sort='az';N.onlyFull=false;$('cutoff-search').value='';$('cutoff-sort').value='az';$('cutoff-full').checked=false;renderCutoffs();syncCutoffLocation();const d=getCutoffData();$('total-pill').textContent=d?`${d.carreiras.length} ${N.uni==='USP'?'carreiras':'cursos'}`:'Em preparação'}));
+ $('cutoff-search').addEventListener('input',e=>{N.query=e.target.value.slice(0,160);renderCutoffs();syncCutoffLocation()});
+ $('cutoff-sort').addEventListener('change',e=>{N.sort=e.target.value;renderCutoffs();syncCutoffLocation()});
+ $('cutoff-full').addEventListener('change',e=>{N.onlyFull=e.target.checked;renderCutoffs();syncCutoffLocation()});
  $('cutoff-export').addEventListener('click',()=>{
   const d=getCutoffData();if(!d)return;
   const years=orderedYears(d);const header=['Curso',...years.map(String)];const rows=[header,...getCutoffRows().map(r=>[r.curso,...years.map(y=>r.notas[y]??'')])];
@@ -347,7 +365,7 @@ function initCalendar(){
   if(S.route==='calendario')$('total-pill').textContent=label;
  }));
 }
-function init(){applyGestao();iniciarControlesNovidades();window.EVM_OLIMPIADAS_UI?.init();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(['#/agenda','#agenda','#/recursos','#recursos','#/favoritos','#favoritos'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search+'#/'+S.route);render();initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
+function init(){applyGestao();iniciarControlesNovidades();window.EVM_OLIMPIADAS_UI?.init();S.route=(()=>{const r=normalizeRoute(location.hash.replace(/^#\/?/,''));return ROUTES.includes(r)?r:'inicio'})();if(['#/agenda','#agenda','#/recursos','#recursos','#/favoritos','#favoritos'].includes(location.hash))history.replaceState(null,'',location.pathname+location.search+'#/'+S.route);$('cutoff-search').value=N.query;$('cutoff-full').checked=N.onlyFull;render();$('cutoff-sort').value=N.sort;if(!$('cutoff-sort').value){N.sort='az';$('cutoff-sort').value='az'}initCutoffs();initCalendar();document.addEventListener('click',e=>{const route=e.target.closest('[data-route],[data-jump]');if(route){
   if(route.dataset.jump)close('more-dialog');
   const focus=route.dataset.cutoffFocus;
   if(focus&&['USP','UNESP','UNICAMP'].includes(focus)){
