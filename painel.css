@@ -130,3 +130,14 @@ html.login-pendente body{visibility:hidden}
 .student-access-message.error{padding:12px 14px;border-radius:11px;border:1px solid #edc6cf;background:#fff2f5;color:#a02b50}
 .student-security-note{margin-top:17px}
 @media(max-width:650px){.student-password-grid{grid-template-columns:1fr}.student-password-actions{align-items:stretch;flex-direction:column}.student-password-actions .primary-btn{width:100%}.student-access-current{padding:15px;gap:12px}.student-access-current-icon{width:40px;height:40px;font-size:21px}}
+
+/* Configuração do selo de atualização das notas de corte por universidade. */
+.notes-badge-panel{border:1px solid #e3e5f5;background:linear-gradient(135deg,#fff,#fbfbff)}
+.notes-badge-controls{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(280px,1.15fr);gap:19px;align-items:end}
+.notes-badge-check{display:flex;align-items:center;gap:11px;min-height:43px;padding:9px 12px;border:1px solid #e0e3f1;background:#f7f8ff;border-radius:10px;color:#343b86;font-size:12px;font-weight:800;cursor:pointer}
+.notes-badge-check input{accent-color:#d42656;width:18px;height:18px;flex:none}
+.notes-badge-preview-row{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin:17px 0 11px}
+.notes-badge-preview-caption{color:#7a82a2;font-size:11px;font-weight:800}
+.notes-badge-preview{display:inline-flex;align-items:center;gap:7px;border-radius:99px;padding:7px 13px;background:linear-gradient(135deg,#e72248,#b51d58);color:white;font-size:11px;font-weight:850;letter-spacing:.15px;box-shadow:0 6px 15px rgba(205,24,68,.18)}
+.notes-badge-hidden-note{font-size:11px;color:#8990a9;font-style:italic}
+@media(max-width:720px){.notes-badge-controls{grid-template-columns:1fr;gap:14px}.notes-badge-check{min-height:46px}}
