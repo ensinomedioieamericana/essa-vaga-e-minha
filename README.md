@@ -2,6 +2,16 @@
 
 Aplicativo web progressivo do Instituto Educacional de Americana. Identidade visual azul/vermelho/branco com logos originais fornecidos.
 
+## Login coletivo dos alunos (protótipo estático)
+
+- A tela `alunos-login.html` recebe somente a senha coletiva; **não existem contas ou dados individuais de alunos**.
+- A primeira configuração fica em `acesso-alunos.json`, com hash PBKDF2-SHA256 + salt, sem a senha legível.
+- O **Painel do Editor → Senha de acesso** altera essa configuração por meio de um token GitHub com permissão de escrita. O login administrativo separado permanece independente.
+- `app-gate.js` controla visualmente a abertura de `index.html` e `acervo.html`. Um acesso confirmado fica salvo somente no navegador e deixa de ser aceito quando o hash da senha coletiva muda. O aplicativo verifica a versão atual quando aberto e, periodicamente, ao retornar à aba.
+- `sw.js` nunca guarda `acesso-alunos.json` em cache, para evitar aceitar configurações antigas. A validação requer conexão com a internet.
+- **AVISO ESSENCIAL:** todo o código, o hash e os arquivos PDF hospedados estaticamente no GitHub continuam públicos e acessíveis a quem tiver seus links diretos. O login atual é apenas **demonstrativo**, facilmente contornável. Não utilizá-lo para controlar dados pessoais ou conteúdos confidenciais. A senha inicial é curta e apropriada somente para testes; para proteção efetiva, Felipe deverá implementar autenticação e autorização no servidor e restringir a entrega de conteúdos.
+- A implantação em `umaescolacompleta.com.br` só acontece após a equipe de TI sincronizar os arquivos do GitHub.
+
 ## Recursos
 
 - 17 referências do Linktree original, navegação responsiva e pesquisa, sem favoritos individuais.
