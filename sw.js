@@ -1,12 +1,17 @@
-// Cache 41: remover Favoritos e personalizacao individual, mantendo materiais para consulta.
-const CACHE='evm-app-publico-v41';
-const FILES=['./','./index.html','./styles.css','./premium.css','./data.js','./acervo.html','./acervo.css','./acervo.js','./acervo-dados.js','./novidades.js','./gestao-dados.js','./olimpiadas.js','./app.js','./usp-notas.js','./unicamp-notas.js','./unesp-notas.js','./assets/essa-vaga-logo.png','./assets/iea-vertical.png','./assets/iea-horizontal.png?v=13','./assets/logo-unicamp.svg','./assets/logo-usp.svg?v=11','./assets/logo-enem.svg','./assets/logo-unesp.svg','./assets/logo-bernoulli.webp','./assets/logo-einstein.png?v=1','./assets/logo-famerp.png?v=1','./assets/logo-famema.png?v=1','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
+// Cache 42: login coletivo e verificacao de senha sempre pela rede (sem cache da senha).
+const CACHE='evm-app-publico-v42';
+const FILES=['./','./index.html','./styles.css','./premium.css','./data.js','./acervo.html','./alunos-login.html','./alunos-login.css','./alunos-login.js','./app-gate.js','./painel-login.css','./acervo.css','./acervo.js','./acervo-dados.js','./novidades.js','./gestao-dados.js','./olimpiadas.js','./app.js','./usp-notas.js','./unicamp-notas.js','./unesp-notas.js','./assets/essa-vaga-logo.png','./assets/iea-vertical.png','./assets/iea-horizontal.png?v=13','./assets/logo-unicamp.svg','./assets/logo-usp.svg?v=11','./assets/logo-enem.svg','./assets/logo-unesp.svg','./assets/logo-bernoulli.webp','./assets/logo-einstein.png?v=1','./assets/logo-famerp.png?v=1','./assets/logo-famema.png?v=1','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{
  const req=event.request;
  if(req.method!=='GET'||new URL(req.url).origin!==self.location.origin)return;
  const url=new URL(req.url);
+ // Nunca servir configuracao de senha armazenada em cache: ela pode ter sido trocada.
+ if(url.pathname.endsWith('/acesso-alunos.json')){
+  event.respondWith(fetch(req,{cache:'no-store'}));
+  return;
+ }
  const shell=req.mode==='navigate'||/\.(?:js|css|html)$/.test(url.pathname);
  if(shell){
   // Rede primeiro para arquivos que controlam as abas; cache apenas como reserva offline.
