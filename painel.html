@@ -153,11 +153,11 @@
       </div>
       <form id="student-password-form" autocomplete="off">
         <div class="form-grid student-password-grid">
-          <label class="field"><span>Nova senha coletiva dos alunos</span><input type="password" id="student-password" autocomplete="new-password" minlength="10" maxlength="100" placeholder="Crie a senha para distribuir à turma" required spellcheck="false"></label>
-          <label class="field"><span>Confirmar nova senha</span><input type="password" id="student-password-confirm" autocomplete="new-password" minlength="10" maxlength="100" placeholder="Digite a mesma senha novamente" required spellcheck="false"></label>
+          <label class="field"><span>Nova senha coletiva dos alunos</span><input type="password" id="student-password" autocomplete="new-password" minlength="6" maxlength="100" placeholder="Crie a senha para distribuir à turma" required spellcheck="false"></label>
+          <label class="field"><span>Confirmar nova senha</span><input type="password" id="student-password-confirm" autocomplete="new-password" minlength="6" maxlength="100" placeholder="Digite a mesma senha novamente" required spellcheck="false"></label>
         </div>
         <button type="button" id="student-password-visibility" class="secondary-btn student-password-toggle" aria-label="Mostrar senhas" aria-pressed="false">👁 Mostrar senhas</button>
-        <p class="field-help">Use uma senha com pelo menos 10 caracteres. Ela não será escrita em texto aberto no GitHub; somente a verificação criptográfica será armazenada.</p>
+        <p class="field-help">Utilize uma senha de pelo menos 6 caracteres. Para a versão definitiva, recomendamos uma senha mais longa. A senha não será escrita em texto aberto; apenas sua verificação criptográfica será armazenada.</p>
         <p id="student-access-message" class="student-access-message" role="status" aria-live="polite"></p>
         <div class="student-password-actions">
           <button type="submit" id="student-password-publish" class="primary-btn" disabled>🔐 Salvar Senha</button>
@@ -166,8 +166,8 @@
       </form>
     </div>
     <div class="security-note student-security-note" role="note"><span aria-hidden="true">ⓘ</span>
-      <div><strong>Etapa de preparação — ainda não bloqueia o aplicativo.</strong>
-        <p>Esta tela administra a futura senha única dos alunos. <strong>O aplicativo público continua aberto nesta fase</strong>, pois ainda não criamos o login dos estudantes. O acesso visual ao Painel usa administradores de teste, não autenticação segura em servidor; somente um token GitHub autorizado permite salvar a configuração. A segurança definitiva será implementada com o Felipe no servidor do Instituto.</p>
+      <div><strong>Login coletivo de demonstração ativo no GitHub Pages.</strong>
+        <p>Esta área altera a senha única exigida pela tela de login dos alunos. <strong>O controle de acesso atual funciona somente no navegador e não protege os arquivos públicos do GitHub.</strong> A publicação da nova senha exige token GitHub autorizado. A proteção real será implementada posteriormente no servidor do Instituto.</p>
       </div>
     </div>
   </section>
@@ -214,5 +214,5 @@
  <script src="./acervo-dados.js?v=17"></script>
  <script src="./painel.js?v=7"></script>
  <script src="./painel-acervo.js?v=3"></script>
- <script src="./painel-acesso.js?v=1"></script>
+ <script src="./painel-acesso.js?v=2"></script>
 </body></html>
