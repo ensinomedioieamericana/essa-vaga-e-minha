@@ -94,7 +94,7 @@
     message('');
     status.textContent = 'Conferindo a senha coletiva…';
     try {
-      const response = await fetch('./acesso-alunos.json', {cache:'no-store'});
+      const response = await fetch('./acesso-alunos.json?v=' + Date.now(), {cache:'no-store'});
       if (!response.ok) throw new Error('Não foi possível consultar a senha atual. Tente novamente.');
       const conf = await response.json();
       if (!validateConfig(conf)) throw new Error('O acesso coletivo ainda não está disponível. Procure a equipe do Ensino Médio.');
