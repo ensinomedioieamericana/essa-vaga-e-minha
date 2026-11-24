@@ -1,0 +1,146 @@
+name: Importar gabarito oficial UNESP 2027 primeira fase
+
+on:
+  push:
+    paths:
+      - '.github/workflows/importar-unesp-2027-gabarito.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-unesp-2027-gabarito
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    name: Publicar gabarito oficial UNESP 2027, versao 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Instalar leitor PDF
+        run: python -m pip install --disable-pip-version-check "PyMuPDF>=1.24,<2"
+
+      - name: Obter gabarito e verificar todas as 90 respostas da VUNESP
+        run: |
+          python - <<'PY'
+          import hashlib
+          import pathlib
+          import re
+          import urllib.request
+          import pymupdf
+
+          dest=pathlib.Path("acervo/unesp/2027/1a-fase/unesp-2027-1a-fase-gabarito-oficial-versao-1.pdf")
+          sources=[
+              "https://documento.vunesp.com.br/documento/stream/ODA3NTIxMA%3D%3D",
+              "https://cliquevestibular.com.br/wp-content/uploads/2026/11/unesp-2027-gabarito-oficial-1a-fase.pdf",
+          ]
+          expected=(
+              "D D D A B C E D A E "
+              "B C D A B E C C B D "
+              "D D A D B C E A E A "
+              "B D C E D A C B D B "
+              "E E A D A C D C B E "
+              "A C B D A E C B D E "
+              "A D D D E C D A C B "
+              "E A D B E D C A D B "
+              "B B B C A E D D B C"
+          ).split()
+          assert len(expected)==90
+
+          def check(data):
+              if not data.startswith(b"%PDF-") or len(data)>5000000:
+                  raise ValueError("Arquivo nao e um PDF valido ou e grande demais")
+              with pymupdf.open(stream=data,filetype="pdf") as doc:
+                  if len(doc)!=1:
+                      raise ValueError("Gabarito original deveria conter uma unica pagina")
+                  content=doc[0].get_text(sort=True)
+              upper=content.upper()
+              for marker in ("VESTIBULAR 2027", "PROVA DE CONHECIMENTOS GERAIS", "VERSÃO 1", "VNSP2514"):
+                  if marker not in upper:
+                      raise ValueError("Marcador oficial ausente: "+marker)
+              pairs=re.findall(r"(?<!\d)(\d{1,2})\s*[-–]\s*([A-E])\b",content,re.I)
+              answers={int(n):letter.upper() for n,letter in pairs}
+              if len(pairs)!=90 or len(answers)!=90:
+                  raise ValueError("Nao foi possivel conferir as 90 questoes: "+str(len(pairs)))
+              for i,letter in enumerate(expected,1):
+                  if answers.get(i)!=letter:
+                      raise ValueError(f"Resposta incorreta na questao {i}: {answers.get(i)} != {letter}")
+              print("Gabarito conferido: UNESP 2027, versao 1, 90 respostas oficiais.",flush=True)
+              print("SHA256:",hashlib.sha256(data).hexdigest(),flush=True)
+
+          if dest.exists():
+              check(dest.read_bytes())
+              print("Gabarito ja estava no acervo.",flush=True)
+          else:
+              errors=[]
+              for url in sources:
+                  try:
+                      print("Baixando PDF:",url,flush=True)
+                      req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; IEA-Acervo/1.0)","Accept":"application/pdf,*/*"})
+                      with urllib.request.urlopen(req,timeout=70) as resp:
+                          data=resp.read(5000001)
+                      check(data)
+                      dest.parent.mkdir(parents=True,exist_ok=True)
+                      dest.write_bytes(data)
+                      print("PDF salvo:",dest,"bytes:",len(data),flush=True)
+                      break
+                  except Exception as e:
+                      errors.append(f"{url}: {type(e).__name__}: {e}")
+                      print("Falha de origem:",repr(e),flush=True)
+              if not dest.exists():
+                  raise RuntimeError("Nenhuma copia valida acessivel: "+"; ".join(errors))
+          PY
+
+      - name: Adicionar PDF ao catalogo local
+        run: |
+          python scripts/gerar_acervo.py
+          python - <<'PY'
+          import json
+          import pathlib
+          import re
+          p=pathlib.Path("acervo-dados.js")
+          text=p.read_text(encoding="utf-8")
+          m=re.search(r"window\.EVM_ACERVO\s*=\s*(\{[\s\S]*\})\s*;",text)
+          if not m:
+              raise SystemExit("Catalogo invalido")
+          catalog=json.loads(m.group(1))
+          inst=next(x for x in catalog["institutions"] if x["id"]=="unesp")
+          docs=inst["years"]["2027"]
+          path="acervo/unesp/2027/1a-fase/unesp-2027-1a-fase-gabarito-oficial-versao-1.pdf"
+          match=[x for x in docs if x.get("file")==path]
+          if len(match)!=1:
+              raise SystemExit("PDF ausente ou duplicado no catalogo")
+          match[0]["title"]="UNESP 2027 · 1ª fase · Gabarito oficial (Versão 1)"
+          match[0]["type"]="gabarito"
+          if not any(x.get("type")=="prova" and "2027" in x.get("title","") for x in docs):
+              raise SystemExit("Prova original da UNESP 2027 nao encontrada")
+          p.write_text("/* Catálogo local do Banco de Provas. Gerado por scripts/gerar_acervo.py. */\nwindow.EVM_ACERVO = "+json.dumps(catalog,ensure_ascii=False,indent=2)+";\n",encoding="utf-8")
+          print("Catalogo atualizado e gabarito identificado como Versao 1.",flush=True)
+          PY
+
+      - name: Publicar PDF e catalogo na branch main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "acervo/unesp/2027/1a-fase/unesp-2027-1a-fase-gabarito-oficial-versao-1.pdf" acervo-dados.js
+          if git diff --cached --quiet; then
+            echo "Gabarito ja publicado no GitHub."
+            exit 0
+          fi
+          git commit -m "UNESP 2027: publicar gabarito oficial da primeira fase (versao 1)"
+          for attempt in 1 2 3 4; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              echo "Gabarito oficial UNESP 2027 publicado em main."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
