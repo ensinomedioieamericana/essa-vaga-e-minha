@@ -1,12 +1,16 @@
 {
-  "totalCarreiras": 122,
+  "totalCarreiras": 125,
   "totalHistoricas": 101,
   "total2025": 78,
   "total2026": 74,
   "seriesCompletas": 52,
   "fontes": {
-    "2020-2024": "Planilha comparativa fornecida pelo Instituto (confirmada por amostragem com relatório oficial de 2024)",
     "2025": "FUVEST 2025 — Notas de Corte (arquivo fornecido)",
-    "2026": "https://www.fuvest.br/wp-content/uploads/fuvest2026_notas_de_corte.pdf"
-  }
+    "2026": "https://www.fuvest.br/wp-content/uploads/fuvest2026_notas_de_corte.pdf",
+    "2027": "https://www.fuvest.br/wp-content/uploads/fuvest2027-notas-de-corte.pdf",
+    "2020-2024": "Planilha comparativa fornecida pelo Instituto (confirmada por amostragem com relatório oficial de 2024)"
+  },
+  "total2027": 77,
+  "total2027Regulares": 74,
+  "total2027Treinamento": 3
 }
